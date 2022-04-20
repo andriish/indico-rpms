@@ -12,8 +12,8 @@ Summary:        Example python module
 License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
 Source:         %{pypi_source}
-
 BuildArch:      noarch
+BuildRequires: python3-pip
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
