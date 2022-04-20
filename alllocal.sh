@@ -7,7 +7,8 @@ declare -a BUILDLIST=(
 #python-ua-parser:0.10.0
 #pyparsing:3.0.8
 #Rivet:3.1.4
-python-webargs:8.1.0
+#python-webargs:8.1.0
+python-hiredis:2.0.0
 #python-indico-fonts:1.1
 )
 
