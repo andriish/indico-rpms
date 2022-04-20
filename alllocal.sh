@@ -4,6 +4,7 @@ export PATH=$PATH:$(pwd)
 
 set -x 
 declare -a BUILDLIST=(
+python-ua-parser:0.10.0
 #Rivet:3.1.4
 )
 

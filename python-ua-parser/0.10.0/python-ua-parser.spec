@@ -1,71 +1,49 @@
-#
-# spec file for package python-ua-parser
-#
-# Copyright (c) 2020 SUSE LLC
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
+#URL:            https://github.com/ua-parser/uap-python
+#Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
+%global srcname ua-parser
+%global srcnamenu ua_parser
 
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define _pkgname ua-parser
-Name:           python-ua-parser
+Name:           python-%{srcname}
 Version:        0.10.0
-Release:        1.7
-Summary:        Python Implementation of UA Parser
-License:        Apache-2.0
-URL:            https://github.com/ua-parser/uap-python
-Source:         https://files.pythonhosted.org/packages/source/u/%{_pkgname}/%{_pkgname}-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
-%python_subpackages
+Release:        1%{?dist}
+Summary:        Example python module
 
-%description
-A python implementation of the UA Parser (https://github.com/ua-parser, formerly
-https://github.com/tobie/ua-parser)
+License:        MIT
+URL:            https://pypi.python.org/pypi/ua-parser
+Source:         %{pypi_source}
+
+BuildArch:      noarch
+
+%global _description %{expand:
+A python module which provides a convenient example. This is the
+rest of the description that provides more details.}
+
+%description %_description
+
+%package -n python3-%{srcname}
+Summary:        %{summary}
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+
+%description -n python3-%{srcname} %_description
 
 %prep
-%setup -q -n %{_pkgname}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %build
-%python_build
+%py3_build
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}/%{$python_sitelib}
+%py3_install
 
 %check
-# Tests lack fixtures in the released tarball
-#%%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" $python ua_parser/user_agent_parser_test.py
+#{python3} setup.py test
 
-%files %{python_files}
-%{python_sitelib}/*
-
-%changelog
-* Fri Mar  6 2020 Steve Kowalik <steven.kowalik@suse.com>
-- Update to version 0.10.0:
-  + no changelog available
-* Mon Oct 14 2019 Matej Cepl <mcepl@suse.com>
-- Replace %%fdupes -s with plain %%fdupes; hardlinks are better.
-* Wed Aug  1 2018 tchvatal@suse.com
-- Remove pointless devel dependency
-* Wed Jul 18 2018 buschmann23@opensuse.org
-- update to version 0.8.0
-  + no changelog available
-* Tue Feb 20 2018 buschmann23@opensuse.org
-- update to version 0.7.3
-  + no changelog available
-* Sun Jan 14 2018 adrian@suse.de
-- initial package in version 0.5.1
+# Note that there is no %%files section for the unversioned python module
+%files -n python3-%{srcname}
+#license COPYING
+%doc README.rst
+%{python3_sitelib}/%{srcnamenu}-*.egg-info/
+%{python3_sitelib}/%{srcnamenu}/
+#{_bindir}/sample-exec
