@@ -13,7 +13,7 @@ License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip
+BuildRequires: python3-pip python3-wheel
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
