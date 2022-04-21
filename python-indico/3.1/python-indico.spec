@@ -6,7 +6,7 @@
 
 Name:           python-%{srcname}
 Version:        3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -110,6 +110,7 @@ BuildRequires:  python3-setuptools
 
 %prep
 %autosetup -n indico-3.1
+sed -i 's/\=\=.*$//g' requirements.*
 
 %build
 %py3_build
