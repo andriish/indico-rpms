@@ -126,4 +126,4 @@ BuildRequires:  python3-setuptools
 #doc README.rst
 %{python3_sitelib}/%{srcnamenu}-*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
-${_bindir}/indico
+%{_bindir}/indico
