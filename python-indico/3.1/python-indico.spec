@@ -107,7 +107,7 @@ BuildRequires:  python3-setuptools
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -n v3.1
+%autosetup -n indico-3.1
 
 %build
 %py3_build
