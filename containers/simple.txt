@@ -1,0 +1,185 @@
+Bootstrap: docker
+From: fedora:36
+%post
+# rpmdb --rebuilddb
+ dnf -y install 'dnf-command(config-manager)'
+ dnf -y install dnf*
+ dnf -y copr enable averbyts/IR 
+ yum -y update
+ 
+ yum install -y postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
+ yum install -y git gcc make redis httpd mod_proxy_uwsgi mod_ssl 
+ #yum install -y  mod_xsendfile
+ yum install -y libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel  zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel 
+ yum install -y openssl-devel xz xz-devel libffi-devel findutils libuuid-devel --allowerasing
+ #yum install -y  libyaml-devel
+ #/usr/bin/postgresql-setup initdb
+ #systemctl start postgresql.service redis.service
+ yum -y install python3 python3-devel
+ yum -y install npm mathjax*
+ yum -y install python3-indico
+
+
+ python3 -m venv --system-site-packages env 
+ source ./env/bin/activate
+ yum clean all
+
+
+exit
+%environment
+    export LC_ALL=C
+%runscript
+    #Here can be some random stuff
+    date
+
+
+#MASTER
+#for wtforms-sqlalchemy>=0.3
+#for wtforms-dateutil>=0.1
+#for webargs>=8.1.0
+#for typing-inspect>=0.7.1
+#for typing-extensions>=4.0.1
+#for sentry-sdk[celery,flask,pure_eval,sqlalchemy]>=1.5.4
+#for pywebpack>=1.2.0
+#for python-dateutil>=2.8.2
+#for pyparsing>=3.0.7
+#for pynpm>=0.1.2
+#for pycparser>=2.21
+#for ptyprocess>=0.7.0
+#for psycopg2>=2.9.3
+#for prompt-toolkit>=3.0.28
+#for parso>=0.8.3
+#for matplotlib-inline>=0.1.3
+#for marshmallow-sqlalchemy>=0.27.0
+#for marshmallow-oneofschema>=3.0.1
+#for marshmallow-dataclass[enum]>=8.5.3
+#for marshmallow>=3.14.1
+#for markupsafe>=2.0.1
+#for mako>=1.1.6
+#for limits>=2.3.3
+#for jsonschema>=4.4.0
+#for indico-fonts>=1.1
+#for importlib-metadata>=4.11.0
+#for hiredis>=2.0.0
+#for flask-webpackext>=1.0.2
+#for flask-pluginengine>=0.4
+#for flask-multipass>=0.4.6
+#for flask-marshmallow>=0.14.0
+#for flask-limiter>=2.1.3
+#for email-validator>=1.1.3
+#for cryptography>=36.0.1
+#for click-didyoumean>=0.3.0
+#for bleach>=4.1.0
+#for backcall>=0.2.0
+#for authlib>=1.0.0rc1
+#for alembic>=1.7.6
+#for zipp==3.7.0
+
+
+
+
+
+
+
+
+
+#for wtforms-sqlalchemy>=0.3
+#for wtforms-dateutil>=0.1
+#for typing-inspect>=0.7.1
+#for typing-extensions>=4.0.1
+#for sentry-sdk[celery,flask,pure_eval,sqlalchemy]>=1.5.4
+#for pywebpack>=1.2.0
+#for python-dateutil>=2.8.2
+#for pyparsing>=3.0.7
+#for pynpm>=0.1.2
+#for pycparser>=2.21
+#for ptyprocess>=0.7.0
+#for psycopg2>=2.9.3
+#for prompt-toolkit>=3.0.28
+#for parso>=0.8.3
+#for matplotlib-inline>=0.1.3
+#for marshmallow-sqlalchemy>=0.27.0
+#for marshmallow-oneofschema>=3.0.1
+#for marshmallow-dataclass[enum]>=8.5.3
+#for marshmallow>=3.14.1
+#for markupsafe>=2.0.1
+#for mako>=1.1.6
+#for limits>=2.3.3
+#for jsonschema>=4.4.0
+#for importlib-metadata>=4.11.0
+#for hiredis>=2.0.0
+#for flask-webpackext>=1.0.2
+#for flask-pluginengine>=0.4
+#for flask-multipass>=0.4.6
+#for flask-marshmallow>=0.14.0
+#for flask-limiter>=2.1.3
+#for email-validator>=1.1.3
+#for cryptography>=36.0.1
+#for click-didyoumean>=0.3.0
+#for bleach>=4.1.0
+#for backcall>=0.2.0
+#for authlib>=1.0.0rc1
+#for alembic>=1.7.6
+#for zipp==3.7.0
+
+
+
+
+#pyp2rpm
+
+
+
+Installed /env/lib/python3.10/site-packages/indico-3.2.dev0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/WTForms_SQLAlchemy-0.3-py3.10.egg
+Installed /env/lib/python3.10/site-packages/WTForms_dateutil-0.1-py3.10.egg
+Installed /env/lib/python3.10/site-packages/typing_inspect-0.7.1-py3.10.egg
+Installed /env/lib/python3.10/site-packages/typing_extensions-4.2.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/python_dateutil-2.8.2-py3.10.egg
+Installed /env/lib/python3.10/site-packages/pyparsing-3.0.8-py3.10.egg
+Installed /env/lib/python3.10/site-packages/pycparser-2.21-py3.10.egg
+Installed /env/lib/python3.10/site-packages/ptyprocess-0.7.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/psycopg2-2.9.3-py3.10-linux-x86_64.egg
+Installed /env/lib/python3.10/site-packages/prompt_toolkit-3.0.29-py3.10.egg
+Installed /env/lib/python3.10/site-packages/parso-0.8.3-py3.10.egg
+Installed /env/lib/python3.10/site-packages/matplotlib_inline-0.1.3-py3.10.egg
+Installed /env/lib/python3.10/site-packages/marshmallow_sqlalchemy-0.28.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/marshmallow_oneofschema-3.0.1-py3.10.egg
+Installed /env/lib/python3.10/site-packages/marshmallow_enum-1.5.1-py3.10.egg
+Installed /env/lib/python3.10/site-packages/marshmallow_dataclass-8.5.3-py3.10.egg
+Installed /env/lib/python3.10/site-packages/marshmallow-3.15.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/MarkupSafe-2.1.1-py3.10-linux-x86_64.egg
+Installed /env/lib/python3.10/site-packages/Markdown-3.3.6-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Mako-1.2.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/limits-2.5.2-py3.10.egg
+Installed /env/lib/python3.10/site-packages/jsonschema-4.4.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/importlib_metadata-4.11.3-py3.10.egg
+Installed /env/lib/python3.10/site-packages/flask_webpackext-1.0.2-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Flask_PluginEngine-0.4-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Flask_Multipass-0.4.6-py3.10.egg
+Installed /env/lib/python3.10/site-packages/flask_marshmallow-0.14.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Flask_Limiter-2.4.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/cryptography-36.0.2-py3.10-linux-x86_64.egg
+Installed /env/lib/python3.10/site-packages/click_didyoumean-0.3.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/bleach-5.0.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/backcall-0.2.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Authlib-1.0.1-py3.10.egg
+Installed /env/lib/python3.10/site-packages/alembic-1.7.7-py3.10.egg
+Installed /env/lib/python3.10/site-packages/rich-12.2.0-py3.10.egg
+
+
+####################3
+
+Installed /env/lib/python3.10/site-packages/indico-3.2.dev0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/WTForms_SQLAlchemy-0.3-py3.10.egg
+Installed /env/lib/python3.10/site-packages/WTForms_dateutil-0.1-py3.10.egg
+Installed /env/lib/python3.10/site-packages/marshmallow_sqlalchemy-0.28.0-py3.10.egg
+Installed /env/lib/python3.10/site-packages/marshmallow_oneofschema-3.0.1-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Markdown-3.3.6-py3.10.egg
+Installed /env/lib/python3.10/site-packages/importlib_metadata-4.11.3-py3.10.egg
+Installed /env/lib/python3.10/site-packages/flask_webpackext-1.0.2-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Flask_PluginEngine-0.4-py3.10.egg
+Installed /env/lib/python3.10/site-packages/Flask_Multipass-0.4.6-py3.10.egg
+Installed /env/lib/python3.10/site-packages/flask_marshmallow-0.14.0-py3.10.egg
+
+
+
