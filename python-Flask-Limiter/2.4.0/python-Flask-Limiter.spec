@@ -44,6 +44,6 @@ BuildRequires:  python3-setuptools
 %files -n python3-%{srcname}
 #license COPYING
 #doc README.rst
-%{python3_sitearch}/%{srcnamenu}-*.egg-info/
-%{python3_sitearch}/%{srcnamenu}/
+%{python3_sitelib}/%{srcnamenu}-*.egg-info/
+%{python3_sitelib}/%{srcnamenu}/
 #{_bindir}/email_validator
