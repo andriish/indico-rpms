@@ -2,7 +2,7 @@
 #Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
 
 %global srcname Flask-Limiter
-%global srcnamenu Flask_Limiter
+%global srcnamenu flask_limiter
 
 Name:           python-%{srcname}
 Version:        2.4.0
@@ -13,7 +13,7 @@ License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
+BuildRequires: python3-pip python3-wheel 
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -44,6 +44,6 @@ BuildRequires:  python3-setuptools
 %files -n python3-%{srcname}
 #license COPYING
 #doc README.rst
-%{python3_sitelib}/%{srcnamenu}-*.egg-info/
-%{python3_sitelib}/%{srcnamenu}/
-%{_bindir}/email_validator
+%{python3_sitearch}/%{srcnamenu}-*.egg-info/
+%{python3_sitearch}/%{srcnamenu}/
+#{_bindir}/email_validator
