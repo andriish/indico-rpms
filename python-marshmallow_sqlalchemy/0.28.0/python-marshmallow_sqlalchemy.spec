@@ -1,7 +1,7 @@
 #URL:            https://github.com/ua-parser/uap-python
 #Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
 
-%global srcname marshmallow_sqlalchemy
+%global srcname marshmallow-sqlalchemy
 %global srcnamenu marshmallow_sqlalchemy
 
 Name:           python-%{srcname}
