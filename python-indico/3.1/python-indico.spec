@@ -14,6 +14,8 @@ URL:            https://pypi.python.org/pypi/ua-parser
 #Source:         {pypi_source}
 Source:         https://github.com/indico/indico/archive/refs/tags/v3.1.zip
 BuildArch:      noarch
+BuildRequires:  npm
+BuildRequires:  redis
 BuildRequires:  python3-pip python3-wheel
 
 
