@@ -12,7 +12,8 @@ declare -a BUILDLIST=(
 ### python-pywebpack:1.2.0
 ### python-pynpm:0.1.2
 #python-email_validator:1.1.3
-python-limits:2.5.2
+python-Flask-PluginEngine:0.4
+#python-limits:2.5.2
 #python-indico-fonts:1.1
 )
 

@@ -11,7 +11,7 @@ Summary:        Example python module
 
 License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
-Source:         %{pypi_source}
+Source:         https://github.com/indico/flask-pluginengine/archive/refs/tags/v0.4.tar.gz
 BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel 
 
@@ -29,7 +29,7 @@ BuildRequires:  python3-setuptools
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -n flask-pluginengine-0.4
 
 %build
 %py3_build
