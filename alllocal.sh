@@ -11,6 +11,7 @@ declare -a BUILDLIST=(
 #python-hiredis:2.0.0
 ### python-pywebpack:1.2.0
 ### python-pynpm:0.1.2
+python-email_validator:1.1.3
 #python-indico-fonts:1.1
 )
 
