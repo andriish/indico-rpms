@@ -11,7 +11,8 @@ declare -a BUILDLIST=(
 #python-hiredis:2.0.0
 ### python-pywebpack:1.2.0
 #python-flask-webpackext:1.0.2
-python-flask-marshmallow:0.14.0
+#python-flask-marshmallow:0.14.0
+python-WTForms-SQLAlchemy:0.3
 ### python-pynpm:0.1.2
 #python-email_validator:1.1.3
 #python-Flask-PluginEngine:0.4
