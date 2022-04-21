@@ -1,7 +1,7 @@
 #URL:            https://github.com/ua-parser/uap-python
 #Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
 
-%global srcname flask_webpackext
+%global srcname flask-webpackext
 %global srcnamenu flask_webpackext
 
 Name:           python-%{srcname}
