@@ -30,7 +30,7 @@ Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
-%description -n python3-%{srcname} %_description
+%description -n %{srcname} %_description
 
 %prep
 
