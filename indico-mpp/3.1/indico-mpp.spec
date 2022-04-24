@@ -42,7 +42,7 @@ BuildRequires:  python3-setuptools
 %description -n %{srcname} %_description
 
 %prep
-%setup -q
+%setup -q -T
 
 %build
 
