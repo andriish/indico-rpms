@@ -46,7 +46,7 @@ BuildRequires:  python3-setuptools
 %build
 
 %install
-semodule -i indico.cil
+
 
 mkdir -p %{buildroot}/etc
 install -m 0755 uwsgi-indico.ini %{buildroot}/etc/uwsgi-indico.ini
@@ -80,6 +80,8 @@ systemctl enable httpd.service postgresql.service redis.service indico-celery.se
 
 firewall-cmd --permanent --add-port 443/tcp --add-port 80/tcp
 firewall-cmd --reload
+
+semodule -i indico.cil
 
 %files -n %{srcname}
 #license COPYING
