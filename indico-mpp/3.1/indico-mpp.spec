@@ -18,7 +18,7 @@ Source2:         indico-sslredir.conf
 Source3:         indico-uwsgi.service
 Source4:         indico.conf
 Source5:         uwsgi-indico.ini
-Source5:         ffdhe2048
+Source6:         ffdhe2048
 
 
 BuildArch:      noarch
