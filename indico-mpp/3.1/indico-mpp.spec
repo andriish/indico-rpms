@@ -12,13 +12,7 @@ Summary:        Example python module
 License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
 
-Source0:         indico.cil
-Source1:         indico-celery.service
-Source2:         indico-sslredir.conf
-Source3:         indico-uwsgi.service
-Source4:         indico.conf
-Source5:         uwsgi-indico.ini
-Source6:         ffdhe2048
+Source:         indico-mpp-3.1.tar.gz
 
 
 BuildArch:      noarch
@@ -42,7 +36,7 @@ BuildRequires:  python3-setuptools
 %description -n %{srcname} %_description
 
 %prep
-%setup -q -T -c
+%setup -q  -c
 
 %build
 
