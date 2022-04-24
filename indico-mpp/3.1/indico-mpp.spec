@@ -53,7 +53,7 @@ mkdir -p %{buildroot}/etc/systemd/system/
 install -m 0755 indico-celery.service %{buildroot}/etc/systemd/system/indico-celery.service
 mkdir -p %{buildroot}/etc/httpd/conf.d/
 install -m 0755 indico-sslredir.conf %{buildroot}/etc/httpd/conf.d/indico-sslredir.conf
-mkdir %{buildroot}/etc/ssl/indico
+mkdir  -p %{buildroot}/etc/ssl/indico
 chown root:root %{buildroot}/etc/ssl/indico/
 chmod 700 %{buildroot}/etc/ssl/indico
 install -m 0700 ffdhe2048 %{buildroot}//etc/ssl/indico/ffdhe2048
