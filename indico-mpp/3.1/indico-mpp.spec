@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -27,6 +27,8 @@ BuildRequires: httpd
 BuildRequires: openssl-devel openssl-libs openssl
 Requires: openssl-devel openssl-libs openssl
 Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+Requires: policycoreutils
+BuildRequires: policycoreutils
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -101,7 +103,8 @@ export PATH="/opt/indico/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 EOF
-python3 -m venv --upgrade-deps --prompt indico /opt/indico/.venv
+#python3 -m venv --upgrade-deps --prompt indico /opt/indico/.venv
+python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv
 mkdir /opt/indico//log/apache
 chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
 chmod 710 /opt/indico// /opt/indico//archive ~/cache ~/log ~/tmp
