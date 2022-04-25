@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -21,6 +21,8 @@ BuildRequires:  redis
 BuildRequires:  firewalld
 BuildRequires:  python3-pip python3-wheel
 #Requires: python3-indico
+Requires: postgresql postgresql-server postgresql-contrib
+Requires: redis firewalld
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -58,6 +60,8 @@ mkdir  -p %{buildroot}/etc/ssl/indico
 #chmod 700 %{buildroot}/etc/ssl/indico
 install -m 0700 ffdhe2048 %{buildroot}//etc/ssl/indico/ffdhe2048
 
+install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
+
 #install -m 0755 bello /usr/bin/bello
 
 #
@@ -76,7 +80,7 @@ systemctl enable httpd.service postgresql.service redis.service indico-celery.se
 firewall-cmd --permanent --add-port 443/tcp --add-port 80/tcp
 firewall-cmd --reload
 
-semodule -i indico.cil
+semodule -i /etc/ssl/indico/indico.cil
 
 %files -n %{srcname}
 #license COPYING
@@ -87,3 +91,4 @@ semodule -i indico.cil
 /etc/systemd/system/indico-celery.service
 /etc/ssl/indico/ffdhe2048
 /etc/httpd/conf.d/indico-sslredir.conf
+/etc/ssl/indico/indico.cil
