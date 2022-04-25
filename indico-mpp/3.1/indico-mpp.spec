@@ -66,24 +66,6 @@ install -m 0700 ffdhe2048 %{buildroot}//etc/ssl/indico/ffdhe2048
 install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 
 
-openssl req -x509 -nodes -newkey rsa:4096 -subj /CN=av.mpp.mpg.de -keyout /etc/ssl/indico/indico.key -out /etc/ssl/indico/indico.crt
-
-
-cat >> /opt/indico/.bashrc <<'EOF'
-export PATH="/opt/indico/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-EOF
-python -m venv --upgrade-deps --prompt indico /opt/indico/.venv
-mkdir /opt/indico//log/apache
-chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
-chmod 710 /opt/indico// /opt/indico//archive ~/cache ~/log ~/tmp
-chmod 750 /opt/indico//web /opt/indico//.venv
-chmod g+w /opt/indico//log/apache
-restorecon -R /opt/indico//
-echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
-chown -R indico /opt/indico/
-
 
 #install -m 0755 bello /usr/bin/bello
 
@@ -104,6 +86,27 @@ firewall-cmd --permanent --add-port 443/tcp --add-port 80/tcp
 firewall-cmd --reload
 
 semodule -i /etc/ssl/indico/indico.cil
+
+
+openssl req -x509 -nodes -newkey rsa:4096 -subj /CN=av.mpp.mpg.de -keyout /etc/ssl/indico/indico.key -out /etc/ssl/indico/indico.crt
+
+
+cat >> /opt/indico/.bashrc <<'EOF'
+export PATH="/opt/indico/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+EOF
+python -m venv --upgrade-deps --prompt indico /opt/indico/.venv
+mkdir /opt/indico//log/apache
+chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
+chmod 710 /opt/indico// /opt/indico//archive ~/cache ~/log ~/tmp
+chmod 750 /opt/indico//web /opt/indico//.venv
+chmod g+w /opt/indico//log/apache
+restorecon -R /opt/indico//
+echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
+chown -R indico /opt/indico/
+
+
 
 %files -n %{srcname}
 #license COPYING
