@@ -23,6 +23,7 @@ BuildRequires:  python3-pip python3-wheel
 #Requires: python3-indico
 Requires: postgresql postgresql-server postgresql-contrib
 Requires: redis firewalld
+BuildRequires: httpd
 Requires: httpd
 
 %global _description %{expand:
