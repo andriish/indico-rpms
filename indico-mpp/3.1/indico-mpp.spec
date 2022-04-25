@@ -24,7 +24,8 @@ BuildRequires:  python3-pip python3-wheel
 Requires: postgresql postgresql-server postgresql-contrib
 Requires: redis firewalld
 BuildRequires: httpd
-BuildRequires: openssl-devel
+BuildRequires: openssl-devel openssl-libs
+Requires: openssl-devel openssl-libs
 Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
  
 %global _description %{expand:
