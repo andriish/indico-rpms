@@ -24,8 +24,8 @@ BuildRequires:  python3-pip python3-wheel
 Requires: postgresql postgresql-server postgresql-contrib
 Requires: redis firewalld
 BuildRequires: httpd
-BuildRequires: openssl-devel openssl-libs
-Requires: openssl-devel openssl-libs
+BuildRequires: openssl-devel openssl-libs openssl
+Requires: openssl-devel openssl-libs openssl
 Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
  
 %global _description %{expand:
@@ -80,6 +80,8 @@ install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 #su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
 
 sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
+mkdir -p /opt/indico
+chown -R indico /opt/indico
 
 echo 'LoadModule proxy_uwsgi_module modules/mod_proxy_uwsgi.so' > /etc/httpd/conf.modules.d/proxy_uwsgi.conf
 
