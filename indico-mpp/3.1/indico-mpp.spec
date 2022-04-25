@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -24,7 +24,7 @@ BuildRequires:  python3-pip python3-wheel
 Requires: postgresql postgresql-server postgresql-contrib
 Requires: redis firewalld
 BuildRequires: httpd
-Requires: httpd
+Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
