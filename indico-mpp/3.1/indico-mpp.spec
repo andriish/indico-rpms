@@ -1,10 +1,10 @@
 #URL:            https://github.com/ua-parser/uap-python
 #Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
 
-%global srcname mpp-indico
-%global srcnamenu mpp-indico
+%global srcname indico-mpp
+%global srcnamenu indico-mpp
 
-Name:           mpp-indico
+Name:           indico-mpp
 Version:        3.1
 Release:        2%{?dist}
 Summary:        Example python module
@@ -28,7 +28,7 @@ rest of the description that provides more details.}
 
 %description %_description
 
-%package -n %{srcname}
+#package -n {srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
