@@ -56,7 +56,7 @@ install -m 0755 uwsgi-indico.ini %{buildroot}/etc/uwsgi-indico.ini
 mkdir -p %{buildroot}/etc/systemd/system/
 install -m 0755 indico-uwsgi.service %{buildroot}/etc/systemd/system/indico-uwsgi.service
 mkdir -p %{buildroot}/etc/nginx/conf.d/
-install -m 0755 indico.conf %{buildroot}/etc/nginx/conf.d/indico.conf
+install -m 0755 indico.conf %{buildroot}/etc/httpd/conf.d/indico.conf
 mkdir -p %{buildroot}/etc/systemd/system/
 install -m 0755 indico-celery.service %{buildroot}/etc/systemd/system/indico-celery.service
 mkdir -p %{buildroot}/etc/httpd/conf.d/
@@ -116,7 +116,7 @@ chown -R indico /opt/indico/
 #doc README.rst
 /etc/uwsgi-indico.ini
 /etc/systemd/system/indico-uwsgi.service
-/etc/nginx/conf.d/indico.conf
+/etc/httpd/conf.d/indico.conf
 /etc/systemd/system/indico-celery.service
 /etc/ssl/indico/ffdhe2048
 /etc/httpd/conf.d/indico-sslredir.conf
