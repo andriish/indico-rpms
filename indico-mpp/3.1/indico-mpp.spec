@@ -107,9 +107,10 @@ EOF
 python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv
 mkdir /opt/indico//log/apache
 chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
-chmod 710 /opt/indico// /opt/indico//archive ~/cache ~/log ~/tmp
+chmod 710 /opt/indico// /opt/indico//archive /opt/indico//cache /opt/indico//log /opt/indico//tmp
 chmod 750 /opt/indico//web /opt/indico//.venv
 chmod g+w /opt/indico//log/apache
+mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico//
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
 chown -R indico /opt/indico/
