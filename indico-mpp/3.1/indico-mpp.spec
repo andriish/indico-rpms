@@ -99,7 +99,7 @@ export PATH="/opt/indico/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 EOF
-python -m venv --upgrade-deps --prompt indico /opt/indico/.venv
+python3 -m venv --upgrade-deps --prompt indico /opt/indico/.venv
 mkdir /opt/indico//log/apache
 chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
 chmod 710 /opt/indico// /opt/indico//archive ~/cache ~/log ~/tmp
