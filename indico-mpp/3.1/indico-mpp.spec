@@ -72,9 +72,9 @@ install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 #
 %post
 postgresql-setup initdb
-postgres -c 'createuser indico'
-postgres -c 'createdb -O indico indico'
-postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
+su - postgres -c 'createuser indico'
+su - postgres -c 'createdb -O indico indico'
+su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
 
 useradd -rm -g apache -d /opt/indico -s /bin/bash indico
 
