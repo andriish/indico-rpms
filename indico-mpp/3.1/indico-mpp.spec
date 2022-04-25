@@ -77,7 +77,7 @@ su - postgres -c 'createuser indico'
 su - postgres -c 'createdb -O indico indico'
 su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
 
-/usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
+su - /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
 
 echo 'LoadModule proxy_uwsgi_module modules/mod_proxy_uwsgi.so' > /etc/httpd/conf.modules.d/proxy_uwsgi.conf
 
