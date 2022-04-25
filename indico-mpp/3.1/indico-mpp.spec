@@ -23,6 +23,7 @@ BuildRequires:  python3-pip python3-wheel
 #Requires: python3-indico
 Requires: postgresql postgresql-server postgresql-contrib
 Requires: redis firewalld
+Requires: httpd
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -43,7 +44,9 @@ BuildRequires:  python3-setuptools
 %build
 
 %install
+sed -i 's/YOURHOSTNAME/av\.mpp\.mpg\.de/g' *.*
 
+useradd -rm -g apache -d /opt/indico -s /bin/bash indico
 
 mkdir -p %{buildroot}/etc
 install -m 0755 uwsgi-indico.ini %{buildroot}/etc/uwsgi-indico.ini
@@ -61,6 +64,26 @@ mkdir  -p %{buildroot}/etc/ssl/indico
 install -m 0700 ffdhe2048 %{buildroot}//etc/ssl/indico/ffdhe2048
 
 install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
+
+
+openssl req -x509 -nodes -newkey rsa:4096 -subj /CN=av.mpp.mpg.de -keyout /etc/ssl/indico/indico.key -out /etc/ssl/indico/indico.crt
+
+
+cat >> /opt/indico/.bashrc <<'EOF'
+export PATH="/opt/indico/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+EOF
+python -m venv --upgrade-deps --prompt indico /opt/indico/.venv
+mkdir /opt/indico//log/apache
+chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
+chmod 710 /opt/indico// /opt/indico//archive ~/cache ~/log ~/tmp
+chmod 750 /opt/indico//web /opt/indico//.venv
+chmod g+w /opt/indico//log/apache
+restorecon -R /opt/indico//
+echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
+chown -R indico /opt/indico/
+
 
 #install -m 0755 bello /usr/bin/bello
 
