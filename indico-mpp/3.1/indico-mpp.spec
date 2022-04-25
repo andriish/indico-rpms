@@ -47,7 +47,7 @@ BuildRequires:  python3-setuptools
 %install
 sed -i 's/YOURHOSTNAME/av\.mpp\.mpg\.de/g' *.*
 
-useradd -rm -g apache -d /opt/indico -s /bin/bash indico
+
 
 mkdir -p %{buildroot}/etc
 install -m 0755 uwsgi-indico.ini %{buildroot}/etc/uwsgi-indico.ini
