@@ -43,6 +43,11 @@ BuildRequires:  python3-setuptools
 
 %description -n %{srcname} %_description
 
+%pre
+mkdir -p /opt/indico
+adduser  -rm -g apache -m -d /opt/indico -s /bin/bash indico
+chown -R indico /opt/indico
+
 %prep
 %setup -q  -c
 
@@ -76,12 +81,15 @@ install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 
 #
 %post
-#postgresql-setup initdb
-#su - postgres -c 'createuser indico'
-#su - postgres -c 'createdb -O indico indico'
-#su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
+postgresql-setup initdb
+systemctl start postgresql.service redis.service
+systemctl enable postgresql.service redis.service
+su - postgres -c 'createuser indico'
+su - postgres -c 'createdb -O indico indico'
+su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
+##systemctl start postgresql.service redis.service
 
-sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
+#sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
 mkdir -p /opt/indico
 chown -R indico /opt/indico
 
@@ -104,8 +112,35 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 EOF
 #python3 -m venv --upgrade-deps --prompt indico /opt/indico/.venv
+
+#Creating /opt/indico/tmp
+#Creating /opt/indico/log
+#Creating /opt/indico/cache
+#Creating /opt/indico/archive
+#Creating /opt/indico/web
+#Creating /opt/indico/etc/indico.conf
+#Copying /usr/lib/python3.10/site-packages/indico/logging.yaml.sample -> /opt/indico/etc/logging.yaml
+#Linking /opt/indico/web/static -> /usr/lib/python3.10/site-packages/indico/web/static
+#Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
+#Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
+
+
+mkdir -p /opt/indico/tmp
+mkdir -p  /opt/indico/log
+mkdir -p /opt/indico/cache
+mkdir -p /opt/indico/archive
+mkdir -p /opt/indico/web
+mkdir -p /opt/indico/etc/
+#Creating /opt/indico/etc/indico.conf
+cp /usr/lib/python3.10/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
+ln -s    /usr/lib/python3.10/site-packages/indico/web/static /opt/indico/web/static
+#Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
+#Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
+
+
+
 python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv
-mkdir /opt/indico//log/apache
+mkdir -p /opt/indico//log/apache
 chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
 chmod 710 /opt/indico// /opt/indico//archive /opt/indico//cache /opt/indico//log /opt/indico//tmp
 chmod 750 /opt/indico//web /opt/indico//.venv
