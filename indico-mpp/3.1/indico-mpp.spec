@@ -29,6 +29,8 @@ Requires: openssl-devel openssl-libs openssl
 Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 Requires: policycoreutils
 BuildRequires: policycoreutils
+
+Requires: texlive-xelatex
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
