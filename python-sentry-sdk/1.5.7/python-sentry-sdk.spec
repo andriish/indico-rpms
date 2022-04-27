@@ -39,7 +39,17 @@ Summary:        %{summary}
 %description -n python3-sentry-sdk %_description
 
 # Dependencies for sanic, beam, pyspark, and chalice extras are not yet in Fedora
-%pyproject_extras_subpkg -n flask bottle falcon django celery rq aiohttp tornado sqlalchemy pure_eval httpx
+%pyproject_extras_subpkg -n python3-sentry-sdk flask 
+%pyproject_extras_subpkg -n python3-sentry-sdk bottle 
+%pyproject_extras_subpkg -n python3-sentry-sdk falcon 
+%pyproject_extras_subpkg -n python3-sentry-sdk django 
+%pyproject_extras_subpkg -n python3-sentry-sdk celery 
+%pyproject_extras_subpkg -n python3-sentry-sdk rq 
+%pyproject_extras_subpkg -n python3-sentry-sdk aiohttp 
+%pyproject_extras_subpkg -n python3-sentry-sdk tornado 
+%pyproject_extras_subpkg -n python3-sentry-sdk sqlalchemy 
+%pyproject_extras_subpkg -n python3-sentry-sdk pure_eval 
+%pyproject_extras_subpkg -n python3-sentry-sdk httpx
 
 
 %prep

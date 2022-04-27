@@ -28,6 +28,8 @@ BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
 
+%pyproject_extras_subpkg -n python3-marshmallow_dataclass enum
+
 %prep
 %autosetup -n %{srcname}-%{version}
 
