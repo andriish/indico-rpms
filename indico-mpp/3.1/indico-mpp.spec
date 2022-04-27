@@ -164,3 +164,4 @@ sudo -u indico indico db prepare
 /etc/ssl/indico/ffdhe2048
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
+/opt/indico/etc/indico.conf
