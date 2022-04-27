@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -75,7 +75,9 @@ install -m 0700 ffdhe2048 %{buildroot}//etc/ssl/indico/ffdhe2048
 
 install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 
+mkdir -p %{buildroot}//opt/indico/etc/
 
+install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
 
 #install -m 0755 bello /usr/bin/bello
 
@@ -149,7 +151,7 @@ mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico//
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
 chown -R indico /opt/indico/
-
+sudo -u indico indico db prepare
 
 
 %files -n %{srcname}
