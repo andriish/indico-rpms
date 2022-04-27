@@ -22,6 +22,7 @@ BuildRequires:  python3dist(pyrsistent)
 BuildRequires:  python3dist(gevent)
 BuildRequires:  python3dist(executing)
 BuildRequires:  python3dist(asttokens)
+BuildRequires:  python3dist(flask)
 
 
 %global _description %{expand:
