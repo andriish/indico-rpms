@@ -30,7 +30,7 @@ Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 Requires: policycoreutils
 BuildRequires: policycoreutils
 
-Requires: tex(xelatex)
+Requires: /usr/bin/xelatex
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
