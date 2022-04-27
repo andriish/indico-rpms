@@ -125,7 +125,7 @@ EOF
 #Linking /opt/indico/web/static -> /usr/lib/python3.10/site-packages/indico/web/static
 #Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
 #Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
-ln -s /opt/indico/.indico.conf /opt/indico/etc/indico.conf
+ln -s  /opt/indico/etc/indico.conf /opt/indico/.indico.conf
 
 mkdir -p /opt/indico/tmp
 mkdir -p  /opt/indico/log
