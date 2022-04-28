@@ -12,7 +12,7 @@ declare -a BUILDLIST=(
 ### python-pywebpack:1.2.0
 #python-flask-webpackext:1.0.2
 #python-flask-marshmallow:0.14.0
-indico-mpp:3.1
+indico-devel:3.1
 #python-WTForms-SQLAlchemy:0.3
 ### python-pynpm:0.1.2
 #python-email_validator:1.1.3

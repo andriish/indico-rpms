@@ -1,4 +1,4 @@
-%debug_package %{nil}
+%define debug_package %{nil}
 %global srcname indico-devel
 %global srcnamenu indico-devel
 
