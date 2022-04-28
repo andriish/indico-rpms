@@ -127,29 +127,29 @@ EOF
 #Linking /opt/indico/web/static -> /usr/lib/python3.10/site-packages/indico/web/static
 #Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
 #Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
-sudo indico ln -s  /opt/indico/etc/indico.conf /opt/indico/.indico.conf
+sudo -u indico ln -s  /opt/indico/etc/indico.conf /opt/indico/.indico.conf
 
-sudo indico mkdir -p /opt/indico/tmp
-sudo indico mkdir -p  /opt/indico/log
-sudo indico mkdir -p /opt/indico/cache
-sudo indico mkdir -p /opt/indico/archive
-sudo indico mkdir -p /opt/indico/web
-sudo indico mkdir -p /opt/indico/etc/
+sudo -u indico mkdir -p /opt/indico/tmp
+sudo -u indico mkdir -p  /opt/indico/log
+sudo -u indico mkdir -p /opt/indico/cache
+sudo -u indico mkdir -p /opt/indico/archive
+sudo -u indico mkdir -p /opt/indico/web
+sudo -u indico mkdir -p /opt/indico/etc/
 #Creating /opt/indico/etc/indico.conf
-sudo indico cp /usr/lib/python3.10/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
-sudo indico ln -s    /usr/lib/python3.10/site-packages/indico/web/static /opt/indico/web/static
+sudo -u indico cp /usr/lib/python3.10/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
+sudo -u indico ln -s    /usr/lib/python3.10/site-packages/indico/web/static /opt/indico/web/static
 #Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
 #Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
-sudo indico ln -s /opt/indico/etc/indico.conf /opt/indico/.indico.conf 
+sudo -u indico ln -s /opt/indico/etc/indico.conf /opt/indico/.indico.conf 
 
 
 python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv
-sudo indico mkdir -p /opt/indico//log/apache
-sudo indico chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
-sudo indico chmod 710 /opt/indico// /opt/indico//archive /opt/indico//cache /opt/indico//log /opt/indico//tmp
-sudo indico chmod 750 /opt/indico//web /opt/indico//.venv
-sudo indico chmod g+w /opt/indico//log/apache
-sudo indico mkdir -p /opt/indico/etc/
+sudo -u indico mkdir -p /opt/indico//log/apache
+sudo -u indico chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
+sudo -u indico chmod 710 /opt/indico// /opt/indico//archive /opt/indico//cache /opt/indico//log /opt/indico//tmp
+sudo -u indico chmod 750 /opt/indico//web /opt/indico//.venv
+sudo -u indico chmod g+w /opt/indico//log/apache
+sudo -u indico mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico//
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
 chown -R indico /opt/indico/
