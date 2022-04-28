@@ -1,7 +1,7 @@
 #URL:            https://github.com/ua-parser/uap-python
 #Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
 
-%global srcname marshmallow_dataclass
+%global srcname marshmallow-dataclass
 %global srcnamenu marshmallow_dataclass
 
 Name:           python-%{srcname}
@@ -28,7 +28,7 @@ BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
 
-%pyproject_extras_subpkg -n python3-marshmallow_dataclass enum
+%pyproject_extras_subpkg -n python3-marshmallow-dataclass enum
 
 %prep
 %autosetup -n %{srcname}-%{version}
