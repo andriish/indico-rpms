@@ -137,6 +137,9 @@ Requires: python3-WTForms-dateutil
 Requires: python3-WTForms-SQLAlchemy
 Requires: python3-zipp
 
+
+Requires: python3-pure-eval
+
 Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
 Requires: git gcc make redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 Requires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel libyaml-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
