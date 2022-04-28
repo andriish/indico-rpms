@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -139,10 +139,15 @@ Requires: python3-zipp
 
 
 Requires: python3-pure-eval
+Requires: python3-marshmallow-dataclass
 
 Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
 Requires: git gcc make redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 Requires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel libyaml-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
+
+
+Requires: rpm-build git wget python3-rpm-macros
+Requires: npm
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
