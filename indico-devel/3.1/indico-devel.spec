@@ -131,7 +131,7 @@ Requires: python3-wcwidth
 Requires: python3-webargs
 Requires: python3-webencodings
 Requires: python3-werkzeug
-Requires: python3-wtforms
+Requires: python3-wtforms >= 3.0.0
 Requires: python3-WTForms-dateutil
 Requires: python3-WTForms-dateutil
 Requires: python3-WTForms-SQLAlchemy
@@ -139,7 +139,7 @@ Requires: python3-zipp
 
 
 Requires: python3-pure-eval
-#Requires: python3-marshmallow-dataclass
+Requires: python3-marshmallow_dataclass
 
 Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
 Requires: git gcc make redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
@@ -148,6 +148,9 @@ Requires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-deve
 
 Requires: rpm-build git wget python3-rpm-macros
 Requires: npm
+
+Requires: python3-xlsxwriter
+
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
