@@ -6,7 +6,7 @@
 
 Name:           python-%{srcname}
 Version:        3.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -93,7 +93,11 @@ BuildRequires:  python3-email_validator
 #xlsxwriter
 BuildRequires: python3-xlsxwriter
 
-
+BuildRequires: python3-celery
+BuildRequires: python3-lxml
+BuildRequires: python3-marshmallow-enum
+BuildRequires: python3-redis
+BuildRequires: python3-wtforms
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
