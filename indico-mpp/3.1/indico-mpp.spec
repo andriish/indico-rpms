@@ -153,6 +153,7 @@ sudo indico mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico//
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
 chown -R indico /opt/indico/
+#chgroup -R indico /opt/indico/
 sudo -u indico indico db prepare
 
 

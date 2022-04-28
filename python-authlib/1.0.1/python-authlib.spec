@@ -41,8 +41,8 @@ Summary:        %{summary}
 %pyproject_save_files authlib
 
 
-%check
-%tox
+#check
+#tox
 
 
 %files -n python3-%{srcname} -f %{pyproject_files}
