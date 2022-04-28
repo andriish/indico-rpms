@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -140,7 +140,7 @@ sudo indico cp /usr/lib/python3.10/site-packages/indico/logging.yaml.sample  /op
 sudo indico ln -s    /usr/lib/python3.10/site-packages/indico/web/static /opt/indico/web/static
 #Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
 #Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
-
+sudo indico ln -s /opt/indico/etc/indico.conf /opt/indico/.indico.conf 
 
 
 python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv

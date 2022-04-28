@@ -4,20 +4,15 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Example python module
 
 License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
 Source:         indico-devel-3.1.tar.gz
 
-
 #BuildArch:      noarch
 
-Requires: python3
-Requires: python3
-
-Requires: python3
 Requires: python3
 Requires: python3-alembic
 Requires: python3-amqp
@@ -52,7 +47,6 @@ Requires: python3-Flask-Limiter
 Requires: python3-flask-marshmallow
 Requires: python3-flask-migrate
 Requires: python3-Flask-Multipass
-Requires: python3-Flask-Multipass
 Requires: python3-Flask-PluginEngine
 Requires: python3-flask-sqlalchemy
 Requires: python3-flask-webpackext
@@ -84,7 +78,6 @@ Requires: python3-marshmallow
 Requires: python3-marshmallow-enum
 Requires: python3-marshmallow-oneofschema
 Requires: python3-marshmallow-sqlalchemy
-Requires: python3-marshmallow-sqlalchemy
 Requires: python3-matplotlib-inline
 Requires: python3-mypy_extensions
 Requires: python3-node-semver
@@ -92,7 +85,6 @@ Requires: python3-packaging
 Requires: python3-parso
 Requires: python3-pexpect
 Requires: python3-pickleshare
-Requires: python3-pillow
 Requires: python3-pillow
 Requires: python3-prompt-toolkit
 Requires: python3-psycopg2
@@ -113,7 +105,6 @@ Requires: python3-redis
 Requires: python3-reportlab
 Requires: python3-requests
 Requires: python3-sentry-sdk
-Requires: python3-sentry-sdk
 Requires: python3-simplejson
 Requires: python3-six
 Requires: python3-speaklater
@@ -132,7 +123,6 @@ Requires: python3-webargs
 Requires: python3-webencodings
 Requires: python3-werkzeug
 Requires: python3-wtforms >= 3.0.0
-Requires: python3-WTForms-dateutil
 Requires: python3-WTForms-dateutil
 Requires: python3-WTForms-SQLAlchemy
 Requires: python3-zipp
