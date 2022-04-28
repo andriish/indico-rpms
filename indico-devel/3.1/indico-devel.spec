@@ -117,7 +117,7 @@ Requires: python3-sentry-sdk
 Requires: python3-simplejson
 Requires: python3-six
 Requires: python3-speaklater
-Requires: python3-sqlalchemy1.3
+#Requires: python3-sqlalchemy1.3
 Requires: python3-sqlalchemy
 Requires: python3-terminaltables
 Requires: python3-traitlets
