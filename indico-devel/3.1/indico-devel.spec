@@ -151,7 +151,6 @@ Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
-%description -n %{srcname} %_description
 
 
 %prep
@@ -160,7 +159,7 @@ BuildRequires:  python3-setuptools
 %build
 
 %install
-
+mkdir -p %{buildroot}/bin/
 install -m 755  indico-devel-version %{buildroot}/bin/
 
 %files -n %{srcname}
