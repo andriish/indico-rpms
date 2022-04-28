@@ -77,7 +77,7 @@ Requires: python3-kombu
 Requires: python3-limits
 Requires: python3-lxml
 Requires: python3-mako
-Requires: python3-markdown_2
+#Requires: python3-markdown_2
 Requires: python3-markdown
 Requires: python3-markupsafe
 Requires: python3-marshmallow
