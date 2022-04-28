@@ -4,7 +4,7 @@
 %global srcname marshmallow_dataclass
 %global srcnamenu marshmallow_dataclass
 
-Name:           python-marshmallow-dataclass
+Name:           python-%{srcname}
 Version:        8.5.3
 Release:        1%{?dist}
 Summary:        Example python module
@@ -21,13 +21,12 @@ rest of the description that provides more details.}
 
 %description %_description
 
-%package -n python3-marshmallow-dataclass
+%package -n python3-%{srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
-%description -n python3-marshmallow-dataclass %_description
-
+%description -n python3-%{srcname} %_description
 #pyproject_extras_subpkg -n python3-marshmallow-dataclass enum
 
 %prep
