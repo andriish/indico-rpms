@@ -139,7 +139,7 @@ Requires: python3-zipp
 
 
 Requires: python3-pure-eval
-Requires: python3-marshmallow-dataclass
+#Requires: python3-marshmallow-dataclass
 
 Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
 Requires: git gcc make redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
