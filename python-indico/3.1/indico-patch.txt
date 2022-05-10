@@ -27,7 +27,7 @@ diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-as
      if not os.path.exists(webpack_config_file):
 diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
 --- ORIG/bin/maintenance/build-wheel.py	2022-01-11 14:13:40.000000000 +0100
-+++ PATCHED/bin/maintenance/build-wheel.py	2022-05-10 18:51:35.018262349 +0200
++++ PATCHED/bin/maintenance/build-wheel.py	2022-05-10 19:19:42.403342810 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -42,7 +42,15 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      for cmd in cmds:
          rv = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
          if rv:
-@@ -159,6 +160,7 @@
+@@ -149,6 +150,7 @@
+ 
+ 
+ def package_is_clean_indico():
++    return True, None
+     garbage = _get_ignored_package_files_indico()
+     if garbage:
+         return False, '\n'.join(garbage)
+@@ -159,6 +161,7 @@
      toplevel = list({x.split('.')[0] for x in find_packages(include=('indico', 'indico.*',))})
      cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
              ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel]
