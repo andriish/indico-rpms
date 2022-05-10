@@ -28,6 +28,7 @@ done
 cd $TOPDIR/$PACKAGE/$VERSION
 if [ -f do.sh ]; 
 then
+chmod +x do.sh
 sh do.sh
 fi
 cd $TOPDIR
