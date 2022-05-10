@@ -127,6 +127,8 @@ Requires: python3-WTForms-dateutil
 Requires: python3-WTForms-SQLAlchemy
 Requires: python3-zipp
 Requires: uwsgi
+Requires: uwsgi-plugin-python3
+Requires: uwsgi-plugin-python3-gevent 
 
 Requires: python3-pure-eval
 Requires: python3-marshmallow_dataclass

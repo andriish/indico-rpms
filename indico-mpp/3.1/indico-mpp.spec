@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -155,6 +155,8 @@ echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
 chown -R indico /opt/indico/
 #chgroup -R indico /opt/indico/
 sudo -u indico indico db prepare
+
+sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 
 
 %files -n %{srcname}
