@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Example python module
 
 License:        MIT
