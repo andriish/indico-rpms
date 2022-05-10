@@ -6,16 +6,18 @@
 
 Name:           python-%{srcname}
 Version:        3.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Example python module
 
 License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
 #Source:         {pypi_source}
 Source:         https://github.com/indico/indico/archive/refs/tags/v3.1.zip
+Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires:  npm
 BuildRequires:  redis
+BuildRequires:  indico-devel
 BuildRequires:  python3-pip python3-wheel
 
 
@@ -113,22 +115,33 @@ BuildRequires:  python3-setuptools
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -n indico-3.1
+%autosetup -n indico-3.1 -p 1
 sed -i 's/\=\=.*$//g' requirements.*
 
 %build
-%py3_build
+export NODE_OPTIONS="--max-old-space-size=5120"
+export PYTHONPATH=$(pwd):$PYTHONPATH
+mkdir -p indico/web/client
+cd indico/web/client
+npm install
+cd ../../../
+npm install
+cat indico/__init__.py
+./bin/maintenance/build-wheel.py indico  --ignore-unclean 
+#--no-assets --add-version-suffix
+#./bin/maintenance/build-assets.py indico 
+#--add-version-suffix --ignore-unclean --no-assets
+#py3_build
 
 %install
-%py3_install
+#py3_install
+python3 -m pip install dist/indico-3.1-py3-none-any.whl  --root=%{buildroot} --no-dependencies
 
 %check
 #{python3} setup.py test
 
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
-#license COPYING
-#doc README.rst
-%{python3_sitelib}/%{srcnamenu}-*.egg-info/
+%{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/
 %{_bindir}/indico
