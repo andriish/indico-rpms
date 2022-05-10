@@ -16,6 +16,7 @@ Source:         https://github.com/indico/indico/archive/refs/tags/v3.1.zip
 Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires:  npm
+BuildRequires:  git
 BuildRequires:  redis
 BuildRequires:  indico-devel
 BuildRequires:  python3-pip python3-wheel
