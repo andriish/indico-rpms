@@ -60,8 +60,18 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
          # plugins we don't have any package data to include anyway...
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
 --- ORIG/bin/maintenance/dump_url_map.py	2022-01-11 14:13:40.000000000 +0100
-+++ PATCHED/bin/maintenance/dump_url_map.py	2022-05-10 11:52:53.000000000 +0200
-@@ -26,6 +26,10 @@
++++ PATCHED/bin/maintenance/dump_url_map.py	2022-05-10 19:29:49.191371743 +0200
+@@ -19,13 +19,17 @@
+     # whenever something changed
+     h = hashlib.md5()
+     h.update(os.getcwd().encode())
+-    h.update(subprocess.check_output(['git', 'describe', '--always']))
+-    h.update(subprocess.check_output(['git', 'status']))
+-    h.update(subprocess.check_output(['git', 'diff']))
++    #h.update(subprocess.check_output(['git', 'describe', '--always']))
++    #h.update(subprocess.check_output(['git', 'status']))
++    #h.update(subprocess.check_output(['git', 'diff']))
+     return h.hexdigest()
  
  
  def get_rules(plugins):
