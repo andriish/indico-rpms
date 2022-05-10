@@ -27,13 +27,29 @@ diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-as
      if not os.path.exists(webpack_config_file):
 diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
 --- ORIG/bin/maintenance/build-wheel.py	2022-01-11 14:13:40.000000000 +0100
-+++ PATCHED/bin/maintenance/build-wheel.py	2022-05-10 10:25:53.000000000 +0200
++++ PATCHED/bin/maintenance/build-wheel.py	2022-05-10 18:51:35.018262349 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  # This file is part of Indico.
  # Copyright (C) 2002 - 2022 CERN
  #
+@@ -111,6 +111,7 @@
+     cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
+             ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel,
+             ['git', 'clean', '-dn', '-e', '__pycache__'] + toplevel]
++    return True, None
+     for cmd in cmds:
+         rv = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
+         if rv:
+@@ -159,6 +160,7 @@
+     toplevel = list({x.split('.')[0] for x in find_packages(include=('indico', 'indico.*',))})
+     cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
+             ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel]
++    return True, None
+     if toplevel:
+         # only check for ignored files if we have packages. for single-module
+         # plugins we don't have any package data to include anyway...
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
 --- ORIG/bin/maintenance/dump_url_map.py	2022-01-11 14:13:40.000000000 +0100
 +++ PATCHED/bin/maintenance/dump_url_map.py	2022-05-10 11:52:53.000000000 +0200
