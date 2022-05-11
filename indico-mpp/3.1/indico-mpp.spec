@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -135,6 +135,9 @@ sudo -u indico mkdir -p /opt/indico/cache
 sudo -u indico mkdir -p /opt/indico/archive
 sudo -u indico mkdir -p /opt/indico/web
 sudo -u indico mkdir -p /opt/indico/etc/
+
+sudo -u indico mkdir -p /opt/indico/tmp/
+
 #Creating /opt/indico/etc/indico.conf
 sudo -u indico cp /usr/lib/python3.10/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
 sudo -u indico ln -s    /usr/lib/python3.10/site-packages/indico/web/static /opt/indico/web/static
@@ -153,11 +156,12 @@ sudo -u indico mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico//
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
 chown -R indico /opt/indico/
+chown -R indico /opt/indico/.bashrc
 #chgroup -R indico /opt/indico/
 sudo -u indico indico db prepare
 
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
-
+sudo -u indico cp /usr/lib/python3.10/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
 
 %files -n %{srcname}
 #license COPYING
