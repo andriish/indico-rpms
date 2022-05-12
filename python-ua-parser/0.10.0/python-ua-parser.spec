@@ -1,6 +1,3 @@
-#URL:            https://github.com/ua-parser/uap-python
-#Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
-
 %global srcname ua-parser
 %global srcnamenu ua_parser
 
@@ -46,4 +43,4 @@ BuildRequires:  python3-setuptools
 %doc README.rst
 %{python3_sitelib}/%{srcnamenu}-*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
-#{_bindir}/sample-exec
+

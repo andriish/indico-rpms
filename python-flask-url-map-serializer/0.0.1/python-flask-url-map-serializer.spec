@@ -1,6 +1,3 @@
-#URL:            https://github.com/ua-parser/uap-python
-#Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
-
 %global srcname flask-url-map-serializer
 %global srcnamenu flask_url_map_serializer
 
@@ -44,8 +41,7 @@ BuildRequires:  python3-setuptools
 
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
-#license COPYING
-#doc README.rst
+
 #{python3_sitelib}/#{srcnamenu}-*.egg-info/
 %{python3_sitelib}/*
-#{_bindir}/sample-exec
+

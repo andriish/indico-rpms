@@ -1,6 +1,3 @@
-#URL:            https://github.com/ua-parser/uap-python
-#Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
-
 %global srcname indico
 %global srcnamenu indico
 
