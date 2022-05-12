@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        5%{?dist}
+Release:        9%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -144,7 +144,14 @@ Requires: npm
 Requires: python3-xlsxwriter
 
 Requires: python-flask-url-map-serializer
- 
+
+Provides: python3.10dist(redis[hiredis])
+Provides: python3.10dist(celery[redis])
+Provides: python3.10dist(lxml[html5])
+Provides: python3.10dist(marshmallow-dataclass[enum])
+Provides: python3.10dist(wtforms[email])
+
+
 %global _description %{expand:
 A python module which provides a convenient example. This is the
 rest of the description that provides more details.}
