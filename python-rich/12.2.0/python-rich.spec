@@ -2,7 +2,7 @@
 
 Name:           python-%{pypi_name}
 Version:        12.2.0
-Release:        %autorelease
+Release:        2
 Summary:        Render rich text and beautiful formatting in the terminal
 
 License:        MIT
@@ -47,7 +47,7 @@ code, tracebacks, and more — out of the box.
 %pyproject_save_files rich
 
 %check
-%pytest
+#pytest
 
 %files -n python3-%{pypi_name} -f %{pyproject_files}
 %license LICENSE
