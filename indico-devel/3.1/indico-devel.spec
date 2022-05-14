@@ -4,12 +4,12 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        9%{?dist}
-Summary:        Example python module
+Release:        11%{?dist}
+Summary:        Dependencies and build environment for Indico
 
 License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
-Source:         indico-devel-3.1.tar.gz
+Source:         indico-devel-%{version}.tar.gz
 
 #BuildArch:      noarch
 
@@ -71,7 +71,6 @@ Requires: python3-kombu
 Requires: python3-limits
 Requires: python3-lxml
 Requires: python3-mako
-#Requires: python3-markdown_2
 Requires: python3-markdown
 Requires: python3-markupsafe
 Requires: python3-marshmallow
@@ -108,7 +107,6 @@ Requires: python3-sentry-sdk
 Requires: python3-simplejson
 Requires: python3-six
 Requires: python3-speaklater
-#Requires: python3-sqlalchemy1.3
 Requires: python3-sqlalchemy
 Requires: python3-terminaltables
 Requires: python3-traitlets
@@ -145,11 +143,11 @@ Requires: python3-xlsxwriter
 
 Requires: python-flask-url-map-serializer
 
-Provides: python3.10dist(redis[hiredis])
-Provides: python3.10dist(celery[redis])
-Provides: python3.10dist(lxml[html5])
-Provides: python3.10dist(marshmallow-dataclass[enum])
-Provides: python3.10dist(wtforms[email])
+Provides: python%{python3_version}dist(redis[hiredis])
+Provides: python%{python3_version}dist(celery[redis])
+Provides: python%{python3_version}dist(lxml[html5])
+Provides: python%{python3_version}dist(marshmallow-dataclass[enum])
+Provides: python%{python3_version}dist(wtforms[email])
 
 
 %global _description %{expand:
@@ -172,7 +170,7 @@ BuildRequires:  python3-setuptools
 
 %install
 mkdir -p %{buildroot}/bin/
-install -m 755  indico-devel-version %{buildroot}/bin/
+install -m 755  indico-devel-version %{buildroot}/%{_bindir}
 
 %files -n %{srcname}
-/bin/indico-devel-version
+%{_bindir}/indico-devel-version

@@ -42,6 +42,6 @@ BuildRequires:  python3-setuptools
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 
-#{python3_sitelib}/#{srcnamenu}-*.egg-info/
+
 %{python3_sitelib}/*
 
