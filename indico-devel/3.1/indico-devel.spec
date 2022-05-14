@@ -169,7 +169,7 @@ BuildRequires:  python3-setuptools
 %build
 
 %install
-mkdir -p %{buildroot}/bin/
+mkdir -p %{buildroot}/%{_bindir}
 install -m 755  indico-devel-version %{buildroot}/%{_bindir}
 
 %files -n %{srcname}
