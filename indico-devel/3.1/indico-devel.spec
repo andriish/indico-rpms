@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
