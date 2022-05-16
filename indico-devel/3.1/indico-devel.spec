@@ -12,6 +12,15 @@ URL:            https://pypi.python.org/pypi/ua-parser
 Source:         indico-devel-%{version}.tar.gz
 
 #BuildArch:      noarch
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools 
+BuildRequires:  python-srpm-macros 
+BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  pyproject-rpm-macros
+
+
+
 
 Requires: python3
 Requires: python3-alembic
@@ -154,6 +163,7 @@ Requires: python3-rpm-macros
 Requires:  python-srpm-macros 
 Requires:  python3-rpm-macros
 Requires:  python3-devel
+Requires:  pyproject-rpm-macros
 
 
 %global _description %{expand:
@@ -169,6 +179,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python-srpm-macros 
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-devel
+BuildRequires:  pyproject-rpm-macros
 
 
 
