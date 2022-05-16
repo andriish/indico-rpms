@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.1.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Indico package
 
 License:        MIT
