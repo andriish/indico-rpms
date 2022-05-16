@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -149,7 +149,8 @@ Provides: python%{python3_version}dist(lxml[html5])
 Provides: python%{python3_version}dist(marshmallow-dataclass[enum])
 Provides: python%{python3_version}dist(wtforms[email])
 
-Requires: python3-nbconvert
+Requires: python3-nbconvert 
+Requires: python3-rpm-macros 
 
 
 %global _description %{expand:
@@ -161,7 +162,7 @@ rest of the description that provides more details.}
 #package -n {srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools python3-rpm-macros
 
 
 
