@@ -149,6 +149,8 @@ Provides: python%{python3_version}dist(lxml[html5])
 Provides: python%{python3_version}dist(marshmallow-dataclass[enum])
 Provides: python%{python3_version}dist(wtforms[email])
 
+Requires: python3-nbconvert
+
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
