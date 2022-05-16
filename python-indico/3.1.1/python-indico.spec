@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.1.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -49,6 +49,7 @@ rm -rf plugins/base/vc_zoom
 set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' plugins/base/*/setup.cfg
+sed -i 's/iso4217\=\=.*$//g' plugins/base/*/setup.cfg
 #exit
 
 sed -i 's/\=\=.*$//g' requirements.*
