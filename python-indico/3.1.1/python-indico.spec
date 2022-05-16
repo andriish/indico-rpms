@@ -3,11 +3,11 @@
 
 Name:           python-%{srcname}
 Version:        3.1.1
-Release:        2%{?dist}
+Release:        5%{?dist}
 Summary:        Indico package
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://getindico.io/
 Source0:         https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
 Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v%{version}.tar.gz
 Patch0:         indico-patch.txt
@@ -49,12 +49,16 @@ rm -rf plugins/base/vc_zoom
 set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' plugins/base/*/setup.cfg
+sed -i 's/iso4217\=\=.*$//g'            plugins/base/*/setup.cfg
+sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
+sed -i 's/indico-plugin-piwik.*$//g'    plugins/base/_meta/setup.cfg
+sed -i 's/indico-plugin-ursh.*$//g'     plugins/base/_meta/setup.cfg
+sed -i 's/indico-plugin-vc-zoom.*$//g'  plugins/base/_meta/setup.cfg
 #exit
 
 sed -i 's/\=\=.*$//g' requirements.*
 #sed -i 's/PREFERRED_PYTHON_VERSION_SPEC =.*/PREFERRED_PYTHON_VERSION_SPEC = \'~='{python3_version}'\'/g' indico/__init__.py
-#sed -i 's/python_requires.*/python_requires \'~='{python3_version}'\'/g' setup.cfg
-#sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '{python3_version}'/g' setup.cfg
+
 
 %build
 export NODE_OPTIONS="--max-old-space-size=5120"
