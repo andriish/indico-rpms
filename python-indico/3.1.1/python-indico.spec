@@ -32,9 +32,9 @@ BuildRequires:  python3-setuptools
 %prep
 %autosetup -n indico-%{version} -p 1
 sed -i 's/\=\=.*$//g' requirements.*
-sed -i 's/PREFERRED_PYTHON_VERSION_SPEC =.*/PREFERRED_PYTHON_VERSION_SPEC = \'~='%{python3_version}'\'/g' indico/__init__.py
-sed -i 's/python_requires.*/python_requires \'~='%{python3_version}'\'/g' setup.cfg
-sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' setup.cfg
+#sed -i 's/PREFERRED_PYTHON_VERSION_SPEC =.*/PREFERRED_PYTHON_VERSION_SPEC = \'~='{python3_version}'\'/g' indico/__init__.py
+#sed -i 's/python_requires.*/python_requires \'~='{python3_version}'\'/g' setup.cfg
+#sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '{python3_version}'/g' setup.cfg
 
 %build
 export NODE_OPTIONS="--max-old-space-size=5120"
