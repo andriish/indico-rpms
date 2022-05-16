@@ -7,7 +7,7 @@ Release:        5%{?dist}
 Summary:        Indico package
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://getindico.io/
 Source0:         https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
 Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v%{version}.tar.gz
 Patch0:         indico-patch.txt
