@@ -11,24 +11,10 @@ URL:            https://pypi.python.org/pypi/ua-parser
 Source:         https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
 Patch0:         indico-patch.txt
 BuildArch:      noarch
-BuildRequires:  npm
 BuildRequires:  git
-BuildRequires:  redis
 BuildRequires:  indico-devel
 BuildRequires:  python3-pip python3-wheel
-
-BuildRequires:  babel
-BuildRequires:  python3-bcrypt
-BuildRequires:  python3-bleach
-BuildRequires:  python3-certifi
-BuildRequires:  python3-email_validator
-BuildRequires:  python3-xlsxwriter
-
-BuildRequires:  python3-celery
-BuildRequires:  python3-lxml
-BuildRequires:  python3-marshmallow-enum
-BuildRequires:  python3-redis
-BuildRequires:  python3-wtforms
+Requires:       indico-devel
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -46,6 +32,9 @@ BuildRequires:  python3-setuptools
 %prep
 %autosetup -n indico-%{version} -p 1
 sed -i 's/\=\=.*$//g' requirements.*
+sed -i 's/PREFERRED_PYTHON_VERSION_SPEC =.*/PREFERRED_PYTHON_VERSION_SPEC = \'~='%{python3_version}'\'/g' indico/__init__.py
+sed -i 's/python_requires.*/python_requires \'~='%{python3_version}'\'/g' setup.cfg
+sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' setup.cfg
 
 %build
 export NODE_OPTIONS="--max-old-space-size=5120"
@@ -58,7 +47,7 @@ npm install
 ./bin/maintenance/build-wheel.py indico  --ignore-unclean 
 
 %install
-python3 -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies
+%{__python3} -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
 
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
