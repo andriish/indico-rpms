@@ -58,7 +58,7 @@ npm install
 ./bin/maintenance/build-wheel.py indico  --ignore-unclean 
 
 %install
-python3 -m pip install dist/indico-3.1-py3-none-any.whl  --root=%{buildroot} --no-dependencies
+python3 -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies
 
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
