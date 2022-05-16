@@ -50,6 +50,7 @@ set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' plugins/base/*/setup.cfg
 sed -i 's/iso4217\=\=.*$//g' plugins/base/*/setup.cfg
+sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
 sed -i 's/indico-plugin-piwik.*$//g' plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-ursh.*$//g' plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-vc-zoom.*$//g' plugins/base/_meta/setup.cfg
