@@ -48,6 +48,7 @@ BuildRequires:  python3-setuptools
 %autosetup -n indico-%{version} -p 1
 sed -i 's/\=\=.*$//g' requirements.*
 
+#py3_shebang_fix PATHS (pathfix.py ... PATHS)
 %build
 export NODE_OPTIONS="--max-old-space-size=5120"
 export PYTHONPATH=$(pwd):$PYTHONPATH
