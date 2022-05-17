@@ -139,6 +139,7 @@ Requires: uwsgi-plugin-python3-gevent
 
 Requires: python3-pure-eval
 Requires: python3-marshmallow_dataclass
+Requires: python3-iso_4217
 
 Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
 Requires: git gcc make redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile

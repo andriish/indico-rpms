@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        16%{?dist}
+Release:        17%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -69,6 +69,7 @@ chown -R indico /opt/indico
 
 %install
 sed -i 's/YOURHOSTNAME/av\.mpp\.mpg\.de/g' *.*
+sed -i 's,PYTHONSITELIB,'%{python3_sitelib}'/indico,g'   indico.conf 
 
 mkdir -p %{buildroot}/etc
 install -m 0755 uwsgi-indico.ini %{buildroot}/etc/uwsgi-indico.ini
@@ -148,7 +149,7 @@ sudo -u indico chmod g+w /opt/indico//log/apache
 sudo -u indico mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico//
 
-####  WARNING! this line will reduce performance
+####  WARNING! Commenting the line below will reduce performance, but might be useful for debug.
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
 
 chown -R indico /opt/indico/

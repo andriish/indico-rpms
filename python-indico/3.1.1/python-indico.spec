@@ -3,12 +3,12 @@
 
 Name:           python-%{srcname}
 Version:        3.1.1
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Indico package
 
 License:        MIT
 URL:            https://getindico.io/
-Source0:         https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
+Source0:        https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
 Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v%{version}.tar.gz
 Patch0:         indico-patch.txt
 BuildArch:      noarch
@@ -41,7 +41,6 @@ Requires:  python3-%{srcname}
 %setup -q -T -D -a 1 -n indico-%{version} 
 mkdir -p plugins
 mv indico-plugins-%{version} plugins/base
-echo '  - indico-plugin-piwik' >>  plugins/base/_meta/meta.yaml
 rm -rf plugins/base/piwik
 rm -rf plugins/base/themes_legacy
 rm -rf plugins/base/ursh
@@ -49,7 +48,7 @@ rm -rf plugins/base/vc_zoom
 set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' plugins/base/*/setup.cfg
-sed -i 's/iso4217\=\=.*$//g'            plugins/base/*/setup.cfg
+sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
 sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
 sed -i 's/indico-plugin-piwik.*$//g'    plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-ursh.*$//g'     plugins/base/_meta/setup.cfg
@@ -69,12 +68,12 @@ cd indico/web/client
 npm install
 cd ../../../
 npm install
-./bin/maintenance/build-wheel.py indico  --ignore-unclean 
+./bin/maintenance/build-wheel.py indico       --ignore-unclean 
 ./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base
 
 %install
 %{__python3} -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
-%{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
+%{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location
 
 
 

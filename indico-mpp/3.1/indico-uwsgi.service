@@ -3,7 +3,6 @@ Description=Indico uWSGI
 After=network.target
 
 [Service]
-#ExecStart=/opt/indico/.venv/bin/uwsgi --ini /etc/uwsgi-indico.ini
 ExecStart=/usr/sbin/uwsgi --ini /etc/uwsgi-indico.ini
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always

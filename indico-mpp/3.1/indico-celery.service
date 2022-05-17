@@ -4,7 +4,6 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/indico celery worker -B
-#ExecStart=/opt/indico/.venv/bin/indico celery worker -B
 Restart=always
 SyslogIdentifier=indico-celery
 User=indico
