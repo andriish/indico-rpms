@@ -1,12 +1,9 @@
-#URL:            https://github.com/ua-parser/uap-python
-#Source:         https://files.pythonhosted.org/packages/source/u/{_pkgname}/{_pkgname}-{version}.tar.gz
-
 %global srcname indico-mpp
 %global srcnamenu indico-mpp
 
 Name:           indico-mpp
 Version:        3.1
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -20,17 +17,32 @@ BuildRequires:  npm
 BuildRequires:  redis
 BuildRequires:  firewalld
 BuildRequires:  python3-pip python3-wheel
-#Requires: python3-indico
-Requires: postgresql postgresql-server postgresql-contrib
-Requires: redis firewalld
-BuildRequires: httpd
-BuildRequires: openssl-devel openssl-libs openssl
-Requires: openssl-devel openssl-libs openssl
-Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
-Requires: policycoreutils
-BuildRequires: policycoreutils
+BuildRequires:  httpd
+BuildRequires:  openssl-devel openssl-libs openssl
+BuildRequires:  policycoreutils
 
-Requires: /usr/bin/xelatex
+Requires:       openssl-devel openssl-libs openssl
+Requires:       httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+Requires:       policycoreutils
+Requires:       postgresql postgresql-server postgresql-contrib
+Requires:       redis firewalld
+Requires:       /usr/bin/xelatex
+ 
+Requires: python3-nbconvert 
+Requires: python3-rpm-macros 
+Requires:  python-srpm-macros 
+Requires:  python3-rpm-macros
+Requires:  python3-devel
+Requires:  pyproject-rpm-macros
+
+BuildRequires: python3-nbconvert 
+BuildRequires: python3-rpm-macros 
+BuildRequires:  python-srpm-macros 
+BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  pyproject-rpm-macros
+ 
+ 
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -58,8 +70,6 @@ chown -R indico /opt/indico
 %install
 sed -i 's/YOURHOSTNAME/av\.mpp\.mpg\.de/g' *.*
 
-
-
 mkdir -p %{buildroot}/etc
 install -m 0755 uwsgi-indico.ini %{buildroot}/etc/uwsgi-indico.ini
 mkdir -p %{buildroot}/etc/systemd/system/
@@ -77,11 +87,9 @@ install -m 0700 ffdhe2048 %{buildroot}//etc/ssl/indico/ffdhe2048
 
 install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 
-mkdir -p %{buildroot}//opt/indico/etc/
+mkdir -p %{buildroot}/opt/indico/etc/
 
 install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
-
-#install -m 0755 bello /usr/bin/bello
 
 #
 %post
@@ -115,18 +123,7 @@ export PATH="/opt/indico/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 EOF
-#python3 -m venv --upgrade-deps --prompt indico /opt/indico/.venv
 
-#Creating /opt/indico/tmp
-#Creating /opt/indico/log
-#Creating /opt/indico/cache
-#Creating /opt/indico/archive
-#Creating /opt/indico/web
-#Creating /opt/indico/etc/indico.conf
-#Copying /usr/lib/python3.10/site-packages/indico/logging.yaml.sample -> /opt/indico/etc/logging.yaml
-#Linking /opt/indico/web/static -> /usr/lib/python3.10/site-packages/indico/web/static
-#Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
-#Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
 sudo -u indico ln -s  /opt/indico/etc/indico.conf /opt/indico/.indico.conf
 
 sudo -u indico mkdir -p /opt/indico/tmp
@@ -138,13 +135,9 @@ sudo -u indico mkdir -p /opt/indico/etc/
 
 sudo -u indico mkdir -p /opt/indico/tmp/
 
-#Creating /opt/indico/etc/indico.conf
-sudo -u indico cp /usr/lib/python3.10/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
-sudo -u indico ln -s    /usr/lib/python3.10/site-packages/indico/web/static /opt/indico/web/static
-#Copying /usr/lib/python3.10/site-packages/indico/web/indico.wsgi -> /opt/indico/web/indico.wsgi
-#Linking /opt/indico/.indico.conf -> /opt/indico/etc/indico.conf
+sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
+sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static /opt/indico/web/static
 sudo -u indico ln -s /opt/indico/etc/indico.conf /opt/indico/.indico.conf 
-
 
 python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv
 sudo -u indico mkdir -p /opt/indico//log/apache
@@ -164,8 +157,6 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 sudo -u indico cp /usr/lib/python3.10/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
 
 %files -n %{srcname}
-#license COPYING
-#doc README.rst
 /etc/uwsgi-indico.ini
 /etc/systemd/system/indico-uwsgi.service
 /etc/httpd/conf.d/indico.conf
