@@ -75,6 +75,9 @@ npm install
 %install
 %{__python3} -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
+%{buildroot}/%{_bindir}/indico i18n compile-catalog
+%{buildroot}/%{_bindir}/indico i18n compile-catalog-react
+
 
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}

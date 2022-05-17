@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        14%{?dist}
+Release:        16%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -147,14 +147,20 @@ sudo -u indico chmod 750 /opt/indico//web /opt/indico//.venv
 sudo -u indico chmod g+w /opt/indico//log/apache
 sudo -u indico mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico//
+
+####  WARNING! this line will reduce performance
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
+
 chown -R indico /opt/indico/
 chown -R indico /opt/indico/.bashrc
-#chgroup -R indico /opt/indico/
+chgrp -R apache /opt/indico
+chgrp -R apache /opt/indico/cache
+chgrp  apache /opt/indico/.bashrc
+
 sudo -u indico indico db prepare
 
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
-sudo -u indico cp /usr/lib/python3.10/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
+sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
 
 %files -n %{srcname}
 /etc/uwsgi-indico.ini
