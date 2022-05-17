@@ -6,7 +6,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        Example python module
 
 License:        MIT
