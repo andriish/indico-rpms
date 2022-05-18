@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        2.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -30,6 +30,7 @@ BuildRequires:  python3-setuptools
 %autosetup -n %{srcname}-%{version}
 
 %build
+sed -i 's/22/52/g' requirements/main.txt
 %py3_build
 
 %install
