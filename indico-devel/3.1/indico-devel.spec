@@ -191,7 +191,9 @@ BuildRequires:  pyproject-rpm-macros
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
-install -m 755  indico-devel-version %{buildroot}/%{_bindir}
+install -m 755  indico-devel-remove-indico.sh %{buildroot}/%{_bindir}
+install -m 755  indico-devel-start-indico.sh %{buildroot}/%{_bindir}
 
 %files -n %{srcname}
-%{_bindir}/indico-devel-version
+%{_bindir}/indico-devel-remove-indico.sh
+%{_bindir}/indico-devel-start-indico.sh
