@@ -21,7 +21,8 @@ declare -a BUILDLIST=(
 #python-marshmallow_dataclass:8.5.3
 #python-limits:2.5.2
 #python-indico:3.1.1
-python-iso_4217:0.4.220401
+#python-iso_4217:0.4.220401
+python-marshmallow-dataclass:8.5.3
 )
 
 for a in "${BUILDLIST[@]}" 
