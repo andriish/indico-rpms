@@ -4,6 +4,7 @@ export PATH=$PATH:$(pwd)
 
 set -x 
 declare -a BUILDLIST=(
+python-indico:3.1.1
 #python-ua-parser:0.10.0
 #pyparsing:3.0.8
 #Rivet:3.1.4
@@ -22,7 +23,7 @@ declare -a BUILDLIST=(
 #python-limits:2.5.2
 #python-indico:3.1.1
 #python-iso_4217:0.4.220401
-python-marshmallow-dataclass:8.5.3
+#python-marshmallow-dataclass:8.5.3
 )
 
 for a in "${BUILDLIST[@]}" 
