@@ -31,6 +31,7 @@ BuildRequires:  python3-setuptools
 
 %build
 sed -i 's/22/52/g' requirements/main.txt
+sed -i 's/21/12/g' requirements/main.txt
 %py3_build
 
 %install
