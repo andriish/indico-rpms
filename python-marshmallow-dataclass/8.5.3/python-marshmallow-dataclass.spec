@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        8.5.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -28,6 +28,7 @@ BuildRequires:  python3-setuptools
 
 %prep
 %autosetup -n %{srcname}-%{version}
+sed -i 's/3\.13\.0/3\.0\.0/g' */require* 
 
 %build
 %py3_build
