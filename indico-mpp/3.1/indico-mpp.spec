@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        17%{?dist}
+Release:        19%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -68,7 +68,8 @@ chown -R indico /opt/indico
 %build
 
 %install
-sed -i 's/YOURHOSTNAME/av\.mpp\.mpg\.de/g' *.*
+THISHOSTNAME=indico01.mpp.mpg.de
+sed -i 's/YOURHOSTNAME/'"$THISHOSTNAME"'/g' *.*
 sed -i 's,PYTHONSITELIB,'%{python3_sitelib}'/indico,g'   indico.conf 
 
 mkdir -p %{buildroot}/etc
@@ -116,7 +117,7 @@ firewall-cmd --reload
 semodule -i /etc/ssl/indico/indico.cil
 
 
-openssl req -x509 -nodes -newkey rsa:4096 -subj /CN=av.mpp.mpg.de -keyout /etc/ssl/indico/indico.key -out /etc/ssl/indico/indico.crt
+openssl req -x509 -nodes -newkey rsa:4096 -subj /CN=$THISHOSTNAME -keyout /etc/ssl/indico/indico.key -out /etc/ssl/indico/indico.crt
 
 
 cat >> /opt/indico/.bashrc <<'EOF'

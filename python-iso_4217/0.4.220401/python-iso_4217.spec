@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.4.220401
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -22,6 +22,7 @@ rest of the description that provides more details.}
 Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+Provides: python%{python3_version}dist(iso4217)
 
 %description -n python3-%{srcname} %_description
 
