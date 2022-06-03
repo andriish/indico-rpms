@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.1.1
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -93,12 +93,14 @@ npm install
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/forms.py
+%exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/__pycache__/forms*pyc
 
 %files -n python3-%{srcname}-dummy
 %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 %{python3_sitelib}/%{srcnamenu}/modules/auth/forms.py
+%{python3_sitelib}/%{srcnamenu}/modules/auth/__pycache__/forms*pyc
 
 
 %files -n python3-%{srcname}-plugins
