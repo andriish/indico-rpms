@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.1
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -23,6 +23,7 @@ BuildRequires:  pyproject-rpm-macros
 
 
 Requires: python3
+Requires: python3-wheel
 Requires: python3-alembic
 Requires: python3-amqp
 Requires: python3-asttokens

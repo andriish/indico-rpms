@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        19%{?dist}
+Release:        20%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -42,16 +42,19 @@ BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
  
- 
+Conflicts: python3-indico-dummy
+Requires: python-certbot-apache
+
+
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
 rest of the description that provides more details.}
 
-%description %_description
+#description _description
 
 #package -n {srcname}
-Summary:        %{summary}
+#Summary:        {summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
@@ -92,6 +95,13 @@ install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 mkdir -p %{buildroot}/opt/indico/etc/
 
 install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
+
+mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
+install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
+
+mkdir -p %{buildroot}/etc/systemd/system/postgresql.service.d/
+install -m 755  indicopostgresql.conf %{buildroot}/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
+
 
 #
 %post
@@ -164,6 +174,9 @@ sudo -u indico indico db prepare
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
 
+
+
+
 %files -n %{srcname}
 /etc/uwsgi-indico.ini
 /etc/systemd/system/indico-uwsgi.service
@@ -173,3 +186,5 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
 /opt/indico/etc/indico.conf
+%{python3_sitelib}/indico/web/static/images/globe.png
+/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
