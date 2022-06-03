@@ -101,6 +101,8 @@ install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
 install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
+
+
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
 install -m 755 login_page.html %{python3_sitelib}/indico/modules/auth/templates/login_page.html
 install -m 755 register.html %{python3_sitelib}/indico/modules/auth/templates/register.html
