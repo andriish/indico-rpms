@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        23%{?dist}
+Release:        24%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -104,9 +104,9 @@ install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static
 
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
-install -m 755 login_page.html %{python3_sitelib}/indico/modules/auth/templates/login_page.html
-install -m 755 register.html %{python3_sitelib}/indico/modules/auth/templates/register.html
-install -m 755 forms.py %{python3_sitelib}/indico/modules/auth/forms.py
+install -m 755 login_page.html %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/login_page.html
+install -m 755 register.html   %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/register.html
+install -m 755 forms.py        %{buildroot}/%{python3_sitelib}/indico/modules/auth/forms.py
 
 
 
