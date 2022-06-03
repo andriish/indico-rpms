@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        26%{?dist}
+Release:        27%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -102,6 +102,7 @@ install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
 install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
+install -m 755 logo_indico_bw.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/logo_indico_bw.png
 
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
@@ -205,6 +206,7 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
 /opt/indico/etc/indico.conf
+%{python3_sitelib}/indico/web/static/images/logo_indico_bw.png
 %{python3_sitelib}/indico/web/static/images/globe.png
 %{python3_sitelib}/indico/modules/auth/templates/login_page.html
 %{python3_sitelib}/indico/modules/auth/templates/register.html
