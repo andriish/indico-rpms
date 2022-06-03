@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        20%{?dist}
+Release:        21%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -105,6 +105,15 @@ install -m 755  indicopostgresql.conf %{buildroot}/etc/systemd/system/postgresql
 
 #
 %post
+
+#sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
+mkdir -p /opt/indico
+chown -R indico /opt/indico
+
+echo 'LoadModule proxy_uwsgi_module modules/mod_proxy_uwsgi.so' > /etc/httpd/conf.modules.d/proxy_uwsgi.conf
+
+
+mkdir -p /opt/indico/pgsql/data
 postgresql-setup initdb
 systemctl start postgresql.service redis.service
 systemctl enable postgresql.service redis.service
@@ -113,11 +122,7 @@ su - postgres -c 'createdb -O indico indico'
 su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
 ##systemctl start postgresql.service redis.service
 
-#sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
-mkdir -p /opt/indico
-chown -R indico /opt/indico
 
-echo 'LoadModule proxy_uwsgi_module modules/mod_proxy_uwsgi.so' > /etc/httpd/conf.modules.d/proxy_uwsgi.conf
 
 systemctl enable httpd.service postgresql.service redis.service indico-celery.service indico-uwsgi.service
 
