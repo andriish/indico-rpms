@@ -65,6 +65,9 @@ mkdir -p /opt/indico
 adduser  -rm -g apache -m -d /opt/indico -s /bin/bash indico
 chown -R indico /opt/indico
 
+systemctl stop postgresql.service
+
+
 %prep
 %setup -q  -c
 
@@ -102,7 +105,6 @@ install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static
 mkdir -p %{buildroot}/etc/systemd/system/postgresql.service.d/
 install -m 755  indicopostgresql.conf %{buildroot}/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
-
 #
 %post
 
@@ -113,7 +115,10 @@ chown -R indico /opt/indico
 echo 'LoadModule proxy_uwsgi_module modules/mod_proxy_uwsgi.so' > /etc/httpd/conf.modules.d/proxy_uwsgi.conf
 
 
-mkdir -p /opt/indico/pgsql/data
+systemctl daemon-reload
+sudo mkdir -p /opt/pgsql/data
+sudo chown -R postgres:postgres /opt/pgsql
+
 postgresql-setup initdb
 systemctl start postgresql.service redis.service
 systemctl enable postgresql.service redis.service
@@ -177,7 +182,7 @@ chgrp  apache /opt/indico/.bashrc
 sudo -u indico indico db prepare
 
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
-sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
+#sudo -u indico cp /usr/lib/python{python3_version}/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
 
 
 
