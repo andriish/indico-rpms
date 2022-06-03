@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        24%{?dist}
+Release:        25%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -208,4 +208,5 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 %{python3_sitelib}/indico/modules/auth/templates/login_page.html
 %{python3_sitelib}/indico/modules/auth/templates/register.html
 %{python3_sitelib}/indico/modules/auth/forms.py
+%{python3_sitelib}/indico/modules/auth/__pycache__/forms*pyc
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
