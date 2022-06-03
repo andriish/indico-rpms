@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        21%{?dist}
+Release:        23%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -102,6 +102,14 @@ install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
 install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
 
+
+mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
+install -m 755 login_page.html %{python3_sitelib}/indico/modules/auth/templates/login_page.html
+install -m 755 register.html %{python3_sitelib}/indico/modules/auth/templates/register.html
+install -m 755 forms.py %{python3_sitelib}/indico/modules/auth/forms.py
+
+
+
 mkdir -p %{buildroot}/etc/systemd/system/postgresql.service.d/
 install -m 755  indicopostgresql.conf %{buildroot}/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
@@ -140,7 +148,7 @@ semodule -i /etc/ssl/indico/indico.cil
 openssl req -x509 -nodes -newkey rsa:4096 -subj /CN=$THISHOSTNAME -keyout /etc/ssl/indico/indico.key -out /etc/ssl/indico/indico.crt
 
 
-cat >> /opt/indico/.bashrc <<'EOF'
+cat >> /opt/indico/.bashrc <<'EOF'%{python3_sitelib}/indico/modules/auth/templates/login_page.html
 export PATH="/opt/indico/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
@@ -197,4 +205,7 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 /etc/ssl/indico/indico.cil
 /opt/indico/etc/indico.conf
 %{python3_sitelib}/indico/web/static/images/globe.png
+%{python3_sitelib}/indico/modules/auth/templates/login_page.html
+%{python3_sitelib}/indico/modules/auth/templates/register.html
+%{python3_sitelib}/indico/modules/auth/forms.py
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
