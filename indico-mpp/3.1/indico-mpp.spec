@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        25%{?dist}
+Release:        26%{?dist}
 Summary:        Example python module
 
 License:        MIT
@@ -27,6 +27,7 @@ Requires:       policycoreutils
 Requires:       postgresql postgresql-server postgresql-contrib
 Requires:       redis firewalld
 Requires:       /usr/bin/xelatex
+Requires:       postfix
  
 Requires: python3-nbconvert 
 Requires: python3-rpm-macros 
@@ -134,8 +135,8 @@ su - postgres -c 'createuser indico'
 su - postgres -c 'createdb -O indico indico'
 su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
 ##systemctl start postgresql.service redis.service
-
-
+systemctl enable postfix.service
+systemctl start postfix.service
 
 systemctl enable httpd.service postgresql.service redis.service indico-celery.service indico-uwsgi.service
 
