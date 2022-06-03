@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.1.1
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -35,6 +35,13 @@ Summary:        %{summary}
 Requires:  python3-%{srcname}
 
 %description -n python3-%{srcname}-plugins %_description
+
+%package -n python3-%{srcname}-dummy
+Summary:        %{summary}
+Requires:  python3-%{srcname}
+
+%description -n python3-%{srcname}-dummy %_description
+
 
 %prep
 %autosetup  -n indico-%{version} -p 1
@@ -75,13 +82,17 @@ npm install
 %{__python3} -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location
 
-
+#/usr/lib/python3.10/site-packages/indico/web/static/images/globe.png
 
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 %{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/
 %{_bindir}/indico
+%exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
+
+%files -n python3-%{srcname}-dummy
+%{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
 
 %files -n python3-%{srcname}-plugins
 %{python3_sitelib}/%{srcnamenu}_*/
