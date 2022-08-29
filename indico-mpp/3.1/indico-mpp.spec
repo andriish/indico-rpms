@@ -3,11 +3,11 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        27%{?dist}
-Summary:        Example python module
+Release:        28%{?dist}
+Summary:        MPP Indico configuration
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://mpp.mpg.de
 
 Source:         indico-mpp-3.1.tar.gz
 
@@ -52,10 +52,6 @@ Requires: python-certbot-apache
 A python module which provides a convenient example. This is the
 rest of the description that provides more details.}
 
-#description _description
-
-#package -n {srcname}
-#Summary:        {summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
@@ -65,7 +61,6 @@ BuildRequires:  python3-setuptools
 mkdir -p /opt/indico
 adduser  -rm -g apache -m -d /opt/indico -s /bin/bash indico
 chown -R indico /opt/indico
-
 systemctl stop postgresql.service
 
 
@@ -110,12 +105,9 @@ install -m 755 login_page.html %{buildroot}/%{python3_sitelib}/indico/modules/au
 install -m 755 register.html   %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/register.html
 install -m 755 forms.py        %{buildroot}/%{python3_sitelib}/indico/modules/auth/forms.py
 
-
-
 mkdir -p %{buildroot}/etc/systemd/system/postgresql.service.d/
 install -m 755  indicopostgresql.conf %{buildroot}/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
-#
 %post
 
 #sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
@@ -165,6 +157,9 @@ sudo -u indico mkdir -p /opt/indico/archive
 sudo -u indico mkdir -p /opt/indico/web
 sudo -u indico mkdir -p /opt/indico/etc/
 
+#NEW
+sudo -u indico mkdir -p /opt/indico/assets
+
 sudo -u indico mkdir -p /opt/indico/tmp/
 
 sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
@@ -188,6 +183,10 @@ chown -R indico /opt/indico/.bashrc
 chgrp -R apache /opt/indico
 chgrp -R apache /opt/indico/cache
 chgrp  apache /opt/indico/.bashrc
+
+#NEW
+chgrp -R apache /opt/indico/assets
+
 
 sudo -u indico indico db prepare
 
@@ -213,3 +212,22 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 %{python3_sitelib}/indico/modules/auth/forms.py
 %{python3_sitelib}/indico/modules/auth/__pycache__/forms*pyc
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
+
+
+
+# For the upgrade: 
+# stop redis.
+# drop db
+# create db
+# import dump
+#  indico db upgrade
+
+#scp -r indico03.mpp.mpg.de:/mnt/home/indico/indico/archive ./
+#mv ./archive/* /opt/indico/archive/
+#chown indico -R /opt/indico/archive/ 
+#chgrp apache -R /opt/indico/archive/
+#mkdir -p /opt/indico/indico-legacy/
+#scp -r indico03.mpp.mpg.de:/mnt/home/indico/indico-legacy/archive  /opt/indico/indico-legacy/
+#chown indico -R /opt/indico/indico-legacy/
+#chgrp apache -R /opt/indico/indico-legacy/
+
