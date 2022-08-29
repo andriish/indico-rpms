@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.1.1
-Release:        13%{?dist}
+Release:        15%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -18,8 +18,8 @@ BuildRequires:  python3-pip python3-wheel
 Requires:       indico-devel
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+Indico event management system.
+}
 
 %description %_description
 
@@ -84,7 +84,7 @@ npm install
 
 #/usr/lib/python3.10/site-packages/indico/web/static/images/globe.png
 
-# Note that there is no %%files section for the unversioned python module
+# Note that there is no files section for the unversioned python module
 %files -n python3-%{srcname}
 %{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/

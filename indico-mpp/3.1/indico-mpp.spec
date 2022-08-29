@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.1
-Release:        28%{?dist}
+Release:        29%{?dist}
 Summary:        MPP Indico configuration
 
 License:        MIT
@@ -42,6 +42,8 @@ BuildRequires:  python-srpm-macros
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  pyproject-rpm-macros
+#NEW
+BuildRequires:  python3-ldap
  
 Conflicts: python3-indico-dummy
 Requires: python-certbot-apache
@@ -167,13 +169,13 @@ sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/w
 sudo -u indico ln -s /opt/indico/etc/indico.conf /opt/indico/.indico.conf 
 
 python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv
-sudo -u indico mkdir -p /opt/indico//log/apache
-sudo -u indico chmod go-rwx /opt/indico//* /opt/indico//.[^.]*
-sudo -u indico chmod 710 /opt/indico// /opt/indico//archive /opt/indico//cache /opt/indico//log /opt/indico//tmp
-sudo -u indico chmod 750 /opt/indico//web /opt/indico//.venv
-sudo -u indico chmod g+w /opt/indico//log/apache
+sudo -u indico mkdir -p /opt/indico/log/apache
+sudo -u indico chmod go-rwx /opt/indico/* /opt/indico/.[^.]*
+sudo -u indico chmod 710 /opt/indico/ /opt/indico//archive /opt/indico/cache /opt/indico//log /opt/indico//tmp
+sudo -u indico chmod 750 /opt/indico/web /opt/indico//.venv
+sudo -u indico chmod g+w /opt/indico/log/apache
 sudo -u indico mkdir -p /opt/indico/etc/
-restorecon -R /opt/indico//
+restorecon -R /opt/indico/
 
 ####  WARNING! Commenting the line below will reduce performance, but might be useful for debug.
 echo -e "\nSTATIC_FILE_METHOD = 'xsendfile'" >> /opt/indico/etc/indico.conf
@@ -215,19 +217,43 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 
 
 
-# For the upgrade: 
+# Plan for the upgrade: 
+# 1) Install everything
+#  dnf -y copr enable averbyts/IR
+#  dnf -y install  indico-mpp
+# 2) Edit configs /etc/indico.conf to setup passwords
+#    systemctl restart httpd.service indico-celery.service indico-uwsgi.service
+
+# 3) Copy the information
+#DB treatment
 # stop redis.
 # drop db
 # create db
 # import dump
-#  indico db upgrade
+# indico db upgrade
 
-#scp -r indico03.mpp.mpg.de:/mnt/home/indico/indico/archive ./
-#mv ./archive/* /opt/indico/archive/
+
+# export OLD=
+# export NEW=
+
+#@ OLD  pg_dump indico > indico_dump.txt
+#@ OLD scp /mnt/home/indico/indico/indico_dump.txt $NEW:
+
+#systemctl stop redis.service
+#su - postgres  psql -c "drop database indico;"
+#su - postgres  createdb -O indico indico
+#su - postgres  psql indico < indico_dump.txt
+#su - indico    indico db upgrade
+#systemctl start redis.service
+
+#scp -r $OLD:/mnt/home/indico/indico/archive ./A
+#mv ./A/* /opt/indico/archive/
 #chown indico -R /opt/indico/archive/ 
 #chgrp apache -R /opt/indico/archive/
 #mkdir -p /opt/indico/indico-legacy/
-#scp -r indico03.mpp.mpg.de:/mnt/home/indico/indico-legacy/archive  /opt/indico/indico-legacy/
+
+#scp -r $OLD:/mnt/home/indico/indico-legacy/archive  ./B
+#mv ./B/* /opt/indico/indico-legacy/
 #chown indico -R /opt/indico/indico-legacy/
 #chgrp apache -R /opt/indico/indico-legacy/
 
