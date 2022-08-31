@@ -4,7 +4,8 @@ export PATH=$PATH:$(pwd)
 
 set -x 
 declare -a BUILDLIST=(
-indico-mpp:3.1
+#indico-mpp:3.1
+python-indico:3.2
 #python-indico:3.1.1
 #python-ua-parser:0.10.0
 #pyparsing:3.0.8

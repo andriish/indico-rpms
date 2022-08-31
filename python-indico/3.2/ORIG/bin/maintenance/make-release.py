@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 # This file is part of Indico.
 # Copyright (C) 2002 - 2022 CERN
 #
