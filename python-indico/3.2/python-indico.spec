@@ -16,6 +16,9 @@ BuildRequires:  git
 BuildRequires:  indico-devel
 BuildRequires:  python3-pip python3-wheel
 Requires:       indico-devel
+BuildRequires:  python-cachelib
+Requires:  python-cachelib
+
 
 %global _description %{expand:
 Indico event management system.
