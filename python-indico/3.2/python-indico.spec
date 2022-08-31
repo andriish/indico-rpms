@@ -53,6 +53,9 @@ rm -rf plugins/base/piwik
 rm -rf plugins/base/themes_legacy
 rm -rf plugins/base/ursh
 rm -rf plugins/base/vc_zoom
+rm -rf plugins/base/cloud_captchas
+rm -rf plugins/base/owncloud
+
 set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' plugins/base/*/setup.cfg
@@ -61,6 +64,10 @@ sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
 sed -i 's/indico-plugin-piwik.*$//g'    plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-ursh.*$//g'     plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-vc-zoom.*$//g'  plugins/base/_meta/setup.cfg
+sed -i 's/indico-plugin-cloud-captchas.*$//g'  plugins/base/_meta/setup.cfg
+sed -i 's/indico-plugin-owncloud.*$//g'  plugins/base/_meta/setup.cfg
+
+
 #exit
 
 sed -i 's/\=\=.*$//g' requirements.*
