@@ -169,6 +169,8 @@ Requires:  pyproject-rpm-macros
 
 
 Requires: python3-cachelib
+Requires: python3-colorclass
+
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
