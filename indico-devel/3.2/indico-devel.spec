@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -170,6 +170,7 @@ Requires:  pyproject-rpm-macros
 
 Requires: python3-cachelib
 Requires: python3-colorclass
+Requires: python3-captcha
 
 
 %global _description %{expand:

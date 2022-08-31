@@ -4,9 +4,11 @@ export PATH=$PATH:$(pwd)
 
 set -x 
 declare -a BUILDLIST=(
+python-captcha:0.4
 #python-bleach:5.0.1
 #indico-mpp:3.1
-python-indico:3.2
+#indico-devel:3.2
+#python-indico:3.2
 #python-indico:3.1.1
 #python-ua-parser:0.10.0
 #pyparsing:3.0.8
