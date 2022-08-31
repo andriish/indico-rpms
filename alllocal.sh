@@ -4,6 +4,7 @@ export PATH=$PATH:$(pwd)
 
 set -x 
 declare -a BUILDLIST=(
+#python-bleach:5.0.1
 #indico-mpp:3.1
 python-indico:3.2
 #python-indico:3.1.1
