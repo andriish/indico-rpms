@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -172,7 +172,8 @@ Requires: python3-cachelib
 Requires: python3-colorclass
 Requires: python3-captcha
 Requires: python3-stack_data
-
+Requires: python-tinycss2
+Requires: gcc-c++
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
