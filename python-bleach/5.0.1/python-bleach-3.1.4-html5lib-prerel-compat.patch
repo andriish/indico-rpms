@@ -1,0 +1,15 @@
+diff -up bleach-3.1.4/bleach/html5lib_shim.py.html5lib-prerel-compat bleach-3.1.4/bleach/html5lib_shim.py
+--- bleach-3.1.4/bleach/html5lib_shim.py.html5lib-prerel-compat	2020-04-22 15:11:04.269007528 +0200
++++ bleach-3.1.4/bleach/html5lib_shim.py	2020-04-22 15:12:52.086153050 +0200
+@@ -20,7 +20,10 @@ from html5lib.constants import (
+     namespaces,
+     prefixes,
+ )
+-from bleach._vendor.html5lib.constants import _ReparseException as ReparseException
++try:
++    from bleach._vendor.html5lib.constants import _ReparseException as ReparseException
++except ImportError:
++    from bleach._vendor.html5lib.constants import ReparseException
+ from bleach._vendor.html5lib.filters.base import Filter
+ from bleach._vendor.html5lib.filters.sanitizer import allowed_protocols
+ from bleach._vendor.html5lib.filters.sanitizer import Filter as SanitizerFilter
