@@ -5,10 +5,5 @@
 # modify it under the terms of the MIT License; see the
 # LICENSE file for more details.
 
-from indico.util.mimetypes import register_custom_mimetypes
-
-
-__version__ = '3.1.1'
-PREFERRED_PYTHON_VERSION_SPEC = '~=3.10.0'
-
-register_custom_mimetypes()
+# TODO: remove imports below once they're imported from somewhere else:
+import indico.modules.admin  # noqa: F401
