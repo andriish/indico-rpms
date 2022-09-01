@@ -55,6 +55,8 @@ rm -rf plugins/base/ursh
 rm -rf plugins/base/vc_zoom
 rm -rf plugins/base/cloud_captchas
 rm -rf plugins/base/owncloud
+rm -rf plugins/base/previewer_jupyter
+
 
 set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
@@ -66,6 +68,7 @@ sed -i 's/indico-plugin-ursh.*$//g'     plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-vc-zoom.*$//g'  plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-cloud-captchas.*$//g'  plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-owncloud.*$//g'  plugins/base/_meta/setup.cfg
+sed -i 's/indico-plugin-previewer-jupyter.*$//g'  plugins/base/_meta/setup.cfg
 
 
 #exit
