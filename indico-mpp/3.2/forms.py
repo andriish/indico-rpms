@@ -114,7 +114,8 @@ class LocalRegistrationForm(IndicoForm):
     confirm_password = PasswordField(_('Confirm password'), [DataRequired(), ConfirmPassword('password')],
                                      render_kw={'autocomplete': 'new-password'})
     TOS = BooleanField( _('TOS'), [DataRequired()], description=_("I agree to the terms and conditions of service of MPP Indico https:/indico.mpp.mpg.de/tos"))
-    comment = TextAreaField(_('Comment'), description=_('You can provide additional information or a comment for the administrators'
+    comment = TextAreaField(_('Comment'), description=_('You can provide additional information or a comment for the '
+                                                        'administrators who will review your registration.'))
 
     @property
     def data(self):
