@@ -240,6 +240,7 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 #@ OLD scp /mnt/home/indico/indico/indico_dump.txt $NEW:
 
 #systemctl stop redis.service
+#systemctl stop httpd.service indico-celery.service indico-uwsgi.service
 #su - postgres  psql -c "drop database indico;"
 #su - postgres  createdb -O indico indico
 #su - postgres  psql indico < indico_dump.txt
