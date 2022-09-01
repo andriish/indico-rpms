@@ -3,13 +3,13 @@
 
 Name:           indico-mpp
 Version:        3.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        MPP Indico configuration
 
 License:        MIT
 URL:            https://mpp.mpg.de
 
-Source:         indico-mpp-3.1.tar.gz
+Source:         indico-mpp-3.2.tar.gz
 
 
 BuildArch:      noarch
@@ -206,7 +206,7 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 /etc/ssl/indico/ffdhe2048
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
-/opt/indico/etc/indico.conf
+%config(noreplace) /opt/indico/etc/indico.conf
 %{python3_sitelib}/indico/web/static/images/logo_indico_bw.png
 %{python3_sitelib}/indico/web/static/images/globe.png
 %{python3_sitelib}/indico/modules/auth/templates/login_page.html
