@@ -8,7 +8,7 @@
 from fnmatch import fnmatch
 
 from wtforms.fields import EmailField, PasswordField, SelectField, StringField
-from wtforms.fields import BooleanField
+from wtforms.fields import BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Email, Optional, ValidationError
 
 from indico.core.config import config
