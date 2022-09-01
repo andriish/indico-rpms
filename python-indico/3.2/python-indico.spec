@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -118,3 +118,9 @@ npm install
 
 %files -n python3-%{srcname}-plugins
 %{python3_sitelib}/%{srcnamenu}_*/
+
+
+%changelog
+* Thu Sep 01 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2
+- Version 3.2
+
