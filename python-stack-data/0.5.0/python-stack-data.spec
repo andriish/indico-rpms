@@ -40,8 +40,8 @@ Summary:        %{summary}
 %pyproject_save_files stack_data
  
  
-%check
-%tox
+#check
+#tox
  
 %files -n python3-stack-data -f %{pyproject_files}
 %doc README.md
