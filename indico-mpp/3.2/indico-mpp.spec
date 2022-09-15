@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        MPP Indico configuration
 
 License:        MIT
@@ -144,7 +144,7 @@ semodule -i /etc/ssl/indico/indico.cil
 openssl req -x509 -nodes -newkey rsa:4096 -subj /CN=$THISHOSTNAME -keyout /etc/ssl/indico/indico.key -out /etc/ssl/indico/indico.crt
 
 
-cat >> /opt/indico/.bashrc <<'EOF'%{python3_sitelib}/indico/modules/auth/templates/login_page.html
+cat >> /opt/indico/.bashrc <<'EOF'
 export PATH="/opt/indico/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
@@ -257,4 +257,17 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 #mv ./B/* /opt/indico/indico-legacy/
 #chown indico -R /opt/indico/indico-legacy/
 #chgrp apache -R /opt/indico/indico-legacy/
+
+
+
+
+
+
+#PACEMAKER:
+#systemctl stop pacemaker
+#rm -rf  /opt/pgsql* /opt/indico
+#rpm -e $(rpm -qa | grep postgresql) indico-mpp python3-indico --nodeps
+#yum install  postgresql-server -y postgresql
+#yum -y install python3-indico
+#yum -y install indico-mpp
 
