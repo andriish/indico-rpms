@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        MPP Indico configuration
 
 License:        MIT
@@ -174,6 +174,7 @@ sudo -u indico chmod go-rwx /opt/indico/* /opt/indico/.[^.]*
 sudo -u indico chmod 710 /opt/indico/ /opt/indico//archive /opt/indico/cache /opt/indico//log /opt/indico//tmp
 sudo -u indico chmod 750 /opt/indico/web /opt/indico//.venv
 sudo -u indico chmod g+w /opt/indico/log/apache
+
 sudo -u indico mkdir -p /opt/indico/etc/
 restorecon -R /opt/indico/
 
@@ -193,7 +194,7 @@ chgrp -R apache /opt/indico/assets
 sudo -u indico indico db prepare
 
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
-#sudo -u indico cp /usr/lib/python{python3_version}/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
+sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
 
 
 
@@ -270,4 +271,4 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 #yum install  postgresql-server -y postgresql
 #yum -y install python3-indico
 #yum -y install indico-mpp
-
+#edit /etc/httpd/conf/httpd.conf!!!!!
