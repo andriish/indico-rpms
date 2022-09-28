@@ -1,0 +1,121 @@
+# recommended robots.txt for indico
+
+User-agent: *
+Disallow: /category/*/calendar
+Disallow: /category/*/overview
+Disallow: /category/*/upcoming
+Disallow: /search/*
+Disallow: /api/*
+Disallow: /admin/*
+Crawl-delay: 10
+
+
+
+User-agent: UbiCrawler
+Disallow: /
+
+User-agent: DOC
+Disallow: /
+
+User-agent: Zao
+Disallow: /
+
+User-agent: sitecheck.internetseer.com
+Disallow: /
+
+User-agent: Zealbot
+Disallow: /
+
+User-agent: MSIECrawler
+Disallow: /
+
+User-agent: SiteSnagger
+Disallow: /
+
+User-agent: WebStripper
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: Fetch
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+User-agent: Teleport
+Disallow: /
+
+User-agent: TeleportPro
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: linko
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Microsoft.URL.Control
+Disallow: /
+
+User-agent: Xenu
+Disallow: /
+
+User-agent: larbin
+Disallow: /
+
+User-agent: libwww
+Disallow: /
+
+User-agent: ZyBORG
+Disallow: /
+
+User-agent: Download Ninja
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: MegaIndex.ru
+Disallow: /
+
+User-agent: megaindex.com
+Disallow: /
+
+User-agent: MegaIndex.ru/2.0
+Disallow: /
+
+User-agent: MegaIndex.ru
+Disallow: /
+
+User-agent: megaIndex.ru
+Disallow: /
+
+User-agent: Baiduspider
+User-agent: Baiduspider-video
+User-agent: Baiduspider-image
+User-agent: Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)
+User-agent: Mozilla/5.0 (compatible; Baiduspider/3.0; +http://www.baidu.com/search/spider.html)
+User-agent: Mozilla/5.0 (compatible; Baiduspider/4.0; +http://www.baidu.com/search/spider.html)
+User-agent: Mozilla/5.0 (compatible; Baiduspider/5.0; +http://www.baidu.com/search/spider.html)
+User-agent: Baiduspider/2.0
+User-agent: Baiduspider/3.0
+User-agent: Baiduspider/4.0
+User-agent: Baiduspider/5.0
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SEOkicks
+Disallow: /
+
+User-agent: SEO Scanner/1.2.4
+Disallow: /
+
+User-agent: Linespider/1.1
+Disallow: /

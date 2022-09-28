@@ -3,59 +3,52 @@
 
 Name:           indico-mpp
 Version:        3.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        MPP Indico configuration
-
 License:        MIT
 URL:            https://mpp.mpg.de
-
 Source:         indico-mpp-3.2.tar.gz
 
 
 BuildArch:      noarch
-BuildRequires:  npm
-BuildRequires:  redis
-BuildRequires:  firewalld
-BuildRequires:  python3-pip python3-wheel
-BuildRequires:  httpd
-BuildRequires:  openssl-devel openssl-libs openssl
-BuildRequires:  policycoreutils
+BuildRequires: npm
+BuildRequires: redis
+BuildRequires: firewalld
+BuildRequires: python3-pip python3-wheel
+BuildRequires: httpd
+BuildRequires: openssl-devel openssl-libs openssl
+BuildRequires: policycoreutils
 
-Requires:       openssl-devel openssl-libs openssl
-Requires:       httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
-Requires:       policycoreutils
-Requires:       postgresql postgresql-server postgresql-contrib
-Requires:       redis firewalld
-Requires:       /usr/bin/xelatex
-Requires:       postfix
+Requires: openssl-devel openssl-libs openssl
+Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+Requires: policycoreutils
+Requires: postgresql postgresql-server postgresql-contrib
+Requires: redis firewalld
+Requires: /usr/bin/xelatex
+Requires: postfix
+Requires: python-certbot-apache
+
  
 Requires: python3-nbconvert 
 Requires: python3-rpm-macros 
-Requires:  python-srpm-macros 
-Requires:  python3-rpm-macros
-Requires:  python3-devel
-Requires:  pyproject-rpm-macros
+Requires: python-srpm-macros 
+Requires: python3-devel
+Requires: pyproject-rpm-macros
 
 BuildRequires: python3-nbconvert 
 BuildRequires: python3-rpm-macros 
-BuildRequires:  python-srpm-macros 
-BuildRequires:  python3-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
-#NEW
-BuildRequires:  python3-ldap
- 
-Conflicts: python3-indico-dummy
-Requires: python-certbot-apache
+BuildRequires: python-srpm-macros 
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools
+BuildRequires: pyproject-rpm-macros
+BuildRequires: python3-ldap
 
+Conflicts: python3-indico-dummy
 
  
 %global _description %{expand:
 A python module which provides a convenient example. This is the
 rest of the description that provides more details.}
-
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %description -n %{srcname} %_description
 
@@ -100,6 +93,8 @@ install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
 install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
 install -m 755 logo_indico_bw.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/logo_indico_bw.png
+install -m 755 robots.txt %{buildroot}/%{python3_sitelib}/indico/web/static/robots.txt
+
 
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
@@ -189,8 +184,6 @@ chgrp  apache /opt/indico/.bashrc
 
 #NEW
 chgrp -R apache /opt/indico/assets
-
-
 sudo -u indico indico db prepare
 
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
@@ -210,13 +203,16 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 %config(noreplace) /opt/indico/etc/indico.conf
 %{python3_sitelib}/indico/web/static/images/logo_indico_bw.png
 %{python3_sitelib}/indico/web/static/images/globe.png
+%{python3_sitelib}/indico/web/static/robots.txt
 %{python3_sitelib}/indico/modules/auth/templates/login_page.html
 %{python3_sitelib}/indico/modules/auth/templates/register.html
 %{python3_sitelib}/indico/modules/auth/forms.py
 %{python3_sitelib}/indico/modules/auth/__pycache__/forms*pyc
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
-
+%changelog
+* Wed Sep 28 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2
+- Version 3.2. Removed duplicated packages in dependencies.
 
 # Plan for the upgrade: 
 # 1) Install everything
@@ -258,11 +254,6 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 #mv ./B/* /opt/indico/indico-legacy/
 #chown indico -R /opt/indico/indico-legacy/
 #chgrp apache -R /opt/indico/indico-legacy/
-
-
-
-
-
 
 #PACEMAKER:
 #systemctl stop pacemaker

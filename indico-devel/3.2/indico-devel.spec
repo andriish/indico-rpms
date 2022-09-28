@@ -4,20 +4,19 @@
 
 Name:           indico-devel
 Version:        3.2
-Release:        6%{?dist}
+Release:        8%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://github.com/andriish/indico-rpms
 Source:         indico-devel-%{version}.tar.gz
 
-#BuildArch:      noarch
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools 
-BuildRequires:  python-srpm-macros 
-BuildRequires:  python3-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
+
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools 
+BuildRequires: python-srpm-macros 
+BuildRequires: python3-rpm-macros
+BuildRequires: pyproject-rpm-macros
 
 
 
@@ -103,7 +102,7 @@ Requires: python3-pycparser
 Requires: python3-pygments
 Requires: python3-pynpm
 Requires: python3-pyparsing
-Requires: python3-PyPDF2
+Requires: python3-PyPDF2 >= 2.0
 Requires: python3-pyrsistent
 Requires: python3-dateutil
 Requires: python3-pytz
@@ -154,6 +153,7 @@ Requires: python3-xlsxwriter
 
 Requires: python-flask-url-map-serializer
 
+#Those are fake to satisfy the Indico requirements.
 Provides: python%{python3_version}dist(redis[hiredis])
 Provides: python%{python3_version}dist(celery[redis])
 Provides: python%{python3_version}dist(lxml[html5])
@@ -164,10 +164,9 @@ Provides: python%{python3_version}dist(bleach[css])
 
 Requires: python3-nbconvert 
 Requires: python3-rpm-macros 
-Requires:  python-srpm-macros 
-Requires:  python3-rpm-macros
-Requires:  python3-devel
-Requires:  pyproject-rpm-macros
+Requires: python-srpm-macros 
+Requires: python3-devel
+Requires: pyproject-rpm-macros
 
 
 Requires: python3-cachelib
@@ -177,20 +176,21 @@ Requires: python3-stack-data
 Requires: python-tinycss2
 Requires: gcc-c++
 
+
+Requires: tex(microtype.sty)
+
+
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+Dependencies and build environment for Indico and some scripts to start Indico.}
 
 %description %_description
 
-#package -n {srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools 
-BuildRequires:  python-srpm-macros 
-BuildRequires:  python3-rpm-macros
-BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools 
+BuildRequires: python-srpm-macros 
+BuildRequires: python3-rpm-macros
+BuildRequires: pyproject-rpm-macros
 
 
 
@@ -207,3 +207,10 @@ install -m 755  indico-devel-start-indico.sh %{buildroot}/%{_bindir}
 %files -n %{srcname}
 %{_bindir}/indico-devel-remove-indico.sh
 %{_bindir}/indico-devel-start-indico.sh
+
+
+%changelog
+* Wed Sep 28 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2
+- Version 3.2. 
+
+
