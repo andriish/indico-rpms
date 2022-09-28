@@ -10,6 +10,7 @@ export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
 indico-devel:3.2
+python-email_validator:1.2.1
 python-Flask-Limiter:2.4.0
 python-Flask-Multipass:0.4.6
 python-Flask-PluginEngine:0.4
