@@ -25,7 +25,6 @@ python-flask-webpackext:1.0.2
 python-hiredis:2.0.0
 python-indico:3.2
 python-indico-fonts:1.1
-python-indico-plugins:3.2
 python-iso-4217:0.4.220401
 python-limits:2.5.2
 python-marshmallow-oneofschema:3.0.1
