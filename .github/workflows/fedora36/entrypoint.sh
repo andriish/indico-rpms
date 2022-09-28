@@ -23,7 +23,7 @@ python-flask-marshmallow:0.14.0
 python-flask-url-map-serializer:0.0.1
 python-flask-webpackext:1.0.2
 python-hiredis:2.0.0
-python-indico:3.2
+#python-indico:3.2
 python-indico-fonts:1.1
 python-iso_4217:0.4.220401
 python-limits:2.5.2
@@ -37,27 +37,39 @@ python-typing-inspect:0.7.1
 python-webargs:8.1.0
 )
 
+
+touch BUILD.list
 for a in "${BUILDLIST[@]}" 
 do
 p=$(echo $a | cut -f1 -d: )
 v=$(echo $a | cut -f2 -d: )
 yum -y install wget $(rpmspec -P $p/$v/$p.spec | grep BuildRequires | cut -d' ' -f2 | xargs) --skip-broken
+echo $a >> BUILD.list
 done
 
-touch BUILD.LOG
-for a in "${BUILDLIST[@]}" 
+let i=0
+while [ [ -s BUILD.list ] && [ $i -lt 60 ] ]
+do
+rm -rf BUILD.list.new
+touch BUILD.list.new
+for a in $(cat  BUILD.list);
 do
 p=$(echo $a | cut -f1 -d: )
 v=$(echo $a | cut -f2 -d: )
-(sh srpmsbuild.sh $p $v --build || echo  "Build of "$p$v" failed" >> BUILD.LOG)
+(sh srpmsbuild.sh $p $v --build || echo  $a >> BUILD.list.new)
 yum -y install wget  $p/$v/rpmbuild/RPMS/*/*.rpm --skip-broken
 #(sh srpmsbuild.sh $p $v --build || echo  "Build of "$p$v" failed" >> BUILD.LOG&)
 done
-wait
+mv BUILD.list.new  BUILD.list
+cat BUILD.list
+let i=i+1
+done
 
-cat BUILD.LOG
+#wait
 
-exit
+
+
+#exit
 
 
 out=$?
