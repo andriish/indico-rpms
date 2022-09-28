@@ -41,7 +41,7 @@ for a in "${BUILDLIST[@]}"
 do
 p=$(echo $a | cut -f1 -d: )
 v=$(echo $a | cut -f2 -d: )
-yum -y install $(rpmspec -P $p/$v/$p.spec | grep BuildRequires | cut -d' ' -f2 | xargs) --skip-broken
+yum -y install wget $(rpmspec -P $p/$v/$p.spec | grep BuildRequires | cut -d' ' -f2 | xargs) --skip-broken
 done
 
 touch BUILD.LOG
@@ -49,7 +49,9 @@ for a in "${BUILDLIST[@]}"
 do
 p=$(echo $a | cut -f1 -d: )
 v=$(echo $a | cut -f2 -d: )
-(sh srpmsbuild.sh $p $v --build || echo  "Build of "$p$v" failed" >> BUILD.LOG&)
+(sh srpmsbuild.sh $p $v --build || echo  "Build of "$p$v" failed" >> BUILD.LOG)
+yum -y install wget  $p/$v/rpmbuild/RPMS/*/*.rpm --skip-broken
+#(sh srpmsbuild.sh $p $v --build || echo  "Build of "$p$v" failed" >> BUILD.LOG&)
 done
 wait
 
