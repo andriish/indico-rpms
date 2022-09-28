@@ -65,6 +65,7 @@ rm -rf BUILD.list
 fi
 
 done
+yum -y install  ./*/*/rpmbuild/RPMS/*/*.rpm --skip-broken
 
 yum -y install wget $(rpmspec -P python-indico/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
 yum -y install wget $(rpmspec -P python-indico/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
