@@ -70,6 +70,7 @@ yum -y install  ./*/*/rpmbuild/RPMS/*/*.rpm --skip-broken
 
 yum -y install wget $(rpmspec -P python-indico/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
 yum -y install wget $(rpmspec -P python-indico/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
+chown -R 1001:121 "/github/home/.npm"
 sh srpmsbuild.sh  python-indico 3.2 --build 
 yum -y install wget  python-indico/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken
 
