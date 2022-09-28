@@ -5,7 +5,7 @@ cat /etc/issue
 dnf -y install rpm-build git wget sed
 
 export PATH=$PATH:$(pwd)
-#dnf list installed | grep @cop | tr -s ' '| cut -f 1,2 -d' ' | sed 's/\.noarch//g' | sed 's/\.x86_64//g' | sed 's/\-[123456789]*\.fc36//g'  | sed 's/\ /:/g'
+#dnf list installed | grep @cop | tr -s ' '| cut -f 1,2 -d' ' | sed 's/\.noarch//g' | sed 's/\.x86_64//g' | sed 's/\-[123456789]*\.fc36//g'  | sed 's/\ /:/g' | sed 's/_/-/g'| sed 's/python3/python/g'
 
 set -x 
 declare -a BUILDLIST=(
@@ -26,11 +26,11 @@ python-hiredis:2.0.0
 python-indico:3.2
 python-indico-fonts:1.1
 python-indico-plugins:3.2
-python-iso_4217:0.4.220401
+python-iso-4217:0.4.220401
 python-limits:2.5.2
 python-marshmallow-oneofschema:3.0.1
 python-marshmallow-sqlalchemy:0.28.0
-python-marshmallow_dataclass:8.5.3
+python-marshmallow-dataclass:8.5.3
 python-pynpm:0.1.2
 python-pywebpack:1.2.0
 python-stack-data:0.5.0
