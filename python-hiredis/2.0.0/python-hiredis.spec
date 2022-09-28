@@ -11,8 +11,9 @@ URL:            https://pypi.python.org/pypi/ua-parser
 Source:         %{pypi_source}
 #BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel
-BuildRequires: python3-werkzeug gcc make
-
+BuildRequires: python3-werkzeug 
+BuildRequires: gcc 
+BuildRequires: make
 %global _description %{expand:
 A python module which provides a convenient example. This is the
 rest of the description that provides more details.}
@@ -21,7 +22,7 @@ rest of the description that provides more details.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 

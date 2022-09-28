@@ -5,7 +5,7 @@ cat /etc/issue
 dnf -y install rpm-build git wget sed
 
 export PATH=$PATH:$(pwd)
-#dnf list installed | grep @cop | tr -s ' '| cut -f 1,2 -d' ' | sed 's/\.noarch//g' | sed 's/\.x86_64//g' | sed 's/\-[123456789]*\.fc36//g'  | sed 's/\ /:/g' |  sed 's/python3/python/g' | grep -v plugin | sed 's/marshmallow-/marshmallow_/g' | sed 's/iso-/iso_/g'     | sed 's/-validator/_validator/g' 
+#dnf list installed | grep @cop | tr -s ' '| cut -f 1,2 -d' ' | sed 's/\.noarch//g' | sed 's/\.x86_64//g' | sed 's/\-[123456789]*\.fc36//g'  | sed 's/\ /:/g' |  sed 's/python3/python/g' | grep -v plugin | sed 's/marshmallow-o/marshmallow_o/g' | sed 's/marshmallow-s/marshmallow_s/g' | sed 's/iso-/iso_/g'     | sed 's/-validator/_validator/g' 
 
 set -x 
 declare -a BUILDLIST=(
@@ -29,7 +29,7 @@ python-iso_4217:0.4.220401
 python-limits:2.5.2
 python-marshmallow_oneofschema:3.0.1
 python-marshmallow_sqlalchemy:0.28.0
-python-marshmallow_dataclass:8.5.3
+python-marshmallow-dataclass:8.5.3
 python-pynpm:0.1.2
 python-pywebpack:1.2.0
 python-stack-data:0.5.0
