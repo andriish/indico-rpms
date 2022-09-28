@@ -4,14 +4,14 @@ on:
  pull_request:
  schedule:
 #Every 5 days at midnight 
-    - cron:  "0 0 1/5 * *"
+    - cron:  "0 0 1/20 * *"
 
 jobs:
 
 
   compilejobFedora36:
     runs-on: ubuntu-latest
-    name: Binder_on_Fedora36
+    name: Indico_on_Fedora36
     steps:
     - name: Checkout
       uses: actions/checkout@v2
