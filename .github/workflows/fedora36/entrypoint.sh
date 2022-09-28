@@ -48,7 +48,7 @@ echo $a >> BUILD.list
 done
 
 let i=0
-while [ [ -s BUILD.list ] && [ $i -lt 60 ] ]
+while [ -s BUILD.list ]
 do
 rm -rf BUILD.list.new
 touch BUILD.list.new
@@ -63,6 +63,10 @@ done
 mv BUILD.list.new  BUILD.list
 cat BUILD.list
 let i=i+1
+if  [ $i -gt 60 ]; then
+rm -rf BUILD.list
+fi
+
 done
 
 #wait
