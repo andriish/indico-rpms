@@ -2,6 +2,7 @@
 set -x
 uname -a 
 cat /etc/issue
+exit 0
 dnf -y install rpm-build git wget sed createrepo
 
 export PATH=$PATH:$(pwd)
@@ -78,7 +79,7 @@ yum -y install wget  python-indico/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken
 yum -y install wget $(rpmspec -P indico-mpp/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
 yum -y install wget $(rpmspec -P indico-mpp/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
 sh srpmsbuild.sh  indico-mpp 3.2 --build 
-yum -y install wget  indico-mpp/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken
+yum -y install wget  indico-mpp/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken --allowerasing
 
 
 mkdir REPO -p
