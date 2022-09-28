@@ -2,7 +2,7 @@
 set -x
 uname -a 
 cat /etc/issue
-dnf -y install rpm-build git spectool sed
+dnf -y install rpm-build git wget sed
 
 export PATH=$PATH:$(pwd)
 #dnf list installed | grep @cop | tr -s ' '| cut -f 1,2 -d' ' | sed 's/\.noarch//g' | sed 's/\.x86_64//g' | sed 's/\-[123456789]*\.fc36//g'  | sed 's/\ /:/g'
