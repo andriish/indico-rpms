@@ -34,8 +34,9 @@ cp $TOPDIR/$PACKAGE/$VERSION/$(basename $a) $TOPDIR/$PACKAGE/$VERSION/rpmbuild/S
 done 
 cd $TOPDIR
 cp $TOPDIR/$PACKAGE/$VERSION/*$PACKAGE*  $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SOURCES
+rm -rf $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SRPMS/*src.rpm
 rpmbuild -bs --define='%_topdir '$TOPDIR/$PACKAGE/$VERSION'/rpmbuild' $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec
 if [ x$3 == x"--build" ]; 
 then
-rpmbuild --define='%_topdir '$TOPDIR/$PACKAGE/$VERSION'/rpmbuild' --rebuild $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SRPMS/$PACKAGE*src.rpm   --nodeps
+rpmbuild --define='%_topdir '$TOPDIR/$PACKAGE/$VERSION'/rpmbuild' --rebuild $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SRPMS/*src.rpm   --nodeps
 fi
