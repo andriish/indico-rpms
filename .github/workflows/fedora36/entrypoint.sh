@@ -10,7 +10,6 @@ export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
 indico-devel:3.2
-indico-mpp:3.2
 python-Flask-Limiter:2.4.0
 python-Flask-Multipass:0.4.6
 python-Flask-PluginEngine:0.4
@@ -62,19 +61,21 @@ yum -y install wget  $p/$v/rpmbuild/RPMS/*/*.rpm --skip-broken
 done
 mv BUILD.list.new  BUILD.list
 cat BUILD.list
-let i=i+1
+i=i+1
 if  [ $i -gt 60 ]; then
 rm -rf BUILD.list
 fi
 
 done
 
-#wait
+yum -y install wget $(rpmspec -P python-indico/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
+sh srpmsbuild.sh  python-indico 3.2
+yum -y install wget  python-indico/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken
 
 
-
-#exit
-
+yum -y install wget $(rpmspec -P indico-mpp/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
+sh srpmsbuild.sh  indico-mpp 3.2
+yum -y install wget  indico-mpp/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken
 
 out=$?
 echo ::set-output name=out::$out
