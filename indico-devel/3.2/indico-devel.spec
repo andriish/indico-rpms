@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -179,25 +179,25 @@ Requires: gcc-c++
 
 
 
-Requires: tex(adjustbox)
-Requires: tex(amsmath)
-Requires: tex(amssymb)
-Requires: tex(babel)
-Requires: tex(enumitem)
-Requires: tex(fancyhdr)
-Requires: tex(float)
-Requires: tex(fontspec)
-Requires: tex(geometry)
-Requires: tex(rawlatex)
-Requires: tex(microtype)
-Requires: tex(needspace)
-Requires: tex(parskip)
-Requires: tex(scrextend)
-Requires: tex(sectsty)
-Requires: tex(tcolorbox)
-Requires: tex(truncate)
-Requires: tex(xcolor)
-Requires: tex(xstring)
+Requires: tex(adjustbox.sty)
+Requires: tex(amsmath.sty)
+Requires: tex(amssymb.sty)
+Requires: tex(babel.sty)
+Requires: tex(enumitem.sty)
+Requires: tex(fancyhdr.sty)
+Requires: tex(float.sty)
+Requires: tex(fontspec.sty)
+Requires: tex(geometry.sty)
+Requires: tex(rawlatex.sty)
+Requires: tex(microtype.sty)
+Requires: tex(needspace.sty)
+Requires: tex(parskip.sty)
+Requires: tex(scrextend.sty)
+Requires: tex(sectsty.sty)
+Requires: tex(tcolorbox.sty)
+Requires: tex(truncate.sty)
+Requires: tex(xcolor.sty)
+Requires: tex(xstring.sty)
 
 
 %global _description %{expand:
