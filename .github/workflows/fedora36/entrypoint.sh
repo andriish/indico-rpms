@@ -43,7 +43,7 @@ for a in "${BUILDLIST[@]}"
 do
 p=$(echo $a | cut -f1 -d: )
 v=$(echo $a | cut -f2 -d: )
-yum -y install wget $(rpmspec -P $p/$v/$p.spec | grep BuildRequires | cut -d' ' -f2 | xargs) --skip-broken
+yum -y install wget $(rpmspec -P $p/$v/$p.spec | grep BuildRequires | tr -s ' ' |cut -d' ' -f2 | xargs) --skip-broken
 echo $a >> BUILD.list
 done
 
