@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -188,7 +188,7 @@ Requires: tex(fancyhdr.sty)
 Requires: tex(float.sty)
 Requires: tex(fontspec.sty)
 Requires: tex(geometry.sty)
-Requires: tex(rawlatex.sty)
+#Requires: tex(rawlatex.sty)
 Requires: tex(microtype.sty)
 Requires: tex(needspace.sty)
 Requires: tex(parskip.sty)
