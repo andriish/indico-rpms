@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -177,7 +177,27 @@ Requires: python-tinycss2
 Requires: gcc-c++
 
 
-Requires: tex(microtype.sty)
+
+
+Requires: tex(adjustbox)
+Requires: tex(amsmath)
+Requires: tex(amssymb)
+Requires: tex(babel)
+Requires: tex(enumitem)
+Requires: tex(fancyhdr)
+Requires: tex(float)
+Requires: tex(fontspec)
+Requires: tex(geometry)
+Requires: tex(rawlatex)
+Requires: tex(microtype)
+Requires: tex(needspace)
+Requires: tex(parskip)
+Requires: tex(scrextend)
+Requires: tex(sectsty)
+Requires: tex(tcolorbox)
+Requires: tex(truncate)
+Requires: tex(xcolor)
+Requires: tex(xstring)
 
 
 %global _description %{expand:
