@@ -56,7 +56,6 @@ p=$(echo $a | cut -f1 -d: )
 v=$(echo $a | cut -f2 -d: )
 (sh srpmsbuild.sh $p $v --build || echo  $a >> BUILD.list.new)
 yum -y install wget  $p/$v/rpmbuild/RPMS/*/*.rpm --skip-broken
-#(sh srpmsbuild.sh $p $v --build || echo  "Build of "$p$v" failed" >> BUILD.LOG&)
 done
 mv BUILD.list.new  BUILD.list
 cat BUILD.list
@@ -68,10 +67,12 @@ fi
 done
 
 yum -y install wget $(rpmspec -P python-indico/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
+yum -y install wget $(rpmspec -P python-indico/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
 sh srpmsbuild.sh  python-indico 3.2 --build 
 yum -y install wget  python-indico/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken
 
 
+yum -y install wget $(rpmspec -P indico-mpp/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
 yum -y install wget $(rpmspec -P indico-mpp/3.2/*.spec | grep BuildRequires | tr -s ' ' |cut -d: -f2 | xargs) --skip-broken
 sh srpmsbuild.sh  indico-mpp 3.2 --build 
 yum -y install wget  indico-mpp/3.2/rpmbuild/RPMS/*/*.rpm --skip-broken
