@@ -21,3 +21,15 @@ jobs:
     - name: Get the output status
       run: exit ${{ steps.compileindocker.outputs.out }}
 
+  compilejobFedora37:
+    runs-on: ubuntu-latest
+    name: Indico_on_Fedora37
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Compile
+      id: compileindocker
+      uses: ./.github/workflows/fedora37
+    - name: Get the output status
+      run: exit ${{ steps.compileindocker.outputs.out }}
+

@@ -47,3 +47,6 @@ sed -i 's/3\.13\.0/3\.0\.0/g' marshmallow_dataclass.egg-info/requires.txt setup.
 %{python3_sitelib}/%{srcnamenu}-*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
 
+%changelog
+* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+- Cleanup 

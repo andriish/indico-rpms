@@ -44,3 +44,6 @@ BuildRequires:  python3-setuptools
 %{python3_sitelib}/%{srcnamenu}-*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
 
+%changelog
+* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+- Cleanup 

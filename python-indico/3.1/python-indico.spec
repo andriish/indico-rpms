@@ -67,11 +67,14 @@ npm install
 #py3_install
 python3 -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies
 
-%check
-#{python3} setup.py test
 
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 %{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/
 %{_bindir}/indico
+
+
+%changelog
+* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+- Cleanup 
