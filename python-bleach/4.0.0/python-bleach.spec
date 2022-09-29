@@ -1,8 +1,8 @@
 %global modname bleach
 
 Name:           python-%{modname}
-Version:        5.0.1
-Release:        5%{?dist}
+Version:        4.0.0
+Release:        4%{?dist}
 Summary:        An easy whitelist-based HTML-sanitizing tool
 
 License:        ASL 2.0
@@ -42,8 +42,7 @@ sed -i 's/pytest-runner>=2.0,<3dev/pytest-runner/' setup.py
 rm -r bleach/_vendor/
 # Bleach has a shim layer that references the vendored html5lib we just deleted. Let's patch up the
 # imports to use the real html5lib.
-sed -i "s/bleach._vendor.html5lib/html5lib/g" bleach/html5lib_shim.py tests/test_clean.py bleach/sanitizer.py bleach/parse_shim.py
-sed -i "s/bleach._vendor.parse/urllib.parse/g" bleach/html5lib_shim.py tests/test_clean.py bleach/sanitizer.py bleach/parse_shim.py
+sed -i "s/bleach._vendor.html5lib/html5lib/g" bleach/html5lib_shim.py tests/test_clean.py bleach/sanitizer.py
 
 
 %build
@@ -72,9 +71,6 @@ fi;
 %{python3_sitelib}/%{modname}/
 
 %changelog
-* Thu Sep 29 2022 Andrii VErbytskyi <andrii.verbytskyi@mpp.mpg.de> - 5.0.1-1
-- version 5.0.1
-
 * Fri Jul 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 4.0.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
