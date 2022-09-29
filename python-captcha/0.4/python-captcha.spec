@@ -35,12 +35,12 @@ BuildRequires:  python3-setuptools
 %install
 %py3_install
 
-%check
-#{python3} setup.py test
-
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 
 %{python3_sitelib}/%{srcnamenu}-*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
 
+%changelog
+* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+- Cleanup 
