@@ -60,9 +60,7 @@ if [ $? -ne 0 ]; then
     /usr/bin/false
 fi;
 
-# https://bugs.python.org/issue27657
-# https://github.com/mozilla/bleach/issues/536
-# currently: ========== 190 failed, 142 passed, 23 deselected, 6 xfailed in 8.86s ===========
+# currently: ========== 414 passed, 26 deselected, 3 xfailed in 0.50s ===========
 %{__python3} -m pytest -k 'not test_uri_value_allowed_protocols and not test_css_parsing_gauntlet_regex_backtracking'
 
 %files -n python3-%{modname}
