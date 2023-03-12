@@ -1,5 +1,5 @@
 # This file is part of Indico.
-# Copyright (C) 2002 - 2022 CERN
+# Copyright (C) 2002 - 2023 CERN
 #
 # Indico is free software; you can redistribute it and/or
 # modify it under the terms of the MIT License; see the
@@ -14,6 +14,7 @@ import os
 import re
 import string
 import unicodedata
+from email.utils import escapesre, specialsre
 from enum import Enum
 from itertools import chain
 from operator import attrgetter
@@ -32,17 +33,17 @@ from sqlalchemy import ForeignKeyConstraint, inspect
 
 
 # basic list of tags, used for markdown content
-BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS + [
+BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS | {
     'sup', 'sub', 'small', 'br', 'p', 'table', 'thead', 'tbody', 'th', 'tr', 'td', 'img', 'hr', 'h1', 'h2', 'h3', 'h4',
     'h5', 'h6', 'pre', 'dl', 'dd', 'dt', 'figure', 'blockquote'
-]
+}
 BLEACH_ALLOWED_ATTRIBUTES = {**bleach.ALLOWED_ATTRIBUTES, 'img': ['src', 'alt', 'style']}
 # extended list of tags, used for HTML content
-BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS + [
+BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS | {
     'address', 'area', 'bdo', 'big', 'caption', 'center', 'cite', 'col', 'colgroup', 'del', 'dfn', 'dir', 'div',
     'fieldset', 'font', 'ins', 'kbd', 'legend', 'map', 'menu', 'q', 's', 'samp', 'span', 'strike', 'tfoot', 'tt', 'u',
     'var'
-]
+}
 # yuck, this is ugly, but all these attributes were allowed in legacy...
 BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES | {'*': [
     'align', 'abbr', 'alt', 'border', 'bgcolor', 'class', 'cellpadding', 'cellspacing', 'color', 'char', 'charoff',
@@ -136,7 +137,7 @@ def strip_tags(text):
     return do_striptags(text)
 
 
-def render_markdown(text, escape_latex_math=True, md=None, **kwargs):
+def render_markdown(text, escape_latex_math=True, md=None, extra_html=False, **kwargs):
     """Mako markdown to HTML filter.
 
     :param text: Markdown source to convert to HTML
@@ -144,6 +145,7 @@ def render_markdown(text, escape_latex_math=True, md=None, **kwargs):
                               to replace math-mode segments.
     :param md: An alternative markdown processor (can be used
                to generate e.g. a different format)
+    :param extra_html: Whether to allow a bigger set of HTML tags
     :param kwargs: Extra arguments to pass on to the markdown
                    processor
     """
@@ -160,8 +162,13 @@ def render_markdown(text, escape_latex_math=True, md=None, **kwargs):
         text = re.sub(r'\$[^\$]+\$|\$\$(^\$)\$\$', _math_replace, text)
 
     if md is None:
-        result = bleach.clean(markdown.markdown(text, **kwargs), tags=BLEACH_ALLOWED_TAGS,
-                              attributes=BLEACH_ALLOWED_ATTRIBUTES)
+        extensions = set(kwargs.pop('extensions', ()))
+        extensions.add('fenced_code')
+        result = markdown.markdown(text, extensions=tuple(extensions), **kwargs)
+        if extra_html:
+            result = sanitize_html(result)
+        else:
+            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES)
     else:
         result = md(text, **kwargs)
 
@@ -395,7 +402,9 @@ def camelize(name):
     if name.startswith('_'):
         underscore = '_'
         parts = parts[1:]
-    return underscore + parts[0] + ''.join(x.title() for x in parts[1:])
+    camelized = underscore + parts[0] + ''.join(x.title() for x in parts[1:])
+    # Always convert 'Url' into 'URL', same as camelizeKeys() in utils/case.js
+    return camelized.replace('Url', 'URL')
 
 
 def _convert_keys(value, convert_func):
@@ -468,14 +477,40 @@ def sanitize_email(email, require_valid=False):
         return None
 
 
+class IndicoCSSSanitizer(CSSSanitizer):
+    """Correctly parse escaped quotes.
+
+    ckeditor puts `&quot;` around font family names:
+    https://github.com/ckeditor/ckeditor4/issues/2750
+
+    However, the css parser used by bleach cannot handle escaped quotes inside
+    the style attribute and filters them out which breaks the styling.
+    """
+
+    def sanitize_css(self, style):
+        style = style.replace('&quot;', '"')
+        return super().sanitize_css(style)
+
+
 def sanitize_html(string):
-    css_sanitizer = CSSSanitizer(allowed_css_properties=BLEACH_ALLOWED_STYLES_HTML)
+    css_sanitizer = IndicoCSSSanitizer(allowed_css_properties=BLEACH_ALLOWED_STYLES_HTML)
     return bleach.clean(string, tags=BLEACH_ALLOWED_TAGS_HTML, attributes=BLEACH_ALLOWED_ATTRIBUTES_HTML,
                         css_sanitizer=css_sanitizer)
 
 
 def html_to_plaintext(string):
-    return html.html5parser.fromstring(string).xpath('string()')
+    """Convert HTML to plaintext.
+
+    :param string: The HTML source string
+
+    <p> and <br> elements are converted into newline characters.
+    Any literal '\n' characters in the HTML source are removed.
+    """
+    string = string.replace('\n', '')
+    doc = etree.HTML(string)
+    for elem in doc.xpath('//p | //br'):
+        elem.tail = '\n' + elem.tail if elem.tail else '\n'
+    return doc.xpath('string()').strip()
 
 
 class RichMarkup(Markup):
@@ -552,3 +587,17 @@ def handle_legacy_description(field, obj, get_render_mode=attrgetter('render_mod
 def get_format_placeholders(format_str):
     """Get the format placeholders from a string."""
     return [name for text, name, spec, conv in string.Formatter().parse(format_str) if name is not None]
+
+
+def format_email_with_name(name, address):
+    """Format an email address and name.
+
+    This is very similar to email.utils.formataddr but doesn't encode to
+    UTF-8 since it's meant to be used e.g. in CSV files and similar places
+    (ie not when actually sending emails from indico).
+    """
+    quotes = ''
+    if specialsre.search(name):
+        quotes = '"'
+    name = escapesre.sub(r'\\\g<0>', name)
+    return f'{quotes}{name}{quotes} <{address}>'
