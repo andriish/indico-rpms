@@ -13,7 +13,10 @@ Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.
 Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires: git
-BuildRequires: indico-devel nodejs-npm python3-semver
+BuildRequires: indico-devel  python3-semver
+%if 0%{?fedora} >= 37
+BuildRequires: nodejs-npm
+%endif
 BuildRequires: python3-pip python3-wheel
 Requires: indico-devel==3.2.3
 
@@ -122,6 +125,8 @@ npm install
 
 
 %changelog
+* Mon May 15 2023 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2.3
+- Version 3.2.3
 * Thu Sep 01 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2
 - Version 3.2
 
