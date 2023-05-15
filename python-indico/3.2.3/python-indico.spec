@@ -13,7 +13,7 @@ Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.
 Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires: git
-BuildRequires: indico-devel nodejs-npm
+BuildRequires: indico-devel nodejs-npm python3-semver
 BuildRequires: python3-pip python3-wheel
 Requires: indico-devel==3.2.3
 
