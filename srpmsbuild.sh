@@ -5,7 +5,15 @@ VERSION=$2
 TOPDIR=$(pwd)
 touch $TOPDIR/md5sums.txt.rej
 export PATH=$PATH:/usr/bin:$TOPDIR
+export CURL_HOME=$TOPDIR
+echo '--insecure' > $CURL_HOME/.curlrc
 SPECTOOL=spectool
+which -a spectool
+if [ -f /etc/rpmdevtools/curlrc ]; 
+then
+
+cat /etc/rpmdevtools/curlrc
+fi
 rm -rf $TOPDIR/$PACKAGE/$VERSION/rpmbuild/{SOURCES,SPECS,SRPMS} 
 mkdir -p $TOPDIR/$PACKAGE/$VERSION/rpmbuild/{SOURCES,SPECS,RPMS,SRPMS} 
 for a in $($SPECTOOL $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec | tr -s ' '| cut -f 2 -d' ' | grep '://' ); do
@@ -17,24 +25,21 @@ echo "MD5 sum->"$s"<-     Found in "$TOPDIR"/md5sums.txt"
 else
 echo "MD5 sum->"$s"<- NOT found in "$TOPDIR"/md5sums.txt"
 echo $s >> $TOPDIR/md5sums.txt.rej
-#exit
+exit
 fi
 
 done 
-
+for a in $($SPECTOOL $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec | tr -s ' '| cut -f 2 -d' ' | grep -v '://' ); do
+cp $TOPDIR/$PACKAGE/$VERSION/$(basename $a) $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SOURCES
+done 
 
 cd $TOPDIR/$PACKAGE/$VERSION
 if [ -f do.sh ]; 
 then
-chmod +x do.sh
 sh do.sh
 fi
-for a in $($SPECTOOL $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec | tr -s ' '| cut -f 2 -d' ' | grep -v '://' ); do
-cp $TOPDIR/$PACKAGE/$VERSION/$(basename $a) $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SOURCES
-done 
 cd $TOPDIR
 cp $TOPDIR/$PACKAGE/$VERSION/*$PACKAGE*  $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SOURCES
-rm -rf $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SRPMS/*src.rpm
 rpmbuild -bs --define='%_topdir '$TOPDIR/$PACKAGE/$VERSION'/rpmbuild' $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec
 if [ x$3 == x"--build" ]; 
 then
