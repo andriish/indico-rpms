@@ -20,7 +20,7 @@ python-hiredis:2.3.2
 python-iso_4217:0.4.220401
 python-marshmallow_oneofschema:3.0.1
 python-marshmallow_sqlalchemy:0.29.0
-python-marshmallow-dataclass:8.6.0
+python-marshmallow-dataclass:8.5.0
 python-pynpm:0.2.0
 python-pywebpack:1.2.0
 python-webargs:8.3.0

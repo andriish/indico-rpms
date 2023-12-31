@@ -32,4 +32,4 @@ e244ea6dca94151c5478ef37e6af1c2e  python-PyPDF2/2.11.0/rpmbuild/SOURCES/PyPDF2-2
 1aabe220428003dd57bd97b04383eaf4  python-webargs/8.3.0/rpmbuild/SOURCES/webargs-8.3.0.tar.gz
 ecf1995f183d7de5531ea71346321c34  python-captcha/0.5.0/rpmbuild/SOURCES/captcha-0.5.0.tar.gz
 21829bcc0accd5ccb383c238a889095f  python-marshmallow_oneofschema/3.0.1/rpmbuild/SOURCES/marshmallow-oneofschema-3.0.1.tar.gz
-
+bf85f46441c07451e720aebf21287ddd  python-marshmallow-dataclass/8.5.3/rpmbuild/SOURCES/marshmallow_dataclass-8.5.3.tar.gz
