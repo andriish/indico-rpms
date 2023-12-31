@@ -84,6 +84,15 @@ export PYTHONPATH=$(pwd):$PYTHONPATH
 #exit
 mkdir -p indico/web/client
 cd indico/web/client
+
+npm config delete proxy
+
+npm config delete http-proxy
+
+npm config delete https-proxy
+
+
+
 npm install
 cd ../../../
 npm install
