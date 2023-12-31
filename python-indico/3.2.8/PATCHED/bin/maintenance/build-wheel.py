@@ -249,24 +249,24 @@ def build_indico(obj, assets, add_version_suffix, ignore_unclean, no_git):
         if add_version_suffix:
             fail('The --no-git option cannot be used with --add-version-suffix')
     else:
-    # check for unclean git status
-    clean, output = git_is_clean_indico()
-    if not clean and ignore_unclean:
-        warn('working tree is not clean [ignored]')
-    elif not clean:
-        fail('working tree is not clean', verbose_msg=output)
+        # check for unclean git status
+        clean, output = git_is_clean_indico()
+        if not clean and ignore_unclean:
+            warn('working tree is not clean [ignored]')
+        elif not clean:
+            fail('working tree is not clean', verbose_msg=output)
     if no_git:
         clean, output = True, None
         warn('Assuming clean non-git package')
         if add_version_suffix:
             fail('The --no-git option cannot be used with --add-version-suffix', verbose_msg=output)
     else:
-    # check for git-ignored files included in the package
-    clean, output = package_is_clean_indico()
-    if not clean and ignore_unclean:
-        warn('package contains unexpected files listed in git exclusions [ignored]')
-    elif not clean:
-        fail('package contains unexpected files listed in git exclusions', verbose_msg=output)
+        # check for git-ignored files included in the package
+        clean, output = package_is_clean_indico()
+        if not clean and ignore_unclean:
+            warn('package contains unexpected files listed in git exclusions [ignored]')
+        elif not clean:
+            fail('package contains unexpected files listed in git exclusions', verbose_msg=output)
     if assets:
         build_assets()
     else:
@@ -309,11 +309,11 @@ def build_plugin(obj, assets, plugin_dir, add_version_suffix, ignore_unclean, no
             if add_version_suffix:
                 fail('The --no-git option cannot be used with --add-version-suffix')
         else:
-        clean, output = git_is_clean_plugin()
-        if not clean and ignore_unclean:
-            warn('working tree is not clean, but ignored')
-        elif not clean:
-            fail('working tree is not clean', verbose_msg=output)
+            clean, output = git_is_clean_plugin()
+            if not clean and ignore_unclean:
+                warn('working tree is not clean, but ignored')
+            elif not clean:
+                fail('working tree is not clean', verbose_msg=output)
     if assets:
         if not _plugin_has_assets(plugin_dir):
             noop('plugin has no assets')

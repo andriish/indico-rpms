@@ -3,14 +3,14 @@
 
 Name:           python-%{srcname}
 Version:        3.2.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Indico package
 
 License:        MIT
 URL:            https://getindico.io/
 Source0:        https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
 Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
-#Patch0:         indico-patch.txt
+Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires: git
 BuildRequires: indico-devel  python3-semver

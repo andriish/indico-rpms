@@ -101,7 +101,13 @@ def compile_catalogs():
 def build_wheel(target_dir):
     info('building wheel')
     try:
-        subprocess.check_output([sys.executable, 'setup.py', 'bdist_wheel', '-d', target_dir], stderr=subprocess.STDOUT)
+        # we need to disable isolation because babel is required during the build.
+        # eventually we should probably move to pyproject.toml with a custom in-tree
+        # build backend that does most of things this script does, properly specify
+        # babel as a build requirement, and then call e.g. the setuptools build backend
+        # to produce the actual wheel. but this is much more work so for now we just
+        # disable build isolation
+        subprocess.check_output([sys.executable, '-m', 'build', '-w', '-n', '-o', target_dir], stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
         fail('build failed', verbose_msg=exc.output)
 
@@ -203,7 +209,7 @@ def _patch_version(add_version_suffix, file_name, search, replace):
     if not add_version_suffix:
         yield
         return
-    rev = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], text=True).strip()
+    rev = subprocess.check_output(['git', 'rev-parse', '--short=10', 'HEAD'], text=True).strip()
     suffix = '+{}.{}'.format(datetime.now().strftime('%Y%m%d%H%M'), rev)
     info('adding version suffix: ' + suffix, unimportant=True)
     with open(file_name, 'r+') as f:
@@ -246,24 +252,24 @@ def build_indico(obj, assets, add_version_suffix, ignore_unclean, no_git):
         if add_version_suffix:
             fail('The --no-git option cannot be used with --add-version-suffix')
     else:
-    # check for unclean git status
-    clean, output = git_is_clean_indico()
-    if not clean and ignore_unclean:
-        warn('working tree is not clean [ignored]')
-    elif not clean:
-        fail('working tree is not clean', verbose_msg=output)
+        # check for unclean git status
+        clean, output = git_is_clean_indico()
+        if not clean and ignore_unclean:
+            warn('working tree is not clean [ignored]')
+        elif not clean:
+            fail('working tree is not clean', verbose_msg=output)
     if no_git:
         clean, output = True, None
         warn('Assuming clean non-git package')
         if add_version_suffix:
             fail('The --no-git option cannot be used with --add-version-suffix', verbose_msg=output)
     else:
-    # check for git-ignored files included in the package
-    clean, output = package_is_clean_indico()
-    if not clean and ignore_unclean:
-        warn('package contains unexpected files listed in git exclusions [ignored]')
-    elif not clean:
-        fail('package contains unexpected files listed in git exclusions', verbose_msg=output)
+        # check for git-ignored files included in the package
+        clean, output = package_is_clean_indico()
+        if not clean and ignore_unclean:
+            warn('package contains unexpected files listed in git exclusions [ignored]')
+        elif not clean:
+            fail('package contains unexpected files listed in git exclusions', verbose_msg=output)
     if assets:
         build_assets()
     else:
@@ -306,11 +312,11 @@ def build_plugin(obj, assets, plugin_dir, add_version_suffix, ignore_unclean, no
             if add_version_suffix:
                 fail('The --no-git option cannot be used with --add-version-suffix')
         else:
-        clean, output = git_is_clean_plugin()
-        if not clean and ignore_unclean:
-            warn('working tree is not clean, but ignored')
-        elif not clean:
-            fail('working tree is not clean', verbose_msg=output)
+            clean, output = git_is_clean_plugin()
+            if not clean and ignore_unclean:
+                warn('working tree is not clean, but ignored')
+            elif not clean:
+                fail('working tree is not clean', verbose_msg=output)
     if assets:
         if not _plugin_has_assets(plugin_dir):
             noop('plugin has no assets')

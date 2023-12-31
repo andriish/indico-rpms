@@ -4,6 +4,8 @@ export PATH=$PATH:$(pwd)
 copr-cli create --chroot fedora-39-x86_64 --chroot fedora-39-x86_64 I328
 #find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
+python-indico:3.2.8
+indico-mpp:3.2
 indico-devel:3.2.8
 #python-PyPDF2:3.0.1
 python-PyPDF2:2.11.0
