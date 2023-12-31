@@ -1,5 +1,5 @@
 diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-assets.py
---- ORIG/bin/maintenance/build-assets.py	2023-12-30 23:55:37.200691057 +0100
+--- ORIG/bin/maintenance/build-assets.py	2023-10-11 20:48:12.000000000 +0200
 +++ PATCHED/bin/maintenance/build-assets.py	2023-12-30 23:55:37.201691072 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
@@ -8,15 +8,30 @@ diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-as
  # Copyright (C) 2002 - 2023 CERN
  #
 diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
---- ORIG/bin/maintenance/build-wheel.py	2023-12-30 23:55:37.200691057 +0100
-+++ PATCHED/bin/maintenance/build-wheel.py	2023-12-30 23:55:37.201691072 +0100
+--- ORIG/bin/maintenance/build-wheel.py	2023-10-11 20:48:12.000000000 +0200
++++ PATCHED/bin/maintenance/build-wheel.py	2023-12-31 02:36:59.485332158 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  # This file is part of Indico.
  # Copyright (C) 2002 - 2023 CERN
  #
-@@ -111,6 +111,7 @@
+@@ -101,13 +101,7 @@
+ def build_wheel(target_dir):
+     info('building wheel')
+     try:
+-        # we need to disable isolation because babel is required during the build.
+-        # eventually we should probably move to pyproject.toml with a custom in-tree
+-        # build backend that does most of things this script does, properly specify
+-        # babel as a build requirement, and then call e.g. the setuptools build backend
+-        # to produce the actual wheel. but this is much more work so for now we just
+-        # disable build isolation
+-        subprocess.check_output([sys.executable, '-m', 'build', '-w', '-n', '-o', target_dir], stderr=subprocess.STDOUT)
++        subprocess.check_output([sys.executable, 'setup.py', 'bdist_wheel', '-d', target_dir], stderr=subprocess.STDOUT)
+     except subprocess.CalledProcessError as exc:
+         fail('build failed', verbose_msg=exc.output)
+ 
+@@ -117,6 +111,7 @@
      cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
              ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel,
              ['git', 'clean', '-dn', '-e', '__pycache__'] + toplevel]
@@ -24,7 +39,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      for cmd in cmds:
          rv = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
          if rv:
-@@ -149,6 +150,7 @@
+@@ -155,6 +150,7 @@
  
  
  def package_is_clean_indico():
@@ -32,7 +47,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      garbage = _get_ignored_package_files_indico()
      if garbage:
          return False, '\n'.join(garbage)
-@@ -159,6 +161,7 @@
+@@ -165,6 +161,7 @@
      toplevel = list({x.split('.')[0] for x in find_packages(include=('indico', 'indico.*',))})
      cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
              ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel]
@@ -40,8 +55,17 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      if toplevel:
          # only check for ignored files if we have packages. for single-module
          # plugins we don't have any package data to include anyway...
+@@ -209,7 +206,7 @@
+     if not add_version_suffix:
+         yield
+         return
+-    rev = subprocess.check_output(['git', 'rev-parse', '--short=10', 'HEAD'], text=True).strip()
++    rev = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], text=True).strip()
+     suffix = '+{}.{}'.format(datetime.now().strftime('%Y%m%d%H%M'), rev)
+     info('adding version suffix: ' + suffix, unimportant=True)
+     with open(file_name, 'r+') as f:
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
---- ORIG/bin/maintenance/dump_url_map.py	2023-12-30 23:55:37.200691057 +0100
+--- ORIG/bin/maintenance/dump_url_map.py	2023-10-11 20:48:12.000000000 +0200
 +++ PATCHED/bin/maintenance/dump_url_map.py	2023-12-30 23:55:37.201691072 +0100
 @@ -8,6 +8,7 @@
  import hashlib
@@ -70,8 +94,8 @@ diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url
      app = make_app(testing=True, config_override={'BASE_URL': 'http://localhost/',
                                                    'SECRET_KEY': '*' * 16,
 diff -Naur ORIG/bin/maintenance/make-release.py PATCHED/bin/maintenance/make-release.py
---- ORIG/bin/maintenance/make-release.py	2023-12-30 23:55:37.200691057 +0100
-+++ PATCHED/bin/maintenance/make-release.py	2023-12-30 23:55:37.201691072 +0100
+--- ORIG/bin/maintenance/make-release.py	2023-10-11 20:48:12.000000000 +0200
++++ PATCHED/bin/maintenance/make-release.py	2023-12-31 02:38:47.314015987 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -100,62 +124,36 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
  
      def __repr__(self):
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
-diff -Naur ORIG/indico/modules/events/contributions/models/contributions.py PATCHED/indico/modules/events/contributions/models/contributions.py
---- ORIG/indico/modules/events/contributions/models/contributions.py	2023-12-30 23:55:37.200691057 +0100
-+++ PATCHED/indico/modules/events/contributions/models/contributions.py	2023-12-30 23:55:37.201691072 +0100
-@@ -35,7 +35,7 @@
- from indico.util.iterables import materialize_iterable
- from indico.util.locators import locator_property
- from indico.util.string import format_repr, slugify
--
-+import sys
+diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
+--- ORIG/indico/util/string.py	2023-10-11 20:48:12.000000000 +0200
++++ PATCHED/indico/util/string.py	2023-12-30 23:55:37.201691072 +0100
+@@ -168,9 +168,7 @@
+         if extra_html:
+             result = sanitize_html(result)
+         else:
+-            css_sanitizer = IndicoCSSSanitizer(allowed_css_properties=BLEACH_ALLOWED_STYLES_HTML)
+-            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES,
+-                                  css_sanitizer=css_sanitizer)
++            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES)
+     else:
+         result = md(text, **kwargs)
  
- def _get_next_friendly_id(context):
-     """Get the next friendly id for a contribution."""
-@@ -297,14 +297,24 @@
-         )
-     )
-     #: The accepted paper revision
--    _accepted_paper_revision = db.relationship(
-+    
-+    if sys.version_info.minor>10:
-+      _accepted_paper_revision = db.relationship(
-+        'PaperRevision',
-+        lazy=True,
-+        viewonly=True,
-+        uselist=False,
-+        primaryjoin=('(PaperRevision._contribution_id == Contribution.id)'),
-+      )
-+    else:
-+      _accepted_paper_revision = db.relationship(
-         'PaperRevision',
-         lazy=True,
-         viewonly=True,
-         uselist=False,
-         primaryjoin=('(PaperRevision._contribution_id == Contribution.id) & (PaperRevision.state == {})'
-                      .format(PaperRevisionState.accepted)),
--    )
-+      )
-     #: Paper files not submitted for reviewing
-     pending_paper_files = db.relationship(
-         'PaperFile',
 diff -Naur ORIG/setup.cfg PATCHED/setup.cfg
---- ORIG/setup.cfg	2023-12-30 23:55:37.200691057 +0100
+--- ORIG/setup.cfg	2023-12-31 02:34:45.550237821 +0100
 +++ PATCHED/setup.cfg	2023-12-30 23:55:37.201691072 +0100
-@@ -14,6 +14,8 @@
-     License :: OSI Approved :: MIT License
+@@ -15,6 +15,7 @@
      Programming Language :: Python :: 3.9
      Programming Language :: Python :: 3.10
-+    Programming Language :: Python :: 3.11
+     Programming Language :: Python :: 3.11
 +    Programming Language :: Python :: 3.12
  
  project_urls =
      Blog = https://getindico.io/blog/
-@@ -27,7 +29,7 @@
+@@ -28,7 +29,7 @@
  packages = find:
  zip_safe = false
  include_package_data = true
--python_requires = >=3.9.0, <3.11
+-python_requires = >=3.9.0, <3.12
 +python_requires = >=3.9.0, <3.13
  
  [options.packages.find]

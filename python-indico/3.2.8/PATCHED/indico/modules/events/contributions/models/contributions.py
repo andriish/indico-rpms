@@ -35,7 +35,7 @@ from indico.modules.events.sessions.util import session_coordinator_priv_enabled
 from indico.util.iterables import materialize_iterable
 from indico.util.locators import locator_property
 from indico.util.string import format_repr, slugify
-import sys
+
 
 def _get_next_friendly_id(context):
     """Get the next friendly id for a contribution."""
@@ -297,24 +297,14 @@ class Contribution(SearchableTitleMixin, SearchableDescriptionMixin, ProtectionM
         )
     )
     #: The accepted paper revision
-    
-    if sys.version_info.minor>10:
-      _accepted_paper_revision = db.relationship(
+    _accepted_paper_revision = db.relationship(
         'PaperRevision',
         lazy=True,
         viewonly=True,
         uselist=False,
-        primaryjoin=('(PaperRevision._contribution_id == Contribution.id)'),
-      )
-    else:
-      _accepted_paper_revision = db.relationship(
-        'PaperRevision',
-        lazy=True,
-        viewonly=True,
-        uselist=False,
-        primaryjoin=('(PaperRevision._contribution_id == Contribution.id) & (PaperRevision.state == {})'
-                     .format(PaperRevisionState.accepted)),
-      )
+        primaryjoin=lambda: db.and_(PaperRevision._contribution_id == Contribution.id,
+                                    PaperRevision.state == PaperRevisionState.accepted),
+    )
     #: Paper files not submitted for reviewing
     pending_paper_files = db.relationship(
         'PaperFile',
