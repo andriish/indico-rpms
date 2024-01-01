@@ -1,9 +1,37 @@
 #!bin/bash
 
 export PATH=$PATH:$(pwd)
-copr-cli create --chroot fedora-38-x86_64 --chroot fedora-38-x86_64 I328
+copr-cli create --enable-net=on --chroot fedora-38-x86_64 --chroot fedora-39-x86_64 I328
 #find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
+indico-mpp:3.2
+python-indico:3.2.8
+indico-devel:3.2.8
+python3-Flask-Limiter:2.4.0
+python3-Flask-Multipass:0.4.6
+python3-Flask-PluginEngine:0.4
+python3-PyPDF2:2.11.0
+python3-WTForms-SQLAlchemy:0.3
+python3-WTForms-dateutil:0.1
+python3-captcha:0.4
+python3-email_validator:1.2.1
+python3-flask-marshmallow:0.14.0
+python3-flask-url-map-serializer:0.0.1
+python3-flask-webpackext:1.0.2
+python3-hiredis:2.3.2
+python3-indico-fonts:1.1
+python3-iso_4217:0.4.220401
+python3-marshmallow-oneofschema:3.0.1
+python3-marshmallow-sqlalchemy:0.28.0
+python3-marshmallow_dataclass:8.5.3
+python3-pynpm:0.1.2
+python3-pywebpack:1.2.0
+python3-rich:12.2.0
+python3-typing-inspect:0.7.1
+python3-webargs:8.1.0
+
+)
+declare -a BUILDLIST2=( 
 #indico-devel:3.1
 #indico-devel:3.2
 indico-devel:3.2.8
