@@ -50,3 +50,5 @@ b357c78f8f3f3b7cabd061ab2127a6cb  python-email_validator/1.2.1/rpmbuild/SOURCES/
 212fd27ca2c58d9effddec69748d738a  python-pure-eval/0.2.2/rpmbuild/SOURCES/pure_eval-0.2.2.tar.gz
 03b5faa43c0d771a86a2c4cb2575d070  python-bleach/5.0.1/rpmbuild/SOURCES/bleach-5.0.1.tar.gz
 16826bb15de7aeaece082eb65cd024e3  python-pytest-localserver/0.7.0/rpmbuild/SOURCES/pytest-localserver-0.7.0.tar.gz
+1444feceb8213bd94cfece3c6d4ffc5c  python-typing-inspect/0.7.1/rpmbuild/SOURCES/typing_inspect-0.7.1.tar.gz
+55f4bc422345672e2909a6d150a63041  python-authlib/1.0.1/rpmbuild/SOURCES/authlib-1.0.1.tar.gz
