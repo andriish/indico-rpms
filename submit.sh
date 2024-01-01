@@ -21,9 +21,9 @@ python-flask-webpackext:1.0.2
 python-hiredis:2.3.2
 python-indico-fonts:1.1
 python-iso_4217:0.4.220401
-python-marshmallow-oneofschema:3.0.1
-python-marshmallow-sqlalchemy:0.28.0
-python-marshmallow_dataclass:8.5.3
+python-marshmallow_oneofschema:3.0.1
+python-marshmallow_sqlalchemy:0.28.0
+python-marshmallow-dataclass:8.5.3
 python-pynpm:0.1.2
 python-pywebpack:1.2.0
 python-rich:12.2.0
