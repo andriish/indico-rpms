@@ -46,3 +46,7 @@ ef6c1c6ddfbc64c54c54b51e520f8408  python-limits/2.5.2/rpmbuild/SOURCES/limits-2.
 d1a17050730622c29f5bae6f37ebe509  python-rich/12.2.0/rpmbuild/SOURCES/rich-12.2.0.tar.gz
 12860831e50ddc176b2a1197b0933533  python-marshmallow_sqlalchemy/0.28.0/rpmbuild/SOURCES/marshmallow-sqlalchemy-0.28.0.tar.gz
 b357c78f8f3f3b7cabd061ab2127a6cb  python-email_validator/1.2.1/rpmbuild/SOURCES/email_validator-1.2.1.tar.gz
+2a3c492e23794f644b2772d7198e32a7  python-ua-parser/0.10.0/rpmbuild/SOURCES/ua-parser-0.10.0.tar.gz
+212fd27ca2c58d9effddec69748d738a  python-pure-eval/0.2.2/rpmbuild/SOURCES/pure_eval-0.2.2.tar.gz
+03b5faa43c0d771a86a2c4cb2575d070  python-bleach/5.0.1/rpmbuild/SOURCES/bleach-5.0.1.tar.gz
+16826bb15de7aeaece082eb65cd024e3  python-pytest-localserver/0.7.0/rpmbuild/SOURCES/pytest-localserver-0.7.0.tar.gz
