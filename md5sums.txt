@@ -36,3 +36,13 @@ bf85f46441c07451e720aebf21287ddd  python-marshmallow-dataclass/8.5.3/rpmbuild/SO
 62116080b8d3a446e1f0f07cbaf74dc1  python-flask-babel/4.0.0/rpmbuild/SOURCES/flask_babel-4.0.0.tar.gz
 e21801c40acf4e923e204936aea2fc42  python-Flask-Babel/2.0.0/rpmbuild/SOURCES/Flask-Limiter-2.0.0.tar.gz
 4848c9d5305197822b5b00c8e9a6d9aa  python-flask/3.0.0/rpmbuild/SOURCES/flask-3.0.0.tar.gz
+
+595afc8b6e135fe902ba8a29a41b4295  python-stack-data/0.5.0/rpmbuild/SOURCES/stack_data-0.5.0.tar.gz
+7af8f8ae6ea5217134dd7bd115c78ac3  python-matplotlib-inline/0.1.2/rpmbuild/SOURCES/matplotlib-inline-0.1.2.tar.gz
+509a985769df13938c8307b55a614773  python-wtforms/3.0.1/rpmbuild/SOURCES/WTForms-3.0.1.tar.gz
+a6b204e28052df644b081e4c2090f802  python-sentry-sdk/1.5.7/rpmbuild/SOURCES/sentry-python-1.5.7.tar.gz
+f88f02241e8a2c7a20729f58844bf714  python-indico-fonts/1.1/rpmbuild/SOURCES/indico-fonts-1.1.tar.gz
+ef6c1c6ddfbc64c54c54b51e520f8408  python-limits/2.5.2/rpmbuild/SOURCES/limits-2.5.2.tar.gz
+d1a17050730622c29f5bae6f37ebe509  python-rich/12.2.0/rpmbuild/SOURCES/rich-12.2.0.tar.gz
+12860831e50ddc176b2a1197b0933533  python-marshmallow_sqlalchemy/0.28.0/rpmbuild/SOURCES/marshmallow-sqlalchemy-0.28.0.tar.gz
+b357c78f8f3f3b7cabd061ab2127a6cb  python-email_validator/1.2.1/rpmbuild/SOURCES/email_validator-1.2.1.tar.gz
