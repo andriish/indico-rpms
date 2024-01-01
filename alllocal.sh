@@ -4,9 +4,9 @@ export PATH=$PATH:$(pwd)
 
 set -x 
 declare -a BUILDLIST=(
-
-python-indico:3.2.8
-indico-mpp:3.2
+python-flask:3.0.0
+#python-indico:3.2.8
+#indico-mpp:3.2
 #python-PyPDF2:2.11.0
 #python-flask-url-map-serializer:0.0.1
 #python-Flask-Limiter:2.4.0
