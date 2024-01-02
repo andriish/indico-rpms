@@ -1,18 +1,16 @@
-%global srcname pywebpack
-%global srcnamenu pywebpack
+%global srcname marshmallow-sqlalchemy
+%global srcnamenu marshmallow_sqlalchemy
 
 Name:           python-%{srcname}
-Version:        1.2.0
-Release:        2%{?dist}
+Version:        0.29.0
+Release:        1%{?dist}
 Summary:        Example python module
 
 License:        MIT
 URL:            https://pypi.python.org/pypi/ua-parser
 Source:         %{pypi_source}
-Patch0:         python-pywebpack-patch.txt
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel python-pytest-runner
-BuildRequires: python3-werkzeug gcc make
+BuildRequires: python3-pip python3-wheel
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -28,7 +26,7 @@ BuildRequires:  python3-setuptools
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -n %{srcname}-%{version} -p 1
+%autosetup -n %{srcname}-%{version}
 
 %build
 %py3_build

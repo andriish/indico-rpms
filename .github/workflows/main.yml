@@ -9,27 +9,16 @@ on:
 jobs:
 
 
-  compilejobFedora36:
-    runs-on: ubuntu-latest
-    name: Indico_on_Fedora36
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Compile
-      id: compileindocker
-      uses: ./.github/workflows/fedora36
-    - name: Get the output status
-      run: exit ${{ steps.compileindocker.outputs.out }}
 
-  compilejobFedora37:
+  compilejobFedora38:
     runs-on: ubuntu-latest
-    name: Indico_on_Fedora37
+    name: Indico_on_Fedora39
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Compile
       id: compileindocker
-      uses: ./.github/workflows/fedora37
+      uses: ./.github/workflows/fedora39
     - name: Get the output status
       run: exit ${{ steps.compileindocker.outputs.out }}
 
