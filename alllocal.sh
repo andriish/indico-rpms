@@ -11,7 +11,7 @@ python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.2
 python-Flask-PluginEngine:0.5
 python-PyPDF2:2.11.0
-python-WTForms-SQLAlchemy:0.3
+#python-WTForms-SQLAlchemy:0.3
 python-WTForms-dateutil:0.1
 python-captcha:0.5.0
 python-email_validator:1.2.1
@@ -26,8 +26,6 @@ python-marshmallow_sqlalchemy:0.29.0
 python-marshmallow-dataclass:8.6.0
 python-pynpm:0.2.0
 python-pywebpack:1.2.0
-python-rich:12.2.0
-python-typing-inspect:0.7.1
 python-webargs:8.3.0
 )
 

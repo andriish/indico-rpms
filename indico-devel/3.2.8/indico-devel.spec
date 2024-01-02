@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2.8
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -132,7 +132,7 @@ Requires: python3-webencodings
 Requires: python3-werkzeug
 Requires: python3-wtforms >= 3.0.0
 Requires: python3-WTForms-dateutil
-Requires: python3-WTForms-SQLAlchemy
+Requires: python3-wtforms-sqlalchemy
 Requires: python3-zipp
 Requires: uwsgi
 Requires: uwsgi-plugin-python3
