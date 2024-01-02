@@ -1,7 +1,7 @@
 #!bin/bash
 
 export PATH=$PATH:$(pwd)
-copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-40-x86_64 I328
+copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-rawhide-x86_64 I328
 #find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
 indico-mpp:3.2
