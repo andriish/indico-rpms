@@ -12,13 +12,13 @@ jobs:
 
   compilejobFedora38:
     runs-on: ubuntu-latest
-    name: Indico_on_Fedora38
+    name: Indico_on_Fedora39
     steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Compile
       id: compileindocker
-      uses: ./.github/workflows/fedora38
+      uses: ./.github/workflows/fedora39
     - name: Get the output status
       run: exit ${{ steps.compileindocker.outputs.out }}
 

@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM fedora:37
+FROM fedora:39
 
 #Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
