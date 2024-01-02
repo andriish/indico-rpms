@@ -28,8 +28,7 @@ python-hiredis:2.3.2
 #python-indico-fonts:1.1
 python-indico-fonts:1.2
 python-iso_4217:0.4.220401
-#python-marshmallow_oneofschema:3.0.1
-python-marshmallow_oneofschema:3.0.2
+python-marshmallow_oneofschema:3.0.1
 #python-marshmallow_sqlalchemy:0.28.0
 python-marshmallow_sqlalchemy:0.29.0
 #python-marshmallow-dataclass:8.5.3
