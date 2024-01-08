@@ -75,6 +75,7 @@ sed -i 's/indico-plugin-previewer-jupyter.*$//g'  plugins/base/_meta/setup.cfg
 
 
 sed -i 's/\=\=.*$//g' requirements.*
+sed -i 's/importlib/#importlib/g' requirements.*
 #sed -i 's/PREFERRED_PYTHON_VERSION_SPEC =.*/PREFERRED_PYTHON_VERSION_SPEC = \'~='{python3_version}'\'/g' indico/__init__.py
 
 
