@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.2.8
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -75,6 +75,8 @@ sed -i 's/indico-plugin-previewer-jupyter.*$//g'  plugins/base/_meta/setup.cfg
 
 
 sed -i 's/\=\=.*$//g' requirements.*
+sed -i 's/tzdata/#tzdata/g' requirements.*
+sed -i 's/pypdf/#pypdf/g' requirements.*
 sed -i 's/importlib/#importlib/g' requirements.*
 #sed -i 's/PREFERRED_PYTHON_VERSION_SPEC =.*/PREFERRED_PYTHON_VERSION_SPEC = \'~='{python3_version}'\'/g' indico/__init__.py
 
