@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2.8
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -21,6 +21,7 @@ BuildRequires: pyproject-rpm-macros
 
 
 
+Requires: tzdata
 Requires: python3
 Requires: python3-wheel
 Requires: python3-semver
@@ -69,7 +70,7 @@ Requires: python3-html2text
 Requires: python3-html5lib
 Requires: python3-icalendar
 Requires: python3-idna
-Requires: python3-importlib-metadata
+#Requires: python3-importlib-metadata
 Requires: python3-indico-fonts
 Requires: python3-indico-fonts
 Requires: python3-ipython
