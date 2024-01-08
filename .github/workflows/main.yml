@@ -16,7 +16,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Compile
-         run: |
+      run: |
            set -x
            uname -a 
            cat /etc/issue
