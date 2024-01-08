@@ -8,9 +8,7 @@ on:
 
 jobs:
 
-
-
-  compilejobFedora38:
+  compilejobFedora39:
     runs-on: ubuntu-latest
     name: Indico_on_Fedora39
     steps:
