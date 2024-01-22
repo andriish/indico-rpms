@@ -174,5 +174,11 @@ cd indico/web/client  && \
 npm config delete proxy  && \
 npm config delete http-proxy  && \
 npm config delete https-proxy  && \
-npm install
- 
+npm instal
+
+
+RUN  cd indico-3.2.8  && \
+./bin/maintenance/build-wheel.py indico       --ignore-unclean && \
+./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base 
+
+
