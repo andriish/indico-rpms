@@ -177,8 +177,7 @@ npm config delete https-proxy  && \
 npm instal
 
 
-RUN  cd indico-3.2.8  && \
-./bin/maintenance/build-wheel.py indico       --ignore-unclean && \
-./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base 
+RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py indico       --ignore-unclean 
+RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base 
 
 
