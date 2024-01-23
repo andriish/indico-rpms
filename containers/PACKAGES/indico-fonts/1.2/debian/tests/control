@@ -1,0 +1,6 @@
+# We can't use autodep8 because the name of the Debian package is
+# 'indico-fonts' but the name of the Python module is 'enum'.
+
+Test-Command: cd "$AUTOPKGTEST_TMP" ; python3 -c "import indico-fonts"
+Restrictions: superficial
+

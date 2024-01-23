@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-export PYBUILD_NAME=captcha
+export PYBUILD_NAME=indico-fonts
 
 %:
 	dh $@ --with python3  --buildsystem=pybuild

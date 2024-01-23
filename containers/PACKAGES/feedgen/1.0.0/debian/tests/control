@@ -1,0 +1,5 @@
+# We can't use autodep8 because the name of the Debian package is
+# 'feedgen' but the name of the Python module is 'enum'.
+
+Test-Command: cd "$AUTOPKGTEST_TMP" ; pypy -c "import feedgen"
+Restrictions: superficial
