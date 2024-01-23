@@ -1,39 +1,29 @@
-Source: enum34
+Source: captcha
 Maintainer: Debian Python Team <team+python@tracker.debian.org>
-Homepage: https://pypi.python.org/pypi/enum34
+Homepage: https://pypi.python.org/pypi/captcha
 Section: python
 Priority: optional
 Build-Depends: debhelper-compat (= 13),
                dh-python,
                pypy,
                pypy-setuptools,
-               python3-docutils,
-               python3-sphinx,
 Standards-Version: 4.1.1
-Vcs-Git: https://salsa.debian.org/python-team/packages/enum34.git
-Vcs-Browser: https://salsa.debian.org/python-team/packages/enum34
+Vcs-Git: https://salsa.debian.org/python-team/packages/captcha.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/captcha
 
-Package: python-enum34-doc
+Package: python-captcha-doc
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}, ${sphinxdoc:Depends}
 Multi-Arch: foreign
-Description: backport of Python 3.4's enum package (documentation)
- PEP 435 adds an enumeration to Python 3.4.  This module provides a
- backport of that data type for older Python versions.  It defines two
- enumeration classes that can be used to define unit sets of names and
- values: Enum and IntEnum.
+Description: A captcha library that generates audio and image CAPTCHAs.
  .
  This is the common documentation package.
 
-Package: pypy-enum34
+Package: pypy-captcha
 Architecture: all
 Depends: ${misc:Depends}, ${pypy:Depends}
-Suggests: python-enum34-doc
-Description: backport of Python 3.4's enum package (PyPy package)
- PEP 435 adds an enumeration to Python 3.4.  This module provides a
- backport of that data type for older Python versions.  It defines two
- enumeration classes that can be used to define unit sets of names and
- values: Enum and IntEnum.
+Suggests: python-captcha-doc
+Description: A captcha library that generates audio and image CAPTCHAs.
  .
  This is the PyPy compatible package.

@@ -1,22 +1,22 @@
 This work was packaged for Debian by:
 
-    Barry A. Warsaw <barry@debian.org> on 2013-07-01
+    Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> on 2013-07-01
 
 It was downloaded from:
 
-    <http://pypi.python.org/pypi/enum34>
+    <http://pypi.python.org/pypi/captcha>
 
 Upstream Author:
 
-    Ethan Furman <ethan@stoneleaf.us>
+     lepture 
 
 Copyright:
 
-    <Copyright (C) 2013 Ethan Furman>
+    <Copyright (C) 2013  lepture >
 
 License:
 
-    Copyright (c) 2013, Ethan Furman.
+    Copyright (c) 2013,  lepture 
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@ License:
 
 The Debian packaging is:
 
-    Copyright (C) 2013 Barry A. Warsaw <barry@debian.org>
+    Copyright (C) 2013 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 
-and is licensed under the GPL version 3,
-see "/usr/share/common-licenses/GPL-3".
+and is licensed under the BSD License,
+see "/usr/share/common-licenses/BSD-3-Clause".

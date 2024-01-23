@@ -1,6 +1,6 @@
 # We can't use autodep8 because the name of the Debian package is
-# 'enum34' but the name of the Python module is 'enum'.
+# 'captcha' but the name of the Python module is 'enum'.
 
-Test-Command: cd "$AUTOPKGTEST_TMP" ; pypy -c "import enum; print enum"
+Test-Command: cd "$AUTOPKGTEST_TMP" ; pypy -c "import captcha"
 Restrictions: superficial
-Depends: pypy-enum34
+Depends: pypy-captcha
