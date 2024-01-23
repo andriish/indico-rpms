@@ -1,0 +1,39 @@
+Source: enum34
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Homepage: https://pypi.python.org/pypi/enum34
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               pypy,
+               pypy-setuptools,
+               python3-docutils,
+               python3-sphinx,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/enum34.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/enum34
+
+Package: python-enum34-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}, ${sphinxdoc:Depends}
+Multi-Arch: foreign
+Description: backport of Python 3.4's enum package (documentation)
+ PEP 435 adds an enumeration to Python 3.4.  This module provides a
+ backport of that data type for older Python versions.  It defines two
+ enumeration classes that can be used to define unit sets of names and
+ values: Enum and IntEnum.
+ .
+ This is the common documentation package.
+
+Package: pypy-enum34
+Architecture: all
+Depends: ${misc:Depends}, ${pypy:Depends}
+Suggests: python-enum34-doc
+Description: backport of Python 3.4's enum package (PyPy package)
+ PEP 435 adds an enumeration to Python 3.4.  This module provides a
+ backport of that data type for older Python versions.  It defines two
+ enumeration classes that can be used to define unit sets of names and
+ values: Enum and IntEnum.
+ .
+ This is the PyPy compatible package.

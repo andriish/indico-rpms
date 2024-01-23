@@ -1,0 +1,6 @@
+# We can't use autodep8 because the name of the Debian package is
+# 'enum34' but the name of the Python module is 'enum'.
+
+Test-Command: cd "$AUTOPKGTEST_TMP" ; pypy -c "import enum; print enum"
+Restrictions: superficial
+Depends: pypy-enum34
