@@ -176,8 +176,31 @@ npm config delete http-proxy  && \
 npm config delete https-proxy  && \
 npm instal
 
+RUN apt install -y  \
+python3-png python3-xlsxwriter python3-colorclass python3-qrcode python3-ordered-set  python3-wtforms python3-importlib-metadata \
+python3-flaskext.wtf
+
+
+#RUN  cd indico-3.2.8  && pip install -r requirements.txt --break-system-packages --upgrade-strategy only-if-needed
+RUN  cd indico-3.2.8  && \ 
+pip install node-semver indico-fonts pynpm marshmallow-oneofschema marshmallow-dataclass \
+            flask-multipass feedgen captcha wtforms-sqlalchemy wtforms-dateutil pywebpack \
+             flask-webpackext flask-pluginengine flask-limiter   flask-url-map-serializer \
+ --break-system-packages --upgrade-strategy only-if-needed
+
+
+RUN  cd indico-3.2.8  && wget https://raw.githubusercontent.com/andriish/indico-rpms/indico328debian/python-indico/3.2.8/indico-patch.txt && \
+patch -p 1 < indico-patch.txt
 
 RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py indico       --ignore-unclean 
 RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base 
 
+#alembic-1.13.1 captcha-0.5.0 colorclass-2.2.2 feedgen-1.0.0 flask-limiter-3.5.0 flask-multipass-0.5.2 
+#flask-pluginengine-0.5 flask-webpackext-1.0.2 flask-wtf-1.2.1 importlib-metadata-7.0.1 indico-fonts-1.2 
+#marshmallow-dataclass-8.6.0 marshmallow-oneofschema-3.1.0 node-semver-0.9.0 ordered-set-4.1.0 pynpm-0.2.0 
+#pypng-0.20220715.0 pywebpack-1.2.0 qrcode-7.4.2 wtforms-3.1.2 wtforms-dateutil-0.1 wtforms-sqlalchemy-0.4.1 xlsxwriter-3.1.9
 
+
+#alembic-1.13.1 captcha-0.5.0 feedgen-1.0.0 flask-limiter-3.5.0 flask-multipass-0.5.2 flask-pluginengine-0.5
+# flask-webpackext-1.0.2 flask-wtf-1.2.1 importlib-metadata-7.0.1 indico-fonts-1.2 marshmallow-dataclass-8.6.0 
+#marshmallow-oneofschema-3.1.0 node-semver-0.9.0 pynpm-0.2.0 pywebpack-1.2.0 wtforms-3.1.2 wtforms-dateutil-0.1 wtforms-sqlalchemy-0.4.1
