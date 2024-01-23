@@ -5,25 +5,15 @@ Section: python
 Priority: optional
 Build-Depends: debhelper-compat (= 13),
                dh-python,
-               pypy,
-               pypy-setuptools,
+               python3,
+               python3-setuptools,
 Standards-Version: 4.1.1
 Vcs-Git: https://salsa.debian.org/python-team/packages/captcha.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/captcha
 
-Package: python-captcha-doc
+Package: python3-captcha
 Architecture: all
-Section: doc
-Depends: ${misc:Depends}, ${sphinxdoc:Depends}
-Multi-Arch: foreign
+Depends: ${misc:Depends}, ${python3:Depends}
 Description: A captcha library that generates audio and image CAPTCHAs.
  .
- This is the common documentation package.
 
-Package: pypy-captcha
-Architecture: all
-Depends: ${misc:Depends}, ${pypy:Depends}
-Suggests: python-captcha-doc
-Description: A captcha library that generates audio and image CAPTCHAs.
- .
- This is the PyPy compatible package.

@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+export PYBUILD_SYSTEM=distutils 
+export PYBUILD_NAME=captcha
+
+%:
+	dh $@ --with python3 
+

@@ -1,7 +1,0 @@
-#!/usr/bin/make -f
-
-export PYBUILD_NAME=captcha
-
-%:
-	dh $@ --with pypy --buildsystem=pybuild
-
