@@ -1,0 +1,19 @@
+Source: wtforms-dateutil
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Homepage: https://pypi.python.org/pypi/wtforms-dateutil
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/wtforms-dateutil.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/wtforms-dateutil
+
+Package: python3-wtforms-dateutil
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A wtforms-dateutil library that generates audio and image CAPTCHAs.
+ .
+

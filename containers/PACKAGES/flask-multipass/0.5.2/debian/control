@@ -1,0 +1,19 @@
+Source: flask-multipass
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Homepage: https://pypi.python.org/pypi/flask-multipass
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/flask-multipass.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-multipass
+
+Package: python3-flask-multipass
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A flask-multipass library that generates audio and image CAPTCHAs.
+ .
+

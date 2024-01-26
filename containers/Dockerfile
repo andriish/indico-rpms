@@ -185,15 +185,15 @@ python3-flaskext.wtf
 RUN  cd indico-3.2.8  && \ 
 pip install node-semver indico-fonts pynpm marshmallow-oneofschema marshmallow-dataclass \
             flask-multipass feedgen captcha wtforms-sqlalchemy wtforms-dateutil pywebpack \
-             flask-webpackext flask-pluginengine flask-limiter   flask-url-map-serializer \
+             flask-webpackext        flask-pluginengine flask-limiter   flask-url-map-serializer \
  --break-system-packages --upgrade-strategy only-if-needed
 
 
 RUN  cd indico-3.2.8  && wget https://raw.githubusercontent.com/andriish/indico-rpms/indico328debian/python-indico/3.2.8/indico-patch.txt && \
 patch -p 1 < indico-patch.txt
 
-RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py indico       --ignore-unclean 
-RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base 
+#RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py indico       --ignore-unclean 
+#RUN  cd indico-3.2.8  && ./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base 
 
 #alembic-1.13.1 captcha-0.5.0 colorclass-2.2.2 feedgen-1.0.0 flask-limiter-3.5.0 flask-multipass-0.5.2 
 #flask-pluginengine-0.5 flask-webpackext-1.0.2 flask-wtf-1.2.1 importlib-metadata-7.0.1 indico-fonts-1.2 

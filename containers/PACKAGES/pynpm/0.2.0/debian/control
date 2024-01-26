@@ -1,0 +1,19 @@
+Source: pynpm
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Homepage: https://pypi.python.org/pypi/pynpm
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/pynpm.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/pynpm
+
+Package: python3-pynpm
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A pynpm library that generates audio and image CAPTCHAs.
+ .
+

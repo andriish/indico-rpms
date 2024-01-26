@@ -1,0 +1,19 @@
+Source: marshmallow-oneofschema
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Homepage: https://pypi.python.org/pypi/marshmallow-oneofschema
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/marshmallow-oneofschema.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/marshmallow-oneofschema
+
+Package: python3-marshmallow-oneofschema
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A marshmallow-oneofschema library that generates audio and image CAPTCHAs.
+ .
+
