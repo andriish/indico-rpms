@@ -1,0 +1,1 @@
+extend-diff-ignore = "(^|/)(\.editorconfig|pypi-publish\.yml|tests\.yml|\.git-blame-ignore-revs)$"

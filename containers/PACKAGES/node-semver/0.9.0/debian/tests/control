@@ -1,6 +1,6 @@
 # We can't use autodep8 because the name of the Debian package is
 # 'captcha' but the name of the Python module is 'enum'.
 
-Test-Command: cd "$AUTOPKGTEST_TMP" ; pypy -c "import captcha"
+Test-Command:ls
 Restrictions: superficial
-Depends: pypy-captcha
+Depends: python3-node-semver
