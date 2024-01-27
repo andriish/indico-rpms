@@ -181,6 +181,11 @@ python3-png python3-xlsxwriter python3-colorclass python3-qrcode python3-ordered
 python3-flaskext.wtf
 
 
+RUN apt install -y  \ 
+     debhelper-compat dh-python \
+   debhelper-compat dh-python python3-ldap  python3-pytest-runner python3-pytest-runner pybuild-plugin-pyproject flit
+
+
 #RUN  cd indico-3.2.8  && pip install -r requirements.txt --break-system-packages --upgrade-strategy only-if-needed
 RUN  cd indico-3.2.8  && \ 
 pip install node-semver indico-fonts pynpm marshmallow-oneofschema marshmallow-dataclass \
