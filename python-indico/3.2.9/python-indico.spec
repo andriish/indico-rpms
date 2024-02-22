@@ -9,7 +9,7 @@ Summary:        Indico package
 License:        MIT
 URL:            https://getindico.io/
 Source0:        https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
-Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.9.tar.gz
+Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
 Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires: git
@@ -49,7 +49,7 @@ Requires: python3-%{srcname}
 %autosetup  -n indico-%{version} -p 1
 %setup -q -T -D -a 1 -n indico-%{version} 
 mkdir -p plugins
-mv indico-plugins-3.2.9 plugins/base
+mv indico-plugins-3.2.2 plugins/base
 rm -rf plugins/base/piwik
 rm -rf plugins/base/themes_legacy
 rm -rf plugins/base/ursh
