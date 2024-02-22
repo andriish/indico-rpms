@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.2.8
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -36,6 +36,7 @@ Requires: python3-bcrypt
 Requires: python3-billiard
 Requires: python3-bleach
 Requires: python3-blinker
+Requires: python3-boto3
 Requires: python3-celery
 Requires: python3-certifi
 Requires: python3-cffi
