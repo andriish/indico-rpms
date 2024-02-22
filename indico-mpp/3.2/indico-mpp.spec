@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.2
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
@@ -44,6 +44,7 @@ BuildRequires: pyproject-rpm-macros
 BuildRequires: python3-ldap
 
 Conflicts: python3-indico-dummy
+Requires: python3-indico
 
  
 %global _description %{expand:
