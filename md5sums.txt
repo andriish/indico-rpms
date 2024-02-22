@@ -2,6 +2,9 @@ aba3c651a027c922195648926a260c75  python-indico/3.2.8/rpmbuild/SOURCES/v3.2.8.zi
 a572c9fdce9ddca4c52ed4a037a743af  python-indico/3.2.8/rpmbuild/SOURCES/v3.2.2.tar.gz
 7d2de65b48c64cc975d89ab1712ff5f5  python-indico-fonts/1.2/rpmbuild/SOURCES/indico-fonts-1.2.tar.gz
 
+78442cfca8307012293da3ebbaa0d4ee python-indico/3.2.9/rpmbuild/SOURCES/v3.2.9.zip
+
+
 c23404494fff6338f98f20b3216cfe70  python-captcha/0.4/rpmbuild/SOURCES/captcha-0.4.tar.gz
 2591483740126a92e3840b416e8a5bce  python-Flask-Limiter/2.4.0/rpmbuild/SOURCES/Flask-Limiter-2.4.0.tar.gz
 b201fa273e55d5d361ff31a5831f5d3f  python-flask-marshmallow/0.14.0/rpmbuild/SOURCES/flask-marshmallow-0.14.0.tar.gz
