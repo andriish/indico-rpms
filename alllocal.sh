@@ -5,8 +5,8 @@ export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
 indico-mpp:3.2
-python-indico:3.2.8
-indico-devel:3.2.8
+python-indico:3.2.9
+indico-devel:3.2.9
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.2
 python-Flask-PluginEngine:0.5
