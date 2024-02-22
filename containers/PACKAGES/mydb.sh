@@ -13,3 +13,5 @@ wget $u -O ../$p"_"$v.orig.tar.gz
 tar zxfv ../$p"_"$v.orig.tar.gz 
 mv $P-$v/* ./
 dpkg-buildpackage -us -uc
+cd 
+#apt-get install ./$p/$v/mydbtop/*deb

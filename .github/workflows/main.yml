@@ -22,12 +22,35 @@ jobs:
            cat /etc/issue
            dnf -y install dnf* rpm-build git wget sed createrepo wget
            dnf -y install python3-devel python3-setuptools python-srpm-macros python3-rpm-macros pyproject-rpm-macros
-           dnf -y copr enable averbyts/I328
+           dnf -y copr enable averbyts/I329
            export PATH=$PATH:$(pwd)
-           set -x 
-           sh srpmsbuild.sh  indico-devel 3.2.8 --build 
-           yum -y install indico-devel/3.2.8/rpmbuild/RPMS/*/*.rpm --skip-broken
-           mkdir -p /github/home/.npm
-           chown -R 1001:121 "/github/home/.npm"
-           sh srpmsbuild.sh  python-indico 3.2.8 --build 
-           yum -y install wget  python-indico/3.2.8/rpmbuild/RPMS/*/*.rpm --skip-broken
+           #set -x 
+           #sh srpmsbuild.sh  indico-devel 3.2.9 --build 
+           #yum -y install indico-devel/3.2.9/rpmbuild/RPMS/*/*.rpm --skip-broken
+           #mkdir -p /github/home/.npm
+           #chown -R 1001:121 "/github/home/.npm"
+           #sh srpmsbuild.sh  python-indico 3.2.9 --build 
+           #yum -y install wget  python-indico/3.2.9/rpmbuild/RPMS/*/*.rpm --skip-broken
+
+
+  compilejobDebian12:
+    runs-on: ubuntu-latest
+    name: Indico_on_Debian12
+    container:
+        image: debian:12
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Compile
+      run: |
+           set -x
+           uname -a 
+           cat /etc/issue
+           apt-get update
+           apt-get -y install wget  dpkg-dev
+           apt-get -y install dh-python python3 python3-setuptools python3-pytest debhelper-compat  pybuild-plugin-pyproject flit
+           apt-get -y install python3-typing-inspect python3-semver python3-pip python3-flask python3-ldap python3-pytest-runner
+           apt-get -y install python3-lxml python3-limits python3-ordered-set python3-dateutil python3-sqlalchemy python3-wtforms python3-flaskext.wtf
+           export PATH=$PATH:$(pwd)
+           cd contaoners/PACKAGES
+           sh build.sh

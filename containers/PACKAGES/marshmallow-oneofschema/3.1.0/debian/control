@@ -8,7 +8,8 @@ Build-Depends: debhelper-compat (= 13),
                python3,
                python3-setuptools,
                pybuild-plugin-pyproject,
-               flit
+               flit,
+               python3-marshmallow
 Standards-Version: 4.1.1
 Vcs-Git: https://salsa.debian.org/python-team/packages/marshmallow-oneofschema.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/marshmallow-oneofschema
