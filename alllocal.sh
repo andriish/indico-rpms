@@ -8,7 +8,7 @@ indico-mpp:3.2
 python-indico:3.2.9
 indico-devel:3.2.9
 python-Flask-Limiter:3.5.0
-python-Flask-Multipass:0.5.2
+python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
 python-PyPDF2:2.11.0
 python-WTForms-dateutil:0.1
