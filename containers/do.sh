@@ -44,7 +44,7 @@ mv $P-$v/* ./
 dpkg-buildpackage -us -uc
 cd $TTOP
 apt-get -y install ./$p/$v/mydbtop/*deb
-)  &> logs/$p$v".log" || echo "$p $v build failed"  
+)  &> logs/$p$v".log" || (echo "$p $v build failed"  && cat logs/$p$v".log" )
 done
 wait
 exit
