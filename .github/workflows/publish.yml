@@ -116,6 +116,7 @@ jobs:
            apt-get update
            export PATH=$PATH:$(pwd)
            bash deb_alllocal.sh
+           ls DEB/*/*/mydbtop/*deb
   
   
   
