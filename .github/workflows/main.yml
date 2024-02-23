@@ -53,15 +53,15 @@ jobs:
            apt-get -y install python3-lxml python3-limits python3-ordered-set python3-dateutil python3-sqlalchemy python3-wtforms python3-flaskext.wtf
            export TOP=$(pwd)
            export PATH=$PATH:$(pwd)
-           cd containers/PACKAGES
-           bash ../do.sh
+           cd DEB
+           bash ../debianalllocal.sh
            apt-get -y install unzip npm
            mkdir COMPILE
            cd COMPILE/
            wget https://github.com/indico/indico/archive/refs/tags/v3.2.9.zip
-           unzip v3.2.9.zip 
+           unzip -q v3.2.9.zip 
            wget https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
-           tar xfv  v3.2.2.tar.gz 
+           tar xf  v3.2.2.tar.gz 
            cd indico-3.2.9/
            cp -r $TOP/python-indico/3.2.9/PATCHED/* ./
            mkdir -p plugins
