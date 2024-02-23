@@ -69,7 +69,7 @@ if ( int(bleach.__version__[0]) > 5 ):
     'width', 'wrap'
  ], 'img': [*BLEACH_ALLOWED_ATTRIBUTES['img'], 'usemap'], 'area': ['coords']}
 else:
- BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES + {'*': [
+ BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES | {'*': [
     'align', 'abbr', 'alt', 'border', 'bgcolor', 'class', 'cellpadding', 'cellspacing', 'color', 'char', 'charoff',
     'cite', 'clear', 'colspan', 'compact', 'dir', 'disabled', 'face', 'href', 'height', 'headers', 'hreflang', 'hspace',
     'id', 'ismap', 'lang', 'name', 'noshade', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'size', 'scope', 'shape',
