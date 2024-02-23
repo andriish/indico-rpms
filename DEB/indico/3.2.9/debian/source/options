@@ -1,1 +1,1 @@
-extend-diff-ignore = "(^|/)(\.editorconfig|pypi-publish\.yml|tests\.yml|.*\.png|.*\.sh|\..*|.*plugins*|requirements.*|messages\.po|.*\.py|.*\.html|.*\.md|.*\.cfg|.*\.ini|.*\.in|.*\.po|.*\.yml|.*\.json|.*\.pot|.*\.yaml|LICENSE)$"
+extend-diff-ignore = "(^|/)(\.editorconfig|pypi-publish\.yml|tests\.yml|.*\.png|__init__\.py|\.no-headers|manage-i18n.sh|run-tests.sh)$"
