@@ -51,6 +51,7 @@ jobs:
            apt-get -y install dh-python python3 python3-setuptools python3-pytest debhelper-compat  pybuild-plugin-pyproject flit
            apt-get -y install python3-typing-inspect python3-semver python3-pip python3-flask python3-ldap python3-pytest-runner python3-marshmallow
            apt-get -y install python3-lxml python3-limits python3-ordered-set python3-dateutil python3-sqlalchemy python3-wtforms python3-flaskext.wtf
+           export TOP=$(pwd)
            export PATH=$PATH:$(pwd)
            cd containers/PACKAGES
            bash ../do.sh
@@ -62,6 +63,7 @@ jobs:
            wget https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
            tar xfv  v3.2.2.tar.gz 
            cd indico-3.2.9/
+           cp -r $TOP/python-indico/3.2.9/PATCHED/* ./
            mkdir -p plugins
            mv ../indico-plugins-3.2.2/ plugins/base
            rm -rf plugins/base/piwik
