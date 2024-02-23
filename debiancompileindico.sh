@@ -6,9 +6,9 @@
            cp python-indico/3.2.9/indico-patch.txt  DEB/indico/3.2.9/debian/patches/000-import.patch     
            mkdir COMPILE
            cd COMPILE/
-           wget https://github.com/indico/indico/archive/refs/tags/v3.2.9.zip
+           wget -q https://github.com/indico/indico/archive/refs/tags/v3.2.9.zip
            unzip -q v3.2.9.zip 
-           wget https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
+           wget -q https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
            tar xf  v3.2.2.tar.gz 
            cd indico-3.2.9/
            cp -r $TOP/python-indico/3.2.9/PATCHED/* ./
