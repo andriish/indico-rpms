@@ -95,7 +95,7 @@ jobs:
       run : |
          export indico_DATA_PATH=$(pwd)/share/indico
   
-    run-in-indico-docker-image-Debian12:
+  run-in-indico-docker-image-Debian12:
     name: Run in indico Docker image  with gmake
     runs-on: ubuntu-latest
     needs: build-indico-docker-image-Debian12
