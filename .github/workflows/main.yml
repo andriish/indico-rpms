@@ -55,7 +55,7 @@ jobs:
            export PATH=$PATH:$(pwd)
            cd DEB
            bash ../debianalllocal.sh
-           apt-get -y install unzip npm
+           apt-get -y install unzip npm python3-yaml
            mkdir COMPILE
            cd COMPILE/
            wget https://github.com/indico/indico/archive/refs/tags/v3.2.9.zip
