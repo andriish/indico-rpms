@@ -23,7 +23,6 @@ wtforms-sqlalchemy:0.4.1:WTForms-SQLAlchemy
 )
 
 #declare -a BUILDLIST=(
-#pywebpack:1.2.0:pywebpack
 #)
 TTOP=$(pwd)
 mkdir -p logs/
@@ -57,4 +56,56 @@ apt-get -y install ./$p/$v/mydbtop/*deb
 )  &> logs/$p$v".log" || (echo "$p $v build failed"  && cat logs/$p$v".log" )
 done
 wait
+
+exit
+(
+p=indico
+v=3.2.9
+P=indico
+
+
+cd $p/$v
+TOP=$(pwd)
+rm -rf mydbtop
+mkdir -p mydbtop/BUILD
+cd mydbtop/BUILD
+cp -r $TOP/debian ./
+wget https://github.com/indico/indico/archive/refs/tags/v$v.tar.gz -O ../$p"_"$v.orig.tar.gz     
+wget https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz -O  ../v3.2.2.tar.gz
+
+tar zxf ../$p"_"$v.orig.tar.gz 
+tar zxf ../v3.2.2.tar.gz 
+
+
+mv $P-$v/* ./
+
+ mkdir -p plugins
+           mv indico-plugins-3.2.2/ plugins/base
+           rm -rf plugins/base/piwik
+           rm -rf plugins/base/themes_legacy
+           rm -rf plugins/base/ursh
+           rm -rf plugins/base/vc_zoom
+           rm -rf plugins/base/cloud_captchas
+           rm -rf plugins/base/owncloud
+           rm -rf plugins/base/previewer_jupyter
+           sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
+           sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
+           sed -i 's/indico-plugin-piwik.*$//g'    plugins/base/_meta/setup.cfg
+           sed -i 's/indico-plugin-ursh.*$//g'     plugins/base/_meta/setup.cfg
+           sed -i 's/indico-plugin-vc-zoom.*$//g'  plugins/base/_meta/setup.cfg
+           sed -i 's/indico-plugin-cloud-captchas.*$//g'  plugins/base/_meta/setup.cfg
+           sed -i 's/indico-plugin-owncloud.*$//g'  plugins/base/_meta/setup.cfg
+           sed -i 's/indico-plugin-previewer-jupyter.*$//g'  plugins/base/_meta/setup.cfg
+           sed -i 's/\=\=.*$//g' requirements.*
+           sed -i 's/tzdata/#tzdata/g' requirements.*
+           sed -i 's/pypdf/#pypdf/g' requirements.*
+           sed -i 's/importlib/#importlib/g' requirements.*
+
+dpkg-buildpackage -us -uc
+cd $TTOP
+apt-get -y install ./$p/$v/mydbtop/*deb
+)   > logs/$p$v".log" || (echo "$p $v build failed"  && cat logs/$p$v".log" )
+
+
+
 exit
