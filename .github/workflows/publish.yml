@@ -5,38 +5,6 @@ on:
   schedule:
     - cron: "0 7 * * 2"
 jobs:
-  build-indico-docker-image-Debian12:
-    runs-on: ubuntu-latest
-    name: Debian image
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-          fetch-depth: 2 
-    - name: Check if the Docker file was changed
-      id: changed-docker-files
-      uses: tj-actions/changed-files@v38
-      with:
-          files: Debian12
-
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v2
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the indico Docker image on the change of Dockerfile
-      if: steps.changed-docker-files.outputs.any_changed == 'true' 
-      run: |
-         docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
-         docker run ghcr.io/andriish/indicodebian12:latest
-         docker push ghcr.io/andriish/indicodebian12:latest
-    - name: Build the indico Docker image on schedule
-      if: ${{ github.event_name == 'schedule' }}
-      run: |
-         docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
-         docker run ghcr.io/andriish/indicodebian12:latest
-         docker push ghcr.io/andriish/indicodebian12:latest
 
 
   build-indico-docker-image-Fedora39:
@@ -72,9 +40,38 @@ jobs:
          docker run ghcr.io/andriish/indicofedora39:latest
          docker push ghcr.io/andriish/indicofedora39:latest
 
+  build-indico-docker-image-Debian12:
+    runs-on: ubuntu-latest
+    name: Debian image
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+          fetch-depth: 2 
+    - name: Check if the Docker file was changed
+      id: changed-docker-files
+      uses: tj-actions/changed-files@v38
+      with:
+          files: Debian12
 
-
-
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build the indico Docker image on the change of Dockerfile
+      if: steps.changed-docker-files.outputs.any_changed == 'true' 
+      run: |
+         docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
+         docker run ghcr.io/andriish/indicodebian12:latest
+         docker push ghcr.io/andriish/indicodebian12:latest
+    - name: Build the indico Docker image on schedule
+      if: ${{ github.event_name == 'schedule' }}
+      run: |
+         docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
+         docker run ghcr.io/andriish/indicodebian12:latest
+         docker push ghcr.io/andriish/indicodebian12:latest
 
 
   run-in-indico-docker-image-Fedora39:
@@ -91,9 +88,6 @@ jobs:
       uses: actions/checkout@v4
       with:
           fetch-depth: 3 
-#    - uses: actions/setup-node@v4
-#      with:
-#        cache: 'npm'
     - name: Run
       run : |
            export PATH=$PATH:$(pwd)
@@ -113,10 +107,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-          fetch-depth: 3 
-#    - uses: actions/setup-node@v4
-#      with:
-#        cache: 'npm'          
+          fetch-depth: 3          
     - name: Run
       run : |
            set -x
@@ -124,7 +115,7 @@ jobs:
            cat /etc/issue
            apt-get update
            export PATH=$PATH:$(pwd)
-           bash debianalllocal.sh
+           bash deb_alllocal.sh
   
   
   
