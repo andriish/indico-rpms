@@ -141,3 +141,17 @@ RUN apt install -y  \
      debhelper-compat dh-python \
    debhelper-compat dh-python python3-ldap  python3-pytest-runner python3-pytest-runner pybuild-plugin-pyproject flit
 
+
+
+
+
+RUN            apt-get -y -q install wget  dpkg-dev  \
+           dh-python python3 python3-setuptools python3-pytest debhelper-compat  pybuild-plugin-pyproject flit \
+           python3-typing-inspect python3-semver python3-pip python3-flask python3-ldap python3-pytest-runner python3-marshmallow \
+           python3-lxml python3-limits python3-ordered-set python3-dateutil python3-sqlalchemy python3-wtforms python3-flaskext.wtf \
+           unzip npm python3-yaml python3-celery python3-bleach python3-email-validator python3-markdown python3-translitcodec \
+           unzip python3-html2text python3-sentry-sdk python3-authlib python3-flask-babel python3-speaklater python3-cachelib python3-flask-caching   \
+           python3-redis python3-terminaltables python3-flask-sqlalchemy python3-jsonschema python3-ua-parser python3-colorclass  \
+           python3-flask-marshmallow python3-marshmallow-sqlalchemy python3-marshmallow-enum python3-webargs python3-bcrypt python3-executing python3-pure-eval \
+           python3-reportlab python3-qrcode python3-icalendar python3-pycountry python3-xlsxwriter python3-distro
+
