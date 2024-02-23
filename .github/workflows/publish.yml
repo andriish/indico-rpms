@@ -1,0 +1,97 @@
+name: publish
+on: 
+  push:
+  pull_request:  
+  schedule:
+    - cron: "0 7 * * 2"
+jobs:
+  build-indico-docker-image-Debian12:
+    runs-on: ubuntu-latest
+    name: Build indico Docker image
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+          fetch-depth: 2 
+    - name: Check if the Docker file was changed
+      id: changed-docker-files
+      uses: tj-actions/changed-files@v38
+      with:
+          files: Debian12
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build the indico Docker image on the change of Dockerfile
+      if: steps.changed-docker-files.outputs.any_changed == 'true' 
+      run: |
+         docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
+         docker run ghcr.io/andriish/indicodebian12:latest
+         docker push ghcr.io/andriish/indico
+    - name: Build the indico Docker image on schedule
+      if: ${{ github.event_name == 'schedule' }}
+      run: |
+         docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
+         docker run ghcr.io/andriish/indicodebian12:latest
+         docker push ghcr.io/andriish/indico
+
+
+  build-indico-docker-image-Fedora39:
+    runs-on: ubuntu-latest
+    name: Build indico Docker image
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+          fetch-depth: 2 
+    - name: Check if the Docker file was changed
+      id: changed-docker-files
+      uses: tj-actions/changed-files@v38
+      with:
+          files: Fedora39
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build the indico Docker image on the change of Dockerfile
+      if: steps.changed-docker-files.outputs.any_changed == 'true' 
+      run: |
+         docker build . -f Fedora39 --tag ghcr.io/andriish/indicofedora39:latest
+         docker run ghcr.io/andriish/indicofedora39:latest
+         docker push ghcr.io/andriish/indico
+    - name: Build the indico Docker image on schedule
+      if: ${{ github.event_name == 'schedule' }}
+      run: |
+         docker build . -f Fedora39 --tag ghcr.io/andriish/indicofedora39:latest
+         docker run ghcr.io/andriish/indicofedora39:latest
+         docker push ghcr.io/andriish/indico
+
+
+
+
+
+
+  run-in-indico-docker-image-Fedora39:
+    name: Run in indico Docker image  with gmake
+    runs-on: ubuntu-latest
+    needs: build-indico-docker-image
+    container:
+            image: ghcr.io/andriish/indicofedora39:latest
+            credentials:
+               username: ${{ github.actor }}
+               password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+          fetch-depth: 3 
+    - name: Run
+      run : |
+         export indico_DATA_PATH=$(pwd)/share/indico
+  
