@@ -1,5 +1,9 @@
 #!/bin/bash
-           export TOP=$(pwd)           
+           export TOP=$(pwd)
+           cd python-indico/3.2.9
+           sh do.sh
+           cd $TOP
+           cp python-indico/3.2.9/indico-patch.txt  DEB/indico/3.2.9/debian/patches/000-import.patch     
            mkdir COMPILE
            cd COMPILE/
            wget https://github.com/indico/indico/archive/refs/tags/v3.2.9.zip

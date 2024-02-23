@@ -126,8 +126,8 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
 diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
 --- ORIG/indico/util/string.py	2024-02-23 06:35:11.249129052 +0100
-+++ PATCHED/indico/util/string.py	2024-02-23 16:04:52.301731521 +0100
-@@ -33,10 +33,17 @@
++++ PATCHED/indico/util/string.py	2024-02-23 17:20:34.506658479 +0100
+@@ -33,25 +33,50 @@
  
  
  # basic list of tags, used for markdown content
@@ -146,8 +146,45 @@ diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
 + 
  BLEACH_ALLOWED_ATTRIBUTES = {**bleach.ALLOWED_ATTRIBUTES, 'img': ['src', 'alt', 'style']}
  # extended list of tags, used for HTML content
- BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS | {
-@@ -168,9 +175,7 @@
+-BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS | {
++if ( int(bleach.__version__[0]) > 5 ):
++ BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS | {
++    'address', 'area', 'bdo', 'big', 'caption', 'center', 'cite', 'col', 'colgroup', 'del', 'dfn', 'dir', 'div',
++    'fieldset', 'font', 'ins', 'kbd', 'legend', 'map', 'menu', 'q', 's', 'samp', 'span', 'strike', 'tfoot', 'tt', 'u',
++    'var'
++ }
++else:
++ BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS + [
+     'address', 'area', 'bdo', 'big', 'caption', 'center', 'cite', 'col', 'colgroup', 'del', 'dfn', 'dir', 'div',
+     'fieldset', 'font', 'ins', 'kbd', 'legend', 'map', 'menu', 'q', 's', 'samp', 'span', 'strike', 'tfoot', 'tt', 'u',
+     'var'
+-}
++ ]
++
+ # yuck, this is ugly, but all these attributes were allowed in legacy...
+-BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES | {'*': [
++if ( int(bleach.__version__[0]) > 5 ):
++ BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES | {'*': [
+     'align', 'abbr', 'alt', 'border', 'bgcolor', 'class', 'cellpadding', 'cellspacing', 'color', 'char', 'charoff',
+     'cite', 'clear', 'colspan', 'compact', 'dir', 'disabled', 'face', 'href', 'height', 'headers', 'hreflang', 'hspace',
+     'id', 'ismap', 'lang', 'name', 'noshade', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'size', 'scope', 'shape',
+     'span', 'src', 'start', 'style', 'summary', 'tabindex', 'target', 'title', 'type', 'valign', 'value', 'vspace',
+     'width', 'wrap'
+-], 'img': [*BLEACH_ALLOWED_ATTRIBUTES['img'], 'usemap'], 'area': ['coords']}
++ ], 'img': [*BLEACH_ALLOWED_ATTRIBUTES['img'], 'usemap'], 'area': ['coords']}
++else:
++ BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES + ['*': [
++    'align', 'abbr', 'alt', 'border', 'bgcolor', 'class', 'cellpadding', 'cellspacing', 'color', 'char', 'charoff',
++    'cite', 'clear', 'colspan', 'compact', 'dir', 'disabled', 'face', 'href', 'height', 'headers', 'hreflang', 'hspace',
++    'id', 'ismap', 'lang', 'name', 'noshade', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'size', 'scope', 'shape',
++    'span', 'src', 'start', 'style', 'summary', 'tabindex', 'target', 'title', 'type', 'valign', 'value', 'vspace',
++    'width', 'wrap'
++ ], 'img': [*BLEACH_ALLOWED_ATTRIBUTES['img'], 'usemap'], 'area': ['coords']]
++
+ BLEACH_ALLOWED_STYLES_HTML = [
+     'background-color', 'border-top-color', 'border-top-style', 'border-top-width', 'border-top', 'border-right-color',
+     'border-right-style', 'border-right-width', 'border-right', 'border-bottom-color', 'border-bottom-style',
+@@ -168,9 +193,7 @@
          if extra_html:
              result = sanitize_html(result)
          else:
