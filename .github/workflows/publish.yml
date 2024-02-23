@@ -30,13 +30,13 @@ jobs:
       run: |
          docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
          docker run ghcr.io/andriish/indicodebian12:latest
-         docker push ghcr.io/andriish/indico
+         docker push ghcr.io/andriish/indico-rpms
     - name: Build the indico Docker image on schedule
       if: ${{ github.event_name == 'schedule' }}
       run: |
          docker build . -f Debian12 --tag ghcr.io/andriish/indicodebian12:latest
          docker run ghcr.io/andriish/indicodebian12:latest
-         docker push ghcr.io/andriish/indico
+         docker push ghcr.io/andriish/indico-rpms
 
 
   build-indico-docker-image-Fedora39:
@@ -64,13 +64,13 @@ jobs:
       run: |
          docker build . -f Fedora39 --tag ghcr.io/andriish/indicofedora39:latest
          docker run ghcr.io/andriish/indicofedora39:latest
-         docker push ghcr.io/andriish/indico
+         docker push ghcr.io/andriish/indico-rpms
     - name: Build the indico Docker image on schedule
       if: ${{ github.event_name == 'schedule' }}
       run: |
          docker build . -f Fedora39 --tag ghcr.io/andriish/indicofedora39:latest
          docker run ghcr.io/andriish/indicofedora39:latest
-         docker push ghcr.io/andriish/indico
+         docker push ghcr.io/andriish/indico-rpms
 
 
 
