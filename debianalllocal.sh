@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export PATH=$PATH:$(pwd)
-
+cd DEB
 #set -x 
 declare -a BUILDLIST=(
 flask-limiter:3.5.0:Flask-Limiter
@@ -56,7 +56,7 @@ apt-get -y install ./$p/$v/mydbtop/*deb
 )  &> logs/$p$v".log" || (echo "$p $v build failed"  && cat logs/$p$v".log" )
 done
 wait
-
+cd ../
 exit
 (
 p=indico
