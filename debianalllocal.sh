@@ -22,6 +22,9 @@ wtforms-dateutil:0.1:WTForms-dateutil
 wtforms-sqlalchemy:0.4.1:WTForms-SQLAlchemy
 )
 
+#declare -a BUILDLIST=(
+#pywebpack:1.2.0:pywebpack
+#)
 TTOP=$(pwd)
 mkdir -p logs/
 for a in "${BUILDLIST[@]}" 
