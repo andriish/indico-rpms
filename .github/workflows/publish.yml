@@ -88,9 +88,12 @@ jobs:
                password: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
           fetch-depth: 3 
+    - uses: actions/setup-node@v4
+      with:
+        cache: 'npm'
     - name: Run
       run : |
            export PATH=$PATH:$(pwd)
@@ -108,9 +111,12 @@ jobs:
                password: ${{ secrets.GITHUB_TOKEN }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
           fetch-depth: 3 
+    - uses: actions/setup-node@v4
+      with:
+        cache: 'npm'          
     - name: Run
       run : |
            set -x
