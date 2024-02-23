@@ -53,6 +53,5 @@ jobs:
            apt-get -y install python3-lxml python3-limits python3-ordered-set python3-dateutil python3-sqlalchemy python3-wtforms python3-flaskext.wtf
            apt-get -y install unzip npm python3-yaml python3-celery python3-bleach python3-email-validator python3-markdown
            export PATH=$PATH:$(pwd)
-
            bash debianalllocal.sh
            bash debiancompileindico.sh
