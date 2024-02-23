@@ -1,19 +1,17 @@
-%global srcname hiredis
-%global srcnamenu hiredis
+%global srcname Flask-Multipass
+%global srcnamenu flask_multipass
 
 Name:           python-%{srcname}
-Version:        2.3.2
+Version:        0.5.3
 Release:        1%{?dist}
 Summary:        Example python module
 
 License:        MIT
-URL:            https://github.com/redis/hiredis-py
+URL:            https://pypi.python.org/pypi/ua-parser
 Source:         %{pypi_source}
-#BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
-BuildRequires: python3-werkzeug 
-BuildRequires: gcc 
-BuildRequires: make
+BuildArch:      noarch
+BuildRequires: python3-pip python3-wheel 
+
 %global _description %{expand:
 A python module which provides a convenient example. This is the
 rest of the description that provides more details.}
@@ -22,7 +20,6 @@ rest of the description that provides more details.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  gcc-c++
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
@@ -40,8 +37,8 @@ BuildRequires:  python3-setuptools
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 
-%{python3_sitearch}/%{srcnamenu}-*.egg-info/
-%{python3_sitearch}/%{srcnamenu}/
+%{python3_sitelib}/*.egg-info/
+%{python3_sitelib}/%{srcnamenu}/
 
 %changelog
 * Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>

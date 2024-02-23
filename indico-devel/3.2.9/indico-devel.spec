@@ -3,8 +3,8 @@
 %global srcnamenu indico-devel
 
 Name:           indico-devel
-Version:        3.2.8
-Release:        8%{?dist}
+Version:        3.2.9
+Release:        1%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -236,6 +236,8 @@ install -m 755  indico-devel-start-indico.sh %{buildroot}/%{_bindir}
 
 
 %changelog
+* Thu Feb 22 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2.9
+- Version 3.2.9 
 * Wed Sep 28 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2
 - Version 3.2. 
 
