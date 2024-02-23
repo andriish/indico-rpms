@@ -7,7 +7,7 @@ on:
 jobs:
   build-indico-docker-image-Debian12:
     runs-on: ubuntu-latest
-    name: Build indico Docker image
+    name: Debian image
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -41,7 +41,7 @@ jobs:
 
   build-indico-docker-image-Fedora39:
     runs-on: ubuntu-latest
-    name: Build indico Docker image
+    name: Fedora image
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -78,7 +78,7 @@ jobs:
 
 
   run-in-indico-docker-image-Fedora39:
-    name: Run in indico Docker image  with gmake
+    name: Fedora
     runs-on: ubuntu-latest
     needs: build-indico-docker-image-Fedora39
     container:
@@ -98,7 +98,7 @@ jobs:
            sh srpmsbuild.sh  python-indico 3.2.9 --build 
   
   run-in-indico-docker-image-Debian12:
-    name: Run in indico Docker image  with gmake
+    name: Debian
     runs-on: ubuntu-latest
     needs: build-indico-docker-image-Debian12
     container:
