@@ -1,5 +1,5 @@
 Source: feedgen
-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
 Homepage: https://pypi.python.org/pypi/feedgen
 Section: python
 Priority: optional
@@ -16,6 +16,6 @@ Vcs-Browser: https://salsa.debian.org/python-team/packages/feedgen
 Package: python3-feedgen
 Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}
-Description: A feedgen library that generates audio and image CAPTCHAs.
+Description: This module can be used to generate web feeds in both ATOM and RSS format. 
  .
 

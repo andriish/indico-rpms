@@ -1,5 +1,5 @@
 Source: wtforms-dateutil
-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
 Homepage: https://pypi.python.org/pypi/wtforms-dateutil
 Section: python
 Priority: optional

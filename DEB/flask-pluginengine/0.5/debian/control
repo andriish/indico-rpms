@@ -1,5 +1,5 @@
 Source: flask-pluginengine
-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
 Homepage: https://pypi.python.org/pypi/flask-pluginengine
 Section: python
 Priority: optional

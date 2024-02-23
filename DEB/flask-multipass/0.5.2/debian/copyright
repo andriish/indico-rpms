@@ -1,6 +1,6 @@
 This work was packaged for Debian by:
 
-    Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> on 2013-07-01
+    Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> on 2024-02-23
 
 It was downloaded from:
 
@@ -51,7 +51,7 @@ License:
 
 The Debian packaging is:
 
-    Copyright (C) 2013 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
+    Copyright (C) 2024 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 
 and is licensed under the BSD License,
 see "/usr/share/common-licenses/BSD-3-Clause".

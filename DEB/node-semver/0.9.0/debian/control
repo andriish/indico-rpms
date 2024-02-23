@@ -1,5 +1,5 @@
 Source: node-semver
-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
 Homepage: https://pypi.python.org/pypi/node-semver
 Section: python
 Priority: optional

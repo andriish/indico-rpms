@@ -1,6 +1,6 @@
 semver (3.0.2-1) unstable; urgency=medium
 
-  [ Boyuan Yang ]
-  * New upstream release.
+  [ Andrii Verbytskyi ]
+  * First packaging.
 
  -- Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>  Tue, 12 Apr 2022 15:02:11 -0400

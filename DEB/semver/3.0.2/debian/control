@@ -1,5 +1,5 @@
 Source: semver
-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
 Homepage: https://pypi.python.org/pypi/semver
 Section: python
 Priority: optional

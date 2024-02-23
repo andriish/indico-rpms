@@ -1,5 +1,5 @@
 Source: flask-url-map-serializer
-Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
 Homepage: https://pypi.python.org/pypi/flask-url-map-serializer
 Section: python
 Priority: optional
