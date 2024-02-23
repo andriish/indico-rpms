@@ -6,3 +6,5 @@ RUN            set -x && \
            dnf -y install python3-devel python3-setuptools python-srpm-macros python3-rpm-macros pyproject-rpm-macros && \
            dnf -y copr enable averbyts/I329 && \
            dnf -y install indico-devel  && yum -y clean all
+           
+           

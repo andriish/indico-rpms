@@ -131,7 +131,6 @@ python3-feedgenerator \
 python3-mypy-extensions 
 
 
-
 RUN apt install -y  \
 python3-png python3-xlsxwriter python3-colorclass python3-qrcode python3-ordered-set  python3-wtforms python3-importlib-metadata \
 python3-flaskext.wtf
