@@ -92,6 +92,10 @@ jobs:
       run : |
            export PATH=$PATH:$(pwd)
            #set -x 
+           mkdir -p logs
+           export PATH=$PATH:$(pwd)
+           yum -y install spectool
+           locale
            sh srpmsbuild.sh  python-indico 3.2.9 --build 
   
   run-in-indico-docker-image-Debian12:
