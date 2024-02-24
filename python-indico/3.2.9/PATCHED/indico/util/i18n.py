@@ -8,7 +8,7 @@
 import re
 from collections import Counter
 
-from babel import negotiate_locale, get_locale
+from babel import negotiate_locale
 from babel.core import LOCALE_ALIASES, Locale
 from babel.messages.pofile import read_po
 from babel.support import NullTranslations

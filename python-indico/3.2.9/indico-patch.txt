@@ -126,16 +126,7 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
 diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
 --- ORIG/indico/util/i18n.py	2024-01-23 19:58:52.000000000 +0100
-+++ PATCHED/indico/util/i18n.py	2024-02-24 22:02:21.615006891 +0100
-@@ -8,7 +8,7 @@
- import re
- from collections import Counter
- 
--from babel import negotiate_locale
-+from babel import negotiate_locale, get_locale
- from babel.core import LOCALE_ALIASES, Locale
- from babel.messages.pofile import read_po
- from babel.support import NullTranslations
++++ PATCHED/indico/util/i18n.py	2024-02-24 22:04:30.724969555 +0100
 @@ -220,7 +220,6 @@
      return _force_locale(locale or 'en_US')
  
