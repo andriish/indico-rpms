@@ -4,9 +4,9 @@ RUN apt update
 
 RUN apt install -y lsb-release wget curl gnupg
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+#RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 RUN apt update
-RUN apt install -y --install-recommends postgresql-13 libpq-dev apache2 libapache2-mod-proxy-uwsgi libapache2-mod-xsendfile libxslt1-dev libxml2-dev libffi-dev libpcre3-dev libyaml-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils liblzma-dev uuid-dev build-essential redis-server
+RUN apt install -y --install-recommends postgresql libpq-dev apache2 libapache2-mod-proxy-uwsgi libapache2-mod-xsendfile libxslt1-dev libxml2-dev libffi-dev libpcre3-dev libyaml-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils liblzma-dev uuid-dev build-essential redis-server
 RUN apt install -y --install-recommends libxslt1-dev libxml2-dev libffi-dev libpcre3-dev libyaml-dev build-essential redis-server postgresql libpq-dev
 
 RUN apt install -y libjpeg62-turbo-dev
