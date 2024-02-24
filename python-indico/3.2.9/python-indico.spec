@@ -46,6 +46,7 @@ Requires: python3-%{srcname}
 
 
 %prep
+rpm -qa
 %autosetup  -n indico-%{version} -p 1
 %setup -q -T -D -a 1 -n indico-%{version} 
 mkdir -p plugins
