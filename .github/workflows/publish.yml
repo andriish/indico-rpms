@@ -94,7 +94,7 @@ jobs:
            #set -x 
            mkdir -p logs
            export PATH=$PATH:$(pwd)
-           locale
+           locale 
            sh srpmsbuild.sh  python-indico 3.2.9 --build 
   
   run-in-indico-docker-image-Debian12:
