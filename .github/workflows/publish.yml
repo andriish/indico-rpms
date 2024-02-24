@@ -94,7 +94,6 @@ jobs:
            #set -x 
            mkdir -p logs
            export PATH=$PATH:$(pwd)
-           yum -y install spectool
            locale
            sh srpmsbuild.sh  python-indico 3.2.9 --build 
   
