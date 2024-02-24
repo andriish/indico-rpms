@@ -15,6 +15,6 @@ Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-pluginengine
 Package: python3-flask-pluginengine
 Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}
-Description: A flask-pluginengine library that generates audio and image CAPTCHAs.
+Description: A simple plugin system for Flask applications.
  .
 

@@ -16,6 +16,6 @@ Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-multipass
 Package: python3-flask-multipass
 Architecture: all
 Depends: ${misc:Depends}, ${python3:Depends}
-Description: A flask-multipass library that generates audio and image CAPTCHAs.
+Description: Flask-Multipass allows you to provide different authentication systems in your Flask application.
  .
 
