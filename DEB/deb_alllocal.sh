@@ -1,7 +1,5 @@
 #!/bin/bash
-
 export PATH=$PATH:$(pwd)
-cd DEB
 #set -x 
 declare -a BUILDLIST=(
 flask-limiter:3.5.0:Flask-Limiter

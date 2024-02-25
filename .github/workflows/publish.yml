@@ -118,9 +118,10 @@ jobs:
            uname -a 
            cat /etc/issue
            apt-get update
+           cd DEB
            export PATH=$PATH:$(pwd)
            bash deb_alllocal.sh
-           ls DEB/*/*/mydbtop/*deb
+           ls ./*/*/mydbtop/*deb
   
   
   
