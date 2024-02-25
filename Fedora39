@@ -154,7 +154,7 @@ uwsgi    \
 uwsgi-plugin-python3    \
 uwsgi-plugin-python3-gevent   && yum -y clean all  
            
-           
+ RUN               dnf -y install            python3-markdown-it-py python3-mdurl python3-rich  && yum -y clean all  
                 
            
            
