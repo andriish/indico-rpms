@@ -7,6 +7,7 @@ Repository with scripts and configs for Indico packaging
 
 The CI jobs are executed in two containers based on Fedora39 and Debian12.
 Those containers include software exclusively from the standard Fedora and Debian repositories.
+It should be possible to use the container images for the local development.
 
 The "missing" software needed for Indico is build in CI from the sources via packaging into DEB or RPMs.
 
@@ -139,3 +140,28 @@ On the Fedora39, the script
 /usr/bin/indico-devel-start-indico.sh
 ```
 can be used to start Indico.
+
+
+
+# End notes
+
+As of Feb. 2024, Fedora39 requires 21 packages.
+
+Technical packages, 2: indico-devel, indico-mpp
+
+Upstream maintained by Indico or Invenio, 7: python-flask-multipass, 
+python-indico-fonts, python-indico, python-flask-pluginengine, 
+python-flask-url-map-serializer,python-flask-webpackext,
+python-pynpm 
+
+Present in Fedora, but version is too high, 1: python-emal_validator
+
+Present in Fedora, but version is too low, 1: python-PyPDF2 
+
+
+All other, 10: python-captcha, python-Flask-Limiter, python-flask-marshmallow, python-iso_4217, python-marshmallow-dataclass,
+python-marshmallow_oneofschema, python-marshmallow_sqlalchemy, python-pywebpack, python-webargs, python-WTForms-dateutil 
+
+
+
+
