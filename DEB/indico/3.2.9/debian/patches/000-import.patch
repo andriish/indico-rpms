@@ -1,0 +1,217 @@
+diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-assets.py
+--- ORIG/bin/maintenance/build-assets.py	2024-02-23 05:35:11.248129037 +0000
++++ PATCHED/bin/maintenance/build-assets.py	2024-02-23 05:35:11.250129067 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This file is part of Indico.
+ # Copyright (C) 2002 - 2023 CERN
+ #
+diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
+--- ORIG/bin/maintenance/build-wheel.py	2024-02-23 05:35:11.248129037 +0000
++++ PATCHED/bin/maintenance/build-wheel.py	2024-02-23 05:35:11.250129067 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This file is part of Indico.
+ # Copyright (C) 2002 - 2023 CERN
+ #
+@@ -101,13 +101,7 @@
+ def build_wheel(target_dir):
+     info('building wheel')
+     try:
+-        # we need to disable isolation because babel is required during the build.
+-        # eventually we should probably move to pyproject.toml with a custom in-tree
+-        # build backend that does most of things this script does, properly specify
+-        # babel as a build requirement, and then call e.g. the setuptools build backend
+-        # to produce the actual wheel. but this is much more work so for now we just
+-        # disable build isolation
+-        subprocess.check_output([sys.executable, '-m', 'build', '-w', '-n', '-o', target_dir], stderr=subprocess.STDOUT)
++        subprocess.check_output([sys.executable, 'setup.py', 'bdist_wheel', '-d', target_dir], stderr=subprocess.STDOUT)
+     except subprocess.CalledProcessError as exc:
+         fail('build failed', verbose_msg=exc.output)
+ 
+@@ -117,6 +111,7 @@
+     cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
+             ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel,
+             ['git', 'clean', '-dn', '-e', '__pycache__'] + toplevel]
++    return True, None
+     for cmd in cmds:
+         rv = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
+         if rv:
+@@ -155,6 +150,7 @@
+ 
+ 
+ def package_is_clean_indico():
++    return True, None
+     garbage = _get_ignored_package_files_indico()
+     if garbage:
+         return False, '\n'.join(garbage)
+@@ -165,6 +161,7 @@
+     toplevel = list({x.split('.')[0] for x in find_packages(include=('indico', 'indico.*',))})
+     cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
+             ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel]
++    return True, None
+     if toplevel:
+         # only check for ignored files if we have packages. for single-module
+         # plugins we don't have any package data to include anyway...
+@@ -209,7 +206,7 @@
+     if not add_version_suffix:
+         yield
+         return
+-    rev = subprocess.check_output(['git', 'rev-parse', '--short=10', 'HEAD'], text=True).strip()
++    rev = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], text=True).strip()
+     suffix = '+{}.{}'.format(datetime.now().strftime('%Y%m%d%H%M'), rev)
+     info('adding version suffix: ' + suffix, unimportant=True)
+     with open(file_name, 'r+') as f:
+diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
+--- ORIG/bin/maintenance/dump_url_map.py	2024-02-23 05:35:11.248129037 +0000
++++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-23 05:35:11.250129067 +0000
+@@ -8,6 +8,7 @@
+ import hashlib
+ import json
+ import os
++import sys
+ import subprocess
+ 
+ import click
+@@ -19,13 +20,14 @@
+     # whenever something changed
+     h = hashlib.md5()
+     h.update(os.getcwd().encode())
+-    h.update(subprocess.check_output(['git', 'describe', '--always']))
+-    h.update(subprocess.check_output(['git', 'status']))
+-    h.update(subprocess.check_output(['git', 'diff']))
++    #h.update(subprocess.check_output(['git', 'describe', '--always']))
++    #h.update(subprocess.check_output(['git', 'status']))
++    #h.update(subprocess.check_output(['git', 'diff']))
+     return h.hexdigest()
+ 
+ 
+ def get_rules(plugins):
++    sys.path = [os.getcwd()] + sys.path
+     from indico.web.flask.app import make_app
+     app = make_app(testing=True, config_override={'BASE_URL': 'http://localhost/',
+                                                   'SECRET_KEY': '*' * 16,
+diff -Naur ORIG/bin/maintenance/make-release.py PATCHED/bin/maintenance/make-release.py
+--- ORIG/bin/maintenance/make-release.py	2024-02-23 05:35:11.249129052 +0000
++++ PATCHED/bin/maintenance/make-release.py	2024-02-23 05:35:11.250129067 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This file is part of Indico.
+ # Copyright (C) 2002 - 2023 CERN
+ #
+diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/auth/models/identities.py
+--- ORIG/indico/modules/auth/models/identities.py	2024-02-23 05:35:11.249129052 +0000
++++ PATCHED/indico/modules/auth/models/identities.py	2024-02-23 05:35:11.250129067 +0000
+@@ -14,7 +14,7 @@
+ from indico.core.db.sqlalchemy import UTCDateTime
+ from indico.util.date_time import as_utc, now_utc
+ from indico.util.passwords import PasswordProperty
+-
++import re
+ 
+ class Identity(db.Model):
+     """Identities of Indico users."""
+@@ -96,7 +96,8 @@
+     def register_login(self, ip):
+         """Update the last login information."""
+         self.last_login_dt = now_utc()
+-        self.last_login_ip = ip
++        self.last_login_ip = re.split("%",ip)[0]
++        #self.last_login_ip = ip
+ 
+     def __repr__(self):
+         return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
+diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
+--- ORIG/indico/util/string.py	2024-02-23 05:35:11.249129052 +0000
++++ PATCHED/indico/util/string.py	2024-02-23 17:41:15.346965119 +0000
+@@ -33,25 +33,50 @@
+ 
+ 
+ # basic list of tags, used for markdown content
+-BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS | {
++if ( int(bleach.__version__[0]) > 5 ):
++ BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS | {
+     'sup', 'sub', 'small', 'br', 'p', 'table', 'thead', 'tbody', 'th', 'tr', 'td', 'img', 'hr', 'h1', 'h2', 'h3', 'h4',
+     'h5', 'h6', 'pre', 'dl', 'dd', 'dt', 'figure', 'blockquote'
+-}
++ }
++else:
++ BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS + [
++    'sup', 'sub', 'small', 'br', 'p', 'table', 'thead', 'tbody', 'th', 'tr', 'td', 'img', 'hr', 'h1', 'h2', 'h3', 'h4',
++    'h5', 'h6', 'pre', 'dl', 'dd', 'dt', 'figure', 'blockquote'
++ ]
++ 
+ BLEACH_ALLOWED_ATTRIBUTES = {**bleach.ALLOWED_ATTRIBUTES, 'img': ['src', 'alt', 'style']}
+ # extended list of tags, used for HTML content
+-BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS | {
++if ( int(bleach.__version__[0]) > 5 ):
++ BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS | {
++    'address', 'area', 'bdo', 'big', 'caption', 'center', 'cite', 'col', 'colgroup', 'del', 'dfn', 'dir', 'div',
++    'fieldset', 'font', 'ins', 'kbd', 'legend', 'map', 'menu', 'q', 's', 'samp', 'span', 'strike', 'tfoot', 'tt', 'u',
++    'var'
++ }
++else:
++ BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS + [
+     'address', 'area', 'bdo', 'big', 'caption', 'center', 'cite', 'col', 'colgroup', 'del', 'dfn', 'dir', 'div',
+     'fieldset', 'font', 'ins', 'kbd', 'legend', 'map', 'menu', 'q', 's', 'samp', 'span', 'strike', 'tfoot', 'tt', 'u',
+     'var'
+-}
++ ]
++
+ # yuck, this is ugly, but all these attributes were allowed in legacy...
+-BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES | {'*': [
++if ( int(bleach.__version__[0]) > 5 ):
++ BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES | {'*': [
+     'align', 'abbr', 'alt', 'border', 'bgcolor', 'class', 'cellpadding', 'cellspacing', 'color', 'char', 'charoff',
+     'cite', 'clear', 'colspan', 'compact', 'dir', 'disabled', 'face', 'href', 'height', 'headers', 'hreflang', 'hspace',
+     'id', 'ismap', 'lang', 'name', 'noshade', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'size', 'scope', 'shape',
+     'span', 'src', 'start', 'style', 'summary', 'tabindex', 'target', 'title', 'type', 'valign', 'value', 'vspace',
+     'width', 'wrap'
+-], 'img': [*BLEACH_ALLOWED_ATTRIBUTES['img'], 'usemap'], 'area': ['coords']}
++ ], 'img': [*BLEACH_ALLOWED_ATTRIBUTES['img'], 'usemap'], 'area': ['coords']}
++else:
++ BLEACH_ALLOWED_ATTRIBUTES_HTML = BLEACH_ALLOWED_ATTRIBUTES | {'*': [
++    'align', 'abbr', 'alt', 'border', 'bgcolor', 'class', 'cellpadding', 'cellspacing', 'color', 'char', 'charoff',
++    'cite', 'clear', 'colspan', 'compact', 'dir', 'disabled', 'face', 'href', 'height', 'headers', 'hreflang', 'hspace',
++    'id', 'ismap', 'lang', 'name', 'noshade', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'size', 'scope', 'shape',
++    'span', 'src', 'start', 'style', 'summary', 'tabindex', 'target', 'title', 'type', 'valign', 'value', 'vspace',
++    'width', 'wrap'
++ ], 'img': [*BLEACH_ALLOWED_ATTRIBUTES['img'], 'usemap'], 'area': ['coords']}
++
+ BLEACH_ALLOWED_STYLES_HTML = [
+     'background-color', 'border-top-color', 'border-top-style', 'border-top-width', 'border-top', 'border-right-color',
+     'border-right-style', 'border-right-width', 'border-right', 'border-bottom-color', 'border-bottom-style',
+@@ -168,9 +193,7 @@
+         if extra_html:
+             result = sanitize_html(result)
+         else:
+-            css_sanitizer = IndicoCSSSanitizer(allowed_css_properties=BLEACH_ALLOWED_STYLES_HTML)
+-            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES,
+-                                  css_sanitizer=css_sanitizer)
++            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES)
+     else:
+         result = md(text, **kwargs)
+ 
+diff -Naur ORIG/setup.cfg PATCHED/setup.cfg
+--- ORIG/setup.cfg	2024-02-23 05:35:11.250129067 +0000
++++ PATCHED/setup.cfg	2024-02-23 05:35:11.250129067 +0000
+@@ -15,6 +15,7 @@
+     Programming Language :: Python :: 3.9
+     Programming Language :: Python :: 3.10
+     Programming Language :: Python :: 3.11
++    Programming Language :: Python :: 3.12
+ 
+ project_urls =
+     Blog = https://getindico.io/blog/
+@@ -28,7 +29,7 @@
+ packages = find:
+ zip_safe = false
+ include_package_data = true
+-python_requires = >=3.9.0, <3.12
++python_requires = >=3.9.0, <3.13
+ 
+ [options.packages.find]
+ include = indico, indico.*

@@ -35,13 +35,13 @@ export version=$(echo $a | cut -f2 -d: )
 envsubst <<EOF > temp.sh
 #!/bin/bash
 git clone --depth 3 https://github.com/andriish/indico-rpms.git -b indico329
-cd indico-rpms
+cd indico-rpms/RPM
 sh srpmsbuild.sh  $name $version
 EOF
 copr add-package-custom I329 \
         --name $name \
         --script temp.sh \
-        --script-resultdir indico-rpms/$name/$version/rpmbuild/SOURCES/ \
+        --script-resultdir indico-rpms/RPM/$name/$version/rpmbuild/SOURCES/ \
         --script-builddeps 'git rpmdevtools wget' \
         --script-chroot fedora-39-x86_64
 mv temp.sh log/$name$version

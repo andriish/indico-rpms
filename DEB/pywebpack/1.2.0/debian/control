@@ -1,0 +1,23 @@
+Source: pywebpack
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/pywebpack
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+               python3-werkzeug,
+               python3-pytest-runner,
+               python3-semver,
+               python3-pynpm
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/pywebpack.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/pywebpack
+
+Package: python3-pywebpack
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A pywebpack library that generates audio and image CAPTCHAs.
+ .
+

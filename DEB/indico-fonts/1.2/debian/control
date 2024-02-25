@@ -1,0 +1,19 @@
+Source: indico-fonts
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/indico-fonts
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/indico-fonts.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/indico-fonts
+
+Package: python3-indico-fonts
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A indico-fonts library that generates audio and image CAPTCHAs.
+ .
+

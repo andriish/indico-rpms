@@ -1,0 +1,6 @@
+# We can't use autodep8 because the name of the Debian package is
+# 'captcha' but the name of the Python module is 'enum'.
+
+Test-Command:ls
+Restrictions: superficial
+Depends: python3-node-semver

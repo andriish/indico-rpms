@@ -1,0 +1,20 @@
+Source: marshmallow-dataclass
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/marshmallow-dataclass
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+               python3-typing-inspect
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/marshmallow-dataclass.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/marshmallow-dataclass
+
+Package: python3-marshmallow-dataclass
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A marshmallow-dataclass library that generates audio and image CAPTCHAs.
+ .
+
