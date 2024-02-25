@@ -1,0 +1,19 @@
+Source: flask-url-map-serializer
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/flask-url-map-serializer
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/flask-url-map-serializer.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-url-map-serializer
+
+Package: python3-flask-url-map-serializer
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A flask-url-map-serializer library that generates audio and image CAPTCHAs.
+ .
+

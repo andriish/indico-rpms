@@ -2,6 +2,9 @@ aba3c651a027c922195648926a260c75  python-indico/3.2.8/rpmbuild/SOURCES/v3.2.8.zi
 a572c9fdce9ddca4c52ed4a037a743af  python-indico/3.2.8/rpmbuild/SOURCES/v3.2.2.tar.gz
 7d2de65b48c64cc975d89ab1712ff5f5  python-indico-fonts/1.2/rpmbuild/SOURCES/indico-fonts-1.2.tar.gz
 
+78442cfca8307012293da3ebbaa0d4ee  python-indico/3.2.9/rpmbuild/SOURCES/v3.2.9.zip
+a572c9fdce9ddca4c52ed4a037a743af  python-indico/3.2.9/rpmbuild/SOURCES/v3.2.2.tar.gz
+
 c23404494fff6338f98f20b3216cfe70  python-captcha/0.4/rpmbuild/SOURCES/captcha-0.4.tar.gz
 2591483740126a92e3840b416e8a5bce  python-Flask-Limiter/2.4.0/rpmbuild/SOURCES/Flask-Limiter-2.4.0.tar.gz
 b201fa273e55d5d361ff31a5831f5d3f  python-flask-marshmallow/0.14.0/rpmbuild/SOURCES/flask-marshmallow-0.14.0.tar.gz
@@ -52,3 +55,5 @@ b357c78f8f3f3b7cabd061ab2127a6cb  python-email_validator/1.2.1/rpmbuild/SOURCES/
 16826bb15de7aeaece082eb65cd024e3  python-pytest-localserver/0.7.0/rpmbuild/SOURCES/pytest-localserver-0.7.0.tar.gz
 1444feceb8213bd94cfece3c6d4ffc5c  python-typing-inspect/0.7.1/rpmbuild/SOURCES/typing_inspect-0.7.1.tar.gz
 55f4bc422345672e2909a6d150a63041  python-authlib/1.0.1/rpmbuild/SOURCES/authlib-1.0.1.tar.gz
+
+8edcedcf47453288bd2168541da6d8bb  python-Flask-Multipass/0.5.3/rpmbuild/SOURCES/Flask-Multipass-0.5.3.tar.gz

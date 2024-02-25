@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+export PYBUILD_NAME=indico-devel
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+override_dh_auto_configure:
+		echo "OK"
+
+override_dh_auto_clean:
+		echo "OK"
+
+override_dh_auto_build:
+		echo "OK"
+
+override_dh_auto_test:
+	echo "disabling dh_auto_test until someone can setup test harness"

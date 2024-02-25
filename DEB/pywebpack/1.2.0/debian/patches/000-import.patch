@@ -1,0 +1,12 @@
+diff -Naur ORIG/pywebpack/helpers.py PATCHED/pywebpack/helpers.py
+--- ORIG/pywebpack/helpers.py	2024-01-02 03:32:38.353986753 +0100
++++ PATCHED/pywebpack/helpers.py	2024-01-02 03:32:38.353986753 +0100
+@@ -15,7 +15,7 @@
+ from functools import wraps
+ 
+ import pkg_resources
+-from semver import max_satisfying
++from semver import max_ver as max_satisfying
+ 
+ 
+ def _load_ep(ep):

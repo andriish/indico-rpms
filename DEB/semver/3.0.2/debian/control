@@ -1,0 +1,20 @@
+Source: semver
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/semver
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+               pybuild-plugin-pyproject
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/semver.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/semver
+
+Package: python3-semver
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A semver library that generates audio and image CAPTCHAs.
+ .
+

@@ -1,0 +1,21 @@
+Source: flask-limiter
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/flask-limiter
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+               python3-limits,
+               python3-ordered-set
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/flask-limiter.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-limiter
+
+Package: python3-flask-limiter
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Flask-Limiter adds rate limiting to Flask applications.
+ .
+

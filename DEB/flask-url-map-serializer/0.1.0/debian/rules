@@ -1,0 +1,8 @@
+#!/usr/bin/make -f
+export PYBUILD_NAME=flask-url-map-serializer
+#export PYBUILD_BEFORE_BUILD=cd flask-cli
+#export PYBUILD_BUILD_ARGS=make build -C flask-cli --dir={build_dir} --python={version}
+
+%:
+	dh $@ --with python3  --buildsystem=pybuild --sourcedirectory=flask-cli
+

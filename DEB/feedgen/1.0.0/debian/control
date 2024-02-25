@@ -1,0 +1,21 @@
+Source: feedgen
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/feedgen
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+               python3-dateutil,
+               python3-lxml,
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/feedgen.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/feedgen
+
+Package: python3-feedgen
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: This module can be used to generate web feeds in both ATOM and RSS format. 
+ .
+
