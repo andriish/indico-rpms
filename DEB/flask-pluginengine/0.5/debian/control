@@ -7,7 +7,9 @@ Build-Depends: debhelper-compat (= 13),
                dh-python,
                python3,
                python3-setuptools,
-               python3-flask
+               python3-flask,
+               python3-importlib-metadata,
+               python3-blinker
 Standards-Version: 4.1.1
 Vcs-Git: https://salsa.debian.org/python-team/packages/flask-pluginengine.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-pluginengine

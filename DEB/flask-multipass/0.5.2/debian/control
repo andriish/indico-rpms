@@ -8,7 +8,8 @@ Build-Depends: debhelper-compat (= 13),
                python3,
                python3-setuptools,
                python3-ldap,
-               python3-flaskext.wtf
+               python3-flaskext.wtf,
+               python3-blinker
 Standards-Version: 4.1.1
 Vcs-Git: https://salsa.debian.org/python-team/packages/flask-multipass.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-multipass
