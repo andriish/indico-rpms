@@ -70,7 +70,7 @@ yum -y install indico-devel python3-indico
 
 will install a fully functional Indico instance.
 
-The COPR repository can be re-created using the script RPM/submit.sh.
+The COPR repository can be re-created using the script RPM/submit.sh. The `copr-cli` utility and COPR account is required.
 
 
 
@@ -79,11 +79,12 @@ APT repository https://download.opensuse.org/repositories/home:/averbyts/Debian_
 The installation should be quite strahtforward
 ```
 apt-get install software-properties-common
-add-apt-repository 'deb http://download.opensuse.org/repositories/home:/averbyts:/Debian_12/ ./'
+add-apt-repository 'deb http://download.opensuse.org/repositories/home:/averbyts/Debian_12/ ./'
+wget -q http://download.opensuse.org/repositories/home:/averbyts/Debian_12/Release.key -O- |  apt-key add - 
 apt-get install python3-indico #WIP
 ```
 
-The OBS repository can be re-created using the script DEB/submit.sh.
+The OBS repository can be re-created using the script DEB/submit.sh. The `osc` utility and OBS account is required.
 Please note that unlike the RPM case, one should run the deb_alllocal.sh script before the submission.
 
 # Compatibility notes and issues
