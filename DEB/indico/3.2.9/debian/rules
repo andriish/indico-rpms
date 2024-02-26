@@ -31,6 +31,9 @@ override_dh_auto_build:
 		sed -i 's/pypdf/#pypdf/g' requirements.*
 		sed -i 's/importlib/#importlib/g' requirements.*
 		mkdir -p indico/web/client
+		npm config delete proxy
+		npm config delete http-proxy
+		npm config delete https-proxy
 		export NODE_OPTIONS="--max-old-space-size=5120" && cd indico/web/client && npm install --legacy-peer-deps && cd ../../../
 		export NODE_OPTIONS="--max-old-space-size=5120" && npm install  --legacy-peer-deps
 		export NODE_OPTIONS="--max-old-space-size=5120" && export PYTHONPATH=$$(pwd):$$PYTHONPATH && ./bin/maintenance/build-wheel.py indico       --ignore-unclean 

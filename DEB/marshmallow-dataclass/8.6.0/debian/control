@@ -7,7 +7,8 @@ Build-Depends: debhelper-compat (= 13),
                dh-python,
                python3,
                python3-setuptools,
-               python3-typing-inspect
+               python3-typing-inspect,
+               python3-marshmallow
 Standards-Version: 4.1.1
 Vcs-Git: https://salsa.debian.org/python-team/packages/marshmallow-dataclass.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/marshmallow-dataclass

@@ -8,6 +8,9 @@ Build-Depends: debhelper-compat (= 13),
                python3,
                python3-setuptools,
                python3-semver,
+               python3-wheel,
+               python3-pip,
+               python3-pytest-runner
 Standards-Version: 4.1.1
 Vcs-Git: https://salsa.debian.org/python-team/packages/flask-webpackext.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/flask-webpackext
