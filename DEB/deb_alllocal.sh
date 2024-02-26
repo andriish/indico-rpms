@@ -18,14 +18,14 @@ flask-url-map-serializer:0.1.0:flask-url-map-serializer
 flask-webpackext:1.0.2:flask-webpackext
 wtforms-dateutil:0.1:WTForms-dateutil
 wtforms-sqlalchemy:0.4.1:WTForms-SQLAlchemy
-#indico:3.2.9:indico
-)
-
-declare -a BUILDLIST=(
-#flask-pluginengine:0.5:Flask-PluginEngine
-#flask-webpackext:1.0.2:flask-webpackext
 indico:3.2.9:indico
 )
+
+#declare -a BUILDLIST=(
+#flask-pluginengine:0.5:Flask-PluginEngine
+#flask-webpackext:1.0.2:flask-webpackext
+#indico:3.2.9:indico
+#)
 TTOP=$(pwd)
 mkdir -p logs/
 for a in "${BUILDLIST[@]}" 
