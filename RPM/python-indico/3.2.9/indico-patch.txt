@@ -120,7 +120,7 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
 diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
 --- ORIG/indico/util/i18n.py	2024-02-25 20:40:17.108593466 +0100
-+++ PATCHED/indico/util/i18n.py	2024-02-27 13:43:07.634154745 +0100
++++ PATCHED/indico/util/i18n.py	2024-02-27 14:42:40.784075772 +0100
 @@ -220,7 +220,6 @@
      return _force_locale(locale or 'en_US')
  
@@ -151,7 +151,7 @@ diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
          return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
 -
 +    except:
-+       return {'en_GB': ('English(UK)', 'UK', True}
++       return {'en_GB': ('English(UK)', 'UK', True) }
  
  def set_session_lang(lang):
      """Set the current language in the current request context."""

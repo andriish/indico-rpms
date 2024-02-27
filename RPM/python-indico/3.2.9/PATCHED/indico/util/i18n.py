@@ -296,7 +296,7 @@ def get_all_locales():
         counts = Counter(x[0] for x in languages.values())
         return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
     except:
-       return {'en_GB': ('English(UK)', 'UK', True}
+       return {'en_GB': ('English(UK)', 'UK', True) }
 
 def set_session_lang(lang):
     """Set the current language in the current request context."""
