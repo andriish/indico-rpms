@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.2.9
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -105,6 +105,11 @@ npm install
 %install
 %{__python3} -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location
+
+
+%post 
+indico i18n compile-catalog
+indico i18n compile-catalog-react
 
 
 # Note that there is no files section for the unversioned python module
