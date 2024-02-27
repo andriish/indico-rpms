@@ -23,6 +23,7 @@ rest of the description that provides more details.}
 Summary:        %{summary}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-flit-core
 
 %description -n python3-%{srcname} %_description
 
