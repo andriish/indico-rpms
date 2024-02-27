@@ -21,11 +21,11 @@ python-pynpm:0.2.0
 python-pywebpack:1.2.0
 python-flask-webpackext:1.0.2
 python-webargs:8.3.0
-indico-devel:3.2.9
+indico-devel:3.3.0
 python-indico:3.3.0
 indico-mpp:3.2
 )
-yum -y install python3-flit-core
+yum -y install python3-flit-core python3-flask-cors
 #declare -a BUILDLIST=(
 #python-pypdf:4.0.1
 #python-indico:3.3.0
