@@ -101,6 +101,12 @@ def compile_catalogs():
 def build_wheel(target_dir):
     info('building wheel')
     try:
+        # we need to disable isolation because babel is required during the build.
+        # eventually we should probably move to pyproject.toml with a custom in-tree
+        # build backend that does most of things this script does, properly specify
+        # babel as a build requirement, and then call e.g. the setuptools build backend
+        # to produce the actual wheel. but this is much more work so for now we just
+        # disable build isolation
         subprocess.check_output([sys.executable, 'setup.py', 'bdist_wheel', '-d', target_dir], stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
         fail('build failed', verbose_msg=exc.output)

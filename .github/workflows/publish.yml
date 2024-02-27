@@ -90,13 +90,13 @@ jobs:
           fetch-depth: 3 
     - name: Run
       run : |
-           export PATH=$PATH:$(pwd)
-           #set -x 
-           mkdir -p logs
-           export PATH=$PATH:$(pwd)
-           locale
+           set -x
+           uname -a 
+           cat /etc/issue      
            cd RPM
-           sh srpmsbuild.sh  python-indico 3.2.9 --build 
+           bash rpm_alllocal.sh
+           ls ./*/*/rpmbuild/RPMS/*/*.rpm
+           #sh srpmsbuild.sh  python-indico 3.2.9 --build 
   
   run-in-indico-docker-image-Debian12:
     name: Debian
@@ -118,13 +118,8 @@ jobs:
            uname -a 
            cat /etc/issue
            apt-get update
-           export PATH=$PATH:$(pwd)
+           cd DEB
            bash deb_alllocal.sh
-           ls DEB/*/*/mydbtop/*deb
-  
-  
-  
-  
-  
-  
+           ls ./*/*/mydbtop/*deb
+ 
   

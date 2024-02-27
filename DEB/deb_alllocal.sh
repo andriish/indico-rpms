@@ -1,7 +1,5 @@
 #!/bin/bash
-
 export PATH=$PATH:$(pwd)
-cd DEB
 #set -x 
 declare -a BUILDLIST=(
 flask-limiter:3.5.0:Flask-Limiter
@@ -24,6 +22,9 @@ indico:3.2.9:indico
 )
 
 #declare -a BUILDLIST=(
+#flask-pluginengine:0.5:Flask-PluginEngine
+#flask-webpackext:1.0.2:flask-webpackext
+#indico:3.2.9:indico
 #)
 TTOP=$(pwd)
 mkdir -p logs/
