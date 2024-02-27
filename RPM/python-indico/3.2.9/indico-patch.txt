@@ -9,29 +9,23 @@ diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-as
  #
 diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
 --- ORIG/bin/maintenance/build-wheel.py	2024-02-25 20:40:17.108593466 +0100
-+++ PATCHED/bin/maintenance/build-wheel.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/bin/maintenance/build-wheel.py	2024-02-27 11:40:43.843865265 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  # This file is part of Indico.
  # Copyright (C) 2002 - 2023 CERN
  #
-@@ -101,13 +101,7 @@
- def build_wheel(target_dir):
-     info('building wheel')
-     try:
--        # we need to disable isolation because babel is required during the build.
--        # eventually we should probably move to pyproject.toml with a custom in-tree
--        # build backend that does most of things this script does, properly specify
--        # babel as a build requirement, and then call e.g. the setuptools build backend
--        # to produce the actual wheel. but this is much more work so for now we just
--        # disable build isolation
+@@ -107,7 +107,7 @@
+         # babel as a build requirement, and then call e.g. the setuptools build backend
+         # to produce the actual wheel. but this is much more work so for now we just
+         # disable build isolation
 -        subprocess.check_output([sys.executable, '-m', 'build', '-w', '-n', '-o', target_dir], stderr=subprocess.STDOUT)
 +        subprocess.check_output([sys.executable, 'setup.py', 'bdist_wheel', '-d', target_dir], stderr=subprocess.STDOUT)
      except subprocess.CalledProcessError as exc:
          fail('build failed', verbose_msg=exc.output)
  
-@@ -117,6 +111,7 @@
+@@ -117,6 +117,7 @@
      cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
              ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel,
              ['git', 'clean', '-dn', '-e', '__pycache__'] + toplevel]
@@ -39,7 +33,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      for cmd in cmds:
          rv = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
          if rv:
-@@ -155,6 +150,7 @@
+@@ -155,6 +156,7 @@
  
  
  def package_is_clean_indico():
@@ -47,7 +41,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      garbage = _get_ignored_package_files_indico()
      if garbage:
          return False, '\n'.join(garbage)
-@@ -165,6 +161,7 @@
+@@ -165,6 +167,7 @@
      toplevel = list({x.split('.')[0] for x in find_packages(include=('indico', 'indico.*',))})
      cmds = [['git', 'diff', '--stat', '--color=always'] + toplevel,
              ['git', 'diff', '--stat', '--color=always', '--staged'] + toplevel]
@@ -55,7 +49,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      if toplevel:
          # only check for ignored files if we have packages. for single-module
          # plugins we don't have any package data to include anyway...
-@@ -209,7 +206,7 @@
+@@ -209,7 +212,7 @@
      if not add_version_suffix:
          yield
          return
@@ -126,7 +120,7 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
 diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
 --- ORIG/indico/util/i18n.py	2024-02-25 20:40:17.108593466 +0100
-+++ PATCHED/indico/util/i18n.py	2024-02-26 19:16:26.720280621 +0100
++++ PATCHED/indico/util/i18n.py	2024-02-27 13:43:07.634154745 +0100
 @@ -220,7 +220,6 @@
      return _force_locale(locale or 'en_US')
  
@@ -135,9 +129,12 @@ diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
  def set_best_lang(check_session=True):
      """Get the best language/locale for the current user.
  
-@@ -286,16 +285,18 @@
+@@ -284,18 +283,20 @@
+ 
+ def get_all_locales():
      """
-     List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)}``.
+-    List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)}``.
++    List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)', True}``.
      """
 -    if babel.app is None:
 -        return {}
@@ -154,7 +151,7 @@ diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
          return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
 -
 +    except:
-+       return {}
++       return {'en_GB': ('English(UK)', 'UK', True}
  
  def set_session_lang(lang):
      """Set the current language in the current request context."""
@@ -229,6 +226,18 @@ diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
      else:
          result = md(text, **kwargs)
  
+diff -Naur ORIG/indico/web/templates/_session_bar.html PATCHED/indico/web/templates/_session_bar.html
+--- ORIG/indico/web/templates/_session_bar.html	2024-01-23 19:58:52.000000000 +0100
++++ PATCHED/indico/web/templates/_session_bar.html	2024-02-27 13:41:58.373083519 +0100
+@@ -184,7 +184,7 @@
+     {% endif %}
+     {% if can_choose %}
+         <ul class="i-dropdown">
+-            {% for name, (title, territory, __) in languages|dictsort(by='value') %}
++            {% for name, (title, territory, __) in languages|dictsort() %}
+                 <li>
+                     {% if force_locale and name not in force_locale_alts %}
+                         <a class="disabled" title="{% trans %}This language is not available here.{% endtrans %}">
 diff -Naur ORIG/setup.cfg PATCHED/setup.cfg
 --- ORIG/setup.cfg	2024-02-25 20:40:17.108593466 +0100
 +++ PATCHED/setup.cfg	2024-02-25 20:40:17.109593482 +0100
