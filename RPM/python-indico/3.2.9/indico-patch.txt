@@ -126,7 +126,7 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
 diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
 --- ORIG/indico/util/i18n.py	2024-02-25 20:40:17.108593466 +0100
-+++ PATCHED/indico/util/i18n.py	2024-02-25 20:40:17.109593482 +0100
++++ PATCHED/indico/util/i18n.py	2024-02-26 19:16:26.720280621 +0100
 @@ -220,7 +220,6 @@
      return _force_locale(locale or 'en_US')
  
@@ -135,32 +135,29 @@ diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
  def set_best_lang(check_session=True):
      """Get the best language/locale for the current user.
  
-@@ -286,15 +285,16 @@
+@@ -286,16 +285,18 @@
      """
      List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)}``.
      """
 -    if babel.app is None:
 -        return {}
 -    else:
--        missing = object()
--        languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
--                     for t in babel.list_translations()
--                     if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
--        counts = Counter(x[0] for x in languages.values())
--        return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
-+    return {}
++    try:
 +#    if babel.app is None:
 +#        return {}
 +#    else:
-+#        missing = object()
-+#        languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
-+#                     for t in babel.list_translations()
-+#                     if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
-+#        counts = Counter(x[0] for x in languages.values())
-+#        return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
- 
+         missing = object()
+         languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
+                      for t in babel.list_translations()
+                      if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
+         counts = Counter(x[0] for x in languages.values())
+         return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
+-
++    except:
++       return {}
  
  def set_session_lang(lang):
+     """Set the current language in the current request context."""
 diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
 --- ORIG/indico/util/string.py	2024-02-25 20:40:17.108593466 +0100
 +++ PATCHED/indico/util/string.py	2024-02-25 20:40:17.109593482 +0100
