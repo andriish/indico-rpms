@@ -15,6 +15,7 @@ BuildArch:      noarch
 BuildRequires: git
 BuildRequires: indico-devel  python3-semver
 BuildRequires: nodejs-npm
+BuildRequires: python-build
 BuildRequires: python3-pip python3-wheel
 Requires: indico-devel>=3.2.9
 
