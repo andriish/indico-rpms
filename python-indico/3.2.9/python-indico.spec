@@ -130,6 +130,9 @@ npm install
 %{python3_sitelib}/%{srcnamenu}/modules/auth/forms.py
 %{python3_sitelib}/%{srcnamenu}/modules/auth/__pycache__/forms*pyc
 
+%post 
+indico i18n compile-catalog
+indico i18n compile-catalog-react
 
 %files -n python3-%{srcname}-plugins
 %{python3_sitelib}/%{srcnamenu}_*/
