@@ -99,8 +99,8 @@ npm config delete https-proxy
 npm install
 cd ../../../
 npm install
-./bin/maintenance/build-wheel.py indico       --ignore-unclean 
-./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base
+./bin/maintenance/build-wheel.py indico      --no-git  --ignore-unclean 
+./bin/maintenance/build-wheel.py all-plugins --no-git  --ignore-unclean  plugins/base
 
 %install
 %{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location

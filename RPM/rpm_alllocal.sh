@@ -25,7 +25,7 @@ indico-devel:3.3.0
 python-indico:3.3.0
 indico-mpp:3.2
 )
-yum -y install python3-flit-core python3-flask-cors
+yum -y install python3-flit-core python3-flask-cors python3-google-api-client
 #declare -a BUILDLIST=(
 #python-pypdf:4.0.1
 #python-indico:3.3.0
