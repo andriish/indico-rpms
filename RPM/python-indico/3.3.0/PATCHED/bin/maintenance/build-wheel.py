@@ -82,7 +82,7 @@ def clean_build_dirs():
 def compile_catalogs():
     path = None
     # find ./xxx/translations/ with at least one subdir
-    for root, dirs, files in os.walk('.'):
+    for root, dirs, _files in os.walk('.'):
         segments = root.split(os.sep)
         if segments[-1] == 'translations' and len(segments) == 3 and dirs:
             path = root
