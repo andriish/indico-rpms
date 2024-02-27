@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+#export DH_VERBOSE=1
+
+include /usr/share/dpkg/pkg-info.mk
+
+BUILD_DATE  = $(shell LC_ALL=C date -u "+%d %B %Y" -d "@$(SOURCE_DATE_EPOCH)")
+SPHINXOPTS := -E -N -D html_last_updated_fmt="$(BUILD_DATE)"
+
+export PYBUILD_NAME=bleach
+
+%:
+	dh $@ --buildsystem=pybuild
+
+override_dh_sphinxdoc:
+ifeq (,$(findstring nodoc, $(DEB_BUILD_OPTIONS)))
+	PYTHONPATH=src python3 -m sphinx -b html $(SPHINXOPTS) docs $(CURDIR)/debian/python-bleach-doc/usr/share/doc/python-bleach-doc/html
+	dh_sphinxdoc
+endif
+
+execute_after_dh_auto_install:
+	# Don't ship the vendored html5lib in the binary, not used
+	rm -rf $(CURDIR)/debian/python3-bleach/usr/lib/python3.*/dist-packages/bleach/_vendor/html5lib*
+	rm -rf $(CURDIR)/debian/python3-bleach/usr/lib/python3.*/dist-packages/bleach/_vendor/vendor*
+	rm -rf $(CURDIR)/debian/python3-bleach/usr/lib/python3.*/dist-packages/bleach/_vendor/README.rst

@@ -51,8 +51,7 @@ Requires: python3-%{srcname}
 mkdir -p plugins
 mv indico-plugins-3.2.2 plugins/base
 rm -rf plugins/base/piwik
-rm -rf plugins/base/themes_legacy
-rm -rf plugins/base/ursh
+rm -rf plugins/base/themes_legacy#rm -rf plugins/base/ursh
 rm -rf plugins/base/vc_zoom
 rm -rf plugins/base/cloud_captchas
 rm -rf plugins/base/owncloud
@@ -61,7 +60,6 @@ rm -rf plugins/base/previewer_jupyter
 
 set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
-#sed -i 's/Programming\ Language\ ::\ Python ::\ .*/Programming\ Language\ ::\ Python\ ::\ '%{python3_version}'/g' plugins/base/*/setup.cfg
 sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
 sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
 sed -i 's/indico-plugin-piwik.*$//g'    plugins/base/_meta/setup.cfg
@@ -78,7 +76,6 @@ sed -i 's/\=\=.*$//g' requirements.*
 sed -i 's/tzdata/#tzdata/g' requirements.*
 sed -i 's/pypdf/#pypdf/g' requirements.*
 sed -i 's/importlib/#importlib/g' requirements.*
-#sed -i 's/PREFERRED_PYTHON_VERSION_SPEC =.*/PREFERRED_PYTHON_VERSION_SPEC = \'~='{python3_version}'\'/g' indico/__init__.py
 
 
 %build

@@ -1,0 +1,100 @@
+From: Debian Python Modules Team
+ <python-modules-team@lists.alioth.debian.org>
+Date: Tue, 15 Jan 2019 00:39:20 -0500
+Subject: Don't vendor the included html5lib
+
+Using the vendored html5lib library isn't something we want to do, this
+library is packaged in Debian.
+
+Forwared: not-needed
+---
+ bleach/html5lib_shim.py | 24 ++++++++++++------------
+ tests/test_clean.py     |  2 +-
+ 2 files changed, 13 insertions(+), 13 deletions(-)
+
+--- a/bleach/html5lib_shim.py
++++ b/bleach/html5lib_shim.py
+@@ -14,27 +14,27 @@
+     "ignore",
+     message="html5lib's sanitizer is deprecated",
+     category=DeprecationWarning,
+-    module="bleach._vendor.html5lib",
++    module="html5lib",
+ )
+ 
+-from bleach._vendor.html5lib import (  # noqa: E402 module level import not at top of file
++from html5lib import (  # noqa: E402 module level import not at top of file
+     HTMLParser,
+     getTreeWalker,
+ )
+-from bleach._vendor.html5lib import (
++from html5lib import (
+     constants,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.constants import (  # noqa: E402 module level import not at top of file
++from html5lib.constants import (  # noqa: E402 module level import not at top of file
+     namespaces,
+     prefixes,
+ )
+-from bleach._vendor.html5lib.constants import (
++from html5lib.constants import (
+     _ReparseException as ReparseException,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.filters.base import (
++from html5lib.filters.base import (
+     Filter,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.filters.sanitizer import (
++from html5lib.filters.sanitizer import (
+     allowed_protocols,
+     allowed_css_properties,
+     allowed_svg_properties,
+@@ -42,21 +42,21 @@
+     svg_attr_val_allows_ref,
+     svg_allow_local_href,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.filters.sanitizer import (
++from html5lib.filters.sanitizer import (
+     Filter as SanitizerFilter,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib._inputstream import (
++from html5lib._inputstream import (
+     HTMLInputStream,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib.serializer import (
++from html5lib.serializer import (
+     escape,
+     HTMLSerializer,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib._tokenizer import (
++from html5lib._tokenizer import (
+     attributeMap,
+     HTMLTokenizer,
+ )  # noqa: E402 module level import not at top of file
+-from bleach._vendor.html5lib._trie import (
++from html5lib._trie import (
+     Trie,
+ )  # noqa: E402 module level import not at top of file
+ 
+--- a/tests/test_clean.py
++++ b/tests/test_clean.py
+@@ -5,7 +5,7 @@
+ from bleach import clean
+ from bleach.html5lib_shim import Filter
+ from bleach.sanitizer import ALLOWED_PROTOCOLS, Cleaner, NoCssSanitizerWarning
+-from bleach._vendor.html5lib.constants import rcdataElements
++from html5lib.constants import rcdataElements
+ 
+ 
+ @pytest.mark.parametrize(
+--- a/setup.py
++++ b/setup.py
+@@ -25,8 +25,6 @@
+ 
+ INSTALL_REQUIRES = [
+     # html5lib requirements
+-    "six>=1.9.0",
+-    "webencodings",
+ ]
+ 
+ 

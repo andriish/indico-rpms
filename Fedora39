@@ -155,7 +155,33 @@ uwsgi-plugin-python3    \
 uwsgi-plugin-python3-gevent   && yum -y clean all  
            
 RUN               dnf -y install            python3-markdown-it-py python3-mdurl python3-rich  && yum -y clean all  
-                
+RUN               dnf -y install            python3-flit-core python3-flask-cors python3-google-api-client  python3-weasyprint && yum -y clean all  
+RUN               dnf -y install            \
+           bzip2-devel \
+ libffi-devel \
+ libgpg-error-devel \
+ libpq-devel \
+ libuuid-devel \
+ libxml2-devel \
+ libxslt-devel \
+ libyaml-devel \
+ mod_xsendfile \
+ ncurses-c++-libs \
+ ncurses-devel \
+ pcre-cpp \
+ pcre-devel \
+ pcre-utf16 \
+ pcre-utf32 \
+ postgresql-contrib \
+ postgresql-server \
+ python3-feedgen \
+ python3-wtforms-sqlalchemy \
+ readline-devel \
+ sqlite  \
+ sqlite-devel \
+ uuid \
+ xz-devel \
+ zlib-devel && yum -y clean all  
            
            
            
