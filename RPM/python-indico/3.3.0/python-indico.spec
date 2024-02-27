@@ -103,7 +103,7 @@ npm install
 ./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base
 
 %install
-%{__python3} -m pip install dist/indico-%{version}-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
+%{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location
 
 %post 
