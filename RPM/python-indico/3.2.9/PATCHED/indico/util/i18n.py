@@ -283,7 +283,7 @@ def _get_current_locale(locale):
 
 def get_all_locales():
     """
-    List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)}``.
+    List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)', True}``.
     """
     try:
 #    if babel.app is None:
@@ -296,7 +296,7 @@ def get_all_locales():
         counts = Counter(x[0] for x in languages.values())
         return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
     except:
-       return {}
+       return {'en_GB': ('English(UK)', 'UK', True}
 
 def set_session_lang(lang):
     """Set the current language in the current request context."""
