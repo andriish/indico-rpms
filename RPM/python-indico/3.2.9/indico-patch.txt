@@ -1,6 +1,6 @@
 diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-assets.py
---- ORIG/bin/maintenance/build-assets.py	2024-02-23 06:35:11.248129037 +0100
-+++ PATCHED/bin/maintenance/build-assets.py	2024-02-23 06:35:11.250129067 +0100
+--- ORIG/bin/maintenance/build-assets.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/bin/maintenance/build-assets.py	2024-02-25 20:40:17.108593466 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -8,8 +8,8 @@ diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-as
  # Copyright (C) 2002 - 2023 CERN
  #
 diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
---- ORIG/bin/maintenance/build-wheel.py	2024-02-23 06:35:11.248129037 +0100
-+++ PATCHED/bin/maintenance/build-wheel.py	2024-02-23 06:35:11.250129067 +0100
+--- ORIG/bin/maintenance/build-wheel.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/bin/maintenance/build-wheel.py	2024-02-25 20:40:17.108593466 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -65,8 +65,8 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      info('adding version suffix: ' + suffix, unimportant=True)
      with open(file_name, 'r+') as f:
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
---- ORIG/bin/maintenance/dump_url_map.py	2024-02-23 06:35:11.248129037 +0100
-+++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-23 06:35:11.250129067 +0100
+--- ORIG/bin/maintenance/dump_url_map.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-25 20:40:17.108593466 +0100
 @@ -8,6 +8,7 @@
  import hashlib
  import json
@@ -94,8 +94,8 @@ diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url
      app = make_app(testing=True, config_override={'BASE_URL': 'http://localhost/',
                                                    'SECRET_KEY': '*' * 16,
 diff -Naur ORIG/bin/maintenance/make-release.py PATCHED/bin/maintenance/make-release.py
---- ORIG/bin/maintenance/make-release.py	2024-02-23 06:35:11.249129052 +0100
-+++ PATCHED/bin/maintenance/make-release.py	2024-02-23 06:35:11.250129067 +0100
+--- ORIG/bin/maintenance/make-release.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/bin/maintenance/make-release.py	2024-02-25 20:40:17.108593466 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
@@ -103,8 +103,8 @@ diff -Naur ORIG/bin/maintenance/make-release.py PATCHED/bin/maintenance/make-rel
  # Copyright (C) 2002 - 2023 CERN
  #
 diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/auth/models/identities.py
---- ORIG/indico/modules/auth/models/identities.py	2024-02-23 06:35:11.249129052 +0100
-+++ PATCHED/indico/modules/auth/models/identities.py	2024-02-23 06:35:11.250129067 +0100
+--- ORIG/indico/modules/auth/models/identities.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/indico/modules/auth/models/identities.py	2024-02-25 20:40:17.108593466 +0100
 @@ -14,7 +14,7 @@
  from indico.core.db.sqlalchemy import UTCDateTime
  from indico.util.date_time import as_utc, now_utc
@@ -125,8 +125,8 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
      def __repr__(self):
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
 diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
---- ORIG/indico/util/i18n.py	2024-01-23 19:58:52.000000000 +0100
-+++ PATCHED/indico/util/i18n.py	2024-02-24 22:04:30.724969555 +0100
+--- ORIG/indico/util/i18n.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/indico/util/i18n.py	2024-02-26 19:16:26.720280621 +0100
 @@ -220,7 +220,6 @@
      return _force_locale(locale or 'en_US')
  
@@ -135,35 +135,32 @@ diff -Naur ORIG/indico/util/i18n.py PATCHED/indico/util/i18n.py
  def set_best_lang(check_session=True):
      """Get the best language/locale for the current user.
  
-@@ -286,15 +285,16 @@
+@@ -286,16 +285,18 @@
      """
      List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)}``.
      """
 -    if babel.app is None:
 -        return {}
 -    else:
--        missing = object()
--        languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
--                     for t in babel.list_translations()
--                     if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
--        counts = Counter(x[0] for x in languages.values())
--        return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
-+    return {}
++    try:
 +#    if babel.app is None:
 +#        return {}
 +#    else:
-+#        missing = object()
-+#        languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
-+#                     for t in babel.list_translations()
-+#                     if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
-+#        counts = Counter(x[0] for x in languages.values())
-+#        return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
- 
+         missing = object()
+         languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
+                      for t in babel.list_translations()
+                      if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
+         counts = Counter(x[0] for x in languages.values())
+         return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
+-
++    except:
++       return {}
  
  def set_session_lang(lang):
+     """Set the current language in the current request context."""
 diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
---- ORIG/indico/util/string.py	2024-02-23 06:35:11.249129052 +0100
-+++ PATCHED/indico/util/string.py	2024-02-24 20:30:22.092963786 +0100
+--- ORIG/indico/util/string.py	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/indico/util/string.py	2024-02-25 20:40:17.109593482 +0100
 @@ -33,25 +33,50 @@
  
  
@@ -233,8 +230,8 @@ diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
          result = md(text, **kwargs)
  
 diff -Naur ORIG/setup.cfg PATCHED/setup.cfg
---- ORIG/setup.cfg	2024-02-23 06:35:11.250129067 +0100
-+++ PATCHED/setup.cfg	2024-02-23 06:35:11.250129067 +0100
+--- ORIG/setup.cfg	2024-02-25 20:40:17.108593466 +0100
++++ PATCHED/setup.cfg	2024-02-25 20:40:17.109593482 +0100
 @@ -15,6 +15,7 @@
      Programming Language :: Python :: 3.9
      Programming Language :: Python :: 3.10

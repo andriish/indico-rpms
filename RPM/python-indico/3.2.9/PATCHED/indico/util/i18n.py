@@ -285,17 +285,18 @@ def get_all_locales():
     """
     List all available locales/names e.g. ``{'pt_PT': ('Portuguese', 'Portugal)}``.
     """
-    return {}
+    try:
 #    if babel.app is None:
 #        return {}
 #    else:
-#        missing = object()
-#        languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
-#                     for t in babel.list_translations()
-#                     if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
-#        counts = Counter(x[0] for x in languages.values())
-#        return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
-
+        missing = object()
+        languages = {str(t): config.CUSTOM_LANGUAGES.get(str(t), (t.language_name.title(), t.territory_name))
+                     for t in babel.list_translations()
+                     if config.CUSTOM_LANGUAGES.get(str(t), missing) is not None}
+        counts = Counter(x[0] for x in languages.values())
+        return {code: (name, territory, counts[name] > 1) for code, (name, territory) in languages.items()}
+    except:
+       return {}
 
 def set_session_lang(lang):
     """Set the current language in the current request context."""
