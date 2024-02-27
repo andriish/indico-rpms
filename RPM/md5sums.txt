@@ -57,3 +57,7 @@ b357c78f8f3f3b7cabd061ab2127a6cb  python-email_validator/1.2.1/rpmbuild/SOURCES/
 55f4bc422345672e2909a6d150a63041  python-authlib/1.0.1/rpmbuild/SOURCES/authlib-1.0.1.tar.gz
 
 8edcedcf47453288bd2168541da6d8bb  python-Flask-Multipass/0.5.3/rpmbuild/SOURCES/Flask-Multipass-0.5.3.tar.gz
+
+6ed93b51db956fa7cc53ad9c961577e5  python-indico/3.3.0/rpmbuild/SOURCES/1a4ed25f80ffd3b93b804036c4d593e087f9f055.zip
+a572c9fdce9ddca4c52ed4a037a743af  python-indico/3.3.0/rpmbuild/SOURCES/v3.2.2.tar.gz
+c5305be855f3fa9d194b5abef11b7aae  python-pypdf/4.0.1/rpmbuild/SOURCES/pypdf-4.0.1.tar.gz

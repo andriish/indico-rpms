@@ -1,0 +1,142 @@
+diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-assets.py
+--- ORIG/bin/maintenance/build-assets.py	2024-02-27 20:05:45.155634938 +0100
++++ PATCHED/bin/maintenance/build-assets.py	2024-02-27 20:05:43.550610712 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This file is part of Indico.
+ # Copyright (C) 2002 - 2024 CERN
+ #
+diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
+--- ORIG/bin/maintenance/build-wheel.py	2024-02-27 20:06:45.588547089 +0100
++++ PATCHED/bin/maintenance/build-wheel.py	2024-02-27 20:06:42.585501763 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This file is part of Indico.
+ # Copyright (C) 2002 - 2024 CERN
+ #
+@@ -82,7 +82,7 @@
+ def compile_catalogs():
+     path = None
+     # find ./xxx/translations/ with at least one subdir
+-    for root, dirs, _files in os.walk('.'):
++    for root, dirs, files in os.walk('.'):
+         segments = root.split(os.sep)
+         if segments[-1] == 'translations' and len(segments) == 3 and dirs:
+             path = root
+@@ -107,7 +107,7 @@
+         # babel as a build requirement, and then call e.g. the setuptools build backend
+         # to produce the actual wheel. but this is much more work so for now we just
+         # disable build isolation
+-        subprocess.check_output([sys.executable, '-m', 'build', '-w', '-n', '-o', target_dir], stderr=subprocess.STDOUT)
++        subprocess.check_output([sys.executable, 'setup.py', 'bdist_wheel', '-d', target_dir], stderr=subprocess.STDOUT)
+     except subprocess.CalledProcessError as exc:
+         fail('build failed', verbose_msg=exc.output)
+ 
+@@ -117,6 +117,7 @@
+     cmds = [['git', 'diff', '--stat', '--color=always', *toplevel],
+             ['git', 'diff', '--stat', '--color=always', '--staged', *toplevel],
+             ['git', 'clean', '-dn', '-e', '__pycache__', *toplevel]]
++    return True, None
+     for cmd in cmds:
+         rv = subprocess.check_output(cmd, stderr=subprocess.STDOUT, text=True)
+         if rv:
+@@ -155,6 +156,7 @@
+ 
+ 
+ def package_is_clean_indico():
++    return True, None
+     garbage = _get_ignored_package_files_indico()
+     if garbage:
+         return False, '\n'.join(garbage)
+@@ -165,6 +167,7 @@
+     toplevel = list({x.split('.')[0] for x in find_packages(include=('indico', 'indico.*'))})
+     cmds = [['git', 'diff', '--stat', '--color=always', *toplevel],
+             ['git', 'diff', '--stat', '--color=always', '--staged', *toplevel]]
++    return True, None
+     if toplevel:
+         # only check for ignored files if we have packages. for single-module
+         # plugins we don't have any package data to include anyway...
+@@ -209,7 +212,7 @@
+     if not add_version_suffix:
+         yield
+         return
+-    rev = subprocess.check_output(['git', 'rev-parse', '--short=10', 'HEAD'], text=True).strip()
++    rev = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], text=True).strip()
+     suffix = '+{}.{}'.format(datetime.now().strftime('%Y%m%d%H%M'), rev)
+     info('adding version suffix: ' + suffix, unimportant=True)
+     with open(file_name, 'r+') as f:
+diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
+--- ORIG/bin/maintenance/dump_url_map.py	2024-02-27 20:06:59.929763551 +0100
++++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-27 20:07:03.788821797 +0100
+@@ -8,6 +8,7 @@
+ import hashlib
+ import json
+ import os
++import sys
+ import subprocess
+ 
+ import click
+@@ -19,13 +20,14 @@
+     # whenever something changed
+     h = hashlib.md5()
+     h.update(os.getcwd().encode())
+-    h.update(subprocess.check_output(['git', 'describe', '--always']))
+-    h.update(subprocess.check_output(['git', 'status']))
+-    h.update(subprocess.check_output(['git', 'diff']))
++    #h.update(subprocess.check_output(['git', 'describe', '--always']))
++    #h.update(subprocess.check_output(['git', 'status']))
++    #h.update(subprocess.check_output(['git', 'diff']))
+     return h.hexdigest()
+ 
+ 
+ def get_rules(plugins):
++    sys.path = [os.getcwd()] + sys.path
+     from indico.web.flask.app import make_app
+     app = make_app(testing=True, config_override={'BASE_URL': 'http://localhost/',
+                                                   'SECRET_KEY': '*' * 16,
+diff -Naur ORIG/bin/maintenance/make-release.py PATCHED/bin/maintenance/make-release.py
+--- ORIG/bin/maintenance/make-release.py	2024-02-27 20:08:36.437369316 +0100
++++ PATCHED/bin/maintenance/make-release.py	2024-02-27 20:08:35.554354395 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This file is part of Indico.
+ # Copyright (C) 2002 - 2024 CERN
+ #
+diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/auth/models/identities.py
+--- ORIG/indico/modules/auth/models/identities.py	2024-02-27 20:09:05.774865050 +0100
++++ PATCHED/indico/modules/auth/models/identities.py	2024-02-27 20:09:04.779848236 +0100
+@@ -15,6 +15,7 @@
+ from indico.util.date_time import as_utc, now_utc
+ from indico.util.passwords import PasswordProperty
+ 
++import re
+ 
+ class Identity(db.Model):
+     """Identities of Indico users."""
+@@ -97,7 +98,8 @@
+     def register_login(self, ip):
+         """Update the last login information."""
+         self.last_login_dt = now_utc()
+-        self.last_login_ip = ip
++        self.last_login_ip = re.split("%",ip)[0]
++        #self.last_login_ip = ip
+ 
+     def __repr__(self):
+         return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
+diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
+--- ORIG/indico/util/string.py	2024-02-27 20:10:50.715638307 +0100
++++ PATCHED/indico/util/string.py	2024-02-27 20:10:49.790622676 +0100
+@@ -269,9 +269,7 @@
+         if extra_html:
+             result = sanitize_html(result)
+         else:
+-            css_sanitizer = IndicoCSSSanitizer(allowed_css_properties=BLEACH_ALLOWED_STYLES_HTML)
+-            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES,
+-                                  css_sanitizer=css_sanitizer)
++            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES)
+     else:
+         result = md(text, **kwargs)
+ 
