@@ -28,7 +28,7 @@ BuildRequires:  python3-flit-core
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n %{srcname}-%{version}
 
 
 %generate_buildrequires
