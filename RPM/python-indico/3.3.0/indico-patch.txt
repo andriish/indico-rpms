@@ -1,27 +1,7 @@
-diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
---- ORIG/bin/maintenance/build-wheel.py	2024-02-27 20:06:45.588547089 +0100
-+++ PATCHED/bin/maintenance/build-wheel.py	2024-02-28 14:22:29.652532064 +0100
-@@ -209,7 +209,7 @@
-     if not add_version_suffix:
-         yield
-         return
--    rev = subprocess.check_output(['git', 'rev-parse', '--short=10', 'HEAD'], text=True).strip()
-+    rev = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], text=True).strip()
-     suffix = '+{}.{}'.format(datetime.now().strftime('%Y%m%d%H%M'), rev)
-     info('adding version suffix: ' + suffix, unimportant=True)
-     with open(file_name, 'r+') as f:
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
 --- ORIG/bin/maintenance/dump_url_map.py	2024-02-27 20:06:59.929763551 +0100
-+++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-28 15:20:36.889770294 +0100
-@@ -8,6 +8,7 @@
- import hashlib
- import json
- import os
-+import sys
- import subprocess
- 
- import click
-@@ -19,13 +20,15 @@
++++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-28 17:44:49.740578391 +0100
+@@ -19,9 +19,10 @@
      # whenever something changed
      h = hashlib.md5()
      h.update(os.getcwd().encode())
@@ -35,11 +15,6 @@ diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url
      return h.hexdigest()
  
  
- def get_rules(plugins):
-+    sys.path = [os.getcwd()] + sys.path
-     from indico.web.flask.app import make_app
-     app = make_app(testing=True, config_override={'BASE_URL': 'http://localhost/',
-                                                   'SECRET_KEY': '*' * 16,
 diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/auth/models/identities.py
 --- ORIG/indico/modules/auth/models/identities.py	2024-02-27 20:09:05.774865050 +0100
 +++ PATCHED/indico/modules/auth/models/identities.py	2024-02-27 20:09:04.779848236 +0100
