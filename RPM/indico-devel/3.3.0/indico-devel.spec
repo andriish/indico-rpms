@@ -187,6 +187,7 @@ Requires: python3-flit-core
 Requires: python3-flask-cors 
 Requires: python3-google-api-client  
 Requires: python3-weasyprint
+Requires: python-build
 
 Requires: tex(adjustbox.sty)
 Requires: tex(amsmath.sty)
