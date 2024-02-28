@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.3.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -17,8 +17,10 @@ BuildRequires: python3-setuptools
 BuildRequires: python-srpm-macros 
 BuildRequires: python3-rpm-macros
 BuildRequires: pyproject-rpm-macros
-
-
+Requires: python3-rpm-macros 
+Requires: python-srpm-macros 
+Requires: python3-devel
+Requires: pyproject-rpm-macros
 
 
 Requires: tzdata
@@ -63,6 +65,7 @@ Requires: python3-Flask-PluginEngine
 Requires: python3-flask-sqlalchemy
 Requires: python3-flask-webpackext
 Requires: python3-flask-wtf
+Requires: python-flask-url-map-serializer
 Requires: python3-greenlet
 Requires: python3-greenlet
 Requires: python3-hiredis
@@ -80,6 +83,7 @@ Requires: python3-jedi
 Requires: python3-jinja2
 Requires: python3-jsonschema
 Requires: python3-kombu
+Requires: python3-ldap
 Requires: python3-limits
 Requires: python3-lxml
 Requires: python3-mako
@@ -91,6 +95,7 @@ Requires: python3-marshmallow-oneofschema
 Requires: python3-marshmallow-sqlalchemy
 Requires: python3-matplotlib-inline
 Requires: python3-mypy_extensions
+Requires: python3-nbconvert 
 Requires: python3-node-semver
 Requires: python3-packaging
 Requires: python3-parso
@@ -117,6 +122,7 @@ Requires: python3-reportlab
 Requires: python3-requests
 Requires: python3-sentry-sdk
 Requires: python3-simplejson
+Requires: python3-semver
 Requires: python3-six
 Requires: python3-speaklater
 Requires: python3-sqlalchemy
@@ -135,26 +141,26 @@ Requires: python3-werkzeug
 Requires: python3-wtforms >= 3.0.0
 Requires: python3-WTForms-dateutil
 Requires: python3-wtforms-sqlalchemy
+Requires: python3-xlsxwriter
 Requires: python3-zipp
-Requires: uwsgi
-Requires: uwsgi-plugin-python3
-Requires: uwsgi-plugin-python3-gevent 
+
+
 
 Requires: python3-pure-eval
 Requires: python3-marshmallow_dataclass
+Requires: python3-cachelib
+Requires: python3-colorclass
+Requires: python3-captcha
+Requires: python3-stack-data
+Requires: python-tinycss2
+Requires: python3-flit-core 
+Requires: python3-flask-cors 
+Requires: python3-google-api-client  
+Requires: python3-weasyprint
+Requires: python-build
+Requires: python-exceptiongroup
 
-Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
-Requires: git gcc make redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
-Requires: postfix
-Requires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel libyaml-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
 
-
-Requires: rpm-build git wget python3-rpm-macros
-Requires: npm
-
-Requires: python3-xlsxwriter
-
-Requires: python-flask-url-map-serializer
 
 #Those are fake to satisfy the Indico requirements.
 Provides: python%{python3_version}dist(redis[hiredis])
@@ -168,62 +174,12 @@ Provides: python%{python3_version}dist(tzdata)
 Provides: python%{python3_version}dist(importlib-resources)
 
 
-Requires: python3-nbconvert 
-Requires: python3-rpm-macros 
-Requires: python-srpm-macros 
-Requires: python3-devel
-Requires: pyproject-rpm-macros
-
-
-Requires: python3-cachelib
-Requires: python3-colorclass
-Requires: python3-captcha
-Requires: python3-stack-data
-Requires: python-tinycss2
-Requires: gcc-c++
-
-
-Requires: python3-flit-core 
-Requires: python3-flask-cors 
-Requires: python3-google-api-client  
-Requires: python3-weasyprint
-Requires: python-build
-Requires: python-exceptiongroup
-
-Requires: tex(adjustbox.sty)
-Requires: tex(amsmath.sty)
-Requires: tex(amssymb.sty)
-Requires: tex(babel.sty)
-Requires: tex(enumitem.sty)
-Requires: tex(fancyhdr.sty)
-Requires: tex(float.sty)
-Requires: tex(fontspec.sty)
-Requires: tex(geometry.sty)
-#Requires: tex(rawlatex.sty)
-Requires: tex(microtype.sty)
-Requires: tex(needspace.sty)
-Requires: tex(parskip.sty)
-Requires: tex(scrextend.sty)
-Requires: tex(sectsty.sty)
-Requires: tex(tcolorbox.sty)
-Requires: tex(truncate.sty)
-Requires: tex(xcolor.sty)
-Requires: tex(xstring.sty)
-
-
 %global _description %{expand:
 Dependencies and build environment for Indico and some scripts to start Indico.}
 
 %description %_description
 
 Summary:        %{summary}
-BuildRequires: python3-devel
-BuildRequires: python3-setuptools 
-BuildRequires: python-srpm-macros 
-BuildRequires: python3-rpm-macros
-BuildRequires: pyproject-rpm-macros
-
-
 
 %prep
 %setup -q  -c
