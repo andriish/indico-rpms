@@ -3,6 +3,7 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
+python-exceptiongroup:1.2.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5

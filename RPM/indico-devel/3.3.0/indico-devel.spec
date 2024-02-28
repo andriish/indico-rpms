@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.3.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -188,6 +188,7 @@ Requires: python3-flask-cors
 Requires: python3-google-api-client  
 Requires: python3-weasyprint
 Requires: python-build
+Requires: python-exceptiongroup
 
 Requires: tex(adjustbox.sty)
 Requires: tex(amsmath.sty)

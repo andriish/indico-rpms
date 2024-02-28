@@ -4,6 +4,7 @@ export PATH=$PATH:$(pwd)
 copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-rawhide-x86_64 I330
 #find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
+python-exceptiongroup:1.2.0
 indico-mpp:3.2
 python-indico:3.3.0
 indico-devel:3.3.0
