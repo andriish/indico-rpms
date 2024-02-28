@@ -55,25 +55,13 @@ Requires: python3-%{srcname}
 %setup -q -T -D -a 1 -n indico-%{igittag}
 mkdir -p plugins
 mv indico-plugins-%{pgittag} plugins/base
-rm -rf plugins/base/piwik
-rm -rf plugins/base/themes_legacy
-rm -rf plugins/base/ursh
-rm -rf plugins/base/vc_zoom
-rm -rf plugins/base/cloud_captchas
-rm -rf plugins/base/owncloud
-rm -rf plugins/base/previewer_jupyter
-
 
 set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
 sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
-sed -i 's/indico-plugin-piwik.*$//g'    plugins/base/_meta/setup.cfg
-sed -i 's/indico-plugin-ursh.*$//g'     plugins/base/_meta/setup.cfg
-sed -i 's/indico-plugin-vc-zoom.*$//g'  plugins/base/_meta/setup.cfg
-sed -i 's/indico-plugin-cloud-captchas.*$//g'  plugins/base/_meta/setup.cfg
-sed -i 's/indico-plugin-owncloud.*$//g'  plugins/base/_meta/setup.cfg
-sed -i 's/indico-plugin-previewer-jupyter.*$//g'  plugins/base/_meta/setup.cfg
+
+sed -i '/# BEGIN GENERATED REQUIREMENTS/,/# END GENERATED REQUIREMENTS/d' plugins/base/_meta/setup.cfg
 
 %py3_shebang_fix ./
 
@@ -98,11 +86,25 @@ cd ../../../
 npm install
 export INDICO_NO_GIT=True
 ./bin/maintenance/build-wheel.py indico      --no-git  --ignore-unclean 
+#Temporarily install Indico
+export TMPINSTALL=$(pwd)
+%{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
+export PYTHONPATH=%{buildroot}/%{python3_sitelib}:$PYTHONPATH
+# Install all plugins 
+%{__python3} -m pip install plugins/base/owncloud --root=%{buildroot} --no-dependencies
+%{__python3} -m pip install plugins/base/themes_legacy --root=%{buildroot} --no-dependencies
+%{__python3} -m pip install plugins/base/ursh --root=%{buildroot} --no-dependencies
+%{__python3} -m pip install plugins/base/previewer_jupyter --root=%{buildroot} --no-dependencies
+%{__python3} -m pip install plugins/base/piwik --root=%{buildroot} --no-dependencies
+%{__python3} -m pip install plugins/base/cloud_captchas --root=%{buildroot} --no-dependencies
+%{__python3} -m pip install plugins/base/vc_zoom --root=%{buildroot} --no-dependencies
+
+# Create proper wheels for plugins
 ./bin/maintenance/build-wheel.py all-plugins --no-git  --ignore-unclean  plugins/base
 
 %install
-%{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
-%{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location
+%{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
+%{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
 
 %post 
 indico i18n compile-catalog
@@ -132,7 +134,7 @@ indico i18n compile-catalog-react
 
 
 %changelog
-* Wed Feb 26 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.0dev
+* Wed Feb 28 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.0dev
 - Version 3.3.0dev 
 * Thu Feb 22 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2.9
 - Version 3.2.9 
