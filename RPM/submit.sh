@@ -11,6 +11,7 @@ python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
 python-PyPDF2:2.11.0
+python-pypdf:4.0.1
 python-WTForms-dateutil:0.1
 python-captcha:0.5.0
 python-email_validator:1.2.1
