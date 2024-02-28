@@ -144,6 +144,13 @@ Administration rights granted successfully
 bash-5.2$ 
 ```
 
+Don't forget to edit 
+- /opt/indico/indico.conf 
+  - hostname
+  - passwords
+  - SMTP, e.g. local_recipient_maps =
+  
+- /etc/httpd/conf.d/indico.conf and others
 
 ## Startup script
 
