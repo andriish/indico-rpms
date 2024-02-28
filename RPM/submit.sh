@@ -1,7 +1,7 @@
 #!bin/bash
 
 export PATH=$PATH:$(pwd)
-copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-rawhide-x86_64 I329
+copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-rawhide-x86_64 I330
 #find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
 indico-mpp:3.2
@@ -34,7 +34,7 @@ export name=$(echo $a | cut -f1 -d: )
 export version=$(echo $a | cut -f2 -d: )
 envsubst <<EOF > temp.sh
 #!/bin/bash
-git clone --depth 3 https://github.com/andriish/indico-rpms.git -b indico329
+git clone --depth 3 https://github.com/andriish/indico-rpms.git -b indico330pre
 cd indico-rpms/RPM
 sh srpmsbuild.sh  $name $version
 EOF
