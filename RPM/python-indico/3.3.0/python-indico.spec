@@ -52,7 +52,8 @@ Requires: python3-%{srcname}
 mkdir -p plugins
 mv indico-plugins-3.2.2 plugins/base
 rm -rf plugins/base/piwik
-rm -rf plugins/base/themes_legacy#rm -rf plugins/base/ursh
+rm -rf plugins/base/themes_legacy
+rm -rf plugins/base/ursh
 rm -rf plugins/base/vc_zoom
 rm -rf plugins/base/cloud_captchas
 rm -rf plugins/base/owncloud
