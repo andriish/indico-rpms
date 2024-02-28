@@ -1,14 +1,15 @@
 %global srcname indico
 %global srcnamenu indico
+%global igittag 1a4ed25f80ffd3b93b804036c4d593e087f9f055
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Indico package
 
 License:        MIT
 URL:            https://getindico.io/
-Source0:        https://github.com/indico/indico/archive/1a4ed25f80ffd3b93b804036c4d593e087f9f055.zip
+Source0:        https://github.com/indico/indico/archive/%{igittag}.zip
 Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
 Patch0:         indico-patch.txt
 BuildArch:      noarch
@@ -18,6 +19,7 @@ BuildRequires: nodejs-npm
 BuildRequires: python-build
 BuildRequires: python3-pip python3-wheel
 Requires: indico-devel==3.3.0
+BuildRequires: python3-rpm-macros
 
 
 %global _description %{expand:
@@ -47,8 +49,8 @@ Requires: python3-%{srcname}
 
 
 %prep
-%autosetup  -n indico-1a4ed25f80ffd3b93b804036c4d593e087f9f055 -p 1
-%setup -q -T -D -a 1 -n indico-1a4ed25f80ffd3b93b804036c4d593e087f9f055
+%autosetup  -n indico-%{igittag} -p 1
+%setup -q -T -D -a 1 -n indico-%{igittag}
 mkdir -p plugins
 mv indico-plugins-3.2.2 plugins/base
 rm -rf plugins/base/piwik
@@ -71,6 +73,7 @@ sed -i 's/indico-plugin-cloud-captchas.*$//g'  plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-owncloud.*$//g'  plugins/base/_meta/setup.cfg
 sed -i 's/indico-plugin-previewer-jupyter.*$//g'  plugins/base/_meta/setup.cfg
 
+%py3_shebang_fix ./
 
 
 
@@ -98,7 +101,7 @@ npm config delete https-proxy
 npm install
 cd ../../../
 npm install
-export GIT_CEILING_DIRECTORIES=$(pwd)
+export INDICO_NO_GIT=True
 ./bin/maintenance/build-wheel.py indico      --no-git  --ignore-unclean 
 ./bin/maintenance/build-wheel.py all-plugins --no-git  --ignore-unclean  plugins/base
 

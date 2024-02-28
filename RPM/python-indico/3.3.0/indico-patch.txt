@@ -1,21 +1,6 @@
-diff -Naur ORIG/bin/maintenance/build-assets.py PATCHED/bin/maintenance/build-assets.py
---- ORIG/bin/maintenance/build-assets.py	2024-02-27 20:05:45.155634938 +0100
-+++ PATCHED/bin/maintenance/build-assets.py	2024-02-27 20:05:43.550610712 +0100
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # This file is part of Indico.
- # Copyright (C) 2002 - 2024 CERN
- #
 diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-wheel.py
 --- ORIG/bin/maintenance/build-wheel.py	2024-02-27 20:06:45.588547089 +0100
-+++ PATCHED/bin/maintenance/build-wheel.py	2024-02-27 21:49:05.604596603 +0100
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # This file is part of Indico.
- # Copyright (C) 2002 - 2024 CERN
- #
++++ PATCHED/bin/maintenance/build-wheel.py	2024-02-28 14:22:29.652532064 +0100
 @@ -209,7 +209,7 @@
      if not add_version_suffix:
          yield
@@ -27,7 +12,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      with open(file_name, 'r+') as f:
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
 --- ORIG/bin/maintenance/dump_url_map.py	2024-02-27 20:06:59.929763551 +0100
-+++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-28 14:13:59.020214050 +0100
++++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-28 14:40:03.572665142 +0100
 @@ -8,6 +8,7 @@
  import hashlib
  import json
@@ -36,7 +21,18 @@ diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url
  import subprocess
  
  import click
-@@ -26,6 +27,7 @@
+@@ -19,13 +20,15 @@
+     # whenever something changed
+     h = hashlib.md5()
+     h.update(os.getcwd().encode())
+-    h.update(subprocess.check_output(['git', 'describe', '--always']))
+-    h.update(subprocess.check_output(['git', 'status']))
+-    h.update(subprocess.check_output(['git', 'diff']))
++    if (not os.environ.get("INDICO_NO_GIT")):
++      h.update(subprocess.check_output(['git', 'describe', '--always']))
++      h.update(subprocess.check_output(['git', 'status']))
++      h.update(subprocess.check_output(['git', 'diff']))
+     return h.hexdigest()
  
  
  def get_rules(plugins):
@@ -44,15 +40,6 @@ diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url
      from indico.web.flask.app import make_app
      app = make_app(testing=True, config_override={'BASE_URL': 'http://localhost/',
                                                    'SECRET_KEY': '*' * 16,
-diff -Naur ORIG/bin/maintenance/make-release.py PATCHED/bin/maintenance/make-release.py
---- ORIG/bin/maintenance/make-release.py	2024-02-27 20:08:36.437369316 +0100
-+++ PATCHED/bin/maintenance/make-release.py	2024-02-27 20:08:35.554354395 +0100
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/python3
- # This file is part of Indico.
- # Copyright (C) 2002 - 2024 CERN
- #
 diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/auth/models/identities.py
 --- ORIG/indico/modules/auth/models/identities.py	2024-02-27 20:09:05.774865050 +0100
 +++ PATCHED/indico/modules/auth/models/identities.py	2024-02-27 20:09:04.779848236 +0100
