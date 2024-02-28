@@ -24,7 +24,7 @@ python-flask-webpackext:1.0.2
 python-webargs:8.3.0
 indico-devel:3.3.0
 python-indico:3.3.0
-indico-mpp:3.2
+indico-mpp:3.3
 )
 #declare -a BUILDLIST=(
 #python-pypdf:4.0.1

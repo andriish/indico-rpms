@@ -1,0 +1,17 @@
+[Unit]
+Description=Indico Celery
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/indico celery worker -B
+Restart=always
+SyslogIdentifier=indico-celery
+User=indico
+Group=apache
+UMask=0027
+Type=simple
+KillMode=mixed
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target
