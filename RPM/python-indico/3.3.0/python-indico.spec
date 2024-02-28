@@ -1,16 +1,17 @@
 %global srcname indico
 %global srcnamenu indico
 %global igittag 1a4ed25f80ffd3b93b804036c4d593e087f9f055
+%global pgittag bece9eec553ee0cec9667c6dcef6ef6498e1093c
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Indico package
 
 License:        MIT
 URL:            https://getindico.io/
 Source0:        https://github.com/indico/indico/archive/%{igittag}.zip
-Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.2.2.tar.gz
+Source1:        https://github.com/indico/indico-plugins/%{pgittag}.tar.gz
 Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires: git
@@ -53,7 +54,7 @@ Requires: python3-%{srcname}
 %autosetup  -n indico-%{igittag} -p 1
 %setup -q -T -D -a 1 -n indico-%{igittag}
 mkdir -p plugins
-mv indico-plugins-3.2.2 plugins/base
+mv indico-plugins-%{pgittag} plugins/base
 rm -rf plugins/base/piwik
 rm -rf plugins/base/themes_legacy
 rm -rf plugins/base/ursh

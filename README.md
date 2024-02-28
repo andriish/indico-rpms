@@ -113,7 +113,7 @@ To do it int he command line:
 
 ```
 su  indico 
-bash-5.2$ indico user create
+bash-5.2$ indico user create -a
 Email: 
 First name: 
 Last name: 
@@ -131,16 +131,6 @@ User info:
 
 Create the new user? [Y/n]: Y
 New user created successfully with ID: 1
-bash-5.2$ indico  user grant-admin 1
-User info:
-  ID: 1
-  First name: 
-  Family name: 
-  Email: 
-  Affiliation: 
-
-Grant administration rights to this user? [y/N]: y
-Administration rights granted successfully
 bash-5.2$ 
 ```
 
