@@ -49,7 +49,7 @@ Requires: python3-cryptography
 Requires: python3-decorator
 Requires: python3-distro
 Requires: python3-dns
-Requires: python3-email_validator
+Requires: python3-email-validator
 Requires: python3-executing
 Requires: python3-feedgen
 Requires: python3-flask
