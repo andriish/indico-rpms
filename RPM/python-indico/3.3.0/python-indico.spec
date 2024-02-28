@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -17,7 +17,7 @@ BuildRequires: indico-devel  python3-semver
 BuildRequires: nodejs-npm
 BuildRequires: python-build
 BuildRequires: python3-pip python3-wheel
-Requires: indico-devel>=3.2.9
+Requires: indico-devel==3.3.0
 
 
 %global _description %{expand:

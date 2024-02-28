@@ -4,7 +4,7 @@
 
 Name:           indico-devel
 Version:        3.3.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Dependencies and build environment for Indico
 
 License:        MIT
@@ -49,7 +49,7 @@ Requires: python3-cryptography
 Requires: python3-decorator
 Requires: python3-distro
 Requires: python3-dns
-Requires: python3-email_validator < 1.3.0
+Requires: python3-email_validator
 Requires: python3-executing
 Requires: python3-feedgen
 Requires: python3-flask
@@ -142,10 +142,10 @@ Requires: uwsgi-plugin-python3-gevent
 
 Requires: python3-pure-eval
 Requires: python3-marshmallow_dataclass
-Requires: python3-iso_4217
 
 Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
 Requires: git gcc make redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+Requires: sendmail
 Requires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel libyaml-devel zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
 
 
