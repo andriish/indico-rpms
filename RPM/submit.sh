@@ -5,8 +5,8 @@ copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-rawhid
 #find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
 indico-mpp:3.2
-python-indico:3.2.9
-indico-devel:3.2.9
+python-indico:3.3.0
+indico-devel:3.3.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
@@ -38,7 +38,7 @@ git clone --depth 3 https://github.com/andriish/indico-rpms.git -b indico329
 cd indico-rpms/RPM
 sh srpmsbuild.sh  $name $version
 EOF
-copr add-package-custom I329 \
+copr add-package-custom I330 \
         --name $name \
         --script temp.sh \
         --script-resultdir indico-rpms/RPM/$name/$version/rpmbuild/SOURCES/ \
