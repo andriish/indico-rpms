@@ -93,7 +93,7 @@ install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
 install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
-install -m 755 logo_indico_bw.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
+install -m 755 logo_indico_bw.svg %{buildroot}/%{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
 install -m 755 robots.txt %{buildroot}/%{python3_sitelib}/indico/web/static/robots.txt
 
 
