@@ -27,7 +27,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      with open(file_name, 'r+') as f:
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
 --- ORIG/bin/maintenance/dump_url_map.py	2024-02-27 20:06:59.929763551 +0100
-+++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-27 21:09:09.791672382 +0100
++++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-28 14:13:59.020214050 +0100
 @@ -8,6 +8,7 @@
  import hashlib
  import json
@@ -36,15 +36,7 @@ diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url
  import subprocess
  
  import click
-@@ -19,6 +20,7 @@
-     # whenever something changed
-     h = hashlib.md5()
-     h.update(os.getcwd().encode())
-+    return h.hexdigest()
-     h.update(subprocess.check_output(['git', 'describe', '--always']))
-     h.update(subprocess.check_output(['git', 'status']))
-     h.update(subprocess.check_output(['git', 'diff']))
-@@ -26,6 +28,7 @@
+@@ -26,6 +27,7 @@
  
  
  def get_rules(plugins):
@@ -82,17 +74,3 @@ diff -Naur ORIG/indico/modules/auth/models/identities.py PATCHED/indico/modules/
  
      def __repr__(self):
          return f'<Identity({self.id}, {self.user_id}, {self.provider}, {self.identifier})>'
-diff -Naur ORIG/indico/util/string.py PATCHED/indico/util/string.py
---- ORIG/indico/util/string.py	2024-02-27 20:10:50.715638307 +0100
-+++ PATCHED/indico/util/string.py	2024-02-27 20:10:49.790622676 +0100
-@@ -269,9 +269,7 @@
-         if extra_html:
-             result = sanitize_html(result)
-         else:
--            css_sanitizer = IndicoCSSSanitizer(allowed_css_properties=BLEACH_ALLOWED_STYLES_HTML)
--            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES,
--                                  css_sanitizer=css_sanitizer)
-+            result = bleach.clean(result, tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES)
-     else:
-         result = md(text, **kwargs)
- 

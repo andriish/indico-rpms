@@ -98,6 +98,7 @@ npm config delete https-proxy
 npm install
 cd ../../../
 npm install
+export GIT_CEILING_DIRECTORIES=$(pwd)
 ./bin/maintenance/build-wheel.py indico      --no-git  --ignore-unclean 
 ./bin/maintenance/build-wheel.py all-plugins --no-git  --ignore-unclean  plugins/base
 
