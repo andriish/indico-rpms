@@ -12,7 +12,7 @@ diff -Naur ORIG/bin/maintenance/build-wheel.py PATCHED/bin/maintenance/build-whe
      with open(file_name, 'r+') as f:
 diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url_map.py
 --- ORIG/bin/maintenance/dump_url_map.py	2024-02-27 20:06:59.929763551 +0100
-+++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-28 14:40:03.572665142 +0100
++++ PATCHED/bin/maintenance/dump_url_map.py	2024-02-28 15:20:36.889770294 +0100
 @@ -8,6 +8,7 @@
  import hashlib
  import json
@@ -28,7 +28,7 @@ diff -Naur ORIG/bin/maintenance/dump_url_map.py PATCHED/bin/maintenance/dump_url
 -    h.update(subprocess.check_output(['git', 'describe', '--always']))
 -    h.update(subprocess.check_output(['git', 'status']))
 -    h.update(subprocess.check_output(['git', 'diff']))
-+    if (not os.environ.get("INDICO_NO_GIT")):
++    if not os.environ.get('INDICO_NO_GIT'):
 +      h.update(subprocess.check_output(['git', 'describe', '--always']))
 +      h.update(subprocess.check_output(['git', 'status']))
 +      h.update(subprocess.check_output(['git', 'diff']))
