@@ -1,5 +1,5 @@
 # This file is part of Indico.
-# Copyright (C) 2002 - 2022 CERN
+# Copyright (C) 2002 - 2024 CERN
 #
 # Indico is free software; you can redistribute it and/or
 # modify it under the terms of the MIT License; see the
@@ -7,6 +7,7 @@
 
 from fnmatch import fnmatch
 
+from flask import session
 from wtforms.fields import EmailField, PasswordField, SelectField, StringField
 from wtforms.fields import BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Email, Optional, ValidationError
@@ -72,6 +73,8 @@ class EditLocalIdentityForm(IndicoForm):
     def __init__(self, *args, **kwargs):
         self.identity = kwargs.pop('identity', None)
         super().__init__(*args, **kwargs)
+        if session.user.is_admin and session.user != self.identity.user:
+            del self.password
 
     def validate_password(self, field):
         if field.data != self.identity.password:
@@ -115,7 +118,7 @@ class LocalRegistrationForm(IndicoForm):
     confirm_password = PasswordField(_('Confirm password'), [DataRequired(), ConfirmPassword('password')],
                                      render_kw={'autocomplete': 'new-password'})
     TOS = BooleanField( _('TOS'), [DataRequired()], description=_("I agree to the terms and conditions of service of MPP Indico https:/indico.mpp.mpg.de/tos"))
-    comment = TextAreaField(_('Comment'), description=_('You can provide additional information or a comment for the '
+    comment = TextAreaField(_('Comment'), [DataRequired()], description=_('You SHOULD provide additional information or a comment for the '
                                                         'administrators who will review your registration.'))
 
     @property

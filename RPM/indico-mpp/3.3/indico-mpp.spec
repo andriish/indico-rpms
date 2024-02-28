@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
