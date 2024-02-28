@@ -29,6 +29,7 @@ indico-mpp:3.3
 #python-pypdf:4.0.1
 #python-indico:3.3.0
 #)
+yum -y install python-flit-scm
 for a in "${BUILDLIST[@]}" 
 do
 p=$(echo $a | cut -f1 -d: )
