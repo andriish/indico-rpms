@@ -3,7 +3,7 @@
 
 Name:           indico-mpp
 Version:        3.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
@@ -101,7 +101,6 @@ install -m 755 robots.txt %{buildroot}/%{python3_sitelib}/indico/web/static/robo
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
 install -m 755 login_page.html %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/login_page.html
 install -m 755 register.html   %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/register.html
-install -m 755 forms.py        %{buildroot}/%{python3_sitelib}/indico/modules/auth/forms.py
 
 mkdir -p %{buildroot}/etc/systemd/system/postgresql.service.d/
 install -m 755  indicopostgresql.conf %{buildroot}/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
@@ -207,8 +206,6 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 %{python3_sitelib}/indico/web/static/robots.txt
 %{python3_sitelib}/indico/modules/auth/templates/login_page.html
 %{python3_sitelib}/indico/modules/auth/templates/register.html
-%{python3_sitelib}/indico/modules/auth/forms.py
-%{python3_sitelib}/indico/modules/auth/__pycache__/forms*pyc
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
 %changelog

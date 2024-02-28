@@ -4,7 +4,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        3%{?dist}
+Release:        5%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -123,8 +123,6 @@ indico i18n compile-catalog-react
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
-%exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/forms.py
-%exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/__pycache__/forms*pyc
 
 %files -n python3-%{srcname}-dummy
 %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
@@ -132,8 +130,6 @@ indico i18n compile-catalog-react
 %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
-%{python3_sitelib}/%{srcnamenu}/modules/auth/forms.py
-%{python3_sitelib}/%{srcnamenu}/modules/auth/__pycache__/forms*pyc
 
 
 %files -n python3-%{srcname}-plugins
