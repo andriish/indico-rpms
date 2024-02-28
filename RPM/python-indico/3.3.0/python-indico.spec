@@ -75,8 +75,6 @@ sed -i 's/indico-plugin-previewer-jupyter.*$//g'  plugins/base/_meta/setup.cfg
 
 %py3_shebang_fix ./
 
-
-
 sed -i 's/\=\=.*$//g' requirements.*
 sed -i 's/tzdata/#tzdata/g' requirements.*
 sed -i 's/pypdf/#pypdf/g' requirements.*
@@ -86,17 +84,12 @@ sed -i 's/importlib/#importlib/g' requirements.*
 %build
 export NODE_OPTIONS="--max-old-space-size=5120"
 export PYTHONPATH=$(pwd):$PYTHONPATH
-#exit
 mkdir -p indico/web/client
 cd indico/web/client
 
 npm config delete proxy
-
 npm config delete http-proxy
-
 npm config delete https-proxy
-
-
 
 npm install
 cd ../../../
@@ -119,14 +112,14 @@ indico i18n compile-catalog-react
 %{python3_sitelib}/%{srcnamenu}/
 %{_bindir}/indico
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
-%exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.png
+%exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
 %files -n python3-%{srcname}-dummy
 %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
-%{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.png
+%{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
 %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
@@ -137,6 +130,8 @@ indico i18n compile-catalog-react
 
 
 %changelog
+* Wed Feb 26 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.0dev
+- Version 3.3.0dev 
 * Thu Feb 22 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2.9
 - Version 3.2.9 
 * Mon May 15 2023 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2.3
