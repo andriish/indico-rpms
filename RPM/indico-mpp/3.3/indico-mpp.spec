@@ -201,7 +201,7 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
 %config(noreplace) /opt/indico/etc/indico.conf
-%{python3_sitelib}/indico/web/static/images/logo_indico_bw.png
+%{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
 %{python3_sitelib}/indico/web/static/images/globe.png
 %{python3_sitelib}/indico/web/static/robots.txt
 %{python3_sitelib}/indico/modules/auth/templates/login_page.html
