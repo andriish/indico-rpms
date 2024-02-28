@@ -11,7 +11,7 @@ Summary:        Indico package
 License:        MIT
 URL:            https://getindico.io/
 Source0:        https://github.com/indico/indico/archive/%{igittag}.zip
-Source1:        https://github.com/indico/indico-plugins/%{pgittag}.tar.gz
+Source1:        https://github.com/indico/indico-plugins/archive/%{pgittag}.tar.gz
 Patch0:         indico-patch.txt
 BuildArch:      noarch
 BuildRequires: git
