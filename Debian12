@@ -171,3 +171,9 @@ RUN            apt-get -y -q install wget  dpkg-dev  \
            python3-flask-marshmallow python3-marshmallow-sqlalchemy  python3-bcrypt python3-executing python3-pure-eval \
            python3-reportlab python3-qrcode python3-icalendar python3-pycountry python3-xlsxwriter python3-distro
 
+
+RUN apt-get -y -q install -t testing python3-flask-babel  && \
+     apt-get -y -q install python3-flask-cors   python3-google-auth weasyprint python3-pypdf 
+
+
+
