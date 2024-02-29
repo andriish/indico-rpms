@@ -21,7 +21,6 @@ python-pynpm:0.2.0
 python-pywebpack:1.2.0
 python-flask-webpackext:1.0.2
 python-webargs:8.3.0
-indico-devel:3.3.0
 python-indico:3.3.0
 indico-mpp:3.3
 )

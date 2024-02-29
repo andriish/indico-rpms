@@ -2,6 +2,19 @@
 %global srcnamenu indico
 %global igittag 1a4ed25f80ffd3b93b804036c4d593e087f9f055
 %global pgittag bece9eec553ee0cec9667c6dcef6ef6498e1093c
+%define iplugin()  \
+%%package -n python3-indico-%1-plugin \
+Summary:        Indico plugin %1  \
+Requires: python3-indico \
+%%description -n python3-indico-%1-plugin \
+Indico plugin %1 
+
+%define fplugin() \
+%%files -n python3-indico-%1-plugin \
+%{python3_sitelib}/indico_%1/* \
+%{python3_sitelib}/indico_plugin_%1-3.3.dev0.dist-info/*
+
+
 
 Name:           python-%{srcname}
 Version:        3.3.0
@@ -344,15 +357,34 @@ BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 %description -n python3-%{srcname} %_description
 
-%package -n python3-%{srcname}-plugins
-Summary:        %{summary}
-Requires: python3-%{srcname}
-%description -n python3-%{srcname}-plugins %_description
+#package -n python3-#{srcname}-plugins
+#Summary:        #{summary}
+#Requires: python3-#{srcname}
+#description -n python3-#{srcname}-plugins #_description
 
 %package -n python3-%{srcname}-dummy
 Summary:        %{summary}
 Requires: python3-%{srcname}
 %description -n python3-%{srcname}-dummy %_description
+
+
+%iplugin citadel
+%iplugin cloud_captchas
+%iplugin livesync
+%iplugin livesync_debug
+%iplugin owncloud
+%iplugin payment_manual
+%iplugin payment_paypal
+%iplugin payment_sixpay
+%iplugin piwik
+%iplugin previewer_code
+%iplugin previewer_jupyter
+%iplugin prometheus
+%iplugin storage_s3
+%iplugin themes_legacy
+%iplugin ursh
+%iplugin vc_dummy
+%iplugin vc_zoom
 
 
 %prep
@@ -361,7 +393,6 @@ Requires: python3-%{srcname}
 mkdir -p plugins
 mv indico-plugins-%{pgittag} plugins/base
 
-set -x
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
 sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
@@ -410,6 +441,7 @@ export PYTHONPATH=%{buildroot}/%{python3_sitelib}:$PYTHONPATH
 %install
 %{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
+rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-3.3.dev0.dist-info
 
 %post 
 indico i18n compile-catalog
@@ -433,8 +465,25 @@ indico i18n compile-catalog-react
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
-%files -n python3-%{srcname}-plugins
-%{python3_sitelib}/%{srcnamenu}_*/
+
+%fplugin citadel
+%fplugin cloud_captchas
+%fplugin livesync
+%fplugin livesync_debug
+%fplugin owncloud
+%fplugin payment_manual
+%fplugin payment_paypal
+%fplugin payment_sixpay
+%fplugin piwik
+%fplugin previewer_code
+%fplugin previewer_jupyter
+%fplugin prometheus
+%fplugin storage_s3
+%fplugin themes_legacy
+%fplugin ursh
+%fplugin vc_dummy
+%fplugin vc_zoom
+
 
 %changelog
 * Wed Feb 28 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.0dev

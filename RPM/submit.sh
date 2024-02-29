@@ -7,7 +7,6 @@ declare -a BUILDLIST=(
 python-exceptiongroup:1.2.0
 indico-mpp:3.3
 python-indico:3.3.0
-indico-devel:3.3.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
