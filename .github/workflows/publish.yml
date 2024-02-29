@@ -96,7 +96,11 @@ jobs:
            cd RPM
            bash rpm_alllocal.sh
            ls ./*/*/rpmbuild/RPMS/*/*.rpm
-           #sh srpmsbuild.sh  python-indico 3.2.9 --build 
+           mkdir -p myrepo
+           cp ./*/*/rpmbuild/RPMS/*/*.rpm myrepo
+           yum -y install createrepo
+           createrepo myrepo
+           ls -lah myrepo
   
   run-in-indico-docker-image-Debian12:
     name: Debian
