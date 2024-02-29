@@ -116,7 +116,7 @@ RUN apt install -y \
  python3-urllib3 \
  python3-vine \
  python3-wcwidth \
- python3-webargs \
+# python3-webargs \
  python3-webencodings \
  python3-werkzeug \
  python3-wtforms \
@@ -152,6 +152,6 @@ RUN            apt-get -y -q install wget  dpkg-dev  \
            unzip npm python3-yaml  python3-bleach python3-email-validator python3-markdown python3-translitcodec \
            unzip python3-html2text python3-sentry-sdk python3-authlib python3-flask-babel python3-speaklater python3-cachelib python3-flask-caching   \
            python3-redis python3-terminaltables python3-flask-sqlalchemy python3-jsonschema python3-ua-parser python3-colorclass  \
-           python3-flask-marshmallow python3-marshmallow-sqlalchemy python3-webargs python3-bcrypt python3-executing python3-pure-eval \
+           python3-flask-marshmallow python3-marshmallow-sqlalchemy  python3-bcrypt python3-executing python3-pure-eval \
            python3-reportlab python3-qrcode python3-icalendar python3-pycountry python3-xlsxwriter python3-distro
 
