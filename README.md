@@ -59,13 +59,15 @@ The dependencies of the DEB packages is WIP.
 With the supplies SRC RPM and DEB packages it is possible to create APT or YUM 
 repository either locally or on any well-known platform.
 
-The RPM packages are present in the COPR in the `https://copr.fedorainfracloud.org/coprs/averbyts/I329` YUM repository.
+The RPM packages are present in the COPR in the `https://copr.fedorainfracloud.org/coprs/averbyts/I330` YUM repository.
 Practically this means that on Fedora39 the commands 
 
 ```
 dnf -y install dnf-plu*
-dnf -y copr enable averbyts/I329 
-yum -y install indico-devel python3-indico
+dnf -y copr enable averbyts/I330
+yum -y install python3-indico 
+yum -y install python3-indico-mpp-configuration 
+
 ```
 
 will install a fully functional Indico instance.
@@ -95,10 +97,6 @@ Please note that unlike the RPM case, one should run the deb_alllocal.sh script 
 
 - The LaTeX installation for Debian is WIP.
 
-- Because of small mismatches in the versions of dependencies, a certain number of patches is needed for the `python-indico`.
-
-- As of now, there are certain problems with the compilation of soem Indico plugins and those plugins are temporarily disabled.
-
 # Usage 
 
 ## Post-installation configuration
@@ -106,7 +104,7 @@ Please note that unlike the RPM case, one should run the deb_alllocal.sh script 
 After the installation of the Indico, the configuration can be done in a standard way.
 
 On the Fedora39 all the configuration operations apart from the Indico admin creation, 
-can be done with the installation of `indico-mpp` package.
+can be done with the installation of `python3-indico-mpp-configuration` package.
 
 To create at least one admin user:
 To do it int he command line:
@@ -147,29 +145,41 @@ Don't forget to edit
 On the Fedora39, the script
 
 ```
-/usr/bin/indico-devel-start-indico.sh
+systemctl restart httpd.service postgresql.service redis.service indico-celery.service indico-uwsgi.service
 ```
 can be used to start Indico.
 
+## Specific notes
 
+```
+dnf -y install dnf-plu*
+dnf -y copr enable averbyts/I330
+rpm -e $(rpm -qa | grep indico)  $(rpm -qa | grep postgresql) 
+yum clean all
+rm -rf /opt/indico/ /opt/pgsql/
+yum -y install python3-indico-mpp-configuration
+sed -i 's/indico01/indico04/g' /opt/indico/etc/indico.conf 
+sed -i 's/indico01/indico04/g' /etc/httpd/conf.d/indico.conf 
+su  indico 
+bash-5.2$ indico user create -a
+....
+systemctl restart httpd.service postgresql.service redis.service indico-celery.service indico-uwsgi.service
+```
 
 # End notes
 
-As of Feb. 2024, Fedora39 requires 21 packages.
+As of Feb. 2024, Fedora39 requires 19 packages.
 
-Technical packages, 2: indico-devel, indico-mpp
+Technical packages, 1: python-indico-mpp-configuration
 
 Upstream maintained by Indico or Invenio, 7: python-flask-multipass, 
 python-indico-fonts, python-indico, python-flask-pluginengine, 
 python-flask-url-map-serializer,python-flask-webpackext,
 python-pynpm 
 
-Present in Fedora, but version is too high, 1: python-emal_validator
+Present in Fedora, but version is too low, 1: python-pypdf 
 
-Present in Fedora, but version is too low, 1: python-PyPDF2 
-
-
-All other, 10: python-captcha, python-Flask-Limiter, python-flask-marshmallow, python-iso_4217, python-marshmallow-dataclass,
+All other, 10: python-captcha, python-Flask-Limiter, python-flask-marshmallow, python-iso4217, python-marshmallow-dataclass,
 python-marshmallow_oneofschema, python-marshmallow_sqlalchemy, python-pywebpack, python-webargs, python-WTForms-dateutil 
 
 
