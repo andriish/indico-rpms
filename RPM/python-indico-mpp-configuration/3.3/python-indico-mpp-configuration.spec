@@ -47,9 +47,12 @@ BuildRequires: python3-setuptools
 BuildRequires: pyproject-rpm-macros
 
 
-
+%description 
+Configuration of Indico for MPP.
  
 
+%package -n python3-indico-mpp-configuration
+Summary:  Configuration of Indico for MPP.
 %description -n python3-indico-mpp-configuration 
 Configuration of Indico for MPP.
 
