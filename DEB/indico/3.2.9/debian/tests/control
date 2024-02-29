@@ -1,3 +1,0 @@
-Test-Command: cd "$AUTOPKGTEST_TMP" ;
-Restrictions: superficial
-Depends: python3-pywebpack

@@ -1,4 +1,4 @@
-FROM debian:12
+FROM debian:testing
 RUN apt-get -y upgrade
 RUN apt update
 
