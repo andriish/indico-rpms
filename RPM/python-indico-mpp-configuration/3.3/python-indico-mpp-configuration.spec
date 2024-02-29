@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
@@ -11,9 +11,8 @@ Source:         indico-mpp-configuration-%{version}.tar.gz
 
 BuildArch:     noarch
 
-Conflicts: python3-indico-default-configuration
-Conflicts: python-indico-default-configuration
-Requires: python3-indico
+
+ 
 
 BuildRequires: npm
 BuildRequires: firewalld
@@ -21,23 +20,7 @@ BuildRequires: python3-pip python3-wheel
 BuildRequires: openssl-devel openssl-libs openssl
 BuildRequires: policycoreutils
 
-Requires: openssl-devel openssl-libs openssl
-Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
-Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
-Requires: redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 
-Requires: policycoreutils
-Requires: firewalld
-Requires: /usr/bin/xelatex
-Requires: postfix
-Requires: python-certbot-apache
-
- 
-Requires: python3-nbconvert 
-Requires: python3-rpm-macros 
-Requires: python-srpm-macros 
-Requires: python3-devel
-Requires: pyproject-rpm-macros
 
 BuildRequires: python3-nbconvert 
 BuildRequires: python3-rpm-macros 
@@ -53,6 +36,26 @@ Configuration of Indico for MPP.
 
 %package -n python3-indico-mpp-configuration
 Summary:  Configuration of Indico for MPP.
+Conflicts: python3-indico-default-configuration
+Conflicts: python-indico-default-configuration
+Requires: python3-indico
+Requires: openssl-devel openssl-libs openssl
+Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
+Requires: redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+
+Requires: policycoreutils
+Requires: firewalld
+Requires: /usr/bin/xelatex
+Requires: postfix
+Requires: python-certbot-apache
+
+Requires: python3-nbconvert 
+Requires: python3-rpm-macros 
+Requires: python-srpm-macros 
+Requires: python3-devel
+Requires: pyproject-rpm-macros
+
 %description -n python3-indico-mpp-configuration 
 Configuration of Indico for MPP.
 
@@ -108,9 +111,9 @@ install -m 755 register.html   %{buildroot}/%{python3_sitelib}/indico/modules/au
 mkdir -p %{buildroot}/etc/systemd/system/postgresql.service.d/
 install -m 755  indicopostgresql.conf %{buildroot}/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
-%post
+%post -n python3-indico-mpp-configuration
 
-#sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
+sudo /usr/sbin/useradd -rm -g apache -d /opt/indico -s /bin/bash indico
 mkdir -p /opt/indico
 chown -R indico /opt/indico
 
