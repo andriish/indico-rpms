@@ -4,17 +4,17 @@
 Name:           python-%{srcname}
 Version:        0.5.3
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        Flask with a user authentication/identity system
 
-License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+License:        BSD
+URL:            https://flask-multipass.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel 
+BuildRequires:  python3-pip python3-wheel 
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+Flask-Multipass provides Flask with a user authentication/identity 
+system which can use different backends (such as local users, LDAP and OAuth) simultaneously.}
 
 %description %_description
 

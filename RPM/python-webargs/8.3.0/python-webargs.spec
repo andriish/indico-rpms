@@ -4,18 +4,19 @@
 Name:           python-%{srcname}
 Version:        8.3.0
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        A Python library for parsing and validating HTTP request objects
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://webargs.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel
 BuildRequires: python3-werkzeug
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+webargs is a Python library for parsing and validating HTTP request 
+objects, with built-in support for popular web frameworks, including 
+Flask, Django, Bottle, Tornado, Pyramid, Falcon, and aiohttp..}
 
 %description %_description
 

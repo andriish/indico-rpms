@@ -4,18 +4,17 @@
 Name:           python-%{srcname}
 Version:        0.5.0
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        A captcha library that generates audio and image CAPTCHAs.
 
-License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+License:        BSD
+URL:            https://captcha.lepture.com/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
+BuildRequires:  python3-pip python3-wheel
 
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+A captcha library that generates audio and image CAPTCHAs.}
 
 %description %_description
 

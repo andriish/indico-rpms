@@ -4,10 +4,10 @@
 Name:           python-%{srcname}
 Version:        0.1
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        WTForms integration for dateutil
 
-License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+License:        BSD
+URL:            https://github.com/wtforms/wtforms-dateutil/
 Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel

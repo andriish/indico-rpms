@@ -4,17 +4,16 @@
 Name:           python-%{srcname}
 Version:        8.6.0
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        Automatic generation of marshmallow schemas from dataclasses.
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://github.com/lovasoa/marshmallow_dataclass
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel python3-marshmallow-enum
+BuildRequires:  python3-pip python3-wheel python3-marshmallow-enum
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+Python library to convert dataclasses into marshmallow schemas.}
 
 %description %_description
 
@@ -24,7 +23,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
-#pyproject_extras_subpkg -n python3-marshmallow-dataclass enum
 
 %prep
 %autosetup -n %{srcname}-%{version}

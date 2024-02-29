@@ -4,17 +4,16 @@
 Name:           python-%{srcname}
 Version:        1.2
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        This package contains several fonts used by Indico for PDF generation.
 
-License:        MIT
+License:        Other
 URL:            https://github.com/indico/indico-fonts
 Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+This package contains several fonts used by Indico for PDF generation..}
 
 %description %_description
 
