@@ -1,0 +1,64 @@
+{% extends 'layout/base.html' %}
+{% from 'forms/_form.html' import simple_form %}
+
+{% block page_class %}fixed-width-standalone-page{% endblock %}
+
+{% block title %}
+    {% trans %}Create a new Indico profile{% endtrans %}
+{% endblock %}
+
+{% block content %}
+    {% include 'flashed_messages.html' %}
+<hr>
+Für eine schnellere Bearbeitung der Registrierungsanfrage:
+<ul>
+<li>
+Wenn Sie MPP-Mitarbeiter/innen sind, beachten Sie bitte, dass Sie mit Ihrem 
+LDAP-Konto auf Indico zugreifen können. Die über diese Seite erstellten 
+Konten haben eingeschränkte Funktionalität im Vergleich zu den LDAP-Konten.
+</li>
+<li>
+Wenn Sie kein MPP-Mitarbeiter/innen sind, <b>geben Sie bitte 
+einen Grund an, warum Sie ein Konto in Indico benötigen</b>.
+</li>
+<li>
+Wir empfehlen die Verwendung von <b>E-Mail-Adressen aus Forschungsinstitute 
+und Universitäten</b> (z.B. tum.de, cern.ch, desy.de) 
+anstelle jener aus öffentlichen E-Mail-Diensten (z.B. Google Mail oder Hotmail).
+</li>
+<li>
+Wir freuen uns über die Verwendung von <b>echten Namen und Zugehörigkeiten</b> im 
+Anfrageformular.
+</li>
+<li>
+Wir lehnen Anfragen mit leerem "Mitgliedschaft"- oder "Kommentar"-Feld ab.
+</li>
+</ul>
+
+<hr>
+To make the registration request processing faster:
+<ul>
+<li>
+If you are an MPP employee, please note that you can use your LDAP account to 
+access Indico. The accounts created via this page have restricted capabilities 
+in comparison to the LDAP accounts.
+</li>
+<li>
+If you are not an MPP employee, please <b>provide a reason</b> why do you need an 
+account in Indico.
+</li>
+<li>
+We encourage the usage of <b>e-mail adresses from the domains of the institutions and 
+universities</b> (e.g. tum.de, cern.ch, desy.de) instead of these from the public mail 
+services (e.g. gmail or hotmail).
+</li>
+<li>
+We appreciate the usage of <b>real names and affiliations</b> in the request form.
+</li>
+<li>
+We decline requests with empty "Affiliation" or "Comment" fields.
+</li>
+</ul>
+}
+    <div id="signup-container" data-config="{{ signup_config | tojson | forceescape }}"></div>
+{% endblock %}

@@ -1,0 +1,76 @@
+Source: python-bleach
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders:
+ Per Andersson <avtobiff@debian.org>,
+ Christopher Baines <mail@cbaines.net>,
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-python3,
+ dh-sequence-sphinxdoc,
+ python3-all,
+Build-Depends-Indep:
+ python-tinycss2-doc <!nodoc>,
+ python3-docutils,
+ python3-html5lib <!nocheck> <!nodoc>,
+ python3-packaging,
+ python3-pytest <!nocheck>,
+ python3-setuptools,
+ python3-sphinx <!nodoc>,
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+Homepage: https://github.com/mozilla/bleach/
+Vcs-Git: https://salsa.debian.org/python-team/packages/python-bleach.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/python-bleach
+
+Package: python-bleach-doc
+Architecture: all
+Section: doc
+Depends:
+ ${misc:Depends},
+ ${sphinxdoc:Depends},
+Multi-Arch: foreign
+Description: whitelist-based HTML-sanitizing library (common documentation)
+ Bleach is an HTML sanitizing library that escapes or strips markup and
+ attributes based on a white list. Bleach can also linkify text safely,
+ applying filters that Django's urlize filter cannot, and optionally setting
+ rel attributes, even on links already in the text.
+ .
+ Bleach is intended for sanitizing text from untrusted sources. If you find
+ yourself jumping through hoops to allow your site administrators to do lots of
+ things, you're probably outside the use cases. Either trust those users, or
+ don't.
+ .
+ Because it relies on html5lib, Bleach is as good as modern browsers at dealing
+ with weird, quirky HTML fragments. And any of Bleach's methods will fix
+ unbalanced or mis-nested tags.
+ .
+ This is the common documentation package.
+
+Package: python3-bleach
+Architecture: all
+Depends:
+ python3-html5lib,
+ ${misc:Depends},
+ ${python3:Depends},
+Recommends:
+ python3-tinycss2,
+Suggests:
+ python-bleach-doc,
+Description: whitelist-based HTML-sanitizing library (Python 3)
+ Bleach is an HTML sanitizing library that escapes or strips markup and
+ attributes based on a white list. Bleach can also linkify text safely,
+ applying filters that Django's urlize filter cannot, and optionally setting
+ rel attributes, even on links already in the text.
+ .
+ Bleach is intended for sanitizing text from untrusted sources. If you find
+ yourself jumping through hoops to allow your site administrators to do lots of
+ things, you're probably outside the use cases. Either trust those users, or
+ don't.
+ .
+ Because it relies on html5lib, Bleach is as good as modern browsers at dealing
+ with weird, quirky HTML fragments. And any of Bleach's methods will fix
+ unbalanced or mis-nested tags.
+ .
+ This is the Python 3 version of the package.

@@ -1,0 +1,56 @@
+Source: indico
+Maintainer: Andrii Verbytskyi <andri.verbytskyi@mpp.mpg.de>
+Homepage: https://pypi.python.org/pypi/indico
+Section: python
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3,
+               python3-setuptools,
+               python3-werkzeug,
+               python3-pytest-runner,
+               python3-semver,
+               python3-pynpm,
+               npm,
+               python3-yaml, 
+               python3-celery, 
+               python3-bleach, 
+               python3-email-validator, 
+               python3-markdown,
+               python3-translitcodec,
+               python3-html2text,
+               python3-sentry-sdk,
+               python3-authlib,
+               python3-flask-babel,
+               python3-speaklater,
+               python3-cachelib,
+               python3-flask-caching,
+               python3-redis,
+               python3-terminaltables,
+               python3-flask-sqlalchemy,
+               python3-jsonschema,
+               python3-ua-parser,
+               python3-colorclass,
+               python3-flask-marshmallow,
+               python3-marshmallow-sqlalchemy,
+               python3-marshmallow-enum,
+               python3-webargs,
+               python3-bcrypt,
+               python3-executing,
+               python3-pure-eval,
+               python3-reportlab,
+               python3-qrcode,
+               python3-icalendar,
+               python3-pycountry,
+               python3-xlsxwriter,
+               python3-distro               
+Standards-Version: 4.1.1
+Vcs-Git: https://salsa.debian.org/python-team/packages/indico.git
+Vcs-Browser: https://salsa.debian.org/python-team/packages/indico
+
+Package: python3-indico
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: A indico library that generates audio and image CAPTCHAs.
+ .
+
