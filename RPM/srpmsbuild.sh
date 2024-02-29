@@ -29,15 +29,14 @@ exit
 fi
 
 done 
-for a in $($SPECTOOL $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec | tr -s ' '| cut -f 2 -d' ' | grep -v '://' ); do
-cp $TOPDIR/$PACKAGE/$VERSION/$(basename $a) $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SOURCES
-done 
-
 cd $TOPDIR/$PACKAGE/$VERSION
 if [ -f do.sh ]; 
 then
 sh do.sh
 fi
+for a in $($SPECTOOL $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec | tr -s ' '| cut -f 2 -d' ' | grep -v '://' ); do
+cp $TOPDIR/$PACKAGE/$VERSION/$(basename $a) $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SOURCES
+done 
 cd $TOPDIR
 cp $TOPDIR/$PACKAGE/$VERSION/*$PACKAGE*  $TOPDIR/$PACKAGE/$VERSION/rpmbuild/SOURCES
 rpmbuild -bs --define='%_topdir '$TOPDIR/$PACKAGE/$VERSION'/rpmbuild' $TOPDIR/$PACKAGE/$VERSION/$PACKAGE.spec
