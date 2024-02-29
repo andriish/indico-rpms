@@ -1,8 +1,8 @@
-%global srcname iso_4217
-%global srcnamenu iso_4217
+%global srcname iso4217
+%global srcnamenu iso4217
 
 Name:           python-%{srcname}
-Version:        0.4.220401
+Version:        1.11.20220401
 Release:        3%{?dist}
 Summary:        Example python module
 

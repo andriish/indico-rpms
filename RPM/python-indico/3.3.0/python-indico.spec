@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -128,7 +128,7 @@ Requires: python3-html5lib
 Requires: python3-icalendar
 Requires: python3-idna
 Requires: python3-indico-fonts
-Requires: python3-indico-fonts
+Requires: python3-iso4217
 Requires: python3-ipython
 Requires: python3-itsdangerous
 Requires: python3-jedi
@@ -265,7 +265,7 @@ BuildRequires: python3-html5lib
 BuildRequires: python3-icalendar
 BuildRequires: python3-idna
 BuildRequires: python3-indico-fonts
-BuildRequires: python3-indico-fonts
+BuildRequires: python3-iso4217
 BuildRequires: python3-ipython
 BuildRequires: python3-itsdangerous
 BuildRequires: python3-jedi
