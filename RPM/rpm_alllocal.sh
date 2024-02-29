@@ -26,9 +26,9 @@ python-indico-mpp-configuration:3.3
 )
 declare -a BUILDLIST=(
 #python-pypdf:4.0.1
-python-indico-mpp-configuration:3.3
-python-iso4217:1.11.20220401
-#python-indico:3.3.0
+#python-indico-mpp-configuration:3.3
+#python-iso4217:1.11.20220401
+python-indico:3.3.0
 )
 for a in "${BUILDLIST[@]}" 
 do
