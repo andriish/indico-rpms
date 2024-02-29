@@ -26,7 +26,7 @@ indico:3.3.0:indico
 #bleach:6.1.0:bleach
 #flask-pluginengine:0.5:Flask-PluginEngine
 #flask-webpackext:1.0.2:flask-webpackext
-#indico:3.2.9:indico
+#indico:3.3.0:indico
 #)
 TTOP=$(pwd)
 mkdir -p logs/

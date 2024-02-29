@@ -10,6 +10,7 @@ override_dh_auto_clean:
 		echo "OK"
 
 override_dh_auto_build:
+		sed -i 's@/usr/bin/env python@/usr/bin/python3@g' ./bin/maintenance/*
 		rm -rf plugins/base/piwik
 		rm -rf plugins/base/themes_legacy
 		rm -rf plugins/base/ursh
