@@ -20,7 +20,7 @@ python3-backcall \
  python3-billiard \
  python3-bleach \
  python3-blinker \
- python3-celery \
+# python3-celery \
  python3-certifi \
  python3-cffi \
  python3-charset-normalizer \
