@@ -4,13 +4,13 @@
 Name:           python-%{srcname}
 Version:        3.5.0
 Release:        2%{?dist}
-Summary:        Example python module
+Summary:        Provides rate limiting features to Flask applications.
 
 License:        MIT
 URL:            https://flask-limiter.readthedocs.io/en/stable/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel 
+BuildRequires:  python3-pip python3-wheel 
 
 %global _description %{expand:
 Flask-Limiter provides rate limiting features to Flask applications.}

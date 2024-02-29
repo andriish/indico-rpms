@@ -4,17 +4,21 @@
 Name:           python-%{srcname}
 Version:        3.0.1
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        An extension to marshmallow to support schema (de)multiplexing.
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            http://marshmallow.readthedocs.org/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
+BuildRequires:  python3-pip python3-wheel
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+This library adds a special kind of schema that actually multiplexes 
+other schemas based on object type. When serializing values, it uses 
+get_obj_type() method to get object type name. Then it uses type_schemas 
+name-to-Schema mapping to get schema for that particular object type, 
+serializes object using that schema and adds an extra field with name
+ of object type. Deserialization is reverse..}
 
 %description %_description
 

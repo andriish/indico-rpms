@@ -4,10 +4,10 @@
 Name:           python-%{srcname}
 Version:        0.1.0
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        Dumps the URL map of a flask app to a JSON file
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://github.com/indico/babel-plugin-flask-urls
 Source:         https://github.com/indico/js-flask-urls/archive/refs/tags/babel-plugin-flask-urls@0.1.0.tar.gz
 #{pypi_source}
 BuildArch:      noarch
@@ -15,8 +15,8 @@ BuildRequires: python3-pip python3-wheel
 BuildRequires: python3-werkzeug gcc make
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+This package adds a urls_to_json command to the flask CLI that dumps the
+ URL map of the flask app to a JSON file.}
 
 %description %_description
 

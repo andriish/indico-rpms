@@ -4,18 +4,21 @@
 Name:           python-%{srcname}
 Version:        0.15.0
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        Flask + marshmallow for beautiful APIs
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://flask-marshmallow.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel
 BuildRequires: python3-werkzeug gcc make
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+Flask-Marshmallow is a thin integration layer for Flask (a Python web 
+framework) and marshmallow (an object serialization/deserialization 
+library) that adds additional features to marshmallow, including URL 
+and Hyperlinks fields for HATEOAS-ready APIs. It also (optionally) 
+integrates with Flask-SQLAlchemy.}
 
 %description %_description
 

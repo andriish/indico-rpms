@@ -4,13 +4,13 @@
 Name:           python-%{srcname}
 Version:        1.11.20220401
 Release:        3%{?dist}
-Summary:        Example python module
+Summary:        ISO 4217 currency data package for Python 
 
-License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+License:        Public Domain
+URL:            https://github.com/dahlia/iso4217
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
+BuildRequires:  python3-pip python3-wheel
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the

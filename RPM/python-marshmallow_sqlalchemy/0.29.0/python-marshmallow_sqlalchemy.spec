@@ -4,17 +4,16 @@
 Name:           python-%{srcname}
 Version:        0.29.0
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        SQLAlchemy integration with the marshmallow (de)serialization library.
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://marshmallow-sqlalchemy.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
+BuildRequires:  python3-pip python3-wheel
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+SQLAlchemy integration with the marshmallow (de)serialization library.}
 
 %description %_description
 

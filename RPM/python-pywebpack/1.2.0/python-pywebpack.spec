@@ -4,10 +4,10 @@
 Name:           python-%{srcname}
 Version:        1.2.0
 Release:        2%{?dist}
-Summary:        Example python module
+Summary:        Webpack integration layer for Python.
 
 License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+URL:            https://pywebpack.readthedocs.io/
 Source:         %{pypi_source}
 Patch0:         python-pywebpack-patch.txt
 BuildArch:      noarch
@@ -15,8 +15,7 @@ BuildRequires: python3-pip python3-wheel python-pytest-runner
 BuildRequires: python3-werkzeug gcc make
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+Webpack integration layer for Python.}
 
 %description %_description
 

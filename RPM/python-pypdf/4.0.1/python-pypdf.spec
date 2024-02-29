@@ -6,16 +6,18 @@ Version:        4.0.1
 Release:        1%{?dist}
 Summary:        A Pure-Python library built as a PDF toolkit
 
-License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+License:        BSD
+URL:            https://pypdf.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
+BuildRequires:  python3-pip python3-wheel
 
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+pypdf is a free and open source pure-python PDF library capable of 
+splitting, merging, cropping, and transforming the pages of PDF files. 
+It can also add custom data, viewing options, and passwords to PDF files. 
+pypdf can retrieve text and metadata from PDFs as well.}
 
 %description %_description
 

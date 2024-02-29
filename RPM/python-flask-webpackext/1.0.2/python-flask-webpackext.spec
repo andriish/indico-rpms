@@ -4,18 +4,18 @@
 Name:           python-%{srcname}
 Version:        1.0.2
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        Webpack integration for Flask.
 
-License:        MIT
-URL:            https://pypi.python.org/pypi/ua-parser
+License:        BSD
+URL:            https://flask-webpackext.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel python-pytest-runner
-BuildRequires: python3-werkzeug gcc make
+BuildRequires:  python3-pip python3-wheel python-pytest-runner
+BuildRequires:  python3-werkzeug gcc make
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+Flask-WebpackExt makes it easy to interface with your existing Webpack 
+project from Flask and does not try to manage Webpack for you. }
 
 %description %_description
 

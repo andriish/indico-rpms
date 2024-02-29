@@ -4,17 +4,17 @@
 Name:           python-%{srcname}
 Version:        0.5
 Release:        1%{?dist}
-Summary:        Example python module
+Summary:        A simple plugin system for Flask applications. 
 
-License:        MIT
-URL:            https://github.com/indico/flask-pluginengine
+License:        BSD
+URL:            https://flask-pluginengine.readthedocs.io/
 Source:         https://github.com/indico/flask-pluginengine/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel 
+BuildRequires:  python3-pip python3-wheel 
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+ Flask-PluginEngine is an extension that provides interfaces to 
+ create plugins and handle them within a Flask application. }
 
 %description %_description
 
