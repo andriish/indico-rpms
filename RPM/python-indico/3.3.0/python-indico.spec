@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -39,8 +39,6 @@ BuildRequires: npm
 
 BuildRequires: tzdata
 Requires: tzdata
-Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
-Requires: redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 
 BuildRequires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel libyaml-devel 
 BuildRequires: zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
@@ -359,7 +357,10 @@ BuildRequires: python3-setuptools
 %package -n python3-indico-default-configuration
 Summary:        %{summary}
 Requires: python3-%{srcname}
-%description -n python3-%{srcname}-dummy 
+Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
+Requires: redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+
+%description -n python3-indico-default-configuration
 Default configuration files for Indico
 
 

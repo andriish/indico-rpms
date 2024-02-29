@@ -3,27 +3,31 @@
 
 Name:           python-%{srcname}
 Version:        3.3
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
 Source:         indico-mpp-configuration-%{version}.tar.gz
 
+BuildArch:     noarch
 
-BuildArch:      noarch
+Conflicts: python3-indico-default-configuration
+Conflicts: python-indico-default-configuration
+Requires: python3-indico
+
 BuildRequires: npm
-BuildRequires: redis
 BuildRequires: firewalld
 BuildRequires: python3-pip python3-wheel
-BuildRequires: httpd
 BuildRequires: openssl-devel openssl-libs openssl
 BuildRequires: policycoreutils
 
 Requires: openssl-devel openssl-libs openssl
 Requires: httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
+Requires: redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
+
 Requires: policycoreutils
-Requires: postgresql postgresql-server postgresql-contrib
-Requires: redis firewalld
+Requires: firewalld
 Requires: /usr/bin/xelatex
 Requires: postfix
 Requires: python-certbot-apache
@@ -41,18 +45,13 @@ BuildRequires: python-srpm-macros
 BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 BuildRequires: pyproject-rpm-macros
-BuildRequires: python3-ldap
 
-Conflicts: python3-indico-default-configuration
-Conflicts: python-indico-default-configuration
-Requires: python3-indico
+
 
  
-%global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
 
-%description -n %{srcname} %_description
+%description -n python3-indico-mpp-configuration 
+Configuration of Indico for MPP.
 
 %pre
 mkdir -p /opt/indico
