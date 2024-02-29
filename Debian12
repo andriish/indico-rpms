@@ -7,11 +7,12 @@ RUN apt update
 RUN echo "APT::Default-Release "stable";" > /etc/apt/apt.conf.d/99defaultrelease && \
 echo "deb     http://ftp.de.debian.org/debian/    stable main contrib non-free" > /etc/apt/sources.list.d/stable.list && \
 echo "deb-src http://ftp.de.debian.org/debian/    stable main contrib non-free" >> /etc/apt/sources.list.d/stable.list && \
-echo "deb     http://security.debian.org/         stable/updates  main contrib non-free" >> /etc/apt/sources.list.d/stable.list && \
 echo "deb     http://ftp.de.debian.org/debian/    testing main contrib non-free" > /etc/apt/sources.list.d/testing.list && \
 echo "deb-src http://ftp.de.debian.org/debian/    testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list && \
-echo "deb     http://security.debian.org/         testing/updates  main contrib non-free" >> /etc/apt/sources.list.d/testing.list && \
 apt-get update
+
+###echo "deb     http://security.debian.org/         testing/updates  main contrib non-free" >> /etc/apt/sources.list.d/testing.list && \
+
 
 RUN apt install -y lsb-release wget curl gnupg
 #RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
