@@ -392,6 +392,7 @@ Requires: python3-%{srcname}
 %setup -q -T -D -a 1 -n indico-%{igittag}
 mkdir -p plugins
 mv indico-plugins-%{pgittag} plugins/base
+rm -rf plugins/base/livesync_debug
 
 sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
 sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
