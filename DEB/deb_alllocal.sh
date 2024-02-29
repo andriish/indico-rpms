@@ -38,7 +38,7 @@ v=$(echo $a | cut -f2 -d: )
 (
 mkdir -p  logs && bash debbuild.sh $p $v  $P && apt-get -y install ./$p/$v/mydbtop/*deb
 )  &> logs/$p$v".log" || (echo "$p $v build failed"  
-#&& cat logs/$p$v".log" 
+&& cat logs/$p$v".log" 
 )
 done
 wait
