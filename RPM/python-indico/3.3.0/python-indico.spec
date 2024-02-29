@@ -104,7 +104,7 @@ Requires: python3-devel
 Requires: python3-distro
 Requires: python3-dns
 Requires: python3-email-validator
-Requires: python3-exceptiongroup
+#Requires: python3-exceptiongroup
 Requires: python3-executing
 Requires: python3-feedgen
 Requires: python3-flask
@@ -241,7 +241,7 @@ BuildRequires: python3-devel
 BuildRequires: python3-distro
 BuildRequires: python3-dns
 BuildRequires: python3-email-validator
-BuildRequires: python3-exceptiongroup
+#BuildRequires: python3-exceptiongroup
 BuildRequires: python3-executing
 BuildRequires: python3-feedgen
 BuildRequires: python3-flask
@@ -405,6 +405,7 @@ sed -i 's/\=\=.*$//g' requirements.*
 sed -i 's/tzdata/#tzdata/g' requirements.*
 sed -i 's/pypdf/#pypdf/g' requirements.*
 sed -i 's/importlib/#importlib/g' requirements.*
+sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
 
 
 %build
