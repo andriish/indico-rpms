@@ -39,7 +39,6 @@ BuildRequires: npm
 
 BuildRequires: tzdata
 Requires: tzdata
-Requires: postfix
 Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
 Requires: redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 
@@ -357,15 +356,11 @@ BuildRequires: python3-devel
 BuildRequires: python3-setuptools
 %description -n python3-%{srcname} %_description
 
-#package -n python3-#{srcname}-plugins
-#Summary:        #{summary}
-#Requires: python3-#{srcname}
-#description -n python3-#{srcname}-plugins #_description
-
-%package -n python3-%{srcname}-dummy
+%package -n python3-indico-default-configuration
 Summary:        %{summary}
 Requires: python3-%{srcname}
-%description -n python3-%{srcname}-dummy %_description
+%description -n python3-%{srcname}-dummy 
+Default configuration files for Indico
 
 
 %iplugin citadel
@@ -460,7 +455,7 @@ indico i18n compile-catalog-react
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
-%files -n python3-%{srcname}-dummy
+%files -n python3-indico-default-configuration
 %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
 %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
 %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt

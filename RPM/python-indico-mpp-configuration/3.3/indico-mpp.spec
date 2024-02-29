@@ -1,13 +1,13 @@
-%global srcname indico-mpp
-%global srcnamenu indico-mpp
+%global srcname indico-mpp-configuration
+%global srcnamenu indico-mpp-configuration
 
-Name:           indico-mpp
+Name:           python-%{srcname}
 Version:        3.3
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
-Source:         indico-mpp-3.3.tar.gz
+Source:         indico-mpp-configuration-%{version}.tar.gz
 
 
 BuildArch:      noarch
@@ -43,7 +43,8 @@ BuildRequires: python3-setuptools
 BuildRequires: pyproject-rpm-macros
 BuildRequires: python3-ldap
 
-Conflicts: python3-indico-dummy
+Conflicts: python3-indico-default-configuration
+Conflicts: python-indico-default-configuration
 Requires: python3-indico
 
  
@@ -192,7 +193,7 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 
 
 
-%files -n %{srcname}
+%files -n python3-indico-mpp-configuration
 /etc/uwsgi-indico.ini
 /etc/systemd/system/indico-uwsgi.service
 /etc/httpd/conf.d/indico.conf

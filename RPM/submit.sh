@@ -5,7 +5,7 @@ copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-rawhid
 #find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
 python-exceptiongroup:1.2.0
-indico-mpp:3.3
+python-indico-mpp-configuration:3.3
 python-indico:3.3.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
