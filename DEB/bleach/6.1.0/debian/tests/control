@@ -1,9 +1,0 @@
-Tests: upstream-tests
-Depends:
- python3-all,
- python3-html5lib,
- python3-pytest,
- python3-pytest-runner,
- python3-setuptools,
- @,
-Restrictions: allow-stderr
