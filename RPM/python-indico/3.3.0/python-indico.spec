@@ -9,7 +9,7 @@ Requires: python3-indico \
 %%description -n python3-indico-%1-plugin \
 Indico plugin %1 
 
-%define fplugin() \
+%define filesinplugin() \
 %%files -n python3-indico-%1-plugin \
 %{python3_sitelib}/indico_%1/* \
 %{python3_sitelib}/indico_plugin_%1-3.3.dev0.dist-info/*
@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -371,7 +371,7 @@ Requires: python3-%{srcname}
 %iplugin citadel
 %iplugin cloud_captchas
 %iplugin livesync
-%iplugin livesync_debug
+#iplugin livesync_debug
 %iplugin owncloud
 %iplugin payment_manual
 %iplugin payment_paypal
@@ -466,23 +466,23 @@ indico i18n compile-catalog-react
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
 
-%fplugin citadel
-%fplugin cloud_captchas
-%fplugin livesync
-%fplugin livesync_debug
-%fplugin owncloud
-%fplugin payment_manual
-%fplugin payment_paypal
-%fplugin payment_sixpay
-%fplugin piwik
-%fplugin previewer_code
-%fplugin previewer_jupyter
-%fplugin prometheus
-%fplugin storage_s3
-%fplugin themes_legacy
-%fplugin ursh
-%fplugin vc_dummy
-%fplugin vc_zoom
+%filesinplugin citadel
+%filesinplugin cloud_captchas
+%filesinplugin livesync
+#filesinplugin livesync_debug
+%filesinplugin owncloud
+%filesinplugin payment_manual
+%filesinplugin payment_paypal
+%filesinplugin payment_sixpay
+%filesinplugin piwik
+%filesinplugin previewer_code
+%filesinplugin previewer_jupyter
+%filesinplugin prometheus
+%filesinplugin storage_s3
+%filesinplugin themes_legacy
+%filesinplugin ursh
+%filesinplugin vc_dummy
+%filesinplugin vc_zoom
 
 
 %changelog
