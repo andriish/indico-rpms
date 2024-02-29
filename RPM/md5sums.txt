@@ -64,3 +64,5 @@ a572c9fdce9ddca4c52ed4a037a743af  python-indico/3.3.0/rpmbuild/SOURCES/v3.2.2.ta
 
 c5305be855f3fa9d194b5abef11b7aae  python-pypdf/4.0.1/rpmbuild/SOURCES/pypdf-4.0.1.tar.gz
 470fd85d7bf855a99683e69128c902d6  python-exceptiongroup/1.2.0/rpmbuild/SOURCES/exceptiongroup-1.2.0.tar.gz
+
+c0aa3a21ffb61e829b0b87aedbfcd38c  python-iso4217/1.11.20220401/rpmbuild/SOURCES/iso4217-1.11.20220401.tar.gz
