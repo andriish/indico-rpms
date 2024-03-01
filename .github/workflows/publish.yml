@@ -109,8 +109,9 @@ jobs:
            cd RPM
            bash rpm_alllocal.sh
            ls ./*/*/rpmbuild/RPMS/*/*.rpm
+           cd ..
            mkdir -p myrepo
-           cp ./*/*/rpmbuild/RPMS/*/*.rpm myrepo
+           cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo
            yum -y install createrepo
            createrepo myrepo
            ls -lah myrepo
