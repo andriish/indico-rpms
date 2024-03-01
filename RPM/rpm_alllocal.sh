@@ -3,7 +3,6 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
-python-exceptiongroup:1.2.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
@@ -24,12 +23,15 @@ python-webargs:8.3.0
 python-indico:3.3.0
 python-indico-mpp-configuration:3.3
 )
-declare -a BUILDLIST=(
+#mkdir -p python-indico/3.3.0/rpmbuild/RPMS/noarch
+#touch python-indico/3.3.0/rpmbuild/RPMS/noarch/1.rpm
+#exit 0
+#declare -a BUILDLIST=(
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3
 #python-iso4217:1.11.20220401
-python-indico:3.3.0
-)
+#python-indico:3.3.0
+#)
 for a in "${BUILDLIST[@]}" 
 do
 p=$(echo $a | cut -f1 -d: )

@@ -183,6 +183,6 @@ RUN               dnf -y install            \
  xz-devel \
  zlib-devel && yum -y clean all  
            
-RUN               dnf -y install                   python-flit-scm  && yum -y clean all  
+RUN          dnf -y install                     python-flit-scm python-email-validator  && yum -y clean all  
            
            

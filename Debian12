@@ -2,10 +2,26 @@ FROM debian:12
 RUN apt-get -y upgrade
 RUN apt update
 
+
+
+RUN echo "APT::Default-Release "stable";" > /etc/apt/apt.conf.d/99defaultrelease && \
+echo "deb     http://ftp.de.debian.org/debian/    stable main contrib non-free" > /etc/apt/sources.list.d/stable.list && \
+echo "deb-src http://ftp.de.debian.org/debian/    stable main contrib non-free" >> /etc/apt/sources.list.d/stable.list && \
+echo "deb     http://ftp.de.debian.org/debian/    testing main contrib non-free" > /etc/apt/sources.list.d/testing.list && \
+echo "deb-src http://ftp.de.debian.org/debian/    testing main contrib non-free" >> /etc/apt/sources.list.d/testing.list && \
+apt-get update
+
+###echo "deb     http://security.debian.org/         testing/updates  main contrib non-free" >> /etc/apt/sources.list.d/testing.list && \
+
+
 RUN apt install -y lsb-release wget curl gnupg
 #RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 #RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 RUN apt update
+
+RUN  apt-get -y -q install   python3-celery python3-marshmallow-enum python3-webargs
+RUN  apt-get -y -q install python3-bleach/testing
+
 RUN apt install -y --install-recommends postgresql libpq-dev apache2 libapache2-mod-proxy-uwsgi libapache2-mod-xsendfile libxslt1-dev libxml2-dev libffi-dev libpcre3-dev libyaml-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev xz-utils liblzma-dev uuid-dev build-essential redis-server
 RUN apt install -y --install-recommends libxslt1-dev libxml2-dev libffi-dev libpcre3-dev libyaml-dev build-essential redis-server postgresql libpq-dev
 
@@ -20,7 +36,7 @@ python3-backcall \
  python3-billiard \
  python3-bleach \
  python3-blinker \
- python3-celery \
+# python3-celery \
  python3-certifi \
  python3-cffi \
  python3-charset-normalizer \
@@ -73,7 +89,7 @@ RUN apt install -y \
  python3-markdown \
  python3-markupsafe \
  python3-marshmallow \
- python3-marshmallow-enum \
+# python3-marshmallow-enum \
 # python3-marshmallow-oneofschema \
  python3-marshmallow-sqlalchemy \
  python3-matplotlib-inline \
@@ -116,7 +132,7 @@ RUN apt install -y \
  python3-urllib3 \
  python3-vine \
  python3-wcwidth \
- python3-webargs \
+# python3-webargs \
  python3-webencodings \
  python3-werkzeug \
  python3-wtforms \
@@ -149,9 +165,15 @@ RUN            apt-get -y -q install wget  dpkg-dev  \
            dh-python python3 python3-setuptools python3-pytest debhelper-compat  pybuild-plugin-pyproject flit \
            python3-typing-inspect python3-semver python3-pip python3-flask python3-ldap python3-pytest-runner python3-marshmallow \
            python3-lxml python3-limits python3-ordered-set python3-dateutil python3-sqlalchemy python3-wtforms python3-flaskext.wtf \
-           unzip npm python3-yaml python3-celery python3-bleach python3-email-validator python3-markdown python3-translitcodec \
+           unzip npm python3-yaml  python3-bleach python3-email-validator python3-markdown python3-translitcodec \
            unzip python3-html2text python3-sentry-sdk python3-authlib python3-flask-babel python3-speaklater python3-cachelib python3-flask-caching   \
            python3-redis python3-terminaltables python3-flask-sqlalchemy python3-jsonschema python3-ua-parser python3-colorclass  \
-           python3-flask-marshmallow python3-marshmallow-sqlalchemy python3-marshmallow-enum python3-webargs python3-bcrypt python3-executing python3-pure-eval \
+           python3-flask-marshmallow python3-marshmallow-sqlalchemy  python3-bcrypt python3-executing python3-pure-eval \
            python3-reportlab python3-qrcode python3-icalendar python3-pycountry python3-xlsxwriter python3-distro
+
+
+RUN apt-get -y -q install -t testing python3-flask-babel  && \
+     apt-get -y -q install python3-flask-cors   python3-google-auth weasyprint python3-pypdf      
+
+
 

@@ -1,3 +1,0 @@
-indico=3
-opts=uindicomangle=s/(rc|a|b|c)/~$1/ \
-https://pypi.debian.net/indico/indico-(.+)\.(?:zip|tgz|tbz|txz|(?:tar\.(?:gz|bz2|xz)))

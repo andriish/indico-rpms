@@ -2,7 +2,6 @@
 export PATH=$PATH:$(pwd)
 #set -x 
 declare -a BUILDLIST=(
-bleach:6.1.0:bleach
 flask-limiter:3.5.0:Flask-Limiter
 flask-pluginengine:0.5:Flask-PluginEngine
 marshmallow-dataclass:8.6.0:marshmallow_dataclass
@@ -22,12 +21,12 @@ wtforms-sqlalchemy:0.4.1:WTForms-SQLAlchemy
 indico:3.3.0:indico
 )
 
-declare -a BUILDLIST=(
-bleach:6.1.0:bleach
+#declare -a BUILDLIST=(
+#bleach:6.1.0:bleach
 #flask-pluginengine:0.5:Flask-PluginEngine
 #flask-webpackext:1.0.2:flask-webpackext
-#indico:3.2.9:indico
-)
+#indico:3.3.0:indico
+#)
 TTOP=$(pwd)
 mkdir -p logs/
 for a in "${BUILDLIST[@]}" 
@@ -37,8 +36,6 @@ p=$(echo $a | cut -f1 -d: )
 v=$(echo $a | cut -f2 -d: )
 (
 mkdir -p  logs && bash debbuild.sh $p $v  $P && apt-get -y install ./$p/$v/mydbtop/*deb
-)  &> logs/$p$v".log" || (echo "$p $v build failed"  
-#&& cat logs/$p$v".log" 
-)
+)  &> logs/$p$v".log" || (echo "$p $v build failed"  && cat logs/$p$v".log" )
 done
 wait

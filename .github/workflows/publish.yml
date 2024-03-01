@@ -4,6 +4,22 @@ on:
   pull_request:  
   schedule:
     - cron: "0 7 * * 2"
+  # Allows you to run this workflow manually from the Actions tab
+#  workflow_dispatch:
+  
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+   contents: read
+   pages: write
+   id-token: write
+   packages: write
+
+#permissions: write-all
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+  
 jobs:
 
 
@@ -96,7 +112,19 @@ jobs:
            cd RPM
            bash rpm_alllocal.sh
            ls ./*/*/rpmbuild/RPMS/*/*.rpm
-           #sh srpmsbuild.sh  python-indico 3.2.9 --build 
+           cd ..
+           mkdir -p myrepo/Fedora39
+           cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo/Fedora39
+           yum -y install createrepo
+           createrepo myrepo/Fedora39
+           ls -lah myrepo/Fedora39
+           tar   -cvf artifact-Fedora39.tar myrepo
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+          name:  Fedora39af
+          path: artifact-Fedora39.tar
+  
   
   run-in-indico-docker-image-Debian12:
     name: Debian
@@ -120,6 +148,59 @@ jobs:
            apt-get update
            cd DEB
            bash deb_alllocal.sh
-           ls ./*/*/mydbtop/*deb
- 
+           cd ..
+           ls DEB/*/*/mydbtop/*deb
+           mkdir -p myrepo/Debian12
+           cp DEB/*/*/mydbtop/*deb myrepo/Debian12
+           apt-get -y install  dpkg-dev 
+           cd  myrepo/Debian12
+           dpkg-scanpackages . /dev/null > Release
+           cd ../../
+           tar   -cvf artifact-Debian12.tar myrepo
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+          name:  Debian12af
+          path: artifact-Debian12.tar
+  
+  deploy-from-all:
+    name: Deploy
+    runs-on: ubuntu-latest    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  
+    needs: 
+     - run-in-indico-docker-image-Debian12
+     - run-in-indico-docker-image-Fedora39
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+          name: Fedora39af
+          path: myrepo
+    - uses: actions/download-artifact@v4
+      with:
+          name: Debian12af
+          path: myrepo
+    - name: Display structure of downloaded files
+      run: |
+          ls -R myrepo
+          cd  myrepo
+          tar -xf artifact-Debian12.tar
+          tar -xf artifact-Fedora39.tar
+          mv myrepo indico330
+          ls 
+          rm ./*.tar -f
+          cd ..
+    - uses: jayanta525/github-pages-directory-listing@v4.0.0
+      with:
+          FOLDER: ./myrepo      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+          # Upload entire repository
+          path: ./myrepo
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+
   

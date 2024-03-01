@@ -10,7 +10,7 @@ override_dh_auto_clean:
 		echo "OK"
 
 override_dh_auto_build:
-		touch GGGGG
+		sed -i 's@/usr/bin/env python@/usr/bin/python3@g' ./bin/maintenance/*
 		rm -rf plugins/base/piwik
 		rm -rf plugins/base/themes_legacy
 		rm -rf plugins/base/ursh
@@ -36,8 +36,8 @@ override_dh_auto_build:
 		npm config delete https-proxy
 		export NODE_OPTIONS="--max-old-space-size=5120" && cd indico/web/client && npm install --legacy-peer-deps && cd ../../../
 		export NODE_OPTIONS="--max-old-space-size=5120" && npm install  --legacy-peer-deps
-		export NODE_OPTIONS="--max-old-space-size=5120" && export PYTHONPATH=$$(pwd):$$PYTHONPATH && ./bin/maintenance/build-wheel.py indico       --ignore-unclean 
-		export NODE_OPTIONS="--max-old-space-size=5120" && export PYTHONPATH=$$(pwd):$$PYTHONPATH && ./bin/maintenance/build-wheel.py all-plugins  --ignore-unclean  plugins/base
+		export INDICO_NO_GIT=True && export NODE_OPTIONS="--max-old-space-size=5120" && export PYTHONPATH=$$(pwd):$$PYTHONPATH && ./bin/maintenance/build-wheel.py indico       --no-git --ignore-unclean 
+		export INDICO_NO_GIT=True && export NODE_OPTIONS="--max-old-space-size=5120" && export PYTHONPATH=$$(pwd):$$PYTHONPATH && ./bin/maintenance/build-wheel.py all-plugins  --no-git --ignore-unclean  plugins/base
 
 override_dh_auto_test:
 	echo "disabling dh_auto_test until someone can setup test harness"
