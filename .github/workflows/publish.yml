@@ -113,32 +113,18 @@ jobs:
            bash rpm_alllocal.sh
            ls ./*/*/rpmbuild/RPMS/*/*.rpm
            cd ..
-           mkdir -p myrepo
-           cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo
+           mkdir -p myrepo/Fedora39
+           cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo/Fedora39
            yum -y install createrepo
-           createrepo myrepo
-           ls -lah myrepo
-    - uses: jayanta525/github-pages-directory-listing@v4.0.0
-      with:
-          FOLDER: ./myrepo
+           createrepo myrepo/Fedora39
+           ls -lah myrepo/Fedora39
+           tar --directory myrepo  -cvf artifactFedora39.tar
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-          # Upload entire repository
-          path: ./myrepo
-
-  deploy-in-indico-docker-image-Fedora39:
-    name: DeployFedora
-    runs-on: ubuntu-latest    
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}  
-    needs: run-in-indico-docker-image-Fedora39
-    steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
-
+          name:  Fedora39af
+          path: artifact-Fedora39.tar
+  
   
   run-in-indico-docker-image-Debian12:
     name: Debian
@@ -162,6 +148,51 @@ jobs:
            apt-get update
            cd DEB
            bash deb_alllocal.sh
-           ls ./*/*/mydbtop/*deb
- 
+           cd ..
+           ls DEB/*/*/mydbtop/*deb
+           mkdir -p myrepo/Debian12
+           cp DEB/*/*/mydbtop/*deb myrepo/Debian12
+           apt-get -y install  dpkg-dev dpkg-scanpackages
+           cd  myrepo/Debian12
+           dpkg-scanpackages . /dev/null > Release
+           cd ../../
+           tar --directory myrepo  -cvf artifact-Debian12.tar
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+          name:  Debian12af
+          path: artifact-Debian12.tar
+  
+  deploy-from-all:
+    name: Deploy
+    runs-on: ubuntu-latest    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  
+    needs: 
+     - run-in-indico-docker-image-Debian12
+     - run-in-indico-docker-image-Fedora39
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+          name: Fedora39af
+          path: myrepo
+    - uses: actions/download-artifact@v4
+      with:
+          name: Debian12af
+          path: myrepo
+    - name: Display structure of downloaded files
+      run: ls -R myrepo
+    - uses: jayanta525/github-pages-directory-listing@v4.0.0
+      with:
+          FOLDER: ./myrepo      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+          # Upload entire repository
+          path: ./myrepo
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+
   
