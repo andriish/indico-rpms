@@ -171,7 +171,7 @@ RUN               dnf -y install            \
  pcre-cpp \
  pcre-devel \
  pcre-utf16 \
- pcre-utf32 \
+ pcre-utf2 \
  postgresql-contrib \
  postgresql-server \
  python3-feedgen \
