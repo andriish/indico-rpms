@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -164,7 +164,7 @@ Requires: python3-pycparser
 Requires: python3-pygments
 Requires: python3-pynpm
 Requires: python3-pyparsing
-Requires: python3-pypdf >= 4.0
+Requires: python3-pypdf
 Requires: python3-pyrsistent
 Requires: python3-pytz
 Requires: python3-pywebpack
@@ -301,7 +301,7 @@ BuildRequires: python3-pycparser
 BuildRequires: python3-pygments
 BuildRequires: python3-pynpm
 BuildRequires: python3-pyparsing
-BuildRequires: python3-pypdf >= 4.0
+BuildRequires: python3-pypdf
 BuildRequires: python3-pyrsistent
 BuildRequires: python3-pytz
 BuildRequires: python3-pywebpack
@@ -399,7 +399,6 @@ sed -i '/# BEGIN GENERATED REQUIREMENTS/,/# END GENERATED REQUIREMENTS/d' plugin
 
 sed -i 's/\=\=.*$//g' requirements.*
 sed -i 's/tzdata/#tzdata/g' requirements.*
-sed -i 's/pypdf/#pypdf/g' requirements.*
 sed -i 's/importlib/#importlib/g' requirements.*
 sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
 
