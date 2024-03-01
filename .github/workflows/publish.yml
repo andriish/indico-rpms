@@ -118,7 +118,7 @@ jobs:
            yum -y install createrepo
            createrepo myrepo/Fedora39
            ls -lah myrepo/Fedora39
-           tar --directory myrepo  -cvf artifactFedora39.tar
+           tar --directory myrepo  -cvf artifactFedora39.tar myrepo
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
@@ -152,11 +152,11 @@ jobs:
            ls DEB/*/*/mydbtop/*deb
            mkdir -p myrepo/Debian12
            cp DEB/*/*/mydbtop/*deb myrepo/Debian12
-           apt-get -y install  dpkg-dev dpkg-scanpackages
+           apt-get -y install  dpkg-dev 
            cd  myrepo/Debian12
            dpkg-scanpackages . /dev/null > Release
            cd ../../
-           tar --directory myrepo  -cvf artifact-Debian12.tar
+           tar --directory myrepo  -cvf artifact-Debian12.tar myrepo
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
