@@ -182,7 +182,11 @@ jobs:
           name: Debian12af
           path: myrepo
     - name: Display structure of downloaded files
-      run: ls -R myrepo
+      run: |
+          ls -R myrepo
+          cd  myrepo
+          tar xf *.tar
+          cd ..
     - uses: jayanta525/github-pages-directory-listing@v4.0.0
       with:
           FOLDER: ./myrepo      
