@@ -26,9 +26,9 @@ DB treatment
 
 #systemctl stop redis.service
 #systemctl stop httpd.service indico-celery.service indico-uwsgi.service
-#su - postgres  psql -c "drop database indico;"
-#su - postgres  createdb -O indico indico
-#su - postgres  psql indico < indico_dump.txt
+su - postgres  psql -c "drop database indico;"
+su - postgres  createdb -O indico indico
+su - postgres  psql indico < indico_dump.txt
 #su - indico    indico db upgrade
 #systemctl start redis.service
 
@@ -51,3 +51,21 @@ DB treatment
 #yum -y install python3-indico
 #yum -y install indico-mpp
 #edit /etc/httpd/conf/httpd.conf!!!!!
+
+
+```
+dnf -y install dnf-plu*
+dnf -y copr enable averbyts/I330
+rpm -e $(rpm -qa | grep indico)  $(rpm -qa | grep postgresql) 
+yum clean all
+rm -rf /opt/indico/ /opt/pgsql/
+yum -y install python3-indico-mpp-configuration
+sed -i 's/indico01/indico04/g' /opt/indico/etc/indico.conf 
+sed -i 's/indico01/indico04/g' /etc/httpd/conf.d/indico.conf 
+su  indico 
+bash-5.2$ indico user create -a
+....
+systemctl restart httpd.service postgresql.service redis.service indico-celery.service indico-uwsgi.service
+```
+
+Fix postfix   mydestination =
