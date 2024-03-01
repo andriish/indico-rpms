@@ -21,7 +21,7 @@ DB treatment
 # export OLD=
 # export NEW=
 
-#@ OLD  pg_dump indico > indico_dump.txt
+#@ OLD su indico  pg_dump indico > indico_dump.txt
 #@ OLD scp /mnt/home/indico/indico/indico_dump.txt $NEW:
 
 #systemctl stop redis.service

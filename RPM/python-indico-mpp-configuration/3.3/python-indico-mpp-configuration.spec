@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
