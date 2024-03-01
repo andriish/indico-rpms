@@ -115,6 +115,9 @@ jobs:
            yum -y install createrepo
            createrepo myrepo
            ls -lah myrepo
+    - uses: jayanta525/github-pages-directory-listing@v4.0.0
+      with:
+          FOLDER: ./myrepo
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
@@ -128,8 +131,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}  
     needs: run-in-indico-docker-image-Fedora39
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
     steps:
     - name: Deploy to GitHub Pages
       id: deployment
