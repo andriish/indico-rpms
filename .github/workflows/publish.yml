@@ -122,10 +122,12 @@ jobs:
           path: ./myrepo
 
   deploy-in-indico-docker-image-Fedora39:
+    name: DeployFedora
+    runs-on: ubuntu-latest    
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}  
-    needs: run-in-indico-docker-image-Fedora39:
+    needs: run-in-indico-docker-image-Fedora39
 #    - name: Setup Pages
 #      uses: actions/configure-pages@v4
     steps:
