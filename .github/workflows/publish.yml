@@ -115,9 +115,10 @@ jobs:
            yum -y install createrepo
            createrepo myrepo
            ls -lah myrepo
+
     - uses: jayanta525/github-pages-directory-listing@v4.0.0
       with:
-          FOLDER: myrepo
+          FOLDER: ./myrepo
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
