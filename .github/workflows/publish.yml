@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: "0 7 * * 2"
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+#  workflow_dispatch:
   
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -128,8 +128,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}  
     needs: run-in-indico-docker-image-Fedora39
-#    - name: Setup Pages
-#      uses: actions/configure-pages@v4
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
     steps:
     - name: Deploy to GitHub Pages
       id: deployment
