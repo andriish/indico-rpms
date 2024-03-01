@@ -88,9 +88,6 @@ jobs:
 
 
   run-in-indico-docker-image-Fedora39:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}  
     name: Fedora
     runs-on: ubuntu-latest
     needs: build-indico-docker-image-Fedora39
@@ -118,13 +115,20 @@ jobs:
            yum -y install createrepo
            createrepo myrepo
            ls -lah myrepo
-#    - name: Setup Pages
-#      uses: actions/configure-pages@v4
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
           # Upload entire repository
           path: ./myrepo
+
+  deploy-in-indico-docker-image-Fedora39:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  
+    needs: run-in-indico-docker-image-Fedora39:
+#    - name: Setup Pages
+#      uses: actions/configure-pages@v4
+    steps:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
