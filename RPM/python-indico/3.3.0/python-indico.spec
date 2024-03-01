@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        13%{?dist}
+Release:        16%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -37,10 +37,163 @@ BuildRequires: pyproject-rpm-macros python-srpm-macros
 BuildRequires: npm
 
 BuildRequires: tzdata
-Requires: tzdata
+
 
 BuildRequires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel libyaml-devel 
 BuildRequires: zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
+
+
+
+########################
+BuildRequires: python3
+BuildRequires: python3-alembic
+BuildRequires: python3-amqp
+BuildRequires: python3-asttokens
+BuildRequires: python3-attrs
+BuildRequires: python3-authlib
+BuildRequires: python3-babel
+BuildRequires: python3-backcall
+BuildRequires: python3-bcrypt
+BuildRequires: python3-billiard
+BuildRequires: python3-bleach
+BuildRequires: python3-blinker
+BuildRequires: python3-boto3
+BuildRequires: python3-build
+BuildRequires: python3-cachelib
+BuildRequires: python3-captcha
+BuildRequires: python3-celery
+BuildRequires: python3-certifi
+BuildRequires: python3-cffi
+BuildRequires: python3-charset-normalizer
+BuildRequires: python3-click
+BuildRequires: python3-click-didyoumean
+BuildRequires: python3-click-plugins
+BuildRequires: python3-click-repl
+BuildRequires: python3-colorclass
+BuildRequires: python3-cryptography
+BuildRequires: python3-dateutil
+BuildRequires: python3-decorator
+BuildRequires: python3-devel
+BuildRequires: python3-distro
+BuildRequires: python3-dns
+BuildRequires: python3-email-validator
+#BuildRequires: python3-exceptiongroup
+BuildRequires: python3-executing
+BuildRequires: python3-feedgen
+BuildRequires: python3-flask
+BuildRequires: python3-flask-babel
+BuildRequires: python3-flask-caching
+BuildRequires: python3-flask-cors 
+BuildRequires: python3-Flask-Limiter
+BuildRequires: python3-flask-marshmallow
+BuildRequires: python3-flask-migrate
+BuildRequires: python3-Flask-Multipass
+BuildRequires: python3-Flask-PluginEngine
+BuildRequires: python3-flask-sqlalchemy
+BuildRequires: python3-flask-url-map-serializer
+BuildRequires: python3-flask-webpackext
+BuildRequires: python3-flask-wtf
+BuildRequires: python3-flit-core 
+BuildRequires: python3-google-api-client  
+BuildRequires: python3-greenlet
+BuildRequires: python3-greenlet
+BuildRequires: python3-hiredis
+BuildRequires: python3-hiredis
+BuildRequires: python3-html2text
+BuildRequires: python3-html5lib
+BuildRequires: python3-icalendar
+BuildRequires: python3-idna
+BuildRequires: python3-indico-fonts
+BuildRequires: python3-iso4217
+BuildRequires: python3-ipython
+BuildRequires: python3-itsdangerous
+BuildRequires: python3-jedi
+BuildRequires: python3-jinja2
+BuildRequires: python3-jsonschema
+BuildRequires: python3-jwt
+BuildRequires: python3-kombu
+BuildRequires: python3-ldap
+BuildRequires: python3-limits
+BuildRequires: python3-lxml
+BuildRequires: python3-mako
+BuildRequires: python3-markdown
+BuildRequires: python3-markupsafe
+BuildRequires: python3-marshmallow
+BuildRequires: python3-marshmallow_dataclass
+BuildRequires: python3-marshmallow-enum
+BuildRequires: python3-marshmallow-oneofschema
+BuildRequires: python3-marshmallow-sqlalchemy
+BuildRequires: python3-matplotlib-inline
+BuildRequires: python3-mypy_extensions
+BuildRequires: python3-nbconvert 
+BuildRequires: python3-node-semver
+BuildRequires: python3-packaging
+BuildRequires: python3-parso
+BuildRequires: python3-pexpect
+BuildRequires: python3-pickleshare
+BuildRequires: python3-pillow
+BuildRequires: python3-prompt-toolkit
+BuildRequires: python3-psycopg2
+BuildRequires: python3-ptyprocess
+BuildRequires: python3-pure-eval
+BuildRequires: python3-pycountry
+BuildRequires: python3-pycparser
+BuildRequires: python3-pygments
+BuildRequires: python3-pynpm
+BuildRequires: python3-pyparsing
+BuildRequires: python3-pypdf
+BuildRequires: python3-pyrsistent
+BuildRequires: python3-pytz
+BuildRequires: python3-pywebpack
+BuildRequires: python3-pyyaml
+BuildRequires: python3-qrcode-core
+BuildRequires: python3-redis
+BuildRequires: python3-reportlab
+BuildRequires: python3-requests
+BuildRequires: python3-rpm-macros 
+BuildRequires: python3-semver
+BuildRequires: python3-semver
+BuildRequires: python3-sentry-sdk
+BuildRequires: python3-simplejson
+BuildRequires: python3-six
+BuildRequires: python3-speaklater
+BuildRequires: python3-sqlalchemy
+BuildRequires: python3-stack-data
+BuildRequires: python3-terminaltables
+BuildRequires: python3-tinycss2
+BuildRequires: python3-traitlets
+BuildRequires: python3-translitcodec
+BuildRequires: python3-typing-extensions
+BuildRequires: python3-typing-inspect
+BuildRequires: python3-ua-parser
+BuildRequires: python3-urllib3
+BuildRequires: python3-vine
+BuildRequires: python3-wcwidth
+BuildRequires: python3-weasyprint
+BuildRequires: python3-webargs
+BuildRequires: python3-webencodings
+BuildRequires: python3-werkzeug
+BuildRequires: python3-wheel
+BuildRequires: python3-wtforms >= 3.0.0
+BuildRequires: python3-WTForms-dateutil
+BuildRequires: python3-wtforms-sqlalchemy
+BuildRequires: python3-xlsxwriter
+BuildRequires: python3-zipp
+
+BuildRequires: python3-prometheus_client
+
+#######################
+
+
+%global _description %{expand:
+Indico event management system.
+}
+%description %_description
+
+%package -n python3-%{srcname}
+Summary:        %{summary}
+
+Requires: tzdata
 Requires: zlib bzip2 readline sqlite xz libffi findutils libuuid
 
 Requires: uwsgi
@@ -164,7 +317,7 @@ Requires: python3-pycparser
 Requires: python3-pygments
 Requires: python3-pynpm
 Requires: python3-pyparsing
-Requires: python3-pypdf >= 4.0
+Requires: python3-pypdf
 Requires: python3-pyrsistent
 Requires: python3-pytz
 Requires: python3-pywebpack
@@ -203,154 +356,9 @@ Requires: python3-wtforms-sqlalchemy
 Requires: python3-xlsxwriter
 Requires: python3-zipp
 
-
-########################
-BuildRequires: python3
-BuildRequires: python3-alembic
-BuildRequires: python3-amqp
-BuildRequires: python3-asttokens
-BuildRequires: python3-attrs
-BuildRequires: python3-authlib
-BuildRequires: python3-babel
-BuildRequires: python3-backcall
-BuildRequires: python3-bcrypt
-BuildRequires: python3-billiard
-BuildRequires: python3-bleach
-BuildRequires: python3-blinker
-BuildRequires: python3-boto3
-BuildRequires: python3-build
-BuildRequires: python3-cachelib
-BuildRequires: python3-captcha
-BuildRequires: python3-celery
-BuildRequires: python3-certifi
-BuildRequires: python3-cffi
-BuildRequires: python3-charset-normalizer
-BuildRequires: python3-click
-BuildRequires: python3-click-didyoumean
-BuildRequires: python3-click-plugins
-BuildRequires: python3-click-repl
-BuildRequires: python3-colorclass
-BuildRequires: python3-cryptography
-BuildRequires: python3-dateutil
-BuildRequires: python3-decorator
-BuildRequires: python3-devel
-BuildRequires: python3-distro
-BuildRequires: python3-dns
-BuildRequires: python3-email-validator
-#BuildRequires: python3-exceptiongroup
-BuildRequires: python3-executing
-BuildRequires: python3-feedgen
-BuildRequires: python3-flask
-BuildRequires: python3-flask-babel
-BuildRequires: python3-flask-caching
-BuildRequires: python3-flask-cors 
-BuildRequires: python3-Flask-Limiter
-BuildRequires: python3-flask-marshmallow
-BuildRequires: python3-flask-migrate
-BuildRequires: python3-Flask-Multipass
-BuildRequires: python3-Flask-PluginEngine
-BuildRequires: python3-flask-sqlalchemy
-BuildRequires: python3-flask-url-map-serializer
-BuildRequires: python3-flask-webpackext
-BuildRequires: python3-flask-wtf
-BuildRequires: python3-flit-core 
-BuildRequires: python3-google-api-client  
-BuildRequires: python3-greenlet
-BuildRequires: python3-greenlet
-BuildRequires: python3-hiredis
-BuildRequires: python3-hiredis
-BuildRequires: python3-html2text
-BuildRequires: python3-html5lib
-BuildRequires: python3-icalendar
-BuildRequires: python3-idna
-BuildRequires: python3-indico-fonts
-BuildRequires: python3-iso4217
-BuildRequires: python3-ipython
-BuildRequires: python3-itsdangerous
-BuildRequires: python3-jedi
-BuildRequires: python3-jinja2
-BuildRequires: python3-jsonschema
-BuildRequires: python3-jwt
-BuildRequires: python3-kombu
-BuildRequires: python3-ldap
-BuildRequires: python3-limits
-BuildRequires: python3-lxml
-BuildRequires: python3-mako
-BuildRequires: python3-markdown
-BuildRequires: python3-markupsafe
-BuildRequires: python3-marshmallow
-BuildRequires: python3-marshmallow_dataclass
-BuildRequires: python3-marshmallow-enum
-BuildRequires: python3-marshmallow-oneofschema
-BuildRequires: python3-marshmallow-sqlalchemy
-BuildRequires: python3-matplotlib-inline
-BuildRequires: python3-mypy_extensions
-BuildRequires: python3-nbconvert 
-BuildRequires: python3-node-semver
-BuildRequires: python3-packaging
-BuildRequires: python3-parso
-BuildRequires: python3-pexpect
-BuildRequires: python3-pickleshare
-BuildRequires: python3-pillow
-BuildRequires: python3-prompt-toolkit
-BuildRequires: python3-psycopg2
-BuildRequires: python3-ptyprocess
-BuildRequires: python3-pure-eval
-BuildRequires: python3-pycountry
-BuildRequires: python3-pycparser
-BuildRequires: python3-pygments
-BuildRequires: python3-pynpm
-BuildRequires: python3-pyparsing
-BuildRequires: python3-pypdf >= 4.0
-BuildRequires: python3-pyrsistent
-BuildRequires: python3-pytz
-BuildRequires: python3-pywebpack
-BuildRequires: python3-pyyaml
-BuildRequires: python3-qrcode-core
-BuildRequires: python3-redis
-BuildRequires: python3-reportlab
-BuildRequires: python3-requests
-BuildRequires: python3-rpm-macros 
-BuildRequires: python3-semver
-BuildRequires: python3-semver
-BuildRequires: python3-sentry-sdk
-BuildRequires: python3-simplejson
-BuildRequires: python3-six
-BuildRequires: python3-speaklater
-BuildRequires: python3-sqlalchemy
-BuildRequires: python3-stack-data
-BuildRequires: python3-terminaltables
-BuildRequires: python3-tinycss2
-BuildRequires: python3-traitlets
-BuildRequires: python3-translitcodec
-BuildRequires: python3-typing-extensions
-BuildRequires: python3-typing-inspect
-BuildRequires: python3-ua-parser
-BuildRequires: python3-urllib3
-BuildRequires: python3-vine
-BuildRequires: python3-wcwidth
-BuildRequires: python3-weasyprint
-BuildRequires: python3-webargs
-BuildRequires: python3-webencodings
-BuildRequires: python3-werkzeug
-BuildRequires: python3-wheel
-BuildRequires: python3-wtforms >= 3.0.0
-BuildRequires: python3-WTForms-dateutil
-BuildRequires: python3-wtforms-sqlalchemy
-BuildRequires: python3-xlsxwriter
-BuildRequires: python3-zipp
-#######################
+Requires: python3-prometheus_client
 
 
-%global _description %{expand:
-Indico event management system.
-}
-%description %_description
-
-%package -n python3-%{srcname}
-Summary:        %{summary}
-BuildRequires: python3-devel
-BuildRequires: python3-setuptools
 %description -n python3-%{srcname} %_description
 
 %package -n python3-indico-default-configuration
@@ -399,7 +407,6 @@ sed -i '/# BEGIN GENERATED REQUIREMENTS/,/# END GENERATED REQUIREMENTS/d' plugin
 
 sed -i 's/\=\=.*$//g' requirements.*
 sed -i 's/tzdata/#tzdata/g' requirements.*
-sed -i 's/pypdf/#pypdf/g' requirements.*
 sed -i 's/importlib/#importlib/g' requirements.*
 sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
 
@@ -452,14 +459,12 @@ indico i18n compile-catalog-react
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
-%exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
 %files -n python3-indico-default-configuration
 %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
 %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
 %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
-%{python3_sitelib}/%{srcnamenu}/modules/auth/templates/login_page.html
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
 
