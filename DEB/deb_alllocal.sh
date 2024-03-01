@@ -21,12 +21,12 @@ wtforms-sqlalchemy:0.4.1:WTForms-SQLAlchemy
 indico:3.3.0:indico
 )
 
-declare -a BUILDLIST=(
+#declare -a BUILDLIST=(
 #bleach:6.1.0:bleach
-flask-pluginengine:0.5:Flask-PluginEngine
+#flask-pluginengine:0.5:Flask-PluginEngine
 #flask-webpackext:1.0.2:flask-webpackext
 #indico:3.3.0:indico
-)
+#)
 TTOP=$(pwd)
 mkdir -p logs/
 for a in "${BUILDLIST[@]}" 

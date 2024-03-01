@@ -187,6 +187,7 @@ jobs:
           cd  myrepo
           tar -xf artifact-Debian12.tar
           tar -xf artifact-Fedora39.tar
+          mv myrepo indico330
           ls 
           rm ./*.tar -f
           cd ..
