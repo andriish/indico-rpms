@@ -118,7 +118,7 @@ jobs:
            yum -y install createrepo
            createrepo myrepo/Fedora39
            ls -lah myrepo/Fedora39
-           tar   -cvf artifactFedora39.tar myrepo
+           tar   -cvf artifact-Fedora39.tar myrepo
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
