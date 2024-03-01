@@ -185,7 +185,10 @@ jobs:
       run: |
           ls -R myrepo
           cd  myrepo
-          tar -xf *.tar
+          tar -xf artifact-Debian12.tar
+          tar -xf artifact-Fedora39.tar
+          ls 
+          rm ./*.tar -f
           cd ..
     - uses: jayanta525/github-pages-directory-listing@v4.0.0
       with:
