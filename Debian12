@@ -173,7 +173,7 @@ RUN            apt-get -y -q install wget  dpkg-dev  \
 
 
 RUN apt-get -y -q install -t testing python3-flask-babel  && \
-     apt-get -y -q install python3-flask-cors   python3-google-auth weasyprint python3-pypdf    
+     apt-get -y -q install python3-flask-cors   python3-google-auth weasyprint python3-pypdf      
 
 
 
