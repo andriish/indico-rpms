@@ -23,6 +23,9 @@ python-webargs:8.3.0
 python-indico:3.3.0
 python-indico-mpp-configuration:3.3
 )
+#mkdir -p python-indico/3.3.0/rpmbuild/RPMS/noarch
+#touch python-indico/3.3.0/rpmbuild/RPMS/noarch/1.rpm
+#exit 0
 #declare -a BUILDLIST=(
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3
