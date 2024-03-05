@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A captcha library that generates audio and image CAPTCHAs.
 
 License:        BSD
@@ -37,7 +37,7 @@ BuildRequires:  python3-setuptools
 # Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 
-%{python3_sitelib}/%{srcnamenu}-*.egg-info/
+%{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
