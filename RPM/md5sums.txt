@@ -68,3 +68,5 @@ c5305be855f3fa9d194b5abef11b7aae  python-pypdf/4.0.1/rpmbuild/SOURCES/pypdf-4.0.
 c0aa3a21ffb61e829b0b87aedbfcd38c  python-iso4217/1.11.20220401/rpmbuild/SOURCES/iso4217-1.11.20220401.tar.gz
 2cdccdb7c5d4b23016d17ff6bcb55711  python-indico/3.3.0/rpmbuild/SOURCES/11daf353758a3b32e5ef37ca3e932f97c37ce8ca.zip
 8183009de323a1e49867af6aabf09aae  python-pywebpack/2.0.0/rpmbuild/SOURCES/pywebpack-2.0.0.tar.gz
+
+08f14b526842d9fa0688e731493c9dd8  python-indico/3.3.0/rpmbuild/SOURCES/736862c990831fa789c665cc9519798cc64807f3.zip
