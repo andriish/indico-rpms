@@ -2,14 +2,13 @@
 %global srcnamenu pywebpack
 
 Name:           python-%{srcname}
-Version:        1.2.0
-Release:        2%{?dist}
+Version:        2.0.0
+Release:        1%{?dist}
 Summary:        Webpack integration layer for Python.
 
 License:        MIT
 URL:            https://pywebpack.readthedocs.io/
 Source:         %{pypi_source}
-Patch0:         python-pywebpack-patch.txt
 BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel python-pytest-runner
 BuildRequires: python3-werkzeug gcc make

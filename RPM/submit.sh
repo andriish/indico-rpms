@@ -2,7 +2,6 @@
 
 export PATH=$PATH:$(pwd)
 copr-cli create --enable-net=on --chroot fedora-39-x86_64 --chroot fedora-rawhide-x86_64 I330
-#find ./ | grep '.spec$' | cut -f 2,3 -d'/'  | sed 's/\//:/g' | sort
 declare -a BUILDLIST=( 
 python-exceptiongroup:1.2.0
 python-indico-mpp-configuration:3.3
@@ -22,7 +21,7 @@ python-marshmallow_oneofschema:3.0.1
 python-marshmallow_sqlalchemy:0.29.0
 python-marshmallow-dataclass:8.6.0
 python-pynpm:0.2.0
-python-pywebpack:1.2.0
+python-pywebpack:2.0.0
 python-webargs:8.3.0
 )
 
