@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
@@ -93,7 +93,7 @@ systemctl stop postgresql.service
 %install
 THISHOSTNAME=indico01.mpp.mpg.de
 sed -i 's/YOURHOSTNAME/'"$THISHOSTNAME"'/g' *.*
-sed -i 's,PYTHONSITELIB,'%{python3_sitelib}'/indico,g'   indico.conf 
+sed -i 's,PYTHONSITELIB,'%{python3_sitelib}',g'   indico.conf 
 
 mkdir -p %{buildroot}/etc
 install -m 0755 uwsgi-indico.ini %{buildroot}/etc/uwsgi-indico.ini
