@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        18%{?dist}
+Release:        19%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -458,12 +458,15 @@ indico i18n compile-catalog-react
 %{_bindir}/indico
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
+%exclude %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
 %files -n python3-indico-default-configuration
 %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
 %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
+%{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
+
 
 
 %filesinplugin citadel

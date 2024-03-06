@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
@@ -121,11 +121,6 @@ mkdir -p %{buildroot}/%{python3_sitelib}/indico-mpp-configuration/web/static/ima
 install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
 install -m 755 logo_indico_bw.svg %{buildroot}/%{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
 
-install -m 755 robots.txt %{buildroot}/%{python3_sitelib}/indico-mpp-configuration/web/static/robots.txt
-
-install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico-mpp-configuration/web/static/images/globe.png
-install -m 755 logo_indico_bw.svg %{buildroot}/%{python3_sitelib}/indico-mpp-configuration/web/static/images/logo_indico_bw.svg
-
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
 install -m 755 register.html   %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/register.html
@@ -199,7 +194,7 @@ sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/w
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static/fonts /opt/indico/web/static/images
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static/export-reversed.xsl /opt/indico/web/static/export-reversed.xsl
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static/export.xsl /opt/indico/web/static/export.xsl
-#sudo -u indico ln -s    /usr/lib/python{python3_version}/site-packages/indico-mpp-configuration/web/static/robots.txt /opt/indico/web/static/robots.txt
+sudo -u indico ln -s    /usr/lib/python{python3_version}/site-packages/indico/web/static/robots.txt /opt/indico/web/static/robots.txt
 
 sudo -u indico mkdir -p /opt/indico/web/static/plugins/cloud_captchas
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico_cloud_captchas/static/dist  /opt/indico/web/static/plugins/cloud_captchas/dist
@@ -278,9 +273,7 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 %config(noreplace) /opt/indico/etc/indico.conf
 %{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
 %{python3_sitelib}/indico/web/static/images/globe.png
-%{python3_sitelib}/indico-mpp-configuration/web/static/robots.txt
-%{python3_sitelib}/indico-mpp-configuration/web/static/images/logo_indico_bw.svg
-%{python3_sitelib}/indico-mpp-configuration/web/static/images/globe.png
+%{python3_sitelib}/indico/web/static/robots.txt
 %{python3_sitelib}/indico/modules/auth/templates/register.html
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
