@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
@@ -195,6 +195,7 @@ sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/w
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static/fonts /opt/indico/web/static/images
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static/export-reversed.xsl /opt/indico/web/static/export-reversed.xsl
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static/export.xsl /opt/indico/web/static/export.xsl
+sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static/robots.txt /opt/indico/web/static/robots.txt
 
 sudo -u indico mkdir -p /opt/indico/web/static/plugins/cloud_captchas
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico_cloud_captchas/static/dist  /opt/indico/web/static/plugins/cloud_captchas/dist
