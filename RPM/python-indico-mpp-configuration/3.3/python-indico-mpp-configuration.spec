@@ -123,6 +123,7 @@ install -m 755 logo_indico_bw.svg %{buildroot}/%{python3_sitelib}/indico/web/sta
 install -m 755 robots.txt %{buildroot}/%{python3_sitelib}/indico/web/static/robots.txt
 
 
+
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/
 install -m 755 register.html   %{buildroot}/%{python3_sitelib}/indico/modules/auth/templates/register.html
 
@@ -184,9 +185,6 @@ sudo -u indico mkdir -p /opt/indico/assets
 sudo -u indico mkdir -p /opt/indico/tmp/
 
 sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/logging.yaml.sample  /opt/indico/etc/logging.yaml
-
-#sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico/web/static /opt/indico/web/static
-
 ##
 sudo -u indico mkdir -p /opt/indico/web/static
 sudo -u indico mkdir -p /opt/indico/web/static/plugins
@@ -231,7 +229,6 @@ sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico_v
 sudo -u indico ln -s    /usr/lib/python%{python3_version}/site-packages/indico_vc_zoom/static/dist  /opt/indico/web/static/plugins/vc_zoom/dist
 
 #
-
 sudo -u indico ln -s /opt/indico/etc/indico.conf /opt/indico/.indico.conf 
 
 python3 -m venv --system-site-packages --prompt indico /opt/indico/.venv

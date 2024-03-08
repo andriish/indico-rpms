@@ -469,7 +469,6 @@ indico i18n compile-catalog-react
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
 
-
 %filesinplugin citadel
 %filesinplugin cloud_captchas
 %filesinplugin livesync
