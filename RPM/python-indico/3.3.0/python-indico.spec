@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        19%{?dist}
+Release:        20%{?dist}
 Summary:        Indico package
 
 License:        MIT
@@ -218,6 +218,7 @@ Requires: tex(tcolorbox.sty)
 Requires: tex(truncate.sty)
 Requires: tex(xcolor.sty)
 Requires: tex(xstring.sty)
+Requires: tex(xeCJK.sty)
 
 
 
