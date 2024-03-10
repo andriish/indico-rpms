@@ -24,13 +24,13 @@ DB treatment
 #@ OLD su indico  pg_dump indico > indico_dump.txt
 #@ OLD scp /mnt/home/indico/indico/indico_dump.txt $NEW:
 
-#systemctl stop redis.service
-#systemctl stop httpd.service indico-celery.service indico-uwsgi.service
-su - postgres  psql -c "drop database indico;"
-su - postgres  createdb -O indico indico
-su - postgres  psql indico < indico_dump.txt
-#su - indico    indico db upgrade
-#systemctl start redis.service
+systemctl stop redis.service
+systemctl stop httpd.service indico-celery.service indico-uwsgi.service
+su - postgres -c 'psql -c "drop database indico;"'
+su - postgres -c 'createdb -O indico indico'
+su - postgres -c 'psql indico < indico_dump.txt'
+su - indico   -c 'indico db upgrade'
+systemctl start redis.service
 
 #scp -r $OLD:/mnt/home/indico/indico/archive ./A
 #mv ./A/* /opt/indico/archive/
@@ -69,3 +69,49 @@ systemctl restart httpd.service postgresql.service redis.service indico-celery.s
 ```
 
 Fix postfix   mydestination =
+
+
+
+#( drbdadm status to see it's status)
+modprobe drbd
+drbdadm up r0
+drbdadm primary r0
+
+mount /dev/drbd0 /opt
+
+and back
+umount /opt
+drbdadm down r0
+
+
+
+
+
+
+
+
+systemctl stop redis.service
+systemctl stop httpd.service indico-celery.service indico-uwsgi.service
+su - postgres -c 'createuser indico'
+sleep 1
+su - postgres -c 'createdb -O indico indico'
+sleep 1
+su - postgres -c 'psql indico -c "CREATE EXTENSION unaccent; CREATE EXTENSION pg_trgm;"'
+sleep 1
+su - indico -c 'indico db prepare'
+sleep 1
+su - postgres -c 'psql -c "drop database indico;"'
+sleep 1
+su - postgres -c 'createdb -O indico indico'
+sleep 1
+su - postgres -c 'psql indico < /opt/fromindico01/indico_dump_08032024.txt'
+sleep 1
+su - indico   -c 'indico db upgrade'
+systemctl start redis.service
+systemctl restart httpd.service postgresql.service redis.service indico-celery.service indico-uwsgi.service
+
+
+cat /usr/lib/systemd/system/postgresql.service
+/etc/systemd/system/postgresql.service.d/indicopostgresql.conf
+
+tail  /opt/pgsql/data/log/postgresql-Sat.log  -n 200
