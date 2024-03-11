@@ -184,5 +184,6 @@ RUN               dnf -y install            \
  zlib-devel && yum -y clean all  
            
 RUN          dnf -y install                     python-flit-scm python-email-validator  && yum -y clean all  
+RUN          dnf -y install                     python3-freezegun python3-pytz python3-sphinx  && yum -y clean all  
            
            
