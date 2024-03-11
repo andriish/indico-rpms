@@ -115,3 +115,14 @@ cat /usr/lib/systemd/system/postgresql.service
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
 tail  /opt/pgsql/data/log/postgresql-Sat.log  -n 200
+
+
+
+
+
+
+systemctl stop redis.service
+systemctl stop httpd.service indico-celery.service indico-uwsgi.service
+systemctl daemon-reload
+systemctl restart httpd.service postgresql.service redis.service indico-celery.service indico-uwsgi.service
+
