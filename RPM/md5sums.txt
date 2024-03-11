@@ -73,3 +73,4 @@ c0aa3a21ffb61e829b0b87aedbfcd38c  python-iso4217/1.11.20220401/rpmbuild/SOURCES/
 
 919d7eb487dfeb4ff60a3eda395a84f6  python-indico/3.3.0/rpmbuild/SOURCES/60fbd4e9aca619b37f8e2a6a9a8d1ece907306c9.zip
 6c06bdaca21a3eb1ad872e73ebccdbbf  python-indico/3.3.0/rpmbuild/SOURCES/c923bca9941378cd870dd2f68d00e0580d8cacdf.tar.gz
+3bec3f4c842144c15d839bdde41a44d4  babel/2.14.0/rpmbuild/SOURCES/Babel-2.14.0.tar.gz

@@ -3,6 +3,7 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
+babel:2.14.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
@@ -27,6 +28,7 @@ python-indico-mpp-configuration:3.3
 #touch python-indico/3.3.0/rpmbuild/RPMS/noarch/1.rpm
 #exit 0
 #declare -a BUILDLIST=(
+#babel:2.14.0
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3
 #python-iso4217:1.11.20220401
