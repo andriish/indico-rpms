@@ -1,7 +1,7 @@
 %global srcname indico
 %global srcnamenu indico
-%global igittag 736862c990831fa789c665cc9519798cc64807f3
-%global pgittag bece9eec553ee0cec9667c6dcef6ef6498e1093c
+%global igittag 60fbd4e9aca619b37f8e2a6a9a8d1ece907306c9
+%global pgittag c923bca9941378cd870dd2f68d00e0580d8cacdf
 %define iplugin()  \
 %%package -n python3-indico-%1-plugin \
 Summary:        Indico plugin %1  \
@@ -18,7 +18,7 @@ Indico plugin %1
 
 Name:           python-%{srcname}
 Version:        3.3.0
-Release:        20%{?dist}
+Release:        21%{?dist}
 Summary:        Indico package
 
 License:        MIT

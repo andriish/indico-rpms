@@ -70,3 +70,6 @@ c0aa3a21ffb61e829b0b87aedbfcd38c  python-iso4217/1.11.20220401/rpmbuild/SOURCES/
 8183009de323a1e49867af6aabf09aae  python-pywebpack/2.0.0/rpmbuild/SOURCES/pywebpack-2.0.0.tar.gz
 
 08f14b526842d9fa0688e731493c9dd8  python-indico/3.3.0/rpmbuild/SOURCES/736862c990831fa789c665cc9519798cc64807f3.zip
+
+919d7eb487dfeb4ff60a3eda395a84f6  python-indico/3.3.0/rpmbuild/SOURCES/60fbd4e9aca619b37f8e2a6a9a8d1ece907306c9.zip
+6c06bdaca21a3eb1ad872e73ebccdbbf  python-indico/3.3.0/rpmbuild/SOURCES/c923bca9941378cd870dd2f68d00e0580d8cacdf.tar.gz
