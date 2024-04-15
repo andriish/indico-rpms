@@ -23,7 +23,7 @@ concurrency:
 jobs:
 
 
-  build-indico-docker-image-Fedora39:
+  build-indico-docker-image-Fedora40:
     runs-on: ubuntu-latest
     name: Fedora image
     steps:
@@ -35,7 +35,7 @@ jobs:
       id: changed-docker-files
       uses: tj-actions/changed-files@v38
       with:
-          files: Fedora39
+          files: Fedora40
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
@@ -46,15 +46,15 @@ jobs:
     - name: Build the indico Docker image on the change of Dockerfile
       if: steps.changed-docker-files.outputs.any_changed == 'true' 
       run: |
-         docker build . -f Fedora39 --tag ghcr.io/andriish/indicofedora39:latest
-         docker run ghcr.io/andriish/indicofedora39:latest
-         docker push ghcr.io/andriish/indicofedora39:latest
+         docker build . -f Fedora40 --tag ghcr.io/andriish/indicofedora40:latest
+         docker run ghcr.io/andriish/indicofedora40:latest
+         docker push ghcr.io/andriish/indicofedora40:latest
     - name: Build the indico Docker image on schedule
       if: ${{ github.event_name == 'schedule' }}
       run: |
-         docker build . -f Fedora39 --tag ghcr.io/andriish/indicofedora39:latest
-         docker run ghcr.io/andriish/indicofedora39:latest
-         docker push ghcr.io/andriish/indicofedora39:latest
+         docker build . -f Fedora40 --tag ghcr.io/andriish/indicofedora40:latest
+         docker run ghcr.io/andriish/indicofedora40:latest
+         docker push ghcr.io/andriish/indicofedora40:latest
 
   build-indico-docker-image-Debian12:
     runs-on: ubuntu-latest
@@ -90,12 +90,12 @@ jobs:
          docker push ghcr.io/andriish/indicodebian12:latest
 
 
-  run-in-indico-docker-image-Fedora39:
+  run-in-indico-docker-image-Fedora40:
     name: Fedora
     runs-on: ubuntu-latest
-    needs: build-indico-docker-image-Fedora39
+    needs: build-indico-docker-image-Fedora40
     container:
-            image: ghcr.io/andriish/indicofedora39:latest
+            image: ghcr.io/andriish/indicofedora40:latest
             credentials:
                username: ${{ github.actor }}
                password: ${{ secrets.GITHUB_TOKEN }}
@@ -113,17 +113,17 @@ jobs:
            bash rpm_alllocal.sh
            ls ./*/*/rpmbuild/RPMS/*/*.rpm
            cd ..
-           mkdir -p myrepo/Fedora39
-           cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo/Fedora39
+           mkdir -p myrepo/Fedora40
+           cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo/Fedora40
            yum -y install createrepo
-           createrepo myrepo/Fedora39
-           ls -lah myrepo/Fedora39
-           tar   -cvf artifact-Fedora39.tar myrepo
+           createrepo myrepo/Fedora40
+           ls -lah myrepo/Fedora40
+           tar   -cvf artifact-Fedora40.tar myrepo
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-          name:  Fedora39af
-          path: artifact-Fedora39.tar
+          name:  Fedora40af
+          path: artifact-Fedora40.tar
   
   
   run-in-indico-docker-image-Debian12:
@@ -171,11 +171,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}  
     needs: 
      - run-in-indico-docker-image-Debian12
-     - run-in-indico-docker-image-Fedora39
+     - run-in-indico-docker-image-Fedora40
     steps:
     - uses: actions/download-artifact@v4
       with:
-          name: Fedora39af
+          name: Fedora40af
           path: myrepo
     - uses: actions/download-artifact@v4
       with:
@@ -186,7 +186,7 @@ jobs:
           ls -R myrepo
           cd  myrepo
           tar -xf artifact-Debian12.tar
-          tar -xf artifact-Fedora39.tar
+          tar -xf artifact-Fedora40.tar
           mv myrepo indico330
           ls 
           rm ./*.tar -f
