@@ -175,7 +175,6 @@ RUN               dnf -y install            \
  postgresql-contrib \
  postgresql-server \
  python3-feedgen \
- python3-wtforms-sqlalchemy \
  readline-devel \
  sqlite  \
  sqlite-devel \
@@ -185,4 +184,4 @@ RUN               dnf -y install            \
            
 RUN          dnf -y install                     python-flit-scm python-email-validator  && yum -y clean all  
            
-           
+# python3-wtforms-sqlalchemy       
