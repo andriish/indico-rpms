@@ -3,7 +3,6 @@
 export PATH=$PATH:$(pwd)
 copr-cli create --enable-net=on --chroot fedora-40-x86_64 --chroot fedora-rawhide-x86_64 I331
 declare -a BUILDLIST=( 
-python-exceptiongroup:1.2.0
 python-indico-mpp-configuration:3.3
 python-indico:3.3.1
 python-Flask-Limiter:3.5.0
