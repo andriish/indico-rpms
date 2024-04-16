@@ -12,7 +12,7 @@ Indico plugin %1
 %define filesinplugin() \
 %%files -n python3-indico-%1-plugin \
 %{python3_sitelib}/indico_%1/* \
-%{python3_sitelib}/indico_plugin_%1-3.3.dev0.dist-info/*
+%{python3_sitelib}/indico_plugin_%1-3.3.dist-info/*
 
 
 
@@ -451,7 +451,7 @@ export PYTHONPATH=%{buildroot}/%{python3_sitelib}:$PYTHONPATH
 %install
 %{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
-rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-3.3.dev0.dist-info
+rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-3.3.dist-info
 
 %post 
 indico i18n compile-catalog
