@@ -77,3 +77,4 @@ eb87d3c6f790944b3c12b1fcd2ece7e1  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.1.zi
 5e781469d99d95425098a04f52bdf9e6  python-wtforms-sqlalchemy/0.3.0/rpmbuild/SOURCES/wtforms-sqlalchemy-0.3.0.tar.gz
 
 9a421b399989b29fdfa1434e048f6c11  python-indico/3.3.5/rpmbuild/SOURCES/v3.3.5.zip
+
