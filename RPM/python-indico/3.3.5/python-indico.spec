@@ -402,11 +402,11 @@ mkdir -p plugins
 mv indico-plugins-3.3.2 plugins/base
 rm -rf plugins/base/livesync_debug
 
-sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
-sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
-sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
+#sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
+#sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
+#sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
 
-sed -i '/# BEGIN GENERATED REQUIREMENTS/,/# END GENERATED REQUIREMENTS/d' plugins/base/_meta/setup.cfg
+#sed -i '/# BEGIN GENERATED REQUIREMENTS/,/# END GENERATED REQUIREMENTS/d' plugins/base/_meta/setup.cfg
 
 %py3_shebang_fix ./
 
