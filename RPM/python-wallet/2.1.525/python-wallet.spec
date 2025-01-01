@@ -27,6 +27,7 @@ BuildRequires:  python3-setuptools
 
 %prep
 %autosetup -n %{srcname}-%{version}
+sed -i '/License/d' pyproject.toml
 
 %build
 %py3_build
