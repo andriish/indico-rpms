@@ -78,3 +78,6 @@ eb87d3c6f790944b3c12b1fcd2ece7e1  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.1.zi
 
 9a421b399989b29fdfa1434e048f6c11  python-indico/3.3.5/rpmbuild/SOURCES/v3.3.5.zip
 534661928ad17aa32da25405f3b6b3da  python-indico/3.3.5/rpmbuild/SOURCES/v3.3.2.tar.gz
+
+
+55c97ed218a4b289ccb74c588eae2e5b  python-limits/3.9.0/rpmbuild/SOURCES/limits-3.9.0.tar.gz
