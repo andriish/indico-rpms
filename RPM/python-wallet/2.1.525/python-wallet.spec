@@ -31,6 +31,7 @@ sed -i '/License/d' pyproject.toml
 sed -i '/license/d' setup.py
 sed -i '/REQUIRES/{N;N;N;d;}'  setup.py
 
+cat setup.py
 %build
 %py3_build
 
