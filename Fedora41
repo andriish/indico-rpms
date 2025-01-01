@@ -182,6 +182,7 @@ RUN               dnf -y install            \
  zlib-devel && yum -y clean all  
     
 #python3-limits           
+RUN          dnf -y install                     python3-pytest  python3-pymemcache  python3-etcd3  python3-deprecated  python3-pymongo && yum -y clean all  
 RUN          dnf -y install                     python-flit-scm python-email-validator  && yum -y clean all  
 RUN          dnf -y install    https://ftp.tu-chemnitz.de/pub/linux/fedora/linux/releases/test/40_Beta/Everything/x86_64/os/Packages/p/python3-limits-3.9.0-2.fc40.noarch.rpm  && yum -y clean all  
            
