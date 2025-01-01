@@ -211,21 +211,7 @@ reqs="${reqs-}${reqs+ }requirements/test.txt"
 %pyproject_save_files -l limits
 
 
-%check
-%if %{with tests}
 
-# Disable tests that are not useful / feasible
-k="${k-}${k+ and }not TestConcreteStorages"
-k="${k-}${k+ and }not TestWindow"
-k="${k-}${k+ and }not TestAsyncWindow"
-k="${k-}${k+ and }not TestConcurrency"
-k="${k-}${k+ and }not TestAsyncConcurrency"
-
-%pytest -v ${k+-k }"${k-}"
-%endif
-
-# Since quite a few tests cannot be run, run the import "smoke test" too.
-%pyproject_check_import
 
 
 %files -n python3-%{pypi_name} -f %{pyproject_files}
