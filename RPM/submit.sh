@@ -23,6 +23,7 @@ python-pynpm:0.2.0
 python-pywebpack:2.0.0
 python-webargs:8.3.0
 python-wtforms-sqlalchemy:0.3.0
+python-limits:3.9.0
 )
 
 mkdir -p log
