@@ -70,6 +70,7 @@ c0aa3a21ffb61e829b0b87aedbfcd38c  python-iso4217/1.11.20220401/rpmbuild/SOURCES/
 8183009de323a1e49867af6aabf09aae  python-pywebpack/2.0.0/rpmbuild/SOURCES/pywebpack-2.0.0.tar.gz
 
 08f14b526842d9fa0688e731493c9dd8  python-indico/3.3.0/rpmbuild/SOURCES/736862c990831fa789c665cc9519798cc64807f3.zip
+77a9bd5d3ece2c4e37f2027acdc70f1b  python-wallet/2.1.525/rpmbuild/SOURCES/wallet-2.1.525.tar.gz
 
 
 eb87d3c6f790944b3c12b1fcd2ece7e1  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.1.zip

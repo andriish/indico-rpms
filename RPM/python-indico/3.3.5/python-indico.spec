@@ -361,6 +361,10 @@ Requires: python3-zipp
 Requires: python3-prometheus_client
 
 
+BuildRequires: python-wallet
+Requires: python-wallet
+
+
 %description -n python3-%{srcname} %_description
 
 %package -n python3-indico-default-configuration

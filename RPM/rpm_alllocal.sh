@@ -3,6 +3,7 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
+python-wallet:2.1.525
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
@@ -21,6 +22,7 @@ python-pywebpack:2.0.0
 python-flask-webpackext:1.0.2
 python-webargs:8.3.0
 python-wtforms-sqlalchemy:0.3.0
+python-limits:3.9.0
 python-indico:3.3.5
 python-indico-mpp-configuration:3.3
 )
