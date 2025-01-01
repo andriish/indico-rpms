@@ -107,6 +107,7 @@ Documentation for %{name}.
 %prep
 %autosetup -p1 %{forgesetupargs}
 
+sed -i 's/<24/<25/g' requirements/*txt
 # Remove requirements for extras we cannot build
 %if %{without redis}
 sed -i '/redis.txt/d' requirements/test.txt
