@@ -1,5 +1,6 @@
 #!bin/bash
 
+yum -y install python3-pytest
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
