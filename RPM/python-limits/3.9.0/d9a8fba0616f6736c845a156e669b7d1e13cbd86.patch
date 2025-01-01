@@ -1,0 +1,45 @@
+From d9a8fba0616f6736c845a156e669b7d1e13cbd86 Mon Sep 17 00:00:00 2001
+From: Ali-Akber Saifee <ali@indydevs.org>
+Date: Fri, 24 Nov 2023 13:24:40 -0800
+Subject: [PATCH] Remove unnecessary use of importlib_resources
+
+---
+ limits/util.py        | 6 +++---
+ requirements/main.txt | 1 -
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/limits/util.py b/limits/util.py
+index b680750d..d05e70ce 100644
+--- a/limits/util.py
++++ b/limits/util.py
+@@ -5,10 +5,10 @@
+ import re
+ import sys
+ from collections import UserDict
++from importlib import resources
+ from types import ModuleType
+-from typing import TYPE_CHECKING, cast
++from typing import TYPE_CHECKING
+ 
+-import importlib_resources
+ from packaging.version import Version
+ 
+ from limits.typing import Dict, List, NamedTuple, Optional, Tuple, Type, Union
+@@ -143,7 +143,7 @@ def get_dependency(module_path: str) -> Tuple[Optional[ModuleType], Optional[Ver
+ 
+ 
+ def get_package_data(path: str) -> bytes:
+-    return cast(bytes, importlib_resources.files("limits").joinpath(path).read_bytes())
++    return resources.files("limits").joinpath(path).read_bytes()
+ 
+ 
+ def parse_many(limit_string: str) -> List[RateLimitItem]:
+diff --git a/requirements/main.txt b/requirements/main.txt
+index 6912ef55..d073b6f2 100644
+--- a/requirements/main.txt
++++ b/requirements/main.txt
+@@ -1,4 +1,3 @@
+ deprecated>=1.2
+-importlib_resources>=1.3
+ packaging>=21,<24
+ typing_extensions
