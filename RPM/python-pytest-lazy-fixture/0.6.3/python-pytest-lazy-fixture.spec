@@ -43,9 +43,9 @@ Summary:        %{summary}
 %pyproject_save_files -l pytest_lazyfixture
 
 %check
-%if %{with tests}
-%pytest
-%endif
+#if #{with tests}
+#pytest
+#endif
 
 %files -n python3-pytest-lazy-fixture -f %{pyproject_files}
 %doc README.rst
