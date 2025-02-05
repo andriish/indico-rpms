@@ -84,3 +84,4 @@ eb87d3c6f790944b3c12b1fcd2ece7e1  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.1.zi
 55c97ed218a4b289ccb74c588eae2e5b  python-limits/3.9.0/rpmbuild/SOURCES/limits-3.9.0.tar.gz
 82d283785cf2f62bc0478fef172497d7  python-limits/3.9.0/rpmbuild/SOURCES/d9a8fba0616f6736c845a156e669b7d1e13cbd86.patch
 d58a9fbd0ccee6903d8e2cce2b4c9e19  python-pytest-lazy-fixture/0.6.3/rpmbuild/SOURCES/pytest-lazy-fixture-0.6.3.tar.gz
+a8aff50d5d29d52ef6121e711b0afec9  python-etcd3/0.12.0/rpmbuild/SOURCES/v0.12.0.tar.gz
