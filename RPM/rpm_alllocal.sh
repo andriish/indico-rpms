@@ -3,6 +3,7 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
+python-pytest-lazy-fixture:0.6.3
 python-wallet:2.1.525
 python-limits:3.9.0
 python-Flask-Limiter:3.5.0
