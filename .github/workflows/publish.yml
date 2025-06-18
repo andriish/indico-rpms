@@ -110,14 +110,7 @@ jobs:
               uv pip install --system -e '.[dev]' --no-managed-python 
               export NODE_OPTIONS="--max-old-space-size=5120"
               export PYTHONPATH=$(pwd):$PYTHONPATH
-              mkdir -p indico/web/client
-              cd indico/web/client
-              npm config delete proxy
-              npm config delete http-proxy
-              npm config delete https-proxy
-              npm install
-              cd ../../../
-              npm install
+              npm ci
               export INDICO_NO_GIT=True
               ./bin/maintenance/build-wheel.py indico      --no-git  --ignore-unclean 
     - name: Upload artifact
@@ -125,7 +118,14 @@ jobs:
       with:
           name:  Fedora42af
           path: artifact-Fedora42.tar
-          
+#                        mkdir -p indico/web/client
+#              cd indico/web/client
+#              npm config delete proxy
+#              npm config delete http-proxy
+#              npm config delete https-proxy
+#              npm install
+#              cd ../../../
+#              npm install
 
   #run-in-indico-docker-image-Fedora42x:
     #name: Fedora
