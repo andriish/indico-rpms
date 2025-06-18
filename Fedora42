@@ -5,7 +5,6 @@ RUN            set -x && \
            dnf -y update && \
            dnf -y install dnf-* rpm-build git wget sed createrepo which wget && \
            dnf -y install python3-devel python3-setuptools python-srpm-macros python3-rpm-macros pyproject-rpm-macros   && yum -y clean all      
-         
            
 RUN               dnf -y install    \
            firewalld    \
