@@ -188,3 +188,4 @@ RUN          dnf -y install                     python-flit-scm python-email-val
            
 # python3-wtforms-sqlalchemy       
 
+RUN           dnf -y install uv && yum -y clean all  
