@@ -105,11 +105,21 @@ jobs:
           fetch-depth: 3 
     - name: Run
       run : |
-          python -m venv  --prompt indico ~/.venv 
-          source ~/.venv/bin/activate 
-          export PATH="$PATH:/usr/pgsql-16/bin" 
-          echo 'source ~/.venv/bin/activate' >> ~/.bashrc 
-          pip install indico==3.3.6 --ignore-requires-python --no-deps --no-binary
+              git clone https://github.com/indico/indico.git -b v3.3.6
+              cd  indico
+              uv pip install --system -e '.[dev]' --no-managed-python 
+              export NODE_OPTIONS="--max-old-space-size=5120"
+              export PYTHONPATH=$(pwd):$PYTHONPATH
+              mkdir -p indico/web/client
+              cd indico/web/client
+              npm config delete proxy
+              npm config delete http-proxy
+              npm config delete https-proxy
+              npm install
+              cd ../../../
+              npm install
+              export INDICO_NO_GIT=True
+              ./bin/maintenance/build-wheel.py indico      --no-git  --ignore-unclean 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
