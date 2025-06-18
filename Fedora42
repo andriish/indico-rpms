@@ -188,4 +188,6 @@ RUN          dnf -y install                     python-flit-scm python-email-val
            
 # python3-wtforms-sqlalchemy       
 
-RUN           dnf -y install uv && yum -y clean all  
+RUN           dnf -y install uv python-freezegun python3-hatchling python3-isort python3-sqlparse python3-responses ruff  python3-tomlkit python3-watchfiles && yum -y clean all  
+RUN           dnf -y install python3-sphinx python3-sphinx-issues python3-sphinx-autobuild python3-sphinx-reredirects && yum -y clean all  
+RUN           dnf -y install python3-pytest-cov python3-pytest-mock python3-pytest python3-pytest-localserver  && yum -y clean all  
