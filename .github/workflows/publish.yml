@@ -23,7 +23,7 @@ concurrency:
 jobs:
 
 
-  build-indico-docker-image-Fedora41:
+  build-indico-docker-image-Fedora42:
     runs-on: ubuntu-latest
     name: Fedora image
     steps:
