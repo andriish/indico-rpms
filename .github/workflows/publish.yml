@@ -109,7 +109,7 @@ jobs:
           source ~/.venv/bin/activate 
           export PATH="$PATH:/usr/pgsql-16/bin" 
           echo 'source ~/.venv/bin/activate' >> ~/.bashrc 
-          pip install indico==3.3.6 --ignore-requires-python
+          pip install indico==3.3.6 --ignore-requires-python --no-deps
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
@@ -117,40 +117,40 @@ jobs:
           path: artifact-Fedora42.tar
           
 
-  run-in-indico-docker-image-Fedora42x:
-    name: Fedora
-    runs-on: ubuntu-latest
-    needs: build-indico-docker-image-Fedora42
-    container:
-            image: ghcr.io/andriish/indicofedora42:latest
-            credentials:
-               username: ${{ github.actor }}
-               password: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-          fetch-depth: 3 
-    - name: Run
-      run : |
-           set -x
-           uname -a 
-           cat /etc/issue      
-           cd RPM
-           bash rpm_alllocal.sh
-           ls ./*/*/rpmbuild/RPMS/*/*.rpm
-           cd ..
-           mkdir -p myrepo/Fedora42
-           cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo/Fedora42
-           yum -y install createrepo
-           createrepo myrepo/Fedora42
-           ls -lah myrepo/Fedora42
-           tar   -cvf artifact-Fedora42.tar myrepo
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-          name:  Fedora42af
-          path: artifact-Fedora42.tar
+  #run-in-indico-docker-image-Fedora42x:
+    #name: Fedora
+    #runs-on: ubuntu-latest
+    #needs: build-indico-docker-image-Fedora42
+    #container:
+            #image: ghcr.io/andriish/indicofedora42:latest
+            #credentials:
+               #username: ${{ github.actor }}
+               #password: ${{ secrets.GITHUB_TOKEN }}
+    #steps:
+    #- name: Checkout
+      #uses: actions/checkout@v4
+      #with:
+          #fetch-depth: 3 
+    #- name: Run
+      #run : |
+           #set -x
+           #uname -a 
+           #cat /etc/issue      
+           #cd RPM
+           #bash rpm_alllocal.sh
+           #ls ./*/*/rpmbuild/RPMS/*/*.rpm
+           #cd ..
+           #mkdir -p myrepo/Fedora42
+           #cp RPM/*/*/rpmbuild/RPMS/*/*.rpm myrepo/Fedora42
+           #yum -y install createrepo
+           #createrepo myrepo/Fedora42
+           #ls -lah myrepo/Fedora42
+           #tar   -cvf artifact-Fedora42.tar myrepo
+    #- name: Upload artifact
+      #uses: actions/upload-artifact@v4
+      #with:
+          #name:  Fedora42af
+          #path: artifact-Fedora42.tar
   
   
   #run-in-indico-docker-image-Debian12:
