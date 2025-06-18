@@ -107,6 +107,10 @@ jobs:
       run : |
               git clone https://github.com/indico/indico.git -b v3.3.6
               cd  indico
+              sed -i 's/\=\=.*$//g' requirements.*
+              sed -i 's/tzdata/#tzdata/g' requirements.*
+              sed -i 's/importlib/#importlib/g' requirements.*
+              sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
               uv pip install --system -e '.[dev]' --no-managed-python 
               export NODE_OPTIONS="--max-old-space-size=5120"
               export PYTHONPATH=$(pwd):$PYTHONPATH
