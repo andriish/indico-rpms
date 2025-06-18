@@ -70,3 +70,18 @@ c0aa3a21ffb61e829b0b87aedbfcd38c  python-iso4217/1.11.20220401/rpmbuild/SOURCES/
 8183009de323a1e49867af6aabf09aae  python-pywebpack/2.0.0/rpmbuild/SOURCES/pywebpack-2.0.0.tar.gz
 
 08f14b526842d9fa0688e731493c9dd8  python-indico/3.3.0/rpmbuild/SOURCES/736862c990831fa789c665cc9519798cc64807f3.zip
+77a9bd5d3ece2c4e37f2027acdc70f1b  python-wallet/2.1.525/rpmbuild/SOURCES/wallet-2.1.525.tar.gz
+
+
+eb87d3c6f790944b3c12b1fcd2ece7e1  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.1.zip
+39842756f33f3b775c2100acc1b8749a  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.tar.gz
+5e781469d99d95425098a04f52bdf9e6  python-wtforms-sqlalchemy/0.3.0/rpmbuild/SOURCES/wtforms-sqlalchemy-0.3.0.tar.gz
+
+9a421b399989b29fdfa1434e048f6c11  python-indico/3.3.5/rpmbuild/SOURCES/v3.3.5.zip
+534661928ad17aa32da25405f3b6b3da  python-indico/3.3.5/rpmbuild/SOURCES/v3.3.2.tar.gz
+
+
+55c97ed218a4b289ccb74c588eae2e5b  python-limits/3.9.0/rpmbuild/SOURCES/limits-3.9.0.tar.gz
+82d283785cf2f62bc0478fef172497d7  python-limits/3.9.0/rpmbuild/SOURCES/d9a8fba0616f6736c845a156e669b7d1e13cbd86.patch
+d58a9fbd0ccee6903d8e2cce2b4c9e19  python-pytest-lazy-fixture/0.6.3/rpmbuild/SOURCES/pytest-lazy-fixture-0.6.3.tar.gz
+a8aff50d5d29d52ef6121e711b0afec9  python-etcd3/0.12.0/rpmbuild/SOURCES/v0.12.0.tar.gz

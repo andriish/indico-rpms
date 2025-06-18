@@ -1,0 +1,12 @@
+diff -up wtforms-sqlalchemy-0.3.0/setup.cfg.nosqla2 wtforms-sqlalchemy-0.3.0/setup.cfg
+--- wtforms-sqlalchemy-0.3.0/setup.cfg.nosqla2	2021-11-06 17:19:35.000000000 +0100
++++ wtforms-sqlalchemy-0.3.0/setup.cfg	2024-03-21 15:11:05.202691782 +0100
+@@ -35,7 +35,7 @@ include_package_data = true
+ python_requires = >= 3.6
+ install_requires =
+   WTForms>=1.0.5
+-  SQLAlchemy>=0.7.10
++  SQLAlchemy>=0.7.10,<2
+ tests_require = coverage
+ test_suite = tests.tests
+ 

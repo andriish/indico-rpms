@@ -3,6 +3,12 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
+python-etcd3:0.12.0
+)
+c=(
+python-pytest-lazy-fixture:0.6.3
+python-wallet:2.1.525
+python-limits:3.9.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
@@ -20,7 +26,8 @@ python-pynpm:0.2.0
 python-pywebpack:2.0.0
 python-flask-webpackext:1.0.2
 python-webargs:8.3.0
-python-indico:3.3.0
+python-wtforms-sqlalchemy:0.3.0
+python-indico:3.3.5
 python-indico-mpp-configuration:3.3
 )
 #mkdir -p python-indico/3.3.0/rpmbuild/RPMS/noarch
