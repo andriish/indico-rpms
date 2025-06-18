@@ -3,11 +3,12 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
-python-etcd3:0.12.0
+python-wallet-py3k:0.0.4
+#python-etcd3:0.12.0
 )
 c=(
 python-pytest-lazy-fixture:0.6.3
-python-wallet:2.1.525
+python-wallet-py3k:0.0.4
 python-limits:3.9.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
