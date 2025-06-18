@@ -109,7 +109,7 @@ jobs:
           source ~/.venv/bin/activate 
           export PATH="$PATH:/usr/pgsql-16/bin" 
           echo 'source ~/.venv/bin/activate' >> ~/.bashrc 
-          pip install indico
+          pip install indico=3.3.6 --ignore-requires-python
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
