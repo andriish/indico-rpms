@@ -6,7 +6,7 @@ declare -a BUILDLIST=(
 python-wallet-py3k:0.0.4
 #python-etcd3:0.12.0
 )
-c=(
+BUILDLIST=(
 python-pytest-lazy-fixture:0.6.3
 python-wallet-py3k:0.0.4
 python-limits:3.9.0
