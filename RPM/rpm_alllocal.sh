@@ -28,7 +28,7 @@ python-pywebpack:2.0.0
 python-flask-webpackext:1.0.2
 python-webargs:8.3.0
 python-wtforms-sqlalchemy:0.3.0
-python-indico:3.3.5
+python-indico:3.3.6
 python-indico-mpp-configuration:3.3
 )
 #mkdir -p python-indico/3.3.0/rpmbuild/RPMS/noarch
