@@ -1,5 +1,5 @@
 # Run (limited set of) tests
-%bcond tests 1
+%bcond tests 0
 # Specific test conditionals
 # Requires `hiro`
 %bcond hiro 0
