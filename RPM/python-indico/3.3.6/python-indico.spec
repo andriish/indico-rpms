@@ -365,6 +365,9 @@ BuildRequires: python-wallet-py3k
 Requires: python-wallet-py3k
 
 
+BuildRequires: uv python-freezegun python3-hatchling
+
+
 %description -n python3-%{srcname} %_description
 
 %package -n python3-indico-default-configuration
