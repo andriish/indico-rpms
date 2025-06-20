@@ -421,12 +421,9 @@ sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
 
 sed -i -E "s/^requires-python[[:space:]]*=.*/requires-python = '>=3.13'/" pyproject.toml
 sed -i -E "s/Python :: 3.12/Python :: 3.13/g" pyproject.toml
-sed -i -E \
-  -e "s/([[:<:]]hatchling)(==[^']+)?/\1/g" \
-  -e "s/([[:<:]]hatch-requirements-txt)(==[^']+)?/\1/g" \
-  -e "s/([[:<:]]babel)(==[^']+)?/\1/g" \
-  pyproject.toml
-
+sed -i -E "s/hatchling==1.27.0/hatchling/g" pyproject.toml
+sed -i -E "s/hatch-requirements-txt==0.4.1/hatch-requirements-txt/g" pyproject.toml
+sed -i -E "s/babel==2.16.0/babel/g" pyproject.toml
 
 %build
 export NODE_OPTIONS="--max-old-space-size=5120"
