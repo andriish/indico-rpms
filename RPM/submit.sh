@@ -8,7 +8,6 @@ python-indico:3.3.6
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
-python-pypdf:4.0.1
 python-WTForms-dateutil:0.1
 python-captcha:0.5.0
 python-flask-marshmallow:0.15.0
