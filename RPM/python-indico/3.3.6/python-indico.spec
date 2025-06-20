@@ -25,7 +25,7 @@ License:        MIT
 URL:            https://getindico.io/
 #Source0:        https://github.com/indico/indico/archive/{igittag}.zip
 Source0:        https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
-Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.3.2.tar.gz
+Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.3.4.tar.gz
 BuildArch:      noarch
 
 BuildRequires: nodejs-npm
@@ -406,7 +406,7 @@ Default configuration files for Indico
 %setup -q -T -D -a 1 -n indico-%{version}
 mkdir -p plugins
 #mv indico-plugins-{pgittag} plugins/base
-mv indico-plugins-3.3.2 plugins/base
+mv indico-plugins-3.3.4 plugins/base
 rm -rf plugins/base/livesync_debug
 
 #sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
@@ -463,7 +463,7 @@ export PYTHONPATH=%{buildroot}/%{python3_sitelib}:$PYTHONPATH
 %install
 %{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
-rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-3.3.2.dist-info
+rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-3.3.4.dist-info
 
 %post 
 indico i18n compile-catalog
