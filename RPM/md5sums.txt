@@ -89,3 +89,4 @@ a8aff50d5d29d52ef6121e711b0afec9  python-etcd3/0.12.0/rpmbuild/SOURCES/v0.12.0.t
 e26b44dd8c14c14f7a52f12a6c2caa85  python-wallet-py3k/0.0.4/rpmbuild/SOURCES/wallet-py3k-0.0.4.tar.gz
 4ad595c27e08a99120de8fff30f0799a  python-indico/3.3.6/rpmbuild/SOURCES/v3.3.6.zip
 a572c9fdce9ddca4c52ed4a037a743af  python-indico/3.3.6/rpmbuild/SOURCES/v3.2.2.tar.gz
+534661928ad17aa32da25405f3b6b3da  python-indico/3.3.6/rpmbuild/SOURCES/v3.3.2.tar.gz
