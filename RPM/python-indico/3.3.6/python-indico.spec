@@ -480,8 +480,8 @@ indico i18n compile-catalog-react
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
 %files -n python3-indico-default-configuration
-%{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
-%{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
+#{python3_sitelib}/#{srcnamenu}/web/static/images/globe.png
+#{python3_sitelib}/#{srcnamenu}/web/static/images/logo_indico_bw.svg
 %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
