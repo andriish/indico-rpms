@@ -25,7 +25,7 @@ integrates with Flask-SQLAlchemy.}
 %package -n python3-%{srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools  python3-hatchling
+BuildRequires:  python3-setuptools  python3-hatchling python-flit-core
 
 %description -n python3-%{srcname} %_description
 
