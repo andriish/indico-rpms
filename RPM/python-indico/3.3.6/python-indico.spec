@@ -386,6 +386,7 @@ Default configuration files for Indico
 %iplugin payment_manual
 %iplugin payment_paypal
 %iplugin payment_sixpay
+%iplugin payment_stripe
 %iplugin piwik
 %iplugin previewer_code
 %iplugin previewer_jupyter
