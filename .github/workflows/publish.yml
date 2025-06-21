@@ -55,38 +55,7 @@ jobs:
          docker build . -f Fedora42 --tag ghcr.io/andriish/indicofedora42:latest
          docker run ghcr.io/andriish/indicofedora42:latest
          docker push ghcr.io/andriish/indicofedora42:latest
-  build-indico-docker-image-Fedora43:
-    runs-on: ubuntu-latest
-    name: Fedora image
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-          fetch-depth: 2 
-    - name: Check if the Docker file was changed
-      id: changed-docker-files
-      uses: tj-actions/changed-files@v38
-      with:
-          files: Fedora43
 
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v2
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build the indico Docker image on the change of Dockerfile
-      if: steps.changed-docker-files.outputs.any_changed == 'true' 
-      run: |
-         docker build . -f Fedora43 --tag ghcr.io/andriish/indicofedora43:latest
-         docker run ghcr.io/andriish/indicofedora43:latest
-         docker push ghcr.io/andriish/indicofedora43:latest
-    - name: Build the indico Docker image on schedule
-      if: ${{ github.event_name == 'schedule' }}
-      run: |
-         docker build . -f Fedora43 --tag ghcr.io/andriish/indicofedora43:latest
-         docker run ghcr.io/andriish/indicofedora43:latest
-         docker push ghcr.io/andriish/indicofedora43:latest
   #build-indico-docker-image-Debian12:
     #runs-on: ubuntu-latest
     #name: Debian image

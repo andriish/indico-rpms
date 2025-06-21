@@ -412,7 +412,7 @@ sed -i 's/tzdata/#tzdata/g' requirements.*
 sed -i 's/importlib/#importlib/g' requirements.*
 sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
 
-sed -i -E "s/^requires-python[[:space:]]*=.*/requires-python = '>=3.13'/" pyproject.toml plugins/base/*/pyproject.toml
+sed -i -E "s/^requires-python[[:space:]]*=.*/requires-python = '>=3.12'/" pyproject.toml plugins/base/*/pyproject.toml
 sed -i -E "s/Python :: 3.12/Python :: "%{python3_version}"/g" pyproject.toml plugins/base/*/pyproject.toml
 sed -i -E "s/hatchling==1.27.0/hatchling/g" pyproject.toml plugins/base/*/pyproject.toml
 sed -i -E "s/hatchling==1.25.0/hatchling/g" pyproject.toml plugins/base/*/pyproject.toml
