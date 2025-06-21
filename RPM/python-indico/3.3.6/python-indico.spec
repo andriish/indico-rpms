@@ -405,12 +405,6 @@ mkdir -p plugins
 mv indico-plugins-%{pluginsversion} plugins/base
 rm -rf plugins/base/livesync_debug
 
-#sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
-#sed -i 's/iso4217\=\=.*$/iso4217/g'     plugins/base/*/setup.cfg
-#sed -i 's/nbconvert\=\=.*$/nbconvert/g' plugins/base/*/setup.cfg
-
-#sed -i '/# BEGIN GENERATED REQUIREMENTS/,/# END GENERATED REQUIREMENTS/d' plugins/base/_meta/setup.cfg
-
 %py3_shebang_fix ./
 
 sed -i 's/\=\=.*$//g' requirements.*
@@ -440,10 +434,12 @@ cd ../../../
 npm install
 export INDICO_NO_GIT=True
 ./bin/maintenance/build-wheel.py indico      --no-git  --ignore-unclean 
+
 #Temporarily install Indico
 export TMPINSTALL=$(pwd)
 %{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location
 export PYTHONPATH=%{buildroot}/%{python3_sitelib}:$PYTHONPATH
+
 # Install all plugins 
 %{__python3} -m pip install plugins/base/owncloud --root=%{buildroot} --no-dependencies
 %{__python3} -m pip install plugins/base/themes_legacy --root=%{buildroot} --no-dependencies

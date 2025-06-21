@@ -4,16 +4,10 @@ export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
 python-wallet-py3k:0.0.4
-#python-etcd3:0.12.0
-)
-BUILDLIST=(
-python-pytest-lazy-fixture:0.6.3
-python-wallet-py3k:0.0.4
 python-limits:3.9.0
 python-Flask-Limiter:3.5.0
 python-Flask-Multipass:0.5.3
 python-Flask-PluginEngine:0.5
-python-pypdf:4.0.1
 python-WTForms-dateutil:0.1
 python-captcha:0.5.0
 python-flask-marshmallow:0.15.0
