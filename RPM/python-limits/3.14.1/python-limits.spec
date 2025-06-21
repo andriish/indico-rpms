@@ -13,7 +13,11 @@
 %bcond rediscluster 1
 %bcond memcached 1
 %bcond mongodb 1
+%if %{?rhel}%{!?rhel:0} == 10 
+%bcond etcd 0
+%else
 %bcond etcd 1
+%endif
 # async-redis needs `coredis`
 %bcond async_redis 0
 # async-memcached needs `emcache`
