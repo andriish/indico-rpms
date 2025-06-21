@@ -365,7 +365,7 @@ BuildRequires: python-wallet-py3k
 Requires: python-wallet-py3k
 
 
-BuildRequires: uv python-freezegun python3-hatchling
+BuildRequires: uv python-freezegun python3-hatchling python3-isort python3-sqlparse python3-responses ruff  python3-tomlkit python3-watchfiles
 
 
 %description -n python3-%{srcname} %_description
@@ -474,8 +474,8 @@ indico i18n compile-catalog-react
 %{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/
 %{_bindir}/indico
-%exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
-%exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
+#exclude #{python3_sitelib}/#{srcnamenu}/web/static/images/globe.png
+#exclude #{python3_sitelib}/#{srcnamenu}/web/static/images/logo_indico_bw.svg
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
