@@ -458,6 +458,7 @@ export PYTHONPATH=%{buildroot}/%{python3_sitelib}:$PYTHONPATH
 %{__python3} -m pip install plugins/base/vc_zoom --root=%{buildroot} --no-dependencies
 
 # Create proper wheels for plugins
+mkdir -p src
 ./bin/maintenance/build-wheel.py all-plugins --no-git  --ignore-unclean  plugins/base
 
 %install
