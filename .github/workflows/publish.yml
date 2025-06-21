@@ -177,10 +177,10 @@ jobs:
       with:
           name: Fedora42af
           path: myrepo
-    - uses: actions/download-artifact@v4
-      with:
-          name: Debian12af
-          path: myrepo
+#    - uses: actions/download-artifact@v4
+#      with:
+#          name: Debian12af
+#          path: myrepo
     - name: Display structure of downloaded files
       run: |
           ls -R myrepo
