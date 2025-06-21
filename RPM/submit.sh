@@ -21,7 +21,7 @@ python-pynpm:0.3.0
 python-pywebpack:2.1.0
 python-flask-webpackext:2.1.0
 python-webargs:8.7.0
-python-wtforms-sqlalchemy:0.4.2
+python-wtforms-sqlalchemy:0.3.0
 python-indico:3.3.6
 python-indico-mpp-configuration:3.3
 )

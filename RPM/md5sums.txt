@@ -108,3 +108,4 @@ b7762841d2e90f0a1da69a2c60143a17  python-pynpm/0.3.0/rpmbuild/SOURCES/pynpm-0.3.
 89c374294596cc921bdd9a46212c2ec2  python-flask-webpackext/2.1.0/rpmbuild/SOURCES/flask_webpackext-2.1.0.tar.gz
 71f6562e7f359d4b4383f6162f31d32a  python-webargs/8.7.0/rpmbuild/SOURCES/webargs-8.7.0.tar.gz
 0155885b095171b2d895f28647cf602c  python-wtforms-sqlalchemy/0.4.2/rpmbuild/SOURCES/wtforms-sqlalchemy-0.4.2.tar.gz
+3776337060fcdba457591090265e47ea  python-limits/3.14.1/rpmbuild/SOURCES/limits-3.14.1.tar.gz
