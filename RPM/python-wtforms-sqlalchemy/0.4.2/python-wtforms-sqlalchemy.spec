@@ -30,8 +30,8 @@ Summary:        %{summary}
 %autosetup -p1 -n %{pkg_name}-%{version}
 
 
-%generate_buildrequires
-%pyproject_buildrequires -t
+#generate_buildrequires
+#pyproject_buildrequires -t
 
 
 %build
