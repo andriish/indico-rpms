@@ -21,7 +21,7 @@ system which can use different backends (such as local users, LDAP and OAuth) si
 %package -n python3-%{srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools python3-hatchling
 
 %description -n python3-%{srcname} %_description
 
