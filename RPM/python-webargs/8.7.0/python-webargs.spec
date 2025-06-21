@@ -11,7 +11,7 @@ URL:            https://webargs.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires: python3-pip python3-wheel
-BuildRequires: python3-werkzeug
+BuildRequires: python3-werkzeug  python-flit-core
 
 %global _description %{expand:
 webargs is a Python library for parsing and validating HTTP request 
