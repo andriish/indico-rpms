@@ -1,7 +1,6 @@
 %global srcname indico
 %global srcnamenu indico
-%global igittag 736862c990831fa789c665cc9519798cc64807f3
-%global pgittag bece9eec553ee0cec9667c6dcef6ef6498e1093c
+%global pluginsversion 3.3.4
 %define iplugin()  \
 %%package -n python3-indico-%1-plugin \
 Summary:        Indico plugin %1  \
@@ -12,7 +11,7 @@ Indico plugin %1
 %define filesinplugin() \
 %%files -n python3-indico-%1-plugin \
 %{python3_sitelib}/indico_%1/* \
-%{python3_sitelib}/indico_plugin_%1-3.3.dist-info/*
+%{python3_sitelib}/indico_plugin_%1-%{pluginsversion}.dist-info/*
 
 
 
@@ -23,9 +22,8 @@ Summary:        Indico package
 
 License:        MIT
 URL:            https://getindico.io/
-#Source0:        https://github.com/indico/indico/archive/{igittag}.zip
 Source0:        https://github.com/indico/indico/archive/refs/tags/v%{version}.zip
-Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v3.3.4.tar.gz
+Source1:        https://github.com/indico/indico-plugins/archive/refs/tags/v%{pluginsversion}.tar.gz
 BuildArch:      noarch
 
 BuildRequires: nodejs-npm
@@ -400,13 +398,10 @@ Default configuration files for Indico
 
 
 %prep
-#autosetup  -n indico-#{igittag} -p 1
 %autosetup  -n indico-%{version} -p 1
-#setup -q -T -D -a 1 -n indico-{igittag}
 %setup -q -T -D -a 1 -n indico-%{version}
 mkdir -p plugins
-#mv indico-plugins-{pgittag} plugins/base
-mv indico-plugins-3.3.4 plugins/base
+mv indico-plugins-%{pluginsversion} plugins/base
 rm -rf plugins/base/livesync_debug
 
 #sed -i "s/python_requires.*/python_requires\ =\ \~="%{python3_version}"/g" plugins/base/*/setup.cfg
@@ -464,7 +459,7 @@ mkdir -p src
 %install
 %{__python3} -m pip install dist/indico-3*-py3-none-any.whl  --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
 %{__python3} -m pip install dist/indico_plugin*-py3-none-any.whl     --root=%{buildroot} --no-dependencies --no-warn-script-location --force-reinstall
-rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-3.3.4.dist-info
+rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-%{pluginsversion}.dist-info
 
 %post 
 indico i18n compile-catalog
@@ -507,6 +502,8 @@ indico i18n compile-catalog-react
 
 
 %changelog
+* Sat Jun 21 2025 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.6
+- Version 3.3.6 
 * Mon Apr 15 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.1
 - Version 3.3.1 
 * Wed Feb 28 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.0dev
