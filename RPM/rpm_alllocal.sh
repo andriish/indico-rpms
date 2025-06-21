@@ -68,7 +68,7 @@ python-wtforms-sqlalchemy:0.4.2
 
 declare -a BUILDLIST=(
 python-wallet-py3k:0.0.4
-python-limits:3.9.0
+python-limits:3.14.1
 python-Flask-Limiter:3.12
 python-Flask-Multipass:0.10 
 python-Flask-PluginEngine:0.5
@@ -89,9 +89,7 @@ python-wtforms-sqlalchemy:0.3.0
 python-indico:3.3.6
 python-indico-mpp-configuration:3.3
 )
-BUILDLIST=(
-python-limits:3.14.1
-)
+
 
 #mkdir -p python-indico/3.3.0/rpmbuild/RPMS/noarch
 #touch python-indico/3.3.0/rpmbuild/RPMS/noarch/1.rpm
