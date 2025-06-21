@@ -11,7 +11,7 @@ URL:            https://github.com/wtforms/%{pkg_name}
 Source0:        %{url}/archive/%{version}/%{pkg_name}-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  python3-devel python3-hatchling python-flit-core python3-pip
+BuildRequires:  python3-devel python3-hatchling python-flit-core python3-pip pyproject-rpm-macros
 
 %global _description %{expand:
 WTForms-SQLAlchemy is a fork of the wtforms.ext.sqlalchemy package

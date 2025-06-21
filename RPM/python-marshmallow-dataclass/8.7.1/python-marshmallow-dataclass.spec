@@ -20,7 +20,7 @@ Python library to convert dataclasses into marshmallow schemas.}
 %package -n python3-%{srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools pyproject-rpm-macros
 
 %description -n python3-%{srcname} %_description
 
