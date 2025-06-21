@@ -490,6 +490,7 @@ indico i18n compile-catalog-react
 %filesinplugin payment_manual
 %filesinplugin payment_paypal
 %filesinplugin payment_sixpay
+%filesinplugin payment_stripe
 %filesinplugin piwik
 %filesinplugin previewer_code
 %filesinplugin previewer_jupyter
