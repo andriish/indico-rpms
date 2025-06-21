@@ -11,7 +11,7 @@ Indico plugin %1
 %define filesinplugin() \
 %%files -n python3-indico-%1-plugin \
 %{python3_sitelib}/indico_%1/* \
-%{python3_sitelib}/indico_plugin_%1-%{pluginsversion}.dist-info/*
+%{python3_sitelib}/indico_plugin_%1-3.*.dist-info/*
 
 
 
