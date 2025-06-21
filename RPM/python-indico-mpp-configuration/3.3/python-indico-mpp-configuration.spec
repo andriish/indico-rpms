@@ -118,8 +118,8 @@ install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
 mkdir -p %{buildroot}/%{python3_sitelib}/indico-mpp-configuration/web/static/images/
-install -m 755 scaledglobe.png %{buildroot}/%{python3_sitelib}/indico/web/static/images/globe.png
-install -m 755 logo_indico_bw.svg %{buildroot}/%{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
+#install -m 755 scaledglobe.png #{buildroot}/#{python3_sitelib}/indico/web/static/images/globe.png
+#install -m 755 logo_indico_bw.svg #{buildroot}/#{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
 install -m 755 robots.txt %{buildroot}/%{python3_sitelib}/indico/web/static/robots.txt
 
 
@@ -269,8 +269,8 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
 %config(noreplace) /opt/indico/etc/indico.conf
-%{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
-%{python3_sitelib}/indico/web/static/images/globe.png
+#{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
+#{python3_sitelib}/indico/web/static/images/globe.png
 %{python3_sitelib}/indico/web/static/robots.txt
 %{python3_sitelib}/indico/modules/auth/templates/register.html
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf

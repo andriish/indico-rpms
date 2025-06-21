@@ -70,3 +70,42 @@ c0aa3a21ffb61e829b0b87aedbfcd38c  python-iso4217/1.11.20220401/rpmbuild/SOURCES/
 8183009de323a1e49867af6aabf09aae  python-pywebpack/2.0.0/rpmbuild/SOURCES/pywebpack-2.0.0.tar.gz
 
 08f14b526842d9fa0688e731493c9dd8  python-indico/3.3.0/rpmbuild/SOURCES/736862c990831fa789c665cc9519798cc64807f3.zip
+77a9bd5d3ece2c4e37f2027acdc70f1b  python-wallet/2.1.525/rpmbuild/SOURCES/wallet-2.1.525.tar.gz
+
+
+eb87d3c6f790944b3c12b1fcd2ece7e1  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.1.zip
+39842756f33f3b775c2100acc1b8749a  python-indico/3.3.1/rpmbuild/SOURCES/v3.3.tar.gz
+5e781469d99d95425098a04f52bdf9e6  python-wtforms-sqlalchemy/0.3.0/rpmbuild/SOURCES/wtforms-sqlalchemy-0.3.0.tar.gz
+
+9a421b399989b29fdfa1434e048f6c11  python-indico/3.3.5/rpmbuild/SOURCES/v3.3.5.zip
+534661928ad17aa32da25405f3b6b3da  python-indico/3.3.5/rpmbuild/SOURCES/v3.3.2.tar.gz
+
+
+55c97ed218a4b289ccb74c588eae2e5b  python-limits/3.9.0/rpmbuild/SOURCES/limits-3.9.0.tar.gz
+82d283785cf2f62bc0478fef172497d7  python-limits/3.9.0/rpmbuild/SOURCES/d9a8fba0616f6736c845a156e669b7d1e13cbd86.patch
+d58a9fbd0ccee6903d8e2cce2b4c9e19  python-pytest-lazy-fixture/0.6.3/rpmbuild/SOURCES/pytest-lazy-fixture-0.6.3.tar.gz
+a8aff50d5d29d52ef6121e711b0afec9  python-etcd3/0.12.0/rpmbuild/SOURCES/v0.12.0.tar.gz
+
+e26b44dd8c14c14f7a52f12a6c2caa85  python-wallet-py3k/0.0.4/rpmbuild/SOURCES/wallet-py3k-0.0.4.tar.gz
+4ad595c27e08a99120de8fff30f0799a  python-indico/3.3.6/rpmbuild/SOURCES/v3.3.6.zip
+a572c9fdce9ddca4c52ed4a037a743af  python-indico/3.3.6/rpmbuild/SOURCES/v3.2.2.tar.gz
+534661928ad17aa32da25405f3b6b3da  python-indico/3.3.6/rpmbuild/SOURCES/v3.3.2.tar.gz
+8c234b5d3706f7f5fc47de6d3d61e33f  python-indico/3.3.6/rpmbuild/SOURCES/v3.3.4.tar.gz
+
+
+
+8a2bb45035b242c9b65cdd6eba59de9e  python-limits/5.4.0/rpmbuild/SOURCES/limits-5.4.0.tar.gz
+7cbe2696351dd1b1672e957d0ffe8644  python-Flask-Multipass/0.10/rpmbuild/SOURCES/flask_multipass-0.10.tar.gz
+f890dcca752b1baa0c3d22c4d15e10a9  python-captcha/0.7.1/rpmbuild/SOURCES/captcha-0.7.1.tar.gz
+ac7bbe62273238491193b4dd37f0ab27  python-Flask-Limiter/3.12/rpmbuild/SOURCES/flask_limiter-3.12.tar.gz
+7496bced9c3196a9382695504326daf1  python-flask-marshmallow/1.3.0/rpmbuild/SOURCES/flask_marshmallow-1.3.0.tar.gz
+0d483b95b8e120eeed9679f748ef7c04  python-iso4217/1.13.20250512/rpmbuild/SOURCES/iso4217-1.13.20250512.tar.gz
+c63f4c9d4dd031e4a514a9ca2dbb0f1d  python-marshmallow_oneofschema/3.2.0/rpmbuild/SOURCES/3.2.0.tar.gz
+6bb2860c9acfd128b562f92f72d00e69  python-marshmallow_sqlalchemy/1.4.2/rpmbuild/SOURCES/marshmallow_sqlalchemy-1.4.2.tar.gz
+f158473050f0e91ccb87be8090e7f439  python-marshmallow-dataclass/8.7.1/rpmbuild/SOURCES/marshmallow_dataclass-8.7.1.tar.gz
+3f5d58611b9dc583393d0ca1e2593911  python-pywebpack/2.1.0/rpmbuild/SOURCES/pywebpack-2.1.0.tar.gz
+b7762841d2e90f0a1da69a2c60143a17  python-pynpm/0.3.0/rpmbuild/SOURCES/pynpm-0.3.0.tar.gz
+89c374294596cc921bdd9a46212c2ec2  python-flask-webpackext/2.1.0/rpmbuild/SOURCES/flask_webpackext-2.1.0.tar.gz
+71f6562e7f359d4b4383f6162f31d32a  python-webargs/8.7.0/rpmbuild/SOURCES/webargs-8.7.0.tar.gz
+0155885b095171b2d895f28647cf602c  python-wtforms-sqlalchemy/0.4.2/rpmbuild/SOURCES/wtforms-sqlalchemy-0.4.2.tar.gz
+3776337060fcdba457591090265e47ea  python-limits/3.14.1/rpmbuild/SOURCES/limits-3.14.1.tar.gz
