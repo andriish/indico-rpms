@@ -25,7 +25,7 @@ serializes object using that schema and adds an extra field with name
 %package -n python3-%{srcname}
 Summary:        %{summary}
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools  python3-hatchling
 
 %description -n python3-%{srcname} %_description
 
