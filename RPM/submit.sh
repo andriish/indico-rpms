@@ -13,7 +13,7 @@ python-captcha:0.7.1
 python-flask-marshmallow:1.3.0
 python-flask-url-map-serializer:0.1.0
 python-indico-fonts:1.2
-python-iso4217:1.13.20250512
+python-iso4217:1.14
 python-marshmallow_oneofschema:3.2.0
 python-marshmallow_sqlalchemy:1.4.2
 python-marshmallow-dataclass:8.7.1

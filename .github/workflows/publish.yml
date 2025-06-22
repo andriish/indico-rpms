@@ -162,45 +162,47 @@ jobs:
       #with:
           #name:  Debian12af
           #path: artifact-Debian12.tar
+
+#    - uses: actions/download-artifact@v4
+#      with:
+#          name: Debian12af
+#          path: myrepo
+#          tar -xf artifact-Debian12.tar
   
-  #deploy-from-all:
-    #name: Deploy
-    #runs-on: ubuntu-latest    
-    #environment:
-      #name: github-pages
-      #url: ${{ steps.deployment.outputs.page_url }}  
-    #needs: 
-     #- run-in-indico-docker-image-Debian12
-     #- run-in-indico-docker-image-Fedora42
-    #steps:
-    #- uses: actions/download-artifact@v4
-      #with:
-          #name: Fedora42af
-          #path: myrepo
-    #- uses: actions/download-artifact@v4
-      #with:
-          #name: Debian12af
-          #path: myrepo
-    #- name: Display structure of downloaded files
-      #run: |
-          #ls -R myrepo
-          #cd  myrepo
-          #tar -xf artifact-Debian12.tar
-          #tar -xf artifact-Fedora42.tar
-          #mv myrepo indico330
-          #ls 
-          #rm ./*.tar -f
-          #cd ..
-    #- uses: jayanta525/github-pages-directory-listing@v4.0.0
-      #with:
-          #FOLDER: ./myrepo      
-    #- name: Upload artifact
-      #uses: actions/upload-pages-artifact@v3
-      #with:
-          ## Upload entire repository
-          #path: ./myrepo
-    #- name: Deploy to GitHub Pages
-      #id: deployment
-      #uses: actions/deploy-pages@v4
+  deploy-from-all:
+    name: Deploy
+    runs-on: ubuntu-latest    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}  
+    needs: 
+#     - run-in-indico-docker-image-Debian12
+     - run-in-indico-docker-image-Fedora42
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+          name: Fedora42af
+          path: myrepo
+
+    - name: Display structure of downloaded files
+      run: |
+          ls -R myrepo
+          cd  myrepo
+          tar -xf artifact-Fedora42.tar
+          mv myrepo indico336
+          ls 
+          rm ./*.tar -f
+          cd ..
+    - uses: jayanta525/github-pages-directory-listing@v4.0.0
+      with:
+          FOLDER: ./myrepo      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+          # Upload entire repository
+          path: ./myrepo
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
 
   
