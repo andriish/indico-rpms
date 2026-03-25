@@ -22,7 +22,7 @@ python-pywebpack:2.0.0
 python-flask-webpackext:1.0.2
 python-webargs:8.3.0
 python-wtforms-sqlalchemy:0.3.0
-python-indico:3.3.6
+python-indico:3.3.12
 python-indico-mpp-configuration:3.3
 )
 declare -a BUILDLISTX=(
@@ -94,7 +94,9 @@ python-indico-mpp-configuration:3.3
 #mkdir -p python-indico/3.3.0/rpmbuild/RPMS/noarch
 #touch python-indico/3.3.0/rpmbuild/RPMS/noarch/1.rpm
 #exit 0
-#declare -a BUILDLIST=(
+declare -a BUILDLIST=(
+python-indico:3.3.12
+)
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3
 #python-iso4217:1.11.20220401
