@@ -115,3 +115,4 @@ b7762841d2e90f0a1da69a2c60143a17  python-pynpm/0.3.0/rpmbuild/SOURCES/pynpm-0.3.
 4ad595c27e08a99120de8fff30f0799a  python-indico/3.3.12/rpmbuild/SOURCES/v3.3.6.zip
 00634c80b511c73db332b317f208f92f  python-indico/3.3.12/rpmbuild/SOURCES/v3.3.12.zip
 38df8d97723606157680e0e018d41b7f  python-indico/3.3.12/rpmbuild/SOURCES/v3.3.6.tar.gz
+19c3892d9b830829b2a55cb2ed64d734  python-pytest-runner/4.0/rpmbuild/SOURCES/pytest-runner-4.0.tar.gz
