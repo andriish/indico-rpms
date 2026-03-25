@@ -68,7 +68,7 @@ python-wtforms-sqlalchemy:0.4.2
 
 declare -a BUILDLIST=(
 python-wallet-py3k:0.0.4
-python-limits:3.14.1
+python-limits:5.4.0
 python-Flask-Limiter:3.12
 python-Flask-Multipass:0.10 
 python-Flask-PluginEngine:0.5
@@ -97,7 +97,7 @@ python-pytest-runner:4.0
 #exit 0
 declare -a BUILDLIST=(
 #python-indico:3.3.12
-python-pytest-runner:4.0
+python-limits:5.4.0
 )
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3
