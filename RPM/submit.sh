@@ -24,6 +24,7 @@ python-webargs:8.7.0
 python-wtforms-sqlalchemy:0.3.0
 python-indico:3.3.12
 python-indico-mpp-configuration:3.3
+python-pytest-runner:4.0
 )
 
 mkdir -p log
