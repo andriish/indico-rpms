@@ -98,7 +98,8 @@ python-pytest-runner:4.0
 declare -a BUILDLIST=(
 #python-indico:3.3.12
 #python-limits:5.4.0
-python-marshmallow-enum:1.5.1
+#python-marshmallow-enum:1.5.1
+python-pyrsistent:0.20.0
 )
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3

@@ -26,6 +26,7 @@ python-indico:3.3.12
 python-indico-mpp-configuration:3.3
 python-pytest-runner:4.0
 python-marshmallow-enum:1.5.1
+python-pyrsistent:0.20.0
 )
 
 mkdir -p log
