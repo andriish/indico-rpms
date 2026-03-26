@@ -118,3 +118,4 @@ b7762841d2e90f0a1da69a2c60143a17  python-pynpm/0.3.0/rpmbuild/SOURCES/pynpm-0.3.
 19c3892d9b830829b2a55cb2ed64d734  python-pytest-runner/4.0/rpmbuild/SOURCES/pytest-runner-4.0.tar.gz
 
 f1fbbdae302cf2eacbbc612692592ad8  python-limits/5.4.0/rpmbuild/SOURCES/limits-5.4.0.tar.gz
+2d9e9c59fa15cc47f8f163a78a1773f0  python-marshmallow-enum/1.5.1/rpmbuild/SOURCES/marshmallow-enum-1.5.1.tar.gz
