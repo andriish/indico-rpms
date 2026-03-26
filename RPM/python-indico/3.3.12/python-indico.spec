@@ -83,7 +83,7 @@ BuildRequires: python3-flask
 BuildRequires: python3-flask-babel
 BuildRequires: python3-flask-caching
 BuildRequires: python3-flask-cors 
-BuildRequires: python3-Flask-Limiter
+#BuildRequires: python3-Flask-Limiter
 BuildRequires: python3-flask-marshmallow
 BuildRequires: python3-flask-migrate
 BuildRequires: python3-Flask-Multipass
@@ -260,7 +260,7 @@ Requires: python3-flask
 Requires: python3-flask-babel
 Requires: python3-flask-caching
 Requires: python3-flask-cors 
-Requires: python3-Flask-Limiter
+#Requires: python3-Flask-Limiter
 Requires: python3-flask-marshmallow
 Requires: python3-flask-migrate
 Requires: python3-Flask-Multipass
