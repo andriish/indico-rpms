@@ -101,7 +101,7 @@ declare -a BUILDLIST=(
 #python-marshmallow-enum:1.5.1
 #python-pyrsistent:0.20.0
 #python-Flask-Multipass:0.11.2
-python-flask-marshmallow:1.4.0
+python-pywebpack:2.2.1
 )
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3

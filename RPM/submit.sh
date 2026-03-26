@@ -18,7 +18,7 @@ python-marshmallow_oneofschema:3.2.0
 python-marshmallow_sqlalchemy:1.4.2
 python-marshmallow-dataclass:8.7.1
 python-pynpm:0.3.0
-python-pywebpack:2.1.0
+python-pywebpack:2.2.1
 python-flask-webpackext:2.1.0
 python-webargs:8.7.0
 python-wtforms-sqlalchemy:0.3.0
