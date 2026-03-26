@@ -13,7 +13,7 @@
 %bcond rediscluster 1
 %bcond memcached 1
 %bcond mongodb 1
-%bcond etcd 1
+%bcond etcd 0
 # async-redis needs `coredis`
 %bcond async_redis 0
 # async-memcached needs `emcache`
