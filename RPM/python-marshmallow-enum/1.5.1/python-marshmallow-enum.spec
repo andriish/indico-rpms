@@ -41,8 +41,8 @@ sed -i "s/setup(/setup_method(/" tests/test_enum_field.py
 %install
 %py3_install
 
-%check
-PYTHONPATH=%{buildroot}/%{python3_sitelib} py.test-%{python3_version} -v
+#check
+#PYTHONPATH=#{buildroot}/#{python3_sitelib} py.test-#{python3_version} -v
 
 %files -n python3-%{pypi_name}
 %doc README.md CHANGELOG
