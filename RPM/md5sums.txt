@@ -122,3 +122,5 @@ f1fbbdae302cf2eacbbc612692592ad8  python-limits/5.4.0/rpmbuild/SOURCES/limits-5.
 afcdfde081701fff49a685420430cc96  python-pyrsistent/0.20.0/rpmbuild/SOURCES/pyrsistent-0.20.0.tar.gz
 b51b75de6d9a3644d504b7ddca806f2c  python-pyrsistent/0.20.0/rpmbuild/SOURCES/284.patch
 a974ff6a708e2fd4d515a7ce24ee7680  python-pyrsistent/0.20.0/rpmbuild/SOURCES/284.patch
+1a834038e7d38c625fcf24600a5306cb  python-Flask-Multipass/0.11.2/rpmbuild/SOURCES/flask_multipass-0.11.2.tar.gz
+925cc4c921957204dd2b73f90a2629f3  python-flask-marshmallow/1.4.0/rpmbuild/SOURCES/1.4.0.tar.gz
