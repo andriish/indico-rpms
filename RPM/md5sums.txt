@@ -125,3 +125,4 @@ a974ff6a708e2fd4d515a7ce24ee7680  python-pyrsistent/0.20.0/rpmbuild/SOURCES/284.
 1a834038e7d38c625fcf24600a5306cb  python-Flask-Multipass/0.11.2/rpmbuild/SOURCES/flask_multipass-0.11.2.tar.gz
 925cc4c921957204dd2b73f90a2629f3  python-flask-marshmallow/1.4.0/rpmbuild/SOURCES/1.4.0.tar.gz
 b4af1fa7e57da4bb32f5eb93281cc044  python-pywebpack/2.2.1/rpmbuild/SOURCES/pywebpack-2.2.1.tar.gz
+0a3207ef9c2ebd5b1a5ebb12032d8d38  python-iso4217/1.16/rpmbuild/SOURCES/1.16.tar.gz
