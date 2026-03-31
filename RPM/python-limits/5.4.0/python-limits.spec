@@ -13,7 +13,7 @@
 %bcond rediscluster 1
 %bcond memcached 1
 %bcond mongodb 1
-%bcond etcd 1
+%bcond etcd 0
 # async-redis needs `coredis`
 %bcond async_redis 0
 # async-memcached needs `emcache`
@@ -106,6 +106,9 @@ Documentation for %{name}.
 
 %prep
 %autosetup -p1 %{forgesetupargs}
+sed -i 's/pymemcache>3,<5\.0\.0/pymemcache>3/' requirements/storage/memcached.txt
+sed -i 's/<26/<29/' requirements/main.txt
+
 
 sed -i 's/<24/<25/g' requirements/*txt
 # Remove requirements for extras we cannot build

@@ -26,6 +26,10 @@ BuildRequires:  python3-setuptools
 
 %prep
 %autosetup -n %{srcnamenu}-%{version}
+#rich>=12,<14
+sed -i 's/ich>=12,<14/ich>=12/' requirements/main.txt
+
+
 
 %build
 %py3_build

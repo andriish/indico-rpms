@@ -110,6 +110,8 @@ Documentation for %{name}.
 
 %prep
 %autosetup -p1 %{forgesetupargs}
+sed -i 's/pymemcache>3,<5\.0\.0/pymemcache>3/' requirements/storage/memcached.txt
+
 
 sed -i 's/<24/<25/g' requirements/*txt
 # Remove requirements for extras we cannot build

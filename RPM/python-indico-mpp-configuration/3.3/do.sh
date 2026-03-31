@@ -1,1 +1,1 @@
-tar  -czvf  indico-mpp-configuration-3.3.tar.gz robots.txt etcindico.conf indico.cil indico-celery.service indico-sslredir.conf indico-uwsgi.service indico.conf uwsgi-indico.ini ffdhe2048 scaledglobe.png indicopostgresql.conf *.html  *.png *.svg
+tar  -czvf  indico-mpp-configuration-3.3.tar.gz storage.conf robots.txt etcindico.conf indico.cil indico-celery.service indico-sslredir.conf indico-uwsgi.service indico.conf uwsgi-indico.ini ffdhe2048 scaledglobe.png indicopostgresql.conf *.html  *.png *.svg
