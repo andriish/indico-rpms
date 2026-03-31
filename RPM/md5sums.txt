@@ -128,3 +128,4 @@ b4af1fa7e57da4bb32f5eb93281cc044  python-pywebpack/2.2.1/rpmbuild/SOURCES/pywebp
 0a3207ef9c2ebd5b1a5ebb12032d8d38  python-iso4217/1.16/rpmbuild/SOURCES/1.16.tar.gz
 2c62d994f03da6ff81454c186bdbc808  python-webargs/8.7.1/rpmbuild/SOURCES/webargs-8.7.1.tar.gz
 95ba1dd5a1ce45b76d7e62d9a52c4c14  python-pyrsistent/0.21.0/rpmbuild/SOURCES/pyrsistent-0.21.0.tar.gz
+58a16ec4a96043b429c196bfafa5fd96  python-wtforms/3.2.1/rpmbuild/SOURCES/wtforms-3.2.1.tar.gz

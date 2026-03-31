@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        WTForms integration for dateutil
 
 License:        BSD

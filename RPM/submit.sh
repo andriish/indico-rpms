@@ -23,7 +23,8 @@ python-pynpm:0.3.0
 python-pywebpack:2.2.1
 python-flask-webpackext:2.1.0
 python-webargs:8.7.1
-python-wtforms-sqlalchemy:0.3.0
+python-wtforms:3.2.1
+python-wtforms-sqlalchemy:0.4.2
 python-indico:3.3.12
 python-indico-mpp-configuration:3.3
 python-pytest-runner:4.0
