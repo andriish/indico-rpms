@@ -276,6 +276,7 @@ indico maint pull-latex-image
 /etc/ssl/indico/ffdhe2048
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
+/etc/containers/storage.conf
 
 %config(noreplace) /opt/indico/etc/indico.conf
 #{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
