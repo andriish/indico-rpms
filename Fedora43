@@ -74,7 +74,6 @@ RUN  dnf -y install    \
   python3-markdown    \
   python3-markupsafe    \
   python3-marshmallow    \
-  python3-marshmallow-enum    \
   python3-matplotlib-inline    \
   python3-mypy_extensions    \
   python3-nbconvert    \
