@@ -30,6 +30,7 @@ python-marshmallow-enum:1.5.1
 
 
 declare -a BUILDLIST=(
+python-pytest-runner:4.0
 python-wallet-py3k:0.0.4
 python-limits:5.4.0
 python-Flask-Limiter:3.12
@@ -44,6 +45,7 @@ python-iso4217:1.16
 python-marshmallow_oneofschema:3.2.0
 python-marshmallow_sqlalchemy:1.4.2
 python-marshmallow-dataclass:8.7.1
+python-marshmallow-enum:1.5.1
 python-pynpm:0.3.0
 python-pywebpack:2.2.1
 python-flask-webpackext:2.1.0
@@ -51,8 +53,6 @@ python-webargs:8.7.1
 python-wtforms-sqlalchemy:0.3.0
 python-indico:3.3.12
 python-indico-mpp-configuration:3.3
-python-pytest-runner:4.0
-python-marshmallow-enum:1.5.1
 )
 
 
