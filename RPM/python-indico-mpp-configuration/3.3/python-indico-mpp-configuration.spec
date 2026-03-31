@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        3.3
-Release:        16%{?dist}
+Release:        17%{?dist}
 Summary:        MPP Indico configuration
 License:        MIT
 URL:            https://mpp.mpg.de
@@ -49,6 +49,7 @@ Requires: firewalld
 Requires: /usr/bin/xelatex
 Requires: postfix
 Requires: python-certbot-apache
+Requires: podman
 
 Requires: python3-nbconvert 
 Requires: python3-rpm-macros 
@@ -114,7 +115,9 @@ install -m 0700 indico.cil %{buildroot}//etc/ssl/indico/indico.cil
 
 mkdir -p %{buildroot}/opt/indico/etc/
 
-install -m 755  etcindico.conf %{buildroot}//opt/indico/etc/indico.conf
+install -m 755  etcindico.conf %{buildroot}/opt/indico/etc/indico.conf
+mkdir -p %{buildroot}/etc/containers/
+install -m 755  storage.conf  %{buildroot}/etc/containers/storage.conf
 
 mkdir -p %{buildroot}/%{python3_sitelib}/indico/web/static/images/
 mkdir -p %{buildroot}/%{python3_sitelib}/indico-mpp-configuration/web/static/images/
@@ -258,6 +261,11 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/indico.wsgi  /opt/indico/web/indico.wsgi
 
 
+#This is for LATEX conteinerization
+sudo usermod indico --add-subuids 1000000-1065535 --add-subgids 1000000-1065535
+sudo loginctl enable-linger indico
+indico maint pull-latex-image
+
 
 
 %files -n python3-indico-mpp-configuration
@@ -268,6 +276,7 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 /etc/ssl/indico/ffdhe2048
 /etc/httpd/conf.d/indico-sslredir.conf
 /etc/ssl/indico/indico.cil
+
 %config(noreplace) /opt/indico/etc/indico.conf
 #{python3_sitelib}/indico/web/static/images/logo_indico_bw.svg
 #{python3_sitelib}/indico/web/static/images/globe.png
@@ -276,6 +285,8 @@ sudo -u indico cp /usr/lib/python%{python3_version}/site-packages/indico/web/ind
 /etc/systemd/system/postgresql.service.d/indicopostgresql.conf
 
 %changelog
+* Tue Mar 31 2026 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3
+- Fix LaTeX problems for version 3.3.12.
 * Wed Feb 28 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3
 - Version 3.3. Bump version.
 * Wed Sep 28 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2
