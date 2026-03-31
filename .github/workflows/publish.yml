@@ -189,7 +189,7 @@ jobs:
           ls -R myrepo
           cd  myrepo
           tar -xf artifact-Fedora43.tar
-          mv myrepo indico336
+          mv myrepo indico3312
           ls 
           rm ./*.tar -f
           cd ..
