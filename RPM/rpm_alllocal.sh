@@ -70,11 +70,11 @@ declare -a BUILDLIST=(
 python-wallet-py3k:0.0.4
 python-limits:5.4.0
 python-Flask-Limiter:3.12
-python-Flask-Multipass:0.10 
+python-Flask-Multipass:0.11.2
 python-Flask-PluginEngine:0.5
 python-WTForms-dateutil:0.1
 python-captcha:0.7.1
-python-flask-marshmallow:1.3.0
+python-flask-marshmallow:1.4.0
 python-flask-url-map-serializer:0.1.0
 python-indico-fonts:1.2
 python-iso4217:1.14
@@ -97,7 +97,13 @@ python-pytest-runner:4.0
 #exit 0
 declare -a BUILDLIST=(
 #python-indico:3.3.12
-python-limits:5.4.0
+#python-limits:5.4.0
+#python-marshmallow-enum:1.5.1
+#python-pyrsistent:0.20.0
+#python-Flask-Multipass:0.11.2
+#python-pywebpack:2.2.1
+#python-webargs:8.7.1
+python-pyrsistent:0.21.0
 )
 #python-pypdf:4.0.1
 #python-indico-mpp-configuration:3.3

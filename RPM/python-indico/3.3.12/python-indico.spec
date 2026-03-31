@@ -500,6 +500,8 @@ indico i18n compile-catalog-react
 
 
 %changelog
+* Thu Mar 26 2026 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.12
+- Version 3.3.12
 * Sat Jun 21 2025 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.6
 - Version 3.3.6 
 * Mon Apr 15 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.1
