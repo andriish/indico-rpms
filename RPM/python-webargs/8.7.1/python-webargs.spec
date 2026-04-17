@@ -37,12 +37,11 @@ Summary:        %{summary}
 %install
 %pyproject_install
 
-# Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 
 %{python3_sitelib}/%{srcnamenu}-*.dist-info/
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Fri Apr 17 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 8.7.1-1
+- Initial version for Fedora
