@@ -43,8 +43,6 @@ Summary:        %{summary}
 %pyproject_save_files %{module_name}
 
 
-
-
 %files -n python3-%{pkg_name} -f %{pyproject_files}
 %doc README.rst
 %doc CHANGES.rst

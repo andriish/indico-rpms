@@ -11,6 +11,8 @@ URL:            https://captcha.lepture.com/
 Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 
 %global _description %{expand:
@@ -20,8 +22,6 @@ Python library to read/write [Apple Wallet]}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
 
@@ -41,5 +41,5 @@ BuildRequires:  python3-setuptools
 %{python3_sitelib}/wallet/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

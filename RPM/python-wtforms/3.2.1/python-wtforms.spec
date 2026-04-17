@@ -15,8 +15,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-hatchling
 BuildRequires:  python3-babel
 
-
-
 %description
 With wtforms, your form field HTML can be generated for you.
 This allows you to maintain separation of code and presentation,
@@ -34,10 +32,8 @@ and keep those messy parameters out of your python code.
 
 %pyproject_extras_subpkg -n python3-wtforms email
 
-
 %generate_buildrequires
 %pyproject_buildrequires -rx email
-
 
 %prep
 %autosetup -p1 -n %{srcname}-%{version}

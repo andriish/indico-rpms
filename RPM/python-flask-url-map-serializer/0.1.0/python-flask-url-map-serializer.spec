@@ -43,5 +43,5 @@ BuildRequires:  python3-setuptools
 %{python3_sitelib}/*
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

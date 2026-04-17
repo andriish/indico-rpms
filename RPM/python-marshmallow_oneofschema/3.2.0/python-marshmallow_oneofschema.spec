@@ -11,6 +11,9 @@ URL:            http://marshmallow.readthedocs.org/en/latest/
 Source:         https://github.com/marshmallow-code/marshmallow-oneofschema/archive/refs/tags/3.2.0.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools  python3-hatchling  python-flit-core pyproject-rpm-macros
+
 
 %global _description %{expand:
 This library adds a special kind of schema that actually multiplexes 
@@ -24,8 +27,6 @@ serializes object using that schema and adds an extra field with name
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools  python3-hatchling  python-flit-core pyproject-rpm-macros
 
 %description -n python3-%{srcname} %_description
 
@@ -45,5 +46,5 @@ BuildRequires:  python3-setuptools  python3-hatchling  python-flit-core pyprojec
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

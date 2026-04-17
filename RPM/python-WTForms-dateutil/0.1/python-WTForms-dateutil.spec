@@ -10,7 +10,9 @@ License:        BSD
 URL:            https://github.com/wtforms/wtforms-dateutil/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
+BuildRequires:  python3-pip python3-wheel
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 %global _description %{expand:
 A python module which provides a convenient example. This is the
@@ -20,8 +22,6 @@ rest of the description that provides more details.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
 
@@ -34,12 +34,11 @@ BuildRequires:  python3-setuptools
 %install
 %py3_install
 
-# Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
 
 %{python3_sitelib}/*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

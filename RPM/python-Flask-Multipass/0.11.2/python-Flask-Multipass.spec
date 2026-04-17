@@ -11,6 +11,8 @@ URL:            https://flask-multipass.readthedocs.io/en/latest/
 Source:         https://github.com/indico/flask-multipass/releases/download/v%{version}/flask_multipass-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel 
+BuildRequires:  python3-devel pyproject-rpm-macros
+BuildRequires:  python3-setuptools python3-hatchling
 
 %global _description %{expand:
 Flask-Multipass provides Flask with a user authentication/identity 
@@ -20,8 +22,6 @@ system which can use different backends (such as local users, LDAP and OAuth) si
 
 %package -n python3-%{srcname}
 Summary:        %{summary} 
-BuildRequires:  python3-devel pyproject-rpm-macros
-BuildRequires:  python3-setuptools python3-hatchling
 
 %description -n python3-%{srcname} %_description
 
@@ -41,5 +41,5 @@ BuildRequires:  python3-setuptools python3-hatchling
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

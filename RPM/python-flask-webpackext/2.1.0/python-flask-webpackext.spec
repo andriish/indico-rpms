@@ -12,6 +12,8 @@ Source:         https://files.pythonhosted.org/packages/f6/b4/43fcb72a19ee53ee04
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel python-pytest-runner
 BuildRequires:  python3-werkzeug gcc make
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools pyproject-rpm-macros
 
 %global _description %{expand:
 Flask-WebpackExt makes it easy to interface with your existing Webpack 
@@ -21,8 +23,7 @@ project from Flask and does not try to manage Webpack for you. }
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools pyproject-rpm-macros
+
 
 %description -n python3-%{srcname} %_description
 
@@ -43,5 +44,5 @@ BuildRequires:  python3-setuptools pyproject-rpm-macros
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

@@ -11,6 +11,8 @@ URL:            https://flask-pluginengine.readthedocs.io/
 Source:         https://github.com/indico/flask-pluginengine/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel 
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 %global _description %{expand:
  Flask-PluginEngine is an extension that provides interfaces to 
@@ -20,8 +22,6 @@ BuildRequires:  python3-pip python3-wheel
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
 
@@ -41,5 +41,5 @@ BuildRequires:  python3-setuptools
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

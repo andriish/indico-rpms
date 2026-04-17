@@ -11,6 +11,8 @@ URL:            https://flask-limiter.readthedocs.io/en/stable/
 Source:         https://files.pythonhosted.org/packages/70/75/92b237dd4f6e19196bc73007fff288ab1d4c64242603f3c401ff8fc58a42/flask_limiter-3.12.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel 
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 
 %global _description %{expand:
 Flask-Limiter provides rate limiting features to Flask applications.}
@@ -19,8 +21,7 @@ Flask-Limiter provides rate limiting features to Flask applications.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+
 
 %description -n python3-%{srcname} %_description
 
@@ -44,5 +45,5 @@ sed -i 's/ich>=12,<14/ich>=12/' requirements/main.txt
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 

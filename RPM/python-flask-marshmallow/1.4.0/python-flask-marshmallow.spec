@@ -10,8 +10,11 @@ License:        MIT
 URL:            https://flask-marshmallow.readthedocs.io/en/latest/
 Source:         https://github.com/marshmallow-code/flask-marshmallow/archive/refs/tags/1.4.0.tar.gz
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel pyproject-rpm-macros
-BuildRequires: python3-werkzeug gcc make
+BuildRequires:  python3-pip python3-wheel pyproject-rpm-macros
+BuildRequires:  python3-werkzeug gcc make
+BuildRequires:  python3-devel pyproject-rpm-macros
+BuildRequires:  python3-setuptools  python3-hatchling python-flit-core
+
 
 %global _description %{expand:
 Flask-Marshmallow is a thin integration layer for Flask (a Python web 
@@ -24,8 +27,6 @@ integrates with Flask-SQLAlchemy.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel pyproject-rpm-macros
-BuildRequires:  python3-setuptools  python3-hatchling python-flit-core
 
 %description -n python3-%{srcname} %_description
 
@@ -48,5 +49,5 @@ BuildRequires:  python3-setuptools  python3-hatchling python-flit-core
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
+* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
 - Cleanup 
