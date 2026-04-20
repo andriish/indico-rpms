@@ -29,11 +29,6 @@ Summary:        %{summary}
 %prep
 %autosetup -p1 -n %{pkg_name}-%{version}
 
-
-#generate_buildrequires
-#pyproject_buildrequires -t
-
-
 %build
 %pyproject_wheel
 
@@ -50,6 +45,9 @@ Summary:        %{summary}
 
 
 %changelog
+* Fri Apr 17 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.4.2-1
+- Initial version of 0.4.2 for Fedora
+
 * Fri Jan 26 2024 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.0-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
 

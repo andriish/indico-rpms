@@ -3,6 +3,7 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
+python-wtforms-sqlalchemy:0.4.2
 python-wallet-py3k:0.0.4
 python-limits:5.4.0
 python-Flask-Limiter:3.12

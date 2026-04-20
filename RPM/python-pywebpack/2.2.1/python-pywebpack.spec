@@ -34,13 +34,13 @@ BuildRequires:  python3-setuptools
 %install
 %py3_install
 
-# Note that there is no %%files section for the unversioned python module
 %files -n python3-%{srcname}
+%license LICENSE
 
 %{python3_sitelib}/%{srcnamenu}-*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
 
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 2.2.1- 1
+- First version of 2.2.1 for Fedora
