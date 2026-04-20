@@ -6,7 +6,7 @@ Version:        2.1.0
 Release:        1%{?dist}
 Summary:        Webpack integration for Flask.
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://flask-webpackext.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/f6/b4/43fcb72a19ee53ee04b6c922633152e38eedc433745a537439ed520ec548/flask_webpackext-2.1.0.tar.gz
 BuildArch:      noarch
@@ -44,5 +44,5 @@ Summary:        %{summary}
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Sun Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 2.1.0-1
+- First version of 2.1.0 for Fedora
