@@ -10,9 +10,11 @@ License:        MIT
 URL:            https://webargs.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires:  python3-pip python3-wheel pyproject-rpm-macros
+BuildRequires:  python3-pip 
+BuildRequires:  python3-wheel 
+BuildRequires:pyproject-rpm-macros
 BuildRequires:  python3-werkzeug 
-BuildRequires:  python-flit-core
+BuildRequires:  python3-flit-core
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 

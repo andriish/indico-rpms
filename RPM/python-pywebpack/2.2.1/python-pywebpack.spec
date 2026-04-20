@@ -10,8 +10,9 @@ License:        MIT
 URL:            https://pywebpack.readthedocs.io/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel python-pytest-runner
-BuildRequires: python3-werkzeug gcc make
+
+BuildRequires:  python3-devel
+BuildRequires:  pyproject-rpm-macros
 
 %global _description %{expand:
 Webpack integration layer for Python.}
@@ -20,26 +21,25 @@ Webpack integration layer for Python.}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
 
 %prep
-%autosetup -n %{srcname}-%{version} -p 1
+%autosetup -n %{srcname}-%{version}
+
+%generate_buildrequires
+%pyproject_buildrequires
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%pyproject_save_files %{srcnamenu}
 
-%files -n python3-%{srcname}
+%files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
-
-%{python3_sitelib}/%{srcnamenu}-*.egg-info/
-%{python3_sitelib}/%{srcnamenu}/
-
+%doc README.md
 
 %changelog
 * Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 2.2.1-1
