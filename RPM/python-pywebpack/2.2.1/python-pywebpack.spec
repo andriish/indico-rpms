@@ -16,7 +16,8 @@ BuildRequires: python3-werkzeug gcc make
 %global _description %{expand:
 Webpack integration layer for Python.}
 
-%description %_description
+%description %_description %{expand:
+Webpack integration layer for Python}
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
@@ -42,5 +43,5 @@ BuildRequires:  python3-setuptools
 
 
 %changelog
-* Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 2.2.1- 1
+* Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 2.2.1-1
 - First version of 2.2.1 for Fedora
