@@ -3,10 +3,10 @@
 
 Name:           python-%{srcname}
 Version:        0.1
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        WTForms integration for dateutil
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://github.com/wtforms/wtforms-dateutil/
 Source:         %{pypi_source}
 BuildArch:      noarch
@@ -15,8 +15,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
 %global _description %{expand:
-A python module which provides a convenient example. This is the
-rest of the description that provides more details.}
+WTForms integration for dateutil.}
 
 %description %_description
 
@@ -35,10 +34,11 @@ Summary:        %{summary}
 %py3_install
 
 %files -n python3-%{srcname}
+%license LICENSE.md
 
 %{python3_sitelib}/*.egg-info/
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.1-1
+- Initial version for Fedora
