@@ -6,7 +6,7 @@ Version:        0.11.2
 Release:        1%{?dist}
 Summary:        Flask with a user authentication/identity system
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://flask-multipass.readthedocs.io/en/latest/
 Source:         https://github.com/indico/flask-multipass/releases/download/v%{version}/flask_multipass-%{version}.tar.gz
 BuildArch:      noarch
@@ -35,6 +35,7 @@ Summary:        %{summary}
 %pyproject_install
 
 %files -n python3-%{srcname}
+%license LICENSE
 
 %{python3_sitelib}/*.dist-info/
 %{python3_sitelib}/%{srcnamenu}/

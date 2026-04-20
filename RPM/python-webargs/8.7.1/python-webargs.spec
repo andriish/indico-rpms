@@ -11,7 +11,8 @@ URL:            https://webargs.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel pyproject-rpm-macros
-BuildRequires:  python3-werkzeug python-flit-core
+BuildRequires:  python3-werkzeug 
+BuildRequires:  python-flit-core
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 
@@ -38,6 +39,7 @@ Summary:        %{summary}
 %pyproject_install
 
 %files -n python3-%{srcname}
+%license LICENSE
 
 %{python3_sitelib}/%{srcnamenu}-*.dist-info/
 %{python3_sitelib}/%{srcnamenu}/
