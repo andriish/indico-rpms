@@ -16,8 +16,7 @@ BuildRequires: python3-werkzeug gcc make
 %global _description %{expand:
 Webpack integration layer for Python.}
 
-%description %_description %{expand:
-Webpack integration layer for Python}
+%description %_description
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
