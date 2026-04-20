@@ -6,7 +6,7 @@ Version:        0.7.1
 Release:        1%{?dist}
 Summary:        A captcha library that generates audio and image CAPTCHAs.
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://captcha.lepture.com/
 Source:         %{pypi_source}
 BuildArch:      noarch
@@ -34,10 +34,11 @@ Summary:        %{summary}
 %py3_install
 
 %files -n python3-%{srcname}
+%license LICENSE
 
 %{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.7.1-1
+- Initial version for Fedora
