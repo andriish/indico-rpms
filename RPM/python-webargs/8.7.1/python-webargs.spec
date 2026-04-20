@@ -12,7 +12,7 @@ Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires:  python3-pip 
 BuildRequires:  python3-wheel 
-BuildRequires:pyproject-rpm-macros
+BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-werkzeug 
 BuildRequires:  python3-flit-core
 BuildRequires:  python3-devel
