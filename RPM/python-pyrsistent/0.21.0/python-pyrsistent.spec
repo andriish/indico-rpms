@@ -13,6 +13,7 @@ BuildOption(generate_buildrequires): requirements-filtered.txt
 BuildOption(install):   -l pyrsistent _pyrsistent_version pvectorc
 
 BuildRequires:  gcc
+BuildRequires:  python3-typing-extensions
 
 # Note that pyrsistent/_toolz.py contains a bit of code ported from toolz, but
 # not enough to constitute a bundled dependency.
