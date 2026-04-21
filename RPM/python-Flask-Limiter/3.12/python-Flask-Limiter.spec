@@ -45,5 +45,5 @@ sed -i 's/ich>=12,<14/ich>=12/' requirements/main.txt
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Mon Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 3.12-1
+- First Fedora package release for python-Flask-Limiter 3.12
