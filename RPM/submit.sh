@@ -24,8 +24,6 @@ python-flask-webpackext:2.1.0
 python-webargs:8.7.1
 python-wtforms:3.2.1
 python-wtforms-sqlalchemy:0.4.2
-python-pytest-runner:4.0
-
 )
 
 mkdir -p log
