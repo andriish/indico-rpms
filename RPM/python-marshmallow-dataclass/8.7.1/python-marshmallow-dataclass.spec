@@ -44,5 +44,5 @@ BuildRequires:  python3-setuptools pyproject-rpm-macros
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Tue Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 8.7.1-1
+- First version of 8.7.1 for Fedora
