@@ -212,28 +212,6 @@ Requires: uwsgi
 Requires: uwsgi-plugin-python3
 Requires: uwsgi-plugin-python3-gevent 
 
-Requires: tex(adjustbox.sty)
-Requires: tex(amsmath.sty)
-Requires: tex(amssymb.sty)
-Requires: tex(babel.sty)
-Requires: tex(enumitem.sty)
-Requires: tex(fancyhdr.sty)
-Requires: tex(float.sty)
-Requires: tex(fontspec.sty)
-Requires: tex(geometry.sty)
-Requires: tex(microtype.sty)
-Requires: tex(needspace.sty)
-Requires: tex(parskip.sty)
-Requires: tex(scrextend.sty)
-Requires: tex(sectsty.sty)
-Requires: tex(tcolorbox.sty)
-Requires: tex(truncate.sty)
-Requires: tex(xcolor.sty)
-Requires: tex(xstring.sty)
-Requires: tex(xeCJK.sty)
-
-
-
 Requires: python3
 Requires: python3-alembic
 Requires: python3-amqp
