@@ -11,7 +11,7 @@ python-Flask-Multipass:0.11.2
 python-Flask-PluginEngine:0.5
 python-WTForms-dateutil:0.1
 python-captcha:0.7.1
-python-flask-marshmallow:1.4.0
+python-flask-marshmallow:1.5.0
 python-flask-url-map-serializer:0.1.0
 python-iso4217:1.16
 python-marshmallow_oneofschema:3.2.0
@@ -29,10 +29,10 @@ python-marshmallow-enum:1.5.1
 )
 
 
-#declare -a BUILDLIST=(
+declare -a BUILDLIST=(
 #python-wtforms:3.2.1
-python-wtforms-sqlalchemy:0.4.2
-#)
+python-flask-marshmallow:1.5.0
+)
 
 
 for a in "${BUILDLIST[@]}" 

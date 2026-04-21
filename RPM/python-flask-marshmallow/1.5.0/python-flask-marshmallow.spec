@@ -2,18 +2,18 @@
 %global srcnamenu flask_marshmallow
 
 Name:           python-%{srcname}
-Version:        1.4.0
+Version:        1.5.0
 Release:        1%{?dist}
 Summary:        Flask + marshmallow for beautiful APIs
 
 License:        MIT
 URL:            https://flask-marshmallow.readthedocs.io/en/latest/
-Source:         https://github.com/marshmallow-code/flask-marshmallow/archive/refs/tags/1.4.0.tar.gz
+Source:         https://github.com/marshmallow-code/flask-marshmallow/archive/refs/tags/%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel
 BuildRequires:  python3-werkzeug gcc make
 BuildRequires:  python3-devel pyproject-rpm-macros
-BuildRequires:  python3-setuptools  python3-hatchling python-flit-core
+BuildRequires:  python3-setuptools  python3-hatchling python3-flit-core
 
 
 %global _description %{expand:
@@ -45,5 +45,5 @@ Summary:        %{summary}
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Tue Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 1.5.0-1
+- First version for Fedora 
