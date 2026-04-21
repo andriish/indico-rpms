@@ -102,7 +102,20 @@ BuildRequires: python3-html2text
 BuildRequires: python3-html5lib
 BuildRequires: python3-icalendar
 BuildRequires: python3-idna
-BuildRequires: python3-indico-fonts
+###########
+BuildRequires: liberation-mono-fonts
+BuildRequires: liberation-sans-fonts
+BuildRequires: liberation-serif-fonts
+BuildRequires: linux-libertine-biolinum-fonts
+BuildRequires: linux-libertine-fonts
+BuildRequires: google-noto-sans-cjk-vf-fonts 
+BuildRequires: google-noto-sans-cjk-fonts
+BuildRequires: sazanami-gothic-fonts
+BuildRequires: sazanami-mincho-fonts  
+BuildRequires: cjkuni-uming-fonts
+#################
+
+
 BuildRequires: python3-iso4217
 BuildRequires: python3-ipython
 BuildRequires: python3-itsdangerous
@@ -279,7 +292,20 @@ Requires: python3-html2text
 Requires: python3-html5lib
 Requires: python3-icalendar
 Requires: python3-idna
-Requires: python3-indico-fonts
+
+###########
+Requires: liberation-mono-fonts
+Requires: liberation-sans-fonts
+Requires: liberation-serif-fonts
+Requires: linux-libertine-biolinum-fonts
+Requires: linux-libertine-fonts
+Requires: google-noto-sans-cjk-vf-fonts 
+Requires: google-noto-sans-cjk-fonts
+Requires: sazanami-gothic-fonts
+Requires: sazanami-mincho-fonts  
+Requires: cjkuni-uming-fonts
+#################
+
 Requires: python3-iso4217
 Requires: python3-ipython
 Requires: python3-itsdangerous
