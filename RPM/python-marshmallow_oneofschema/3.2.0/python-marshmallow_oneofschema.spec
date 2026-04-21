@@ -12,7 +12,7 @@ Source:         https://github.com/marshmallow-code/marshmallow-oneofschema/arch
 BuildArch:      noarch
 BuildRequires:  python3-pip python3-wheel
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools  python3-hatchling  python-flit-core pyproject-rpm-macros
+BuildRequires:  python3-setuptools  python3-hatchling  python3-flit-core pyproject-rpm-macros
 
 
 %global _description %{expand:
@@ -46,5 +46,5 @@ Summary:        %{summary}
 %{python3_sitelib}/%{srcnamenu}/
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Tue Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 3.2.0-1
+- First version of 3.2.0 for Fedora
