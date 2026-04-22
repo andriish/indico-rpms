@@ -14,7 +14,7 @@ python-captcha:0.7.1
 python-flask-marshmallow:1.5.0
 python-flask-url-map-serializer:0.1.0
 python-iso4217:1.16
-python-marshmallow_oneofschema:3.2.0
+python-marshmallow-oneofschema:3.2.0
 python-marshmallow_sqlalchemy:1.4.2
 python-marshmallow-dataclass:8.7.1
 python-marshmallow-enum:1.5.1
