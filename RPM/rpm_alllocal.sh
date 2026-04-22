@@ -11,7 +11,7 @@ python-Flask-Multipass:0.11.2
 python-Flask-PluginEngine:0.5
 python-WTForms-dateutil:0.1
 python-captcha:0.7.1
-python-flask-marshmallow:1.5.0
+python-flask-marshmallow:1.4.0
 python-flask-url-map-serializer:0.1.0
 python-iso4217:1.16
 python-marshmallow_oneofschema:3.2.0
@@ -38,7 +38,9 @@ declare -a BUILDLIST=(
 #python-Flask-Multipass:0.11.2
 #python-flask-url-map-serializer:0.1.0
 #python-pyrsistent:0.21.0
-python-webargs:8.7.1
+#python-webargs:8.7.1
+#python-wallet-py3k:0.0.4
+python-flask-marshmallow:1.4.0
 )
 
 

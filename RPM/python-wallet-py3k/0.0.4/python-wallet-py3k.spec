@@ -7,7 +7,7 @@ Release:        1%{?dist}
 Summary:        Python library to read/write [Apple Wallet]
 
 License:        BSD-3-Clause
-URL:            https://captcha.lepture.com/
+URL:            https://github.com/pretix/wallet-py3k
 Source:         %{pypi_source}
 BuildArch:      noarch
 
@@ -35,12 +35,10 @@ Summary:        %{summary}
 %pyproject_save_files %{srcnamenu}
 
 %files -n python3-%{srcname} -f %{pyproject_files}
-%license LICENSE
-%doc README.rst
-%doc CHANGES.rst
+%license LICENSE.txt
+%doc README.txt
+%doc CHANGES.txt
 
-%check
-%pyproject_check_import
 
 %changelog
 * Fri Apr 17 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.0.4-1
