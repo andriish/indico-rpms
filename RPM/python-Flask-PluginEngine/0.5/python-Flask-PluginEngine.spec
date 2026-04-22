@@ -8,7 +8,7 @@ Summary:        A simple plugin system for Flask applications.
 
 License:        BSD-3-Clause
 URL:            https://flask-pluginengine.readthedocs.io/
-Source:        https://github.com/indico/flask-pluginengine/archive/refs/tags/v%{version}.tar.gz
+Source:         https://github.com/indico/flask-pluginengine/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
 
 %description

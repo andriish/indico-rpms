@@ -34,7 +34,7 @@ declare -a BUILDLIST=(
 #python-pyrsistent:0.21.0
 #python-marshmallow-dataclass:8.7.1
 #python-pynpm:0.3.0
-python-Flask-PluginEngine:0.5
+python-flask-webpackext:2.1.0
 )
 
 
