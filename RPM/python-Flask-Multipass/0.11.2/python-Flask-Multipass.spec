@@ -25,6 +25,7 @@ Summary:        %{summary}
 
 %prep
 %autosetup -n %{srcnamenu}-%{version}
+sed -i 's/hatchling==1.28.0/hatchling>=1.28.0/g' pyproject.toml
 
 %generate_buildrequires
 %pyproject_buildrequires
