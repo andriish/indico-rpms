@@ -44,7 +44,7 @@ Summary:        %{summary}
 %license LICENSE
 
 %check
-%pytest
+%pyproject_check_import
 
 %changelog
 * Wed Apr 22 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 2.1.0-1
