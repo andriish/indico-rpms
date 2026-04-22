@@ -35,9 +35,9 @@ declare -a BUILDLIST=(
 #python-pynpm:0.3.0
 #python-WTForms-dateutil:0.1
 #python-captcha:0.7.1
-#python-Flask-Multipass:0.11.2
+python-Flask-Multipass:0.11.2
 #python-flask-url-map-serializer:0.1.0
-python-pyrsistent:0.21.0
+#python-pyrsistent:0.21.0
 )
 
 
