@@ -4,7 +4,7 @@
 Name:           python-%{srcname}
 Version:        0.3.0
 Release:        1%{?dist}
-Summary:        Python interface to your NPM and package.json.
+Summary:        Python interface to your NPM and package.json
 
 License:        BSD-3-Clause
 URL:            https://pynpm.readthedocs.io/en/latest/
