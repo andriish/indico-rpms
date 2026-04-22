@@ -8,12 +8,8 @@ Summary:        A simple plugin system for Flask applications.
 
 License:        BSD-3-Clause
 URL:            https://flask-pluginengine.readthedocs.io/
-Source0:        https://github.com/indico/flask-pluginengine/archive/refs/tags/v%{version}.tar.gz
-
+Source:        https://github.com/indico/flask-pluginengine/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
-
-BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
 
 %description
 Flask-PluginEngine is an extension that provides interfaces to create plugins
@@ -42,6 +38,9 @@ and handle them within a Flask application.
 %files -n python3-%{pypi_name} -f %{pyproject_files}
 %license LICENSE
 %doc README.rst
+
+%check
+%pyproject_check_import
 
 %changelog
 * Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 0.5-1
