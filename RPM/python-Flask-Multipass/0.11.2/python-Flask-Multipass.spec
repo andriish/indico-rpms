@@ -27,7 +27,7 @@ Summary:        %{summary}
 sed -i 's/hatchling==1.28.0/hatchling>=1.28.0/g' pyproject.toml
 
 %generate_buildrequires
-%pyproject_buildrequires
+%pyproject_buildrequires -r
 
 %build
 %pyproject_wheel
