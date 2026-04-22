@@ -32,7 +32,8 @@ python-marshmallow-enum:1.5.1
 declare -a BUILDLIST=(
 #python-wtforms:3.2.1
 #python-pyrsistent:0.21.0
-python-marshmallow-dataclass:8.7.1
+#python-marshmallow-dataclass:8.7.1
+python-iso4217:1.16
 )
 
 
