@@ -9,10 +9,7 @@ Summary:        Dumps the URL map of a flask app to a JSON file
 License:        MIT
 URL:            https://github.com/indico/babel-plugin-flask-urls
 Source:         https://github.com/indico/js-flask-urls/archive/refs/tags/babel-plugin-flask-urls@0.1.0.tar.gz
-#{pypi_source}
 BuildArch:      noarch
-BuildRequires: python3-pip python3-wheel
-BuildRequires: python3-werkzeug gcc make
 
 %global _description %{expand:
 This package adds a urls_to_json command to the flask CLI that dumps the
@@ -22,26 +19,30 @@ This package adds a urls_to_json command to the flask CLI that dumps the
 
 %package -n python3-%{srcname}
 Summary:        %{summary}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %description -n python3-%{srcname} %_description
 
 %prep
 %autosetup -n js-flask-urls-babel-plugin-flask-urls-%{version}/flask-cli
+cp ../LICENSE ./
+
+%generate_buildrequires
+%pyproject_buildrequires
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
-# Note that there is no %%files section for the unversioned python module
-%files -n python3-%{srcname}
+%pyproject_save_files -l %{srcnamenu}
 
+%files -n python3-%{srcname} -f %{pyproject_files}
+%license LICENSE
 
-%{python3_sitelib}/*
+%check
+%pyproject_check_import
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Wed Apr 22 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.1.0-1
+- First version of 0.1.0 for Fedora

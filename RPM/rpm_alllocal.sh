@@ -24,7 +24,6 @@ python-webargs:8.7.1
 python-wtforms:3.2.1
 python-wtforms-sqlalchemy:0.4.2
 python-indico:3.3.12
-python-pytest-runner:4.0
 python-marshmallow-enum:1.5.1
 )
 
@@ -36,7 +35,8 @@ declare -a BUILDLIST=(
 #python-pynpm:0.3.0
 #python-WTForms-dateutil:0.1
 #python-captcha:0.7.1
-python-Flask-Multipass:0.11.2
+#python-Flask-Multipass:0.11.2
+python-flask-url-map-serializer:0.1.0
 )
 
 

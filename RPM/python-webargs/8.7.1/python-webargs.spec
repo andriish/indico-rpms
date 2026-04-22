@@ -41,6 +41,9 @@ Summary:        %{summary}
 %files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
 
+%check
+%pyproject_check_import
+
 %changelog
 * Fri Apr 17 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 8.7.1-1
 - Initial version for Fedora

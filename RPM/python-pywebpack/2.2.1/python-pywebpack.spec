@@ -38,6 +38,9 @@ Summary:        %{summary}
 %license LICENSE
 %doc README.md
 
+%check
+%pyproject_check_import
+
 %changelog
 * Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 2.2.1-1
 - First version of 2.2.1 for Fedora
