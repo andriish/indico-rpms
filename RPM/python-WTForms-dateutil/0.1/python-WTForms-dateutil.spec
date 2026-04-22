@@ -10,9 +10,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/wtforms/wtforms-dateutil/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires:  python3-pip python3-wheel
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  %{py3_dist pytest}
 
 %global _description %{expand:
 WTForms integration for dateutil.}
@@ -27,17 +25,22 @@ Summary:        %{summary}
 %prep
 %autosetup -n %{srcname}-%{version}
 
+%generate_buildrequires
+%pyproject_buildrequires
+
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
-%files -n python3-%{srcname}
+%pyproject_save_files -l %{srcnamenu}
+
+%files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE.md
 
-%{python3_sitelib}/*.egg-info/
-%{python3_sitelib}/%{srcnamenu}/
+%check
+%pyproject_check_import
 
 %changelog
 * Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.1-1

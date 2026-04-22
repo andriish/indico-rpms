@@ -4,15 +4,12 @@
 Name:           python-%{srcname}
 Version:        2.2.1
 Release:        1%{?dist}
-Summary:        Webpack integration layer for Python.
+Summary:        Webpack integration layer for Python
 
 License:        MIT
 URL:            https://pywebpack.readthedocs.io/
 Source:         %{pypi_source}
 BuildArch:      noarch
-
-BuildRequires:  python3-devel
-BuildRequires:  pyproject-rpm-macros
 
 %global _description %{expand:
 Webpack integration layer for Python.}

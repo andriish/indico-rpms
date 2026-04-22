@@ -10,13 +10,7 @@ License:        MIT
 URL:            https://webargs.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires:  python3-pip 
-BuildRequires:  python3-wheel 
 BuildRequires:  python3-werkzeug 
-BuildRequires:  python3-flit-core
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-
 
 %global _description %{expand:
 webargs is a Python library for parsing and validating HTTP request 
@@ -42,7 +36,7 @@ Summary:        %{summary}
 %install
 %pyproject_install
 
-%pyproject_save_files -l webargs
+%pyproject_save_files -l %{srcname}
 
 %files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
