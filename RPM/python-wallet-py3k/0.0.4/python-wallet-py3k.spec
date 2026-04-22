@@ -3,17 +3,13 @@
 
 Name:           python-%{srcname}
 Version:        0.0.4
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Python library to read/write [Apple Wallet]
 
-License:        BSD
+License:        BSD-3-Clause
 URL:            https://captcha.lepture.com/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires:  python3-pip python3-wheel
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-
 
 %global _description %{expand:
 Python library to read/write [Apple Wallet]}
@@ -28,18 +24,24 @@ Summary:        %{summary}
 %prep
 %autosetup -n %{srcname}-%{version}
 
+%generate_buildrequires
+%pyproject_buildrequires
+
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
+%pyproject_save_files %{srcnamenu}
 
-# Note that there is no %%files section for the unversioned python module
-%files -n python3-%{srcname}
+%files -n python3-%{srcname} -f %{pyproject_files}
+%license LICENSE
+%doc README.rst
+%doc CHANGES.rst
 
-%{python3_sitelib}/%{srcnamenu}-*info/
-%{python3_sitelib}/wallet/
+%check
+%pyproject_check_import
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de>
-- Cleanup 
+* Fri Apr 17 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.0.4-1
+- Initial version for Fedora
