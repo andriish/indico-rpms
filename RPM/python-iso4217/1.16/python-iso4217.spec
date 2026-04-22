@@ -6,7 +6,7 @@ Version:        1.16
 Release:        1%{?dist}
 Summary:        ISO 4217 currency data package for Python 
 
-License:        Public Domain
+License:        LicenseRef-Fedora-Public-Domain
 URL:            https://github.com/dahlia/iso4217
 Source:         https://github.com/dahlia/iso4217/archive/refs/tags/1.16.tar.gz
 BuildArch:      noarch
