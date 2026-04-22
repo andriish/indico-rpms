@@ -11,6 +11,7 @@ URL:            https://flask-marshmallow.readthedocs.io/en/latest/
 Source:         https://github.com/marshmallow-code/flask-marshmallow/archive/refs/tags/%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python3-werkzeug gcc make
+BuildRequires:  %{py3_dist pytest}
 
 
 %global _description %{expand:
