@@ -10,10 +10,7 @@ License:        BSD-3-Clause
 URL:            https://pynpm.readthedocs.io/en/latest/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires:  python3-pip python3-wheel python-pytest-runner
 BuildRequires:  python3-werkzeug gcc make
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-devel
 
 %global _description %{expand:
 Python interface to your NPM and package.json.}
@@ -28,17 +25,25 @@ Summary:        %{summary}
 %prep
 %autosetup -n %{srcname}-%{version}
 
+%generate_buildrequires
+%pyproject_buildrequires
+
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
-%files -n python3-%{srcname}
+%pyproject_save_files -l %{srcnamenu}
 
-%{python3_sitelib}/%{srcnamenu}-*.egg-info/
-%{python3_sitelib}/%{srcnamenu}/
+%files -n python3-%{srcname} -f %{pyproject_files}
+%doc README.rst
+%doc CHANGES.rst
+%license LICENSE
+
+%check
+%pyproject_check_import
 
 %changelog
-* Mon Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 0.3.0-1
+* Wed Apr 22 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 0.3.0-1
 - First version of 0.3.0 for Fedora
