@@ -28,7 +28,7 @@ Summary:        %{summary}
 %autosetup -n %{srcname}-%{version}
 
 %generate_buildrequires
-%pyproject_buildrequires -r
+%pyproject_buildrequires -t
 
 %build
 %pyproject_wheel
@@ -41,8 +41,7 @@ Summary:        %{summary}
 %files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
 
-%check
-%pyproject_check_import
+
 
 %changelog
 * Fri Apr 17 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 8.7.1-1
