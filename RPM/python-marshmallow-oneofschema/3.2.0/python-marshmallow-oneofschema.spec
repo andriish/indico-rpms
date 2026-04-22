@@ -8,7 +8,7 @@ Summary:        An extension to marshmallow to support schema (de)multiplexing.
 
 License:        MIT
 URL:            http://marshmallow.readthedocs.org/en/latest/
-Source:          https://github.com/marshmallow-code/marshmallow-oneofschema/archive/%{version}/marshmallow-oneofschema-%{version}.tar.gz
+Source:         https://github.com/marshmallow-code/marshmallow-oneofschema/archive/%{version}/marshmallow-oneofschema-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python3-devel
