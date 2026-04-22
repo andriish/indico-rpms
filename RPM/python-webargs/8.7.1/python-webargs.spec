@@ -12,7 +12,6 @@ Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires:  python3-pip 
 BuildRequires:  python3-wheel 
-BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python3-werkzeug 
 BuildRequires:  python3-flit-core
 BuildRequires:  python3-devel
@@ -34,17 +33,19 @@ Summary:        %{summary}
 %prep
 %autosetup -n %{srcname}-%{version}
 
+%generate_buildrequires
+%pyproject_buildrequires
+
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 
-%files -n python3-%{srcname}
-%license LICENSE
+%pyproject_save_files -l webargs
 
-%{python3_sitelib}/%{srcnamenu}-*.dist-info/
-%{python3_sitelib}/%{srcnamenu}/
+%files -n python3-%{srcname} -f %{pyproject_files}
+%license LICENSE
 
 %changelog
 * Fri Apr 17 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 8.7.1-1
