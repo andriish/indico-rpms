@@ -38,9 +38,14 @@ BuildRequires: npm
 BuildRequires: tzdata
 
 
-BuildRequires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel pcre-devel libyaml-devel 
+BuildRequires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel  libyaml-devel 
 BuildRequires: zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
 
+%if 0%{?fedora} < 44
+BuildRequires: pcre-devel
+%else
+BuildRequires: pcre2-devel
+%endif
 
 
 ########################
