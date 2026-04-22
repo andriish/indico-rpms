@@ -4,14 +4,13 @@
 Name:           python-%{srcname}
 Version:        3.2.0
 Release:        1%{?dist}
-Summary:        An extension to marshmallow to support schema (de)multiplexing.
+Summary:        An extension to marshmallow to support schema (de)multiplexing
 
 License:        MIT
 URL:            http://marshmallow.readthedocs.org/en/latest/
 Source:         https://github.com/marshmallow-code/marshmallow-oneofschema/archive/%{version}/marshmallow-oneofschema-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  python3-devel
 BuildRequires:  %{py3_dist pytest}
 
 %global _description %{expand:
@@ -31,6 +30,9 @@ Summary:        %{summary}
 
 %prep
 %autosetup -n %{srcname}-%{version}
+
+%generate_buildrequires
+%pyproject_buildrequires
 
 %build
 %pyproject_wheel
