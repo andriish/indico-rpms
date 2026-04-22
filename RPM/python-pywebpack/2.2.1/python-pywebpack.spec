@@ -36,7 +36,8 @@ Summary:        %{summary}
 
 %files -n python3-%{srcname} -f %{pyproject_files}
 %license LICENSE
-%doc README.md
+%doc README.rst
+%doc CHANGES.rst
 
 %check
 %pyproject_check_import
