@@ -36,7 +36,8 @@ declare -a BUILDLIST=(
 #python-WTForms-dateutil:0.1
 #python-captcha:0.7.1
 #python-Flask-Multipass:0.11.2
-python-flask-url-map-serializer:0.1.0
+#python-flask-url-map-serializer:0.1.0
+python-pyrsistent:0.21.0
 )
 
 
