@@ -4,7 +4,7 @@
 Name:           python-%{srcnamenu}
 Version:        1.4.2
 Release:        1%{?dist}
-Summary:        SQLAlchemy integration with the marshmallow (de)serialization library.
+Summary:        SQLAlchemy integration with the marshmallow (de)serialization library
 
 License:        MIT
 URL:            https://marshmallow-sqlalchemy.readthedocs.io/en/latest/
