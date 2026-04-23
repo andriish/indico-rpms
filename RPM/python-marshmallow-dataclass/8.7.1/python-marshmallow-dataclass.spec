@@ -9,7 +9,6 @@ Summary:        Automatic generation of marshmallow schemas from dataclasses
 License:        MIT
 URL:            https://github.com/lovasoa/marshmallow_dataclass
 Source:         %{pypi_source}
-
 BuildArch:      noarch
 BuildRequires:  %{py3_dist pytest}
 

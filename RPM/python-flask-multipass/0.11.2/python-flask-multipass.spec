@@ -1,14 +1,15 @@
-%global srcname Flask-Multipass
-%global srcnamenu flask_multipass
+%global srcname flask_multipass
+%global srcnamenu flask-multipass
+%global modname flask_multipass
 
-Name:           python-%{srcname}
+Name:           python-%{srcnamenu}
 Version:        0.11.2
 Release:        1%{?dist}
 Summary:        Flask with a user authentication/identity system
 
 License:        BSD-3-Clause
 URL:            https://flask-multipass.readthedocs.io/en/latest/
-Source:         https://github.com/indico/flask-multipass/releases/download/v%{version}/flask_multipass-%{version}.tar.gz
+Source:         %{pypi_source}
 BuildArch:      noarch
 
 # -------------------------
@@ -36,54 +37,54 @@ system which can use different backends (such as local users, LDAP and OAuth) si
 
 %description %_description
 
-%package -n python3-%{srcname}
+%package -n python3-%{srcnamenu}
 Summary:        %{summary}
 
-%description -n python3-%{srcname} %_description
+%description -n python3-%{srcnamenu} %_description
 
 # -------------------------
 # Optional dependency extras
 # -------------------------
 
 # authlib extra
-%package -n python3-%{srcname}+authlib
+%package -n python3-%{srcnamenu}+authlib
 Summary:        Authlib support for Flask-Multipass
 Requires:       python3-authlib >= 0.14.1
 Requires:       python3-requests
 
-%description -n python3-%{srcname}+authlib
+%description -n python3-%{srcnamenu}+authlib
 Optional Authlib authentication backend for Flask-Multipass.
 
 # ldap extra
-%package -n python3-%{srcname}+ldap
+%package -n python3-%{srcnamenu}+ldap
 Summary:        LDAP support for Flask-Multipass
 Requires:       python3-flask-wtf
 Requires:       python3-ldap >= 3.3.1
 
-%description -n python3-%{srcname}+ldap
+%description -n python3-%{srcnamenu}+ldap
 Optional LDAP authentication backend for Flask-Multipass.
 
 # saml extra
-%package -n python3-%{srcname}+saml
+%package -n python3-%{srcnamenu}+saml
 Summary:        SAML support for Flask-Multipass
 Requires:       python3-saml >= 1.10.1
 
-%description -n python3-%{srcname}+saml
+%description -n python3-%{srcnamenu}+saml
 Optional SAML authentication backend for Flask-Multipass.
 
 # sqlalchemy extra
-%package -n python3-%{srcname}+sqlalchemy
+%package -n python3-%{srcnamenu}+sqlalchemy
 Summary:        SQLAlchemy support for Flask-Multipass
 Requires:       python3-sqlalchemy
 Requires:       python3-flask-wtf
 
-%description -n python3-%{srcname}+sqlalchemy
+%description -n python3-%{srcnamenu}+sqlalchemy
 Optional SQLAlchemy integration for Flask-Multipass.
 
 
 %prep
-%autosetup -n %{srcnamenu}-%{version}
-sed -i 's/hatchling==1.28.0/hatchling>=1.28.0/g' pyproject.toml
+%autosetup -n %{srcname}-%{version}
+sed -i 's/hatchling==/hatchling>=/g' pyproject.toml
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -94,9 +95,9 @@ sed -i 's/hatchling==1.28.0/hatchling>=1.28.0/g' pyproject.toml
 %install
 %pyproject_install
 
-%pyproject_save_files -l %{srcnamenu}
+%pyproject_save_files -l %{modname}
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -n python3-%{srcnamenu} -f %{pyproject_files}
 %doc README.rst
 %license LICENSE
 
@@ -104,21 +105,21 @@ sed -i 's/hatchling==1.28.0/hatchling>=1.28.0/g' pyproject.toml
 # Files for extras
 # -------------------------
 
-%files -n python3-%{srcname}+authlib
+%files -n python3-%{srcnamenu}+authlib
 # No files — this subpackage only adds Requires:
 
-%files -n python3-%{srcname}+ldap
+%files -n python3-%{srcnamenu}+ldap
 # No files — this subpackage only adds Requires:
 
-%files -n python3-%{srcname}+saml
+%files -n python3-%{srcnamenu}+saml
 # No files — this subpackage only adds Requires:
 
-%files -n python3-%{srcname}+sqlalchemy
+%files -n python3-%{srcnamenu}+sqlalchemy
 # No files — this subpackage only adds Requires:
 
 %check
 %pyproject_check_import
 
 %changelog
-* Thu Sep 29 2022 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.11.2-1
+* Thu Apr 23 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.11.2-1
 - Initial version for Fedora

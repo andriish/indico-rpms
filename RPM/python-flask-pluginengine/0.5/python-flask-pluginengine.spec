@@ -1,29 +1,30 @@
-%global pypi_name Flask-PluginEngine
+%global srcname Flask-PluginEngine
+%global srcnamenu flask-pluginengine
 %global modname flask_pluginengine
 
-Name:           python-%{pypi_name}
+Name:           python-%{srcnamenu}
 Version:        0.5
 Release:        1%{?dist}
 Summary:        A simple plugin system for Flask applications.
 
 License:        BSD-3-Clause
 URL:            https://flask-pluginengine.readthedocs.io/
-Source:         https://github.com/indico/flask-pluginengine/archive/refs/tags/v%{version}.tar.gz
+Source:         %{pypi_source}
 BuildArch:      noarch
 
-%description
+%global _description %{expand:
 Flask-PluginEngine is an extension that provides interfaces to create plugins
-and handle them within a Flask application.
+and handle them within a Flask application.}
 
-%package -n python3-%{pypi_name}
+%description %_description
+
+%package -n python3-%{srcnamenu}
 Summary:        %{summary}
 
-%description -n python3-%{pypi_name}
-Flask-PluginEngine is an extension that provides interfaces to create plugins
-and handle them within a Flask application.
+%description -n python3-%{srcnamenu} %_description
 
 %prep
-%autosetup -n flask-pluginengine-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -35,13 +36,13 @@ and handle them within a Flask application.
 %pyproject_install
 %pyproject_save_files %{modname}
 
-%files -n python3-%{pypi_name} -f %{pyproject_files}
-%license LICENSE
+%files -n python3-%{srcnamenu} -f %{pyproject_files}
 %doc README.rst
+%license LICENSE
 
 %check
 %pyproject_check_import
 
 %changelog
-* Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 0.5-1
-- First version of 0.5 for Fedora
+* Mon Apr 20 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 0.5-1
+- Initial version of 0.5 for Fedora

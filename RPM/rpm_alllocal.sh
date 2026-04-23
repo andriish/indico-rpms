@@ -7,15 +7,15 @@ python-wtforms-sqlalchemy:0.4.2
 python-wallet-py3k:0.0.4
 python-limits:5.8.0
 python-flask-limiter:3.12
-python-Flask-Multipass:0.11.2
-python-Flask-PluginEngine:0.5
-python-WTForms-dateutil:0.1
+python-flask-multipass:0.11.2
+python-flask-pluginengine:0.5
+python-wtforms-dateutil:0.1
 python-captcha:0.7.1
 python-flask-marshmallow:1.4.0
 python-flask-url-map-serializer:0.1.0
 python-iso4217:1.16
-python-marshmallow_oneofschema:3.2.0
-python-marshmallow_sqlalchemy:1.4.2
+python-marshmallow-oneofschema:3.2.0
+python-marshmallow-sqlalchemy:1.4.2
 python-marshmallow-dataclass:8.7.1
 python-pynpm:0.3.0
 python-pywebpack:2.2.1
@@ -44,7 +44,12 @@ declare -a BUILDLIST=(
 #python-limits:5.8.0
 #python-flask-limiter:4.1.1
 #python-marshmallow-enum:1.5.1
-python-indico:3.3.12
+#python-indico:3.3.12
+#OK python-marshmallow-sqlalchemy:1.4.2
+#python-wtforms-dateutil:0.1
+#python-flask-pluginengine:0.5
+python-flask-multipass:0.11.2
+
 )
 
 

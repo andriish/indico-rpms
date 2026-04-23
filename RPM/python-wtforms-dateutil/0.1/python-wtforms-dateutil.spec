@@ -1,7 +1,8 @@
 %global srcname WTForms-dateutil
-%global srcnamenu wtforms_dateutil
+%global srcnamenu wtforms-dateutil
+%global modname wtforms_dateutil
 
-Name:           python-%{srcname}
+Name:           python-%{srcnamenu}
 Version:        0.1
 Release:        1%{?dist}
 Summary:        WTForms integration for dateutil
@@ -10,17 +11,16 @@ License:        BSD-3-Clause
 URL:            https://github.com/wtforms/wtforms-dateutil/
 Source:         %{pypi_source}
 BuildArch:      noarch
-BuildRequires:  %{py3_dist pytest}
 
 %global _description %{expand:
 WTForms integration for dateutil.}
 
 %description %_description
 
-%package -n python3-%{srcname}
+%package -n python3-%{srcnamenu}
 Summary:        %{summary}
 
-%description -n python3-%{srcname} %_description
+%description -n python3-%{srcnamenu} %_description
 
 %prep
 %autosetup -n %{srcname}-%{version}
@@ -34,9 +34,10 @@ Summary:        %{summary}
 %install
 %pyproject_install
 
-%pyproject_save_files -l %{srcnamenu}
+%pyproject_save_files -l %{modname}
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -n python3-%{srcnamenu} -f %{pyproject_files}
+%doc README.md
 %license LICENSE.md
 
 %check
