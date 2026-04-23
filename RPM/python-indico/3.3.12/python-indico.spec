@@ -129,6 +129,7 @@ rm -rf plugins/base/livesync_debug
 sed -i 's/\=\=.*$//g' requirements.*
 sed -i 's/tzdata/#tzdata/g' requirements.*
 sed -i 's/importlib/#importlib/g' requirements.*
+sed -i 's/indico-fonts/#indico-fonts/g' requirements.*
 sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
 
 sed -i -E "s/^requires-python[[:space:]]*=.*/requires-python = '>=3.12'/" pyproject.toml plugins/base/*/pyproject.toml
