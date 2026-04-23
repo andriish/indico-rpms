@@ -42,8 +42,8 @@ declare -a BUILDLIST=(
 #python-wallet-py3k:0.0.4
 #python-flask-marshmallow:1.4.0
 #python-limits:5.8.0
-#python-Flask-Limiter:3.12
-python-marshmallow-enum:1.5.1
+python-Flask-Limiter:4.1.1
+#python-marshmallow-enum:1.5.1
 )
 
 
