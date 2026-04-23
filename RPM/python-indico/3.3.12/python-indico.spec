@@ -32,6 +32,7 @@ BuildRequires: gcc-c++ git gcc make
 BuildRequires: rpm-build git wget
 BuildRequires: npm
 BuildRequires: tzdata
+BuildRequires: python3-rpm-macros
 BuildRequires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel  libyaml-devel 
 BuildRequires: zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
 %if 0%{?fedora} < 44
