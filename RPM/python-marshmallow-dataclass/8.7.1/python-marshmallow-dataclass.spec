@@ -1,7 +1,7 @@
 %global srcname marshmallow_dataclass
-%global srcnamenu marshmallow_dataclass
+%global srcnamenu marshmallow-dataclass
 
-Name:           python-%{srcname}
+Name:           python-%{srcnamenu}
 Version:        8.7.1
 Release:        1%{?dist}
 Summary:        Automatic generation of marshmallow schemas from dataclasses
@@ -17,10 +17,10 @@ Python library to convert dataclasses into marshmallow schemas.}
 
 %description %_description
 
-%package -n python3-%{srcname}
+%package -n python3-%{srcnamenu}
 Summary:        %{summary}
 
-%description -n python3-%{srcname} %_description
+%description -n python3-%{srcnamenu} %_description
 
 %prep
 %autosetup -n %{srcname}-%{version}
@@ -34,9 +34,9 @@ Summary:        %{summary}
 %install
 %pyproject_install
 
-%pyproject_save_files -l %{srcnamenu}
+%pyproject_save_files -l %{srcname}
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -n python3-%{srcnamenu} -f %{pyproject_files}
 %doc README.md
 %license LICENSE
 
