@@ -28,7 +28,7 @@ Summary:        %{summary}
 %description -n python3-%{srcnamenu} %_description
 
 %prep
-%autosetup -n %{srcnamenu}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %generate_buildrequires
 %pyproject_buildrequires
