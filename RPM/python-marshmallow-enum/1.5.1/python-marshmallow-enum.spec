@@ -4,53 +4,51 @@
 
 Name:           python-%{pypi_name}
 Version:        1.5.1
-Release:        18%{?dist}
+Release:        19%{?dist}
 Summary:        Enum serializer/deserializer for use with Marshmallow
 
 License:        MIT
 URL:            https://github.com/justanr/marshmallow_enum
 Source0:        %{url}/archive/v%{version}/%{pypi_name}-%{version}.tar.gz
-
 BuildArch:      noarch
 
-%description
-A Python enum serializer/deserializer for use with Marshmallow.
+%global _description %{expand:
+A Python enum serializer/deserializer for use with Marshmallow.}
+
+%description %_description
 
 %package -n python3-%{pypi_name}
 Summary:        %{summary}
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-
-BuildRequires:  python3-pytest
-BuildRequires:  python3-marshmallow
-%{?python_provide:%python_provide python3-%{pypi_name}}
-
-%description -n python3-%{pypi_name}
-A Python enum serializer/deserializer for use with Marshmallow.
+%description -n python3-%{pypi_name} %_description
 
 %prep
 %autosetup -n %{modname}-%{version}
-rm -vf tox.ini
-# Compatibility with pytest 8
-sed -i "s/setup(/setup_method(/" tests/test_enum_field.py
+
+%generate_buildrequires
+%pyproject_buildrequires
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
-#check
-#PYTHONPATH=#{buildroot}/#{python3_sitelib} py.test-#{python3_version} -v
+%pyproject_save_files %{modname}
 
-%files -n python3-%{pypi_name}
-%doc README.md CHANGELOG
+%files -n python3-%{pypi_name} -f %{pyproject_files}
+
+%doc README.md 
+%doc CHANGELOG
 %license LICENSE
-%{python3_sitelib}/%{modname}/
-%{python3_sitelib}/%{modname}-*.egg-info/
+
+%check
+%pyproject_check_import
 
 %changelog
+* Tue Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 1.5.1-19
+- Resurection for Fedora 45
+
 * Sat Jan 18 2025 Fedora Release Engineering <releng@fedoraproject.org> - 1.5.1-18
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
 

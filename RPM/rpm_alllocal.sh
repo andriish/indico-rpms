@@ -43,7 +43,7 @@ declare -a BUILDLIST=(
 #python-flask-marshmallow:1.4.0
 #python-limits:5.8.0
 #python-Flask-Limiter:3.12
-python-flask-webpackext:2.1.0
+python-marshmallow-enum:1.5.1
 )
 
 
