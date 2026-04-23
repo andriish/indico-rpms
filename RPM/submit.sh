@@ -4,7 +4,7 @@ export PATH=$PATH:$(pwd)
 copr-cli create --enable-net=on --chroot fedora-44-x86_64 --chroot fedora-rawhide-x86_64 I3313
 declare -a BUILDLIST=(
 python-wallet-py3k:0.0.4
-python-limits:5.4.0
+python-limits:5.8.0
 python-Flask-Limiter:3.12
 python-Flask-Multipass:0.11.2
 python-Flask-PluginEngine:0.5

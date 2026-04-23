@@ -5,7 +5,7 @@ set -x
 declare -a BUILDLIST=(
 python-wtforms-sqlalchemy:0.4.2
 python-wallet-py3k:0.0.4
-python-limits:5.4.0
+python-limits:5.8.0
 python-Flask-Limiter:3.12
 python-Flask-Multipass:0.11.2
 python-Flask-PluginEngine:0.5
