@@ -40,6 +40,8 @@ BuildRequires: pcre-devel
 BuildRequires: pcre2-devel
 %endif
 
+BuildRequires: python3-Flask-Multipass python3-Flask-PluginEngine python3-marshmallow_dataclass python3-WTForms-dateutil  python3-flask-url-map-serializer
+
 ###########
 BuildRequires: liberation-mono-fonts
 BuildRequires: liberation-sans-fonts
