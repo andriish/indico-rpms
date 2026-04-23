@@ -3,7 +3,6 @@
 export PATH=$PATH:$(pwd)
 set -x 
 declare -a BUILDLIST=(
-python-wtforms-sqlalchemy:0.4.2
 python-wallet-py3k:0.0.4
 python-limits:5.8.0
 python-flask-limiter:3.12
@@ -23,12 +22,12 @@ python-flask-webpackext:2.1.0
 python-webargs:8.7.1
 python-wtforms:3.2.1
 python-wtforms-sqlalchemy:0.4.2
-python-indico:3.3.12
 python-marshmallow-enum:1.5.1
+python-indico:3.3.12
 )
 
 
-declare -a BUILDLIST=(
+declare -a BUILDLISTX=(
 #python-wtforms:3.2.1
 #python-pyrsistent:0.21.0
 #python-marshmallow-dataclass:8.7.1
@@ -49,7 +48,7 @@ declare -a BUILDLIST=(
 #python-wtforms-dateutil:0.1
 #python-flask-pluginengine:0.5
 #python-flask-multipass:0.11.2
-python-wallet-py3k:0.0.4
+#python-wallet-py3k:0.0.4
 )
 
 
