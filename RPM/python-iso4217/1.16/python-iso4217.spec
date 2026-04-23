@@ -23,7 +23,7 @@ Summary:        %{summary}
 
 %prep
 %autosetup -n %{srcname}-%{version}
-echo "This software is released into the public domain." > LICENSE
+echo "Distributed under Public Domain." > LICENSE
 
 %generate_buildrequires
 %pyproject_buildrequires
