@@ -40,7 +40,8 @@ declare -a BUILDLIST=(
 #python-pyrsistent:0.21.0
 #python-webargs:8.7.1
 #python-wallet-py3k:0.0.4
-python-flask-marshmallow:1.4.0
+#python-flask-marshmallow:1.4.0
+python-limits:5.8.0
 )
 
 

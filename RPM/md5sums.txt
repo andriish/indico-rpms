@@ -133,3 +133,5 @@ b4af1fa7e57da4bb32f5eb93281cc044  python-pywebpack/2.2.1/rpmbuild/SOURCES/pywebp
 58a16ec4a96043b429c196bfafa5fd96  python-wtforms/3.2.1/rpmbuild/SOURCES/wtforms-3.2.1.tar.gz
 467c5f811d82fe73e3798b158cb2c5cd  python-flask-marshmallow/1.5.0/rpmbuild/SOURCES/1.5.0.tar.gz
 c63f4c9d4dd031e4a514a9ca2dbb0f1d  python-marshmallow-oneofschema/3.2.0/rpmbuild/SOURCES/marshmallow-oneofschema-3.2.0.tar.gz
+0db15ae9c19445fe1d728ed61891cb9a  python-limits/5.8.0/rpmbuild/SOURCES/limits-5.8.0.tar.gz
+855fb1793b3abdaff499560115966edb  python-limits/5.8.0/rpmbuild/SOURCES/limits-5.8.0.tar.gz
