@@ -1,7 +1,8 @@
 %global srcname wallet-py3k
-%global srcnamenu wallet_py3k
+%global modname wallet
+%global srcnamenu wallet-py3k
 
-Name:           python-%{srcname}
+Name:           python-%{srcnamenu}
 Version:        0.0.4
 Release:        1%{?dist}
 Summary:        Python library to read/write [Apple Wallet]
@@ -16,10 +17,10 @@ Python library to read/write [Apple Wallet]}
 
 %description %_description
 
-%package -n python3-%{srcname}
+%package -n python3-%{srcnamenu}
 Summary:        %{summary}
 
-%description -n python3-%{srcname} %_description
+%description -n python3-%{srcnamenu} %_description
 
 %prep
 %autosetup -n %{srcname}-%{version}
@@ -32,11 +33,11 @@ Summary:        %{summary}
 
 %install
 %pyproject_install
-%pyproject_save_files %{srcnamenu}
+%pyproject_save_files %{modname}
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -n python3-%{srcnamenu} -f %{pyproject_files}
 %license LICENSE.txt
-%doc README.txt
+%doc README.md
 %doc CHANGES.txt
 
 

@@ -48,8 +48,8 @@ declare -a BUILDLIST=(
 #OK python-marshmallow-sqlalchemy:1.4.2
 #python-wtforms-dateutil:0.1
 #python-flask-pluginengine:0.5
-python-flask-multipass:0.11.2
-
+#python-flask-multipass:0.11.2
+python-wallet-py3k:0.0.4
 )
 
 
