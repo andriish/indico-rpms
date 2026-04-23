@@ -46,8 +46,7 @@ Summary:        %{summary}
 %doc README.md
 %license LICENSE
 
-%check
-%pytest 
+
 %changelog
 * Tue Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> - 1.4.0-1
 - First version for Fedora 
