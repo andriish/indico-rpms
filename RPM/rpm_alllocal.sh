@@ -27,10 +27,10 @@ python-indico:3.3.12
 )
 
 
-declare -a BUILDLISTX=(
+declare -a BUILDLIST=(
 #python-wtforms:3.2.1
 #python-pyrsistent:0.21.0
-#python-marshmallow-dataclass:8.7.1
+python-marshmallow-dataclass:8.7.1
 #python-pynpm:0.3.0
 #python-WTForms-dateutil:0.1
 #python-captcha:0.7.1
