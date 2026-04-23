@@ -30,7 +30,7 @@ python-indico:3.3.12
 declare -a BUILDLIST=(
 #python-wtforms:3.2.1
 #python-pyrsistent:0.21.0
-python-marshmallow-dataclass:8.7.1
+#python-marshmallow-dataclass:8.7.1
 #python-pynpm:0.3.0
 #python-WTForms-dateutil:0.1
 #python-captcha:0.7.1
@@ -49,6 +49,7 @@ python-marshmallow-dataclass:8.7.1
 #python-flask-pluginengine:0.5
 #python-flask-multipass:0.11.2
 #python-wallet-py3k:0.0.4
+python-flask-marshmallow:1.4.0
 )
 
 

@@ -1,14 +1,14 @@
-%global srcname flask-marshmallow
-%global srcnamenu flask_marshmallow
+%global srcname flask_marshmallow
+%global srcnamenu flask-marshmallow
 
-Name:           python-%{srcname}
+Name:           python-%{srcnamenu}
 Version:        1.4.0
 Release:        1%{?dist}
 Summary:        Flask + marshmallow for beautiful APIs
 
 License:        MIT
 URL:            https://flask-marshmallow.readthedocs.io/en/latest/
-Source:         https://github.com/marshmallow-code/flask-marshmallow/archive/refs/tags/%{version}.tar.gz
+Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires:  python3-werkzeug gcc make
 BuildRequires:  %{py3_dist pytest}
@@ -23,13 +23,13 @@ integrates with Flask-SQLAlchemy.}
 
 %description %_description
 
-%package -n python3-%{srcname}
+%package -n python3-%{srcnamenu}
 Summary:        %{summary}
 
-%description -n python3-%{srcname} %_description
+%description -n python3-%{srcnamenu} %_description
 
 %prep
-%autosetup -n %{srcname}-%{version}
+%autosetup -n %{srcnamenu}-%{version}
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -40,9 +40,9 @@ Summary:        %{summary}
 %install
 %pyproject_install
 
-%pyproject_save_files -l %{srcnamenu}
+%pyproject_save_files -l %{srcname}
 
-%files -n python3-%{srcname} -f %{pyproject_files}
+%files -n python3-%{srcnamenu} -f %{pyproject_files}
 %doc README.rst
 %license LICENSE
 
