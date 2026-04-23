@@ -135,4 +135,4 @@ b4af1fa7e57da4bb32f5eb93281cc044  python-pywebpack/2.2.1/rpmbuild/SOURCES/pywebp
 c63f4c9d4dd031e4a514a9ca2dbb0f1d  python-marshmallow-oneofschema/3.2.0/rpmbuild/SOURCES/marshmallow-oneofschema-3.2.0.tar.gz
 0db15ae9c19445fe1d728ed61891cb9a  python-limits/5.8.0/rpmbuild/SOURCES/limits-5.8.0.tar.gz
 855fb1793b3abdaff499560115966edb  python-limits/5.8.0/rpmbuild/SOURCES/limits-5.8.0.tar.gz
-7eaaf14b4afa270eec4ff3671390a792  python-Flask-Limiter/4.1.1/rpmbuild/SOURCES/flask_limiter-4.1.1.tar.gz
+7eaaf14b4afa270eec4ff3671390a792  python-flask-limiter/4.1.1/rpmbuild/SOURCES/flask_limiter-4.1.1.tar.gz

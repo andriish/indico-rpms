@@ -1,14 +1,14 @@
-%global srcname Flask-Limiter
+%global srcname flask_limiter
 %global srcnamenu flask_limiter
 
 Name:           python-%{srcname}
-Version:        3.12
+Version:        4.1.1
 Release:        1%{?dist}
-Summary:        Provides rate limiting features to Flask applications.
+Summary:        Provides rate limiting features to Flask applications
 
 License:        MIT
 URL:            https://flask-limiter.readthedocs.io/en/stable/
-Source:         https://files.pythonhosted.org/packages/70/75/92b237dd4f6e19196bc73007fff288ab1d4c64242603f3c401ff8fc58a42/flask_limiter-3.12.tar.gz
+Source:         %{pypi_source}
 BuildArch:      noarch
 
 %global _description %{expand:
@@ -24,8 +24,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -n %{srcnamenu}-%{version}
-#rich>=12,<14
-sed -i 's/ich>=12,<14/ich>=12/' requirements/main.txt
 
 %generate_buildrequires
 %pyproject_buildrequires
@@ -42,6 +40,9 @@ sed -i 's/ich>=12,<14/ich>=12/' requirements/main.txt
 %doc README.rst
 %license LICENSE.txt
 
+%check
+%pyproject_check_import
+
 %changelog
-* Thu Apr 23 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 3.12-1
-- First Fedora package release for python-Flask-Limiter 3.12
+* Thu Apr 23 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 4.1.1-1
+- First Fedora package release for python-flask_limiter 4.1.1

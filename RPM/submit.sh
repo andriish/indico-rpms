@@ -5,7 +5,7 @@ copr-cli create --enable-net=on --chroot fedora-44-x86_64 --chroot fedora-rawhid
 declare -a BUILDLIST=(
 python-wallet-py3k:0.0.4
 python-limits:5.8.0
-python-Flask-Limiter:3.12
+python-flask-limiter:4.1.1
 python-Flask-Multipass:0.11.2
 python-Flask-PluginEngine:0.5
 python-WTForms-dateutil:0.1

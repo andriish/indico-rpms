@@ -6,7 +6,7 @@ declare -a BUILDLIST=(
 python-wtforms-sqlalchemy:0.4.2
 python-wallet-py3k:0.0.4
 python-limits:5.8.0
-python-Flask-Limiter:3.12
+python-flask-limiter:3.12
 python-Flask-Multipass:0.11.2
 python-Flask-PluginEngine:0.5
 python-WTForms-dateutil:0.1
@@ -42,7 +42,7 @@ declare -a BUILDLIST=(
 #python-wallet-py3k:0.0.4
 #python-flask-marshmallow:1.4.0
 #python-limits:5.8.0
-python-Flask-Limiter:4.1.1
+python-flask-limiter:4.1.1
 #python-marshmallow-enum:1.5.1
 )
 
