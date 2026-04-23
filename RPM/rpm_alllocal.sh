@@ -49,7 +49,8 @@ declare -a BUILDLIST=(
 #python-flask-pluginengine:0.5
 #python-flask-multipass:0.11.2
 #python-wallet-py3k:0.0.4
-python-flask-marshmallow:1.4.0
+#python-flask-marshmallow:1.4.0
+python-marshmallow-oneofschema
 )
 
 
