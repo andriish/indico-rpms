@@ -42,7 +42,8 @@ declare -a BUILDLIST=(
 #python-wallet-py3k:0.0.4
 #python-flask-marshmallow:1.4.0
 #python-limits:5.8.0
-python-Flask-Limiter:3.12
+#python-Flask-Limiter:3.12
+python-flask-webpackext:2.1.0
 )
 
 

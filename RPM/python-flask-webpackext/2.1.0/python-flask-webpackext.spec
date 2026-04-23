@@ -8,7 +8,7 @@ Summary:        Webpack integration for Flask
 
 License:        BSD-3-Clause
 URL:            https://flask-webpackext.readthedocs.io/en/latest/
-Source:         https://files.pythonhosted.org/packages/f6/b4/43fcb72a19ee53ee04b6c922633152e38eedc433745a537439ed520ec548/flask_webpackext-2.1.0.tar.gz
+Source:         %{pypi_source}
 BuildArch:      noarch
 BuildRequires:  python3-werkzeug gcc make
 BuildRequires:  %{py3_dist pytest}
