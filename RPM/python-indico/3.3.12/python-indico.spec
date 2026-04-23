@@ -136,7 +136,7 @@ BuildRequires: python3-mako
 BuildRequires: python3-markdown
 BuildRequires: python3-markupsafe
 BuildRequires: python3-marshmallow
-BuildRequires: python3-marshmallow_dataclass
+BuildRequires: python3-marshmallow-dataclass
 BuildRequires: python3-marshmallow-enum
 BuildRequires: python3-marshmallow-oneofschema
 BuildRequires: python3-marshmallow-sqlalchemy
@@ -304,7 +304,7 @@ Requires: python3-mako
 Requires: python3-markdown
 Requires: python3-markupsafe
 Requires: python3-marshmallow
-Requires: python3-marshmallow_dataclass
+Requires: python3-marshmallow-dataclass
 Requires: python3-marshmallow-enum
 Requires: python3-marshmallow-oneofschema
 Requires: python3-marshmallow-sqlalchemy
