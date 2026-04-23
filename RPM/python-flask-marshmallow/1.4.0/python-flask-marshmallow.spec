@@ -43,7 +43,7 @@ Summary:        %{summary}
 %pyproject_save_files -l %{srcnamenu}
 
 %files -n python3-%{srcname} -f %{pyproject_files}
-%doc README.md
+%doc README.rst
 %license LICENSE
 
 
