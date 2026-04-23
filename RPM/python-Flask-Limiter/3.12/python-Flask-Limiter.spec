@@ -10,9 +10,6 @@ License:        MIT
 URL:            https://flask-limiter.readthedocs.io/en/stable/
 Source:         https://files.pythonhosted.org/packages/70/75/92b237dd4f6e19196bc73007fff288ab1d4c64242603f3c401ff8fc58a42/flask_limiter-3.12.tar.gz
 BuildArch:      noarch
-BuildRequires:  python3-pip python3-wheel 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 
 %global _description %{expand:
 Flask-Limiter provides rate limiting features to Flask applications.}
@@ -30,20 +27,21 @@ Summary:        %{summary}
 #rich>=12,<14
 sed -i 's/ich>=12,<14/ich>=12/' requirements/main.txt
 
-
+%generate_buildrequires
+%pyproject_buildrequires
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
-# Note that there is no %%files section for the unversioned python module
-%files -n python3-%{srcname}
+%pyproject_save_files -l %{srcnamenu}
 
-%{python3_sitelib}/*.egg-info/
-%{python3_sitelib}/%{srcnamenu}/
+%files -n python3-%{srcname} -f %{pyproject_files}
+%doc README.rst
+%license LICENSE.txt
 
 %changelog
-* Mon Apr 21 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 3.12-1
+* Thu Apr 23 2026 Andrii Verbytskyi <andrii.verbytskyi@mpp.mpg.de> 3.12-1
 - First Fedora package release for python-Flask-Limiter 3.12
