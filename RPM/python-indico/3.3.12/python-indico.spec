@@ -14,11 +14,10 @@ Indico plugin %1
 %{python3_sitelib}/indico_plugin_%1-3.*.dist-info/*
 
 
-
 Name:           python-%{srcname}
 Version:        3.3.12
 Release:        1%{?dist}
-Summary:        Indico package
+Summary:        Indico event management system
 
 License:        MIT
 URL:            https://getindico.io/
@@ -28,13 +27,14 @@ BuildArch:      noarch
 
 BuildRequires: nodejs-npm
 BuildRequires: python-build
-BuildRequires: gcc-c++ git gcc make 
-BuildRequires: rpm-build git wget
+BuildRequires: gcc-c++ gcc make 
+BuildRequires: git wget
 BuildRequires: npm
 BuildRequires: tzdata
 BuildRequires: python3-rpm-macros
-BuildRequires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel  libyaml-devel 
+BuildRequires: libjpeg-turbo-devel libxslt-devel libxml2-devel libffi-devel libyaml-devel 
 BuildRequires: zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel xz xz-devel libffi-devel findutils libuuid-devel
+BuildRequires: uv ruff 
 %if 0%{?fedora} < 44
 BuildRequires: pcre-devel
 %else
@@ -42,20 +42,6 @@ BuildRequires: pcre2-devel
 %endif
 
 BuildRequires: python3-Flask-Multipass python3-Flask-PluginEngine python3-marshmallow_dataclass python3-WTForms-dateutil  python3-flask-url-map-serializer
-
-###########
-BuildRequires: liberation-mono-fonts
-BuildRequires: liberation-sans-fonts
-BuildRequires: liberation-serif-fonts
-BuildRequires: linux-libertine-biolinum-fonts
-BuildRequires: linux-libertine-fonts
-BuildRequires: google-noto-sans-cjk-vf-fonts 
-BuildRequires: google-noto-sans-cjk-fonts
-BuildRequires: sazanami-gothic-fonts
-BuildRequires: sazanami-mincho-fonts  
-BuildRequires: cjkuni-uming-fonts
-#################
-
 
 %global _description %{expand:
 Indico event management system.
@@ -70,8 +56,6 @@ Requires: zlib bzip2 readline sqlite xz libffi findutils libuuid
 Requires: uwsgi
 Requires: uwsgi-plugin-python3
 Requires: uwsgi-plugin-python3-gevent 
-
-###########
 Requires: liberation-mono-fonts
 Requires: liberation-sans-fonts
 Requires: liberation-serif-fonts
@@ -82,25 +66,20 @@ Requires: google-noto-sans-cjk-fonts
 Requires: sazanami-gothic-fonts
 Requires: sazanami-mincho-fonts  
 Requires: cjkuni-uming-fonts
-#################
-BuildRequires: uv ruff 
 
 %description -n python3-%{srcname} %_description
 
-%package -n python3-indico-default-configuration
+%package -n python3-indico-default-resources
 Summary:  %{summary}
 Requires: python3-%{srcname}
-Requires: postgresql postgresql-server postgresql-libs postgresql-devel postgresql-contrib
-Requires: redis httpd mod_proxy_uwsgi mod_ssl mod_xsendfile
 
-%description -n python3-indico-default-configuration
+%description -n python3-indico-default-resources
 Default configuration files for Indico
 
 
 %iplugin citadel
 %iplugin cloud_captchas
 %iplugin livesync
-#iplugin livesync_debug
 %iplugin owncloud
 %iplugin payment_manual
 %iplugin payment_paypal
@@ -134,10 +113,9 @@ sed -i 's/exceptiongroup/#exceptiongroup/g' requirements.*
 
 sed -i -E "s/^requires-python[[:space:]]*=.*/requires-python = '>=3.12'/" pyproject.toml plugins/base/*/pyproject.toml
 sed -i -E "s/Python :: 3.12/Python :: "%{python3_version}"/g" pyproject.toml plugins/base/*/pyproject.toml
-sed -i -E "s/hatchling==1.27.0/hatchling/g" pyproject.toml plugins/base/*/pyproject.toml
-sed -i -E "s/hatchling==1.25.0/hatchling/g" pyproject.toml plugins/base/*/pyproject.toml
-sed -i -E "s/hatch-requirements-txt==0.4.1/hatch-requirements-txt/g" pyproject.toml plugins/base/*/pyproject.toml
-sed -i -E "s/babel==2.16.0/babel/g" pyproject.toml plugins/base/*/pyproject.toml
+sed -i -E "s/hatchling==/hatchling>=/g" pyproject.toml plugins/base/*/pyproject.toml
+sed -i -E "s/hatch-requirements-txt==/hatch-requirements-txt>=/g" pyproject.toml plugins/base/*/pyproject.toml
+sed -i -E "s/babel==/babel>=/g" pyproject.toml plugins/base/*/pyproject.toml
 
 
 %generate_buildrequires
@@ -186,19 +164,18 @@ rm -rf  %{buildroot}/%{python3_sitelib}/indico_plugins-%{pluginsversion}.dist-in
 indico i18n compile-catalog
 indico i18n compile-catalog-react
 
-# Note that there is no files section for the unversioned python module
 %files -n python3-%{srcname}
 %{python3_sitelib}/%{srcnamenu}-*info/
 %{python3_sitelib}/%{srcnamenu}/
 %{_bindir}/indico
-#exclude #{python3_sitelib}/#{srcnamenu}/web/static/images/globe.png
-#exclude #{python3_sitelib}/#{srcnamenu}/web/static/images/logo_indico_bw.svg
+%exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
+%exclude %{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
 %exclude %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %exclude %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
-%files -n python3-indico-default-configuration
-#{python3_sitelib}/#{srcnamenu}/web/static/images/globe.png
-#{python3_sitelib}/#{srcnamenu}/web/static/images/logo_indico_bw.svg
+%files -n python3-indico-default-resources
+%{python3_sitelib}/%{srcnamenu}/web/static/images/globe.png
+%{python3_sitelib}/%{srcnamenu}/web/static/images/logo_indico_bw.svg
 %{python3_sitelib}/%{srcnamenu}/web/static/robots.txt
 %{python3_sitelib}/%{srcnamenu}/modules/auth/templates/register.html
 
@@ -224,17 +201,6 @@ indico i18n compile-catalog-react
 
 
 %changelog
-* Thu Mar 26 2026 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.12
-- Version 3.3.12
-* Sat Jun 21 2025 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.6
-- Version 3.3.6 
-* Mon Apr 15 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.1
-- Version 3.3.1 
-* Wed Feb 28 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.0dev
-- Version 3.3.0dev 
-* Thu Feb 22 2024 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2.9
-- Version 3.2.9 
-* Mon May 15 2023 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2.3
-- Version 3.2.3
-* Thu Sep 01 2022 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.2
-- Version 3.2
+* Thu Mar 26 2026 Andrii Verbytskyi andrii.verbytskyi@mpp.mpg.de> - 3.3.12-1
+- Version 3.3.12 for Fedora 
+
